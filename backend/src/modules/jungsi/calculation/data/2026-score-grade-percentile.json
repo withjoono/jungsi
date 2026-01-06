@@ -1,0 +1,5850 @@
+{
+  "국어": {
+    "47": {
+      "percentile": 0,
+      "grade": 9
+    },
+    "48": {
+      "percentile": 0,
+      "grade": 9
+    },
+    "49": {
+      "percentile": 0,
+      "grade": 9
+    },
+    "50": {
+      "percentile": 0,
+      "grade": 9
+    },
+    "51": {
+      "percentile": 0,
+      "grade": 9
+    },
+    "52": {
+      "percentile": 0,
+      "grade": 9
+    },
+    "53": {
+      "percentile": 0,
+      "grade": 9
+    },
+    "54": {
+      "percentile": 0,
+      "grade": 9
+    },
+    "55": {
+      "percentile": 0,
+      "grade": 9
+    },
+    "56": {
+      "percentile": 0,
+      "grade": 9
+    },
+    "57": {
+      "percentile": 0,
+      "grade": 9
+    },
+    "58": {
+      "percentile": 0,
+      "grade": 9
+    },
+    "59": {
+      "percentile": 0,
+      "grade": 9
+    },
+    "60": {
+      "percentile": 1,
+      "grade": 9
+    },
+    "61": {
+      "percentile": 1,
+      "grade": 9
+    },
+    "62": {
+      "percentile": 1,
+      "grade": 9
+    },
+    "63": {
+      "percentile": 1,
+      "grade": 9
+    },
+    "64": {
+      "percentile": 2,
+      "grade": 9
+    },
+    "65": {
+      "percentile": 3,
+      "grade": 9
+    },
+    "66": {
+      "percentile": 4,
+      "grade": 8
+    },
+    "67": {
+      "percentile": 4,
+      "grade": 8
+    },
+    "68": {
+      "percentile": 6,
+      "grade": 8
+    },
+    "69": {
+      "percentile": 7,
+      "grade": 8
+    },
+    "70": {
+      "percentile": 8,
+      "grade": 8
+    },
+    "71": {
+      "percentile": 9,
+      "grade": 8
+    },
+    "72": {
+      "percentile": 10,
+      "grade": 8
+    },
+    "73": {
+      "percentile": 11,
+      "grade": 7
+    },
+    "74": {
+      "percentile": 12,
+      "grade": 7
+    },
+    "75": {
+      "percentile": 13,
+      "grade": 7
+    },
+    "76": {
+      "percentile": 14,
+      "grade": 7
+    },
+    "77": {
+      "percentile": 16,
+      "grade": 7
+    },
+    "78": {
+      "percentile": 17,
+      "grade": 7
+    },
+    "79": {
+      "percentile": 18,
+      "grade": 7
+    },
+    "80": {
+      "percentile": 20,
+      "grade": 7
+    },
+    "81": {
+      "percentile": 21,
+      "grade": 7
+    },
+    "82": {
+      "percentile": 22,
+      "grade": 7
+    },
+    "83": {
+      "percentile": 23,
+      "grade": 6
+    },
+    "84": {
+      "percentile": 25,
+      "grade": 6
+    },
+    "85": {
+      "percentile": 26,
+      "grade": 6
+    },
+    "86": {
+      "percentile": 28,
+      "grade": 6
+    },
+    "87": {
+      "percentile": 29,
+      "grade": 6
+    },
+    "88": {
+      "percentile": 31,
+      "grade": 6
+    },
+    "89": {
+      "percentile": 32,
+      "grade": 6
+    },
+    "90": {
+      "percentile": 33,
+      "grade": 6
+    },
+    "91": {
+      "percentile": 35,
+      "grade": 6
+    },
+    "92": {
+      "percentile": 36,
+      "grade": 6
+    },
+    "93": {
+      "percentile": 38,
+      "grade": 6
+    },
+    "94": {
+      "percentile": 40,
+      "grade": 5
+    },
+    "95": {
+      "percentile": 41,
+      "grade": 5
+    },
+    "96": {
+      "percentile": 43,
+      "grade": 5
+    },
+    "97": {
+      "percentile": 44,
+      "grade": 5
+    },
+    "98": {
+      "percentile": 46,
+      "grade": 5
+    },
+    "99": {
+      "percentile": 47,
+      "grade": 5
+    },
+    "100": {
+      "percentile": 49,
+      "grade": 5
+    },
+    "101": {
+      "percentile": 51,
+      "grade": 5
+    },
+    "102": {
+      "percentile": 52,
+      "grade": 5
+    },
+    "103": {
+      "percentile": 54,
+      "grade": 5
+    },
+    "104": {
+      "percentile": 56,
+      "grade": 5
+    },
+    "105": {
+      "percentile": 57,
+      "grade": 5
+    },
+    "106": {
+      "percentile": 59,
+      "grade": 5
+    },
+    "107": {
+      "percentile": 61,
+      "grade": 4
+    },
+    "108": {
+      "percentile": 62,
+      "grade": 4
+    },
+    "109": {
+      "percentile": 64,
+      "grade": 4
+    },
+    "110": {
+      "percentile": 66,
+      "grade": 4
+    },
+    "111": {
+      "percentile": 67,
+      "grade": 4
+    },
+    "112": {
+      "percentile": 69,
+      "grade": 4
+    },
+    "113": {
+      "percentile": 71,
+      "grade": 4
+    },
+    "114": {
+      "percentile": 72,
+      "grade": 4
+    },
+    "115": {
+      "percentile": 74,
+      "grade": 4
+    },
+    "116": {
+      "percentile": 75,
+      "grade": 4
+    },
+    "117": {
+      "percentile": 77,
+      "grade": 3
+    },
+    "118": {
+      "percentile": 78,
+      "grade": 3
+    },
+    "119": {
+      "percentile": 80,
+      "grade": 3
+    },
+    "120": {
+      "percentile": 81,
+      "grade": 3
+    },
+    "121": {
+      "percentile": 83,
+      "grade": 3
+    },
+    "122": {
+      "percentile": 84,
+      "grade": 3
+    },
+    "123": {
+      "percentile": 86,
+      "grade": 3
+    },
+    "124": {
+      "percentile": 87,
+      "grade": 3
+    },
+    "125": {
+      "percentile": 88,
+      "grade": 3
+    },
+    "126": {
+      "percentile": 89,
+      "grade": 2
+    },
+    "127": {
+      "percentile": 90,
+      "grade": 2
+    },
+    "128": {
+      "percentile": 91,
+      "grade": 2
+    },
+    "129": {
+      "percentile": 92,
+      "grade": 2
+    },
+    "130": {
+      "percentile": 93,
+      "grade": 2
+    },
+    "131": {
+      "percentile": 94,
+      "grade": 2
+    },
+    "132": {
+      "percentile": 95,
+      "grade": 2
+    },
+    "133": {
+      "percentile": 96,
+      "grade": 1
+    },
+    "134": {
+      "percentile": 96,
+      "grade": 1
+    },
+    "135": {
+      "percentile": 97,
+      "grade": 1
+    },
+    "136": {
+      "percentile": 97,
+      "grade": 1
+    },
+    "137": {
+      "percentile": 98,
+      "grade": 1
+    },
+    "138": {
+      "percentile": 98,
+      "grade": 1
+    },
+    "139": {
+      "percentile": 99,
+      "grade": 1
+    },
+    "140": {
+      "percentile": 99,
+      "grade": 1
+    },
+    "141": {
+      "percentile": 99,
+      "grade": 1
+    },
+    "142": {
+      "percentile": 99,
+      "grade": 1
+    },
+    "143": {
+      "percentile": 100,
+      "grade": 1
+    },
+    "144": {
+      "percentile": 100,
+      "grade": 1
+    },
+    "145": {
+      "percentile": 100,
+      "grade": 1
+    },
+    "146": {
+      "percentile": 100,
+      "grade": 1
+    },
+    "147": {
+      "percentile": 100,
+      "grade": 1
+    }
+  },
+  "미적": {
+    "61": {
+      "percentile": 0,
+      "grade": 9
+    },
+    "62": {
+      "percentile": 0,
+      "grade": 9
+    },
+    "63": {
+      "percentile": 0,
+      "grade": 9
+    },
+    "64": {
+      "percentile": 0,
+      "grade": 9
+    },
+    "65": {
+      "percentile": 0,
+      "grade": 9
+    },
+    "66": {
+      "percentile": 1,
+      "grade": 9
+    },
+    "67": {
+      "percentile": 1,
+      "grade": 9
+    },
+    "68": {
+      "percentile": 2,
+      "grade": 9
+    },
+    "69": {
+      "percentile": 3,
+      "grade": 9
+    },
+    "70": {
+      "percentile": 3,
+      "grade": 9
+    },
+    "71": {
+      "percentile": 5,
+      "grade": 8
+    },
+    "72": {
+      "percentile": 7,
+      "grade": 8
+    },
+    "73": {
+      "percentile": 8,
+      "grade": 8
+    },
+    "74": {
+      "percentile": 12,
+      "grade": 7
+    },
+    "75": {
+      "percentile": 15,
+      "grade": 7
+    },
+    "76": {
+      "percentile": 17,
+      "grade": 7
+    },
+    "77": {
+      "percentile": 19,
+      "grade": 7
+    },
+    "78": {
+      "percentile": 22,
+      "grade": 7
+    },
+    "79": {
+      "percentile": 23,
+      "grade": 6
+    },
+    "80": {
+      "percentile": 25,
+      "grade": 6
+    },
+    "81": {
+      "percentile": 27,
+      "grade": 6
+    },
+    "82": {
+      "percentile": 28,
+      "grade": 6
+    },
+    "83": {
+      "percentile": 29,
+      "grade": 6
+    },
+    "84": {
+      "percentile": 31,
+      "grade": 6
+    },
+    "85": {
+      "percentile": 32,
+      "grade": 6
+    },
+    "86": {
+      "percentile": 33,
+      "grade": 6
+    },
+    "87": {
+      "percentile": 35,
+      "grade": 6
+    },
+    "88": {
+      "percentile": 36,
+      "grade": 6
+    },
+    "89": {
+      "percentile": 37,
+      "grade": 6
+    },
+    "90": {
+      "percentile": 38,
+      "grade": 6
+    },
+    "91": {
+      "percentile": 39,
+      "grade": 6
+    },
+    "92": {
+      "percentile": 40,
+      "grade": 5
+    },
+    "93": {
+      "percentile": 42,
+      "grade": 5
+    },
+    "94": {
+      "percentile": 42,
+      "grade": 5
+    },
+    "95": {
+      "percentile": 43,
+      "grade": 5
+    },
+    "96": {
+      "percentile": 44,
+      "grade": 5
+    },
+    "97": {
+      "percentile": 45,
+      "grade": 5
+    },
+    "98": {
+      "percentile": 46,
+      "grade": 5
+    },
+    "99": {
+      "percentile": 47,
+      "grade": 5
+    },
+    "100": {
+      "percentile": 48,
+      "grade": 5
+    },
+    "101": {
+      "percentile": 49,
+      "grade": 5
+    },
+    "102": {
+      "percentile": 50,
+      "grade": 5
+    },
+    "103": {
+      "percentile": 51,
+      "grade": 5
+    },
+    "104": {
+      "percentile": 52,
+      "grade": 5
+    },
+    "105": {
+      "percentile": 53,
+      "grade": 5
+    },
+    "106": {
+      "percentile": 54,
+      "grade": 5
+    },
+    "107": {
+      "percentile": 55,
+      "grade": 5
+    },
+    "108": {
+      "percentile": 56,
+      "grade": 5
+    },
+    "109": {
+      "percentile": 58,
+      "grade": 5
+    },
+    "110": {
+      "percentile": 59,
+      "grade": 5
+    },
+    "111": {
+      "percentile": 60,
+      "grade": 4
+    },
+    "112": {
+      "percentile": 62,
+      "grade": 4
+    },
+    "113": {
+      "percentile": 63,
+      "grade": 4
+    },
+    "114": {
+      "percentile": 65,
+      "grade": 4
+    },
+    "115": {
+      "percentile": 67,
+      "grade": 4
+    },
+    "116": {
+      "percentile": 69,
+      "grade": 4
+    },
+    "117": {
+      "percentile": 72,
+      "grade": 4
+    },
+    "118": {
+      "percentile": 74,
+      "grade": 4
+    },
+    "119": {
+      "percentile": 76,
+      "grade": 3
+    },
+    "120": {
+      "percentile": 79,
+      "grade": 3
+    },
+    "121": {
+      "percentile": 81,
+      "grade": 3
+    },
+    "122": {
+      "percentile": 84,
+      "grade": 3
+    },
+    "123": {
+      "percentile": 86,
+      "grade": 3
+    },
+    "124": {
+      "percentile": 88,
+      "grade": 2
+    },
+    "125": {
+      "percentile": 91,
+      "grade": 2
+    },
+    "126": {
+      "percentile": 92,
+      "grade": 2
+    },
+    "127": {
+      "percentile": 94,
+      "grade": 2
+    },
+    "128": {
+      "percentile": 96,
+      "grade": 1
+    },
+    "129": {
+      "percentile": 96,
+      "grade": 1
+    },
+    "130": {
+      "percentile": 97,
+      "grade": 1
+    },
+    "131": {
+      "percentile": 98,
+      "grade": 1
+    },
+    "132": {
+      "percentile": 98,
+      "grade": 1
+    },
+    "133": {
+      "percentile": 99,
+      "grade": 1
+    },
+    "134": {
+      "percentile": 99,
+      "grade": 1
+    },
+    "135": {
+      "percentile": 99,
+      "grade": 1
+    },
+    "136": {
+      "percentile": 100,
+      "grade": 1
+    },
+    "137": {
+      "percentile": 100,
+      "grade": 1
+    },
+    "138": {
+      "percentile": 100,
+      "grade": 1
+    },
+    "139": {
+      "percentile": 100,
+      "grade": 1
+    }
+  },
+  "기하": {
+    "61": {
+      "percentile": 0,
+      "grade": 9
+    },
+    "62": {
+      "percentile": 0,
+      "grade": 9
+    },
+    "63": {
+      "percentile": 0,
+      "grade": 9
+    },
+    "64": {
+      "percentile": 0,
+      "grade": 9
+    },
+    "65": {
+      "percentile": 0,
+      "grade": 9
+    },
+    "66": {
+      "percentile": 1,
+      "grade": 9
+    },
+    "67": {
+      "percentile": 1,
+      "grade": 9
+    },
+    "68": {
+      "percentile": 2,
+      "grade": 9
+    },
+    "69": {
+      "percentile": 3,
+      "grade": 9
+    },
+    "70": {
+      "percentile": 3,
+      "grade": 9
+    },
+    "71": {
+      "percentile": 5,
+      "grade": 8
+    },
+    "72": {
+      "percentile": 7,
+      "grade": 8
+    },
+    "73": {
+      "percentile": 8,
+      "grade": 8
+    },
+    "74": {
+      "percentile": 12,
+      "grade": 7
+    },
+    "75": {
+      "percentile": 15,
+      "grade": 7
+    },
+    "76": {
+      "percentile": 17,
+      "grade": 7
+    },
+    "77": {
+      "percentile": 19,
+      "grade": 7
+    },
+    "78": {
+      "percentile": 22,
+      "grade": 7
+    },
+    "79": {
+      "percentile": 23,
+      "grade": 6
+    },
+    "80": {
+      "percentile": 25,
+      "grade": 6
+    },
+    "81": {
+      "percentile": 27,
+      "grade": 6
+    },
+    "82": {
+      "percentile": 28,
+      "grade": 6
+    },
+    "83": {
+      "percentile": 29,
+      "grade": 6
+    },
+    "84": {
+      "percentile": 31,
+      "grade": 6
+    },
+    "85": {
+      "percentile": 32,
+      "grade": 6
+    },
+    "86": {
+      "percentile": 33,
+      "grade": 6
+    },
+    "87": {
+      "percentile": 35,
+      "grade": 6
+    },
+    "88": {
+      "percentile": 36,
+      "grade": 6
+    },
+    "89": {
+      "percentile": 37,
+      "grade": 6
+    },
+    "90": {
+      "percentile": 38,
+      "grade": 6
+    },
+    "91": {
+      "percentile": 39,
+      "grade": 6
+    },
+    "92": {
+      "percentile": 40,
+      "grade": 5
+    },
+    "93": {
+      "percentile": 42,
+      "grade": 5
+    },
+    "94": {
+      "percentile": 42,
+      "grade": 5
+    },
+    "95": {
+      "percentile": 43,
+      "grade": 5
+    },
+    "96": {
+      "percentile": 44,
+      "grade": 5
+    },
+    "97": {
+      "percentile": 45,
+      "grade": 5
+    },
+    "98": {
+      "percentile": 46,
+      "grade": 5
+    },
+    "99": {
+      "percentile": 47,
+      "grade": 5
+    },
+    "100": {
+      "percentile": 48,
+      "grade": 5
+    },
+    "101": {
+      "percentile": 49,
+      "grade": 5
+    },
+    "102": {
+      "percentile": 50,
+      "grade": 5
+    },
+    "103": {
+      "percentile": 51,
+      "grade": 5
+    },
+    "104": {
+      "percentile": 52,
+      "grade": 5
+    },
+    "105": {
+      "percentile": 53,
+      "grade": 5
+    },
+    "106": {
+      "percentile": 54,
+      "grade": 5
+    },
+    "107": {
+      "percentile": 55,
+      "grade": 5
+    },
+    "108": {
+      "percentile": 56,
+      "grade": 5
+    },
+    "109": {
+      "percentile": 58,
+      "grade": 5
+    },
+    "110": {
+      "percentile": 59,
+      "grade": 5
+    },
+    "111": {
+      "percentile": 60,
+      "grade": 4
+    },
+    "112": {
+      "percentile": 62,
+      "grade": 4
+    },
+    "113": {
+      "percentile": 63,
+      "grade": 4
+    },
+    "114": {
+      "percentile": 65,
+      "grade": 4
+    },
+    "115": {
+      "percentile": 67,
+      "grade": 4
+    },
+    "116": {
+      "percentile": 69,
+      "grade": 4
+    },
+    "117": {
+      "percentile": 72,
+      "grade": 4
+    },
+    "118": {
+      "percentile": 74,
+      "grade": 4
+    },
+    "119": {
+      "percentile": 76,
+      "grade": 3
+    },
+    "120": {
+      "percentile": 79,
+      "grade": 3
+    },
+    "121": {
+      "percentile": 81,
+      "grade": 3
+    },
+    "122": {
+      "percentile": 84,
+      "grade": 3
+    },
+    "123": {
+      "percentile": 86,
+      "grade": 3
+    },
+    "124": {
+      "percentile": 88,
+      "grade": 2
+    },
+    "125": {
+      "percentile": 91,
+      "grade": 2
+    },
+    "126": {
+      "percentile": 92,
+      "grade": 2
+    },
+    "127": {
+      "percentile": 94,
+      "grade": 2
+    },
+    "128": {
+      "percentile": 96,
+      "grade": 1
+    },
+    "129": {
+      "percentile": 96,
+      "grade": 1
+    },
+    "130": {
+      "percentile": 97,
+      "grade": 1
+    },
+    "131": {
+      "percentile": 98,
+      "grade": 1
+    },
+    "132": {
+      "percentile": 98,
+      "grade": 1
+    },
+    "133": {
+      "percentile": 99,
+      "grade": 1
+    },
+    "134": {
+      "percentile": 99,
+      "grade": 1
+    },
+    "135": {
+      "percentile": 99,
+      "grade": 1
+    },
+    "136": {
+      "percentile": 100,
+      "grade": 1
+    },
+    "137": {
+      "percentile": 100,
+      "grade": 1
+    },
+    "138": {
+      "percentile": 100,
+      "grade": 1
+    },
+    "139": {
+      "percentile": 100,
+      "grade": 1
+    }
+  },
+  "확통": {
+    "61": {
+      "percentile": 0,
+      "grade": 9
+    },
+    "62": {
+      "percentile": 0,
+      "grade": 9
+    },
+    "63": {
+      "percentile": 0,
+      "grade": 9
+    },
+    "64": {
+      "percentile": 0,
+      "grade": 9
+    },
+    "65": {
+      "percentile": 0,
+      "grade": 9
+    },
+    "66": {
+      "percentile": 1,
+      "grade": 9
+    },
+    "67": {
+      "percentile": 1,
+      "grade": 9
+    },
+    "68": {
+      "percentile": 2,
+      "grade": 9
+    },
+    "69": {
+      "percentile": 3,
+      "grade": 9
+    },
+    "70": {
+      "percentile": 3,
+      "grade": 9
+    },
+    "71": {
+      "percentile": 5,
+      "grade": 8
+    },
+    "72": {
+      "percentile": 7,
+      "grade": 8
+    },
+    "73": {
+      "percentile": 8,
+      "grade": 8
+    },
+    "74": {
+      "percentile": 12,
+      "grade": 7
+    },
+    "75": {
+      "percentile": 15,
+      "grade": 7
+    },
+    "76": {
+      "percentile": 17,
+      "grade": 7
+    },
+    "77": {
+      "percentile": 19,
+      "grade": 7
+    },
+    "78": {
+      "percentile": 22,
+      "grade": 7
+    },
+    "79": {
+      "percentile": 23,
+      "grade": 6
+    },
+    "80": {
+      "percentile": 25,
+      "grade": 6
+    },
+    "81": {
+      "percentile": 27,
+      "grade": 6
+    },
+    "82": {
+      "percentile": 28,
+      "grade": 6
+    },
+    "83": {
+      "percentile": 29,
+      "grade": 6
+    },
+    "84": {
+      "percentile": 31,
+      "grade": 6
+    },
+    "85": {
+      "percentile": 32,
+      "grade": 6
+    },
+    "86": {
+      "percentile": 33,
+      "grade": 6
+    },
+    "87": {
+      "percentile": 35,
+      "grade": 6
+    },
+    "88": {
+      "percentile": 36,
+      "grade": 6
+    },
+    "89": {
+      "percentile": 37,
+      "grade": 6
+    },
+    "90": {
+      "percentile": 38,
+      "grade": 6
+    },
+    "91": {
+      "percentile": 39,
+      "grade": 6
+    },
+    "92": {
+      "percentile": 40,
+      "grade": 5
+    },
+    "93": {
+      "percentile": 42,
+      "grade": 5
+    },
+    "94": {
+      "percentile": 42,
+      "grade": 5
+    },
+    "95": {
+      "percentile": 43,
+      "grade": 5
+    },
+    "96": {
+      "percentile": 44,
+      "grade": 5
+    },
+    "97": {
+      "percentile": 45,
+      "grade": 5
+    },
+    "98": {
+      "percentile": 46,
+      "grade": 5
+    },
+    "99": {
+      "percentile": 47,
+      "grade": 5
+    },
+    "100": {
+      "percentile": 48,
+      "grade": 5
+    },
+    "101": {
+      "percentile": 49,
+      "grade": 5
+    },
+    "102": {
+      "percentile": 50,
+      "grade": 5
+    },
+    "103": {
+      "percentile": 51,
+      "grade": 5
+    },
+    "104": {
+      "percentile": 52,
+      "grade": 5
+    },
+    "105": {
+      "percentile": 53,
+      "grade": 5
+    },
+    "106": {
+      "percentile": 54,
+      "grade": 5
+    },
+    "107": {
+      "percentile": 55,
+      "grade": 5
+    },
+    "108": {
+      "percentile": 56,
+      "grade": 5
+    },
+    "109": {
+      "percentile": 58,
+      "grade": 5
+    },
+    "110": {
+      "percentile": 59,
+      "grade": 5
+    },
+    "111": {
+      "percentile": 60,
+      "grade": 4
+    },
+    "112": {
+      "percentile": 62,
+      "grade": 4
+    },
+    "113": {
+      "percentile": 63,
+      "grade": 4
+    },
+    "114": {
+      "percentile": 65,
+      "grade": 4
+    },
+    "115": {
+      "percentile": 67,
+      "grade": 4
+    },
+    "116": {
+      "percentile": 69,
+      "grade": 4
+    },
+    "117": {
+      "percentile": 72,
+      "grade": 4
+    },
+    "118": {
+      "percentile": 74,
+      "grade": 4
+    },
+    "119": {
+      "percentile": 76,
+      "grade": 3
+    },
+    "120": {
+      "percentile": 79,
+      "grade": 3
+    },
+    "121": {
+      "percentile": 81,
+      "grade": 3
+    },
+    "122": {
+      "percentile": 84,
+      "grade": 3
+    },
+    "123": {
+      "percentile": 86,
+      "grade": 3
+    },
+    "124": {
+      "percentile": 88,
+      "grade": 2
+    },
+    "125": {
+      "percentile": 91,
+      "grade": 2
+    },
+    "126": {
+      "percentile": 92,
+      "grade": 2
+    },
+    "127": {
+      "percentile": 94,
+      "grade": 2
+    },
+    "128": {
+      "percentile": 96,
+      "grade": 1
+    },
+    "129": {
+      "percentile": 96,
+      "grade": 1
+    },
+    "130": {
+      "percentile": 97,
+      "grade": 1
+    },
+    "131": {
+      "percentile": 98,
+      "grade": 1
+    },
+    "132": {
+      "percentile": 98,
+      "grade": 1
+    },
+    "133": {
+      "percentile": 99,
+      "grade": 1
+    },
+    "134": {
+      "percentile": 99,
+      "grade": 1
+    },
+    "135": {
+      "percentile": 99,
+      "grade": 1
+    },
+    "136": {
+      "percentile": 100,
+      "grade": 1
+    },
+    "137": {
+      "percentile": 100,
+      "grade": 1
+    },
+    "138": {
+      "percentile": 100,
+      "grade": 1
+    },
+    "139": {
+      "percentile": 100,
+      "grade": 1
+    }
+  },
+  "영어": {
+    "1": {
+      "percentile": 98,
+      "grade": 1
+    },
+    "2": {
+      "percentile": 90,
+      "grade": 2
+    },
+    "3": {
+      "percentile": 69,
+      "grade": 3
+    },
+    "4": {
+      "percentile": 44,
+      "grade": 4
+    },
+    "5": {
+      "percentile": 25,
+      "grade": 5
+    },
+    "6": {
+      "percentile": 14,
+      "grade": 6
+    },
+    "7": {
+      "percentile": 8,
+      "grade": 7
+    },
+    "8": {
+      "percentile": 3,
+      "grade": 8
+    },
+    "9": {
+      "percentile": 1,
+      "grade": 9
+    }
+  },
+  "한국사": {
+    "1": {
+      "percentile": 92,
+      "grade": 1
+    },
+    "2": {
+      "percentile": 78,
+      "grade": 2
+    },
+    "3": {
+      "percentile": 64,
+      "grade": 3
+    },
+    "4": {
+      "percentile": 49,
+      "grade": 4
+    },
+    "5": {
+      "percentile": 34,
+      "grade": 5
+    },
+    "6": {
+      "percentile": 20,
+      "grade": 6
+    },
+    "7": {
+      "percentile": 9,
+      "grade": 7
+    },
+    "8": {
+      "percentile": 2,
+      "grade": 8
+    },
+    "9": {
+      "percentile": 0,
+      "grade": 9
+    }
+  },
+  "물리학 Ⅰ": {
+    "29": {
+      "percentile": 0,
+      "grade": 9
+    },
+    "31": {
+      "percentile": 0,
+      "grade": 9
+    },
+    "32": {
+      "percentile": 1,
+      "grade": 9
+    },
+    "33": {
+      "percentile": 2,
+      "grade": 9
+    },
+    "34": {
+      "percentile": 3,
+      "grade": 9
+    },
+    "35": {
+      "percentile": 4,
+      "grade": 8
+    },
+    "36": {
+      "percentile": 7,
+      "grade": 8
+    },
+    "37": {
+      "percentile": 9,
+      "grade": 8
+    },
+    "38": {
+      "percentile": 14,
+      "grade": 7
+    },
+    "39": {
+      "percentile": 18,
+      "grade": 7
+    },
+    "40": {
+      "percentile": 21,
+      "grade": 7
+    },
+    "41": {
+      "percentile": 24,
+      "grade": 6
+    },
+    "42": {
+      "percentile": 28,
+      "grade": 6
+    },
+    "43": {
+      "percentile": 32,
+      "grade": 6
+    },
+    "44": {
+      "percentile": 34,
+      "grade": 6
+    },
+    "45": {
+      "percentile": 37,
+      "grade": 6
+    },
+    "46": {
+      "percentile": 39,
+      "grade": 5
+    },
+    "47": {
+      "percentile": 43,
+      "grade": 5
+    },
+    "48": {
+      "percentile": 46,
+      "grade": 5
+    },
+    "49": {
+      "percentile": 48,
+      "grade": 5
+    },
+    "50": {
+      "percentile": 50,
+      "grade": 5
+    },
+    "51": {
+      "percentile": 54,
+      "grade": 5
+    },
+    "52": {
+      "percentile": 57,
+      "grade": 5
+    },
+    "53": {
+      "percentile": 59,
+      "grade": 4
+    },
+    "54": {
+      "percentile": 61,
+      "grade": 4
+    },
+    "55": {
+      "percentile": 63,
+      "grade": 4
+    },
+    "56": {
+      "percentile": 67,
+      "grade": 4
+    },
+    "57": {
+      "percentile": 71,
+      "grade": 4
+    },
+    "58": {
+      "percentile": 73,
+      "grade": 4
+    },
+    "59": {
+      "percentile": 76,
+      "grade": 4
+    },
+    "60": {
+      "percentile": 79,
+      "grade": 3
+    },
+    "61": {
+      "percentile": 83,
+      "grade": 3
+    },
+    "62": {
+      "percentile": 86,
+      "grade": 3
+    },
+    "63": {
+      "percentile": 88,
+      "grade": 3
+    },
+    "64": {
+      "percentile": 90,
+      "grade": 2
+    },
+    "65": {
+      "percentile": 93,
+      "grade": 2
+    },
+    "66": {
+      "percentile": 96,
+      "grade": 1
+    },
+    "67": {
+      "percentile": 97,
+      "grade": 1
+    },
+    "68": {
+      "percentile": 98,
+      "grade": 1
+    },
+    "69": {
+      "percentile": 99,
+      "grade": 1
+    },
+    "70": {
+      "percentile": 100,
+      "grade": 1
+    }
+  },
+  "화학 Ⅰ": {
+    "30": {
+      "percentile": 0,
+      "grade": 9
+    },
+    "32": {
+      "percentile": 0,
+      "grade": 9
+    },
+    "33": {
+      "percentile": 1,
+      "grade": 9
+    },
+    "34": {
+      "percentile": 2,
+      "grade": 9
+    },
+    "35": {
+      "percentile": 3,
+      "grade": 9
+    },
+    "36": {
+      "percentile": 5,
+      "grade": 8
+    },
+    "37": {
+      "percentile": 7,
+      "grade": 8
+    },
+    "38": {
+      "percentile": 11,
+      "grade": 7
+    },
+    "39": {
+      "percentile": 16,
+      "grade": 7
+    },
+    "40": {
+      "percentile": 20,
+      "grade": 7
+    },
+    "41": {
+      "percentile": 24,
+      "grade": 6
+    },
+    "42": {
+      "percentile": 27,
+      "grade": 6
+    },
+    "43": {
+      "percentile": 31,
+      "grade": 6
+    },
+    "44": {
+      "percentile": 36,
+      "grade": 6
+    },
+    "45": {
+      "percentile": 38,
+      "grade": 6
+    },
+    "46": {
+      "percentile": 41,
+      "grade": 5
+    },
+    "47": {
+      "percentile": 45,
+      "grade": 5
+    },
+    "48": {
+      "percentile": 48,
+      "grade": 5
+    },
+    "49": {
+      "percentile": 51,
+      "grade": 5
+    },
+    "50": {
+      "percentile": 53,
+      "grade": 5
+    },
+    "51": {
+      "percentile": 57,
+      "grade": 5
+    },
+    "52": {
+      "percentile": 60,
+      "grade": 4
+    },
+    "53": {
+      "percentile": 62,
+      "grade": 4
+    },
+    "54": {
+      "percentile": 64,
+      "grade": 4
+    },
+    "55": {
+      "percentile": 66,
+      "grade": 4
+    },
+    "56": {
+      "percentile": 69,
+      "grade": 4
+    },
+    "57": {
+      "percentile": 72,
+      "grade": 4
+    },
+    "58": {
+      "percentile": 74,
+      "grade": 4
+    },
+    "59": {
+      "percentile": 77,
+      "grade": 3
+    },
+    "60": {
+      "percentile": 80,
+      "grade": 3
+    },
+    "61": {
+      "percentile": 82,
+      "grade": 3
+    },
+    "62": {
+      "percentile": 84,
+      "grade": 3
+    },
+    "63": {
+      "percentile": 86,
+      "grade": 3
+    },
+    "64": {
+      "percentile": 89,
+      "grade": 2
+    },
+    "65": {
+      "percentile": 92,
+      "grade": 2
+    },
+    "66": {
+      "percentile": 93,
+      "grade": 2
+    },
+    "67": {
+      "percentile": 95,
+      "grade": 1
+    },
+    "68": {
+      "percentile": 96,
+      "grade": 1
+    },
+    "69": {
+      "percentile": 98,
+      "grade": 1
+    },
+    "71": {
+      "percentile": 100,
+      "grade": 1
+    }
+  },
+  "생명과학 Ⅰ": {
+    "25": {
+      "percentile": 0,
+      "grade": 9
+    },
+    "27": {
+      "percentile": 0,
+      "grade": 9
+    },
+    "28": {
+      "percentile": 0,
+      "grade": 9
+    },
+    "29": {
+      "percentile": 0,
+      "grade": 9
+    },
+    "30": {
+      "percentile": 1,
+      "grade": 9
+    },
+    "31": {
+      "percentile": 1,
+      "grade": 9
+    },
+    "32": {
+      "percentile": 3,
+      "grade": 9
+    },
+    "33": {
+      "percentile": 4,
+      "grade": 8
+    },
+    "34": {
+      "percentile": 5,
+      "grade": 8
+    },
+    "35": {
+      "percentile": 7,
+      "grade": 8
+    },
+    "36": {
+      "percentile": 9,
+      "grade": 8
+    },
+    "37": {
+      "percentile": 11,
+      "grade": 7
+    },
+    "38": {
+      "percentile": 14,
+      "grade": 7
+    },
+    "39": {
+      "percentile": 16,
+      "grade": 7
+    },
+    "40": {
+      "percentile": 19,
+      "grade": 7
+    },
+    "41": {
+      "percentile": 21,
+      "grade": 7
+    },
+    "42": {
+      "percentile": 24,
+      "grade": 6
+    },
+    "43": {
+      "percentile": 27,
+      "grade": 6
+    },
+    "44": {
+      "percentile": 30,
+      "grade": 6
+    },
+    "45": {
+      "percentile": 33,
+      "grade": 6
+    },
+    "46": {
+      "percentile": 36,
+      "grade": 6
+    },
+    "47": {
+      "percentile": 39,
+      "grade": 5
+    },
+    "48": {
+      "percentile": 42,
+      "grade": 5
+    },
+    "49": {
+      "percentile": 45,
+      "grade": 5
+    },
+    "50": {
+      "percentile": 48,
+      "grade": 5
+    },
+    "51": {
+      "percentile": 51,
+      "grade": 5
+    },
+    "52": {
+      "percentile": 54,
+      "grade": 5
+    },
+    "53": {
+      "percentile": 57,
+      "grade": 5
+    },
+    "54": {
+      "percentile": 60,
+      "grade": 4
+    },
+    "55": {
+      "percentile": 64,
+      "grade": 4
+    },
+    "56": {
+      "percentile": 67,
+      "grade": 4
+    },
+    "57": {
+      "percentile": 70,
+      "grade": 4
+    },
+    "58": {
+      "percentile": 73,
+      "grade": 4
+    },
+    "59": {
+      "percentile": 77,
+      "grade": 3
+    },
+    "60": {
+      "percentile": 80,
+      "grade": 3
+    },
+    "61": {
+      "percentile": 83,
+      "grade": 3
+    },
+    "62": {
+      "percentile": 86,
+      "grade": 3
+    },
+    "63": {
+      "percentile": 89,
+      "grade": 2
+    },
+    "64": {
+      "percentile": 91,
+      "grade": 2
+    },
+    "65": {
+      "percentile": 93,
+      "grade": 2
+    },
+    "66": {
+      "percentile": 95,
+      "grade": 2
+    },
+    "67": {
+      "percentile": 97,
+      "grade": 1
+    },
+    "68": {
+      "percentile": 98,
+      "grade": 1
+    },
+    "69": {
+      "percentile": 99,
+      "grade": 1
+    },
+    "70": {
+      "percentile": 99,
+      "grade": 1
+    },
+    "71": {
+      "percentile": 100,
+      "grade": 1
+    },
+    "72": {
+      "percentile": 100,
+      "grade": 1
+    },
+    "74": {
+      "percentile": 100,
+      "grade": 1
+    }
+  },
+  "지구과학 Ⅰ": {
+    "30": {
+      "percentile": 0,
+      "grade": 9
+    },
+    "31": {
+      "percentile": 0,
+      "grade": 9
+    },
+    "32": {
+      "percentile": 1,
+      "grade": 9
+    },
+    "33": {
+      "percentile": 1,
+      "grade": 9
+    },
+    "34": {
+      "percentile": 2,
+      "grade": 9
+    },
+    "35": {
+      "percentile": 4,
+      "grade": 8
+    },
+    "36": {
+      "percentile": 7,
+      "grade": 8
+    },
+    "37": {
+      "percentile": 11,
+      "grade": 7
+    },
+    "38": {
+      "percentile": 15,
+      "grade": 7
+    },
+    "39": {
+      "percentile": 18,
+      "grade": 7
+    },
+    "40": {
+      "percentile": 22,
+      "grade": 6
+    },
+    "41": {
+      "percentile": 26,
+      "grade": 6
+    },
+    "42": {
+      "percentile": 28,
+      "grade": 6
+    },
+    "43": {
+      "percentile": 32,
+      "grade": 6
+    },
+    "44": {
+      "percentile": 35,
+      "grade": 6
+    },
+    "45": {
+      "percentile": 37,
+      "grade": 6
+    },
+    "46": {
+      "percentile": 40,
+      "grade": 5
+    },
+    "47": {
+      "percentile": 43,
+      "grade": 5
+    },
+    "48": {
+      "percentile": 45,
+      "grade": 5
+    },
+    "49": {
+      "percentile": 48,
+      "grade": 5
+    },
+    "50": {
+      "percentile": 50,
+      "grade": 5
+    },
+    "51": {
+      "percentile": 52,
+      "grade": 5
+    },
+    "52": {
+      "percentile": 55,
+      "grade": 5
+    },
+    "53": {
+      "percentile": 58,
+      "grade": 5
+    },
+    "54": {
+      "percentile": 60,
+      "grade": 4
+    },
+    "55": {
+      "percentile": 62,
+      "grade": 4
+    },
+    "56": {
+      "percentile": 65,
+      "grade": 4
+    },
+    "57": {
+      "percentile": 69,
+      "grade": 4
+    },
+    "58": {
+      "percentile": 72,
+      "grade": 4
+    },
+    "59": {
+      "percentile": 75,
+      "grade": 3
+    },
+    "60": {
+      "percentile": 79,
+      "grade": 3
+    },
+    "61": {
+      "percentile": 81,
+      "grade": 3
+    },
+    "62": {
+      "percentile": 85,
+      "grade": 3
+    },
+    "63": {
+      "percentile": 89,
+      "grade": 2
+    },
+    "64": {
+      "percentile": 91,
+      "grade": 2
+    },
+    "65": {
+      "percentile": 95,
+      "grade": 1
+    },
+    "66": {
+      "percentile": 97,
+      "grade": 1
+    },
+    "68": {
+      "percentile": 99,
+      "grade": 1
+    }
+  },
+  "물리학 Ⅱ": {
+    "30": {
+      "percentile": 0,
+      "grade": 9
+    },
+    "32": {
+      "percentile": 0,
+      "grade": 9
+    },
+    "33": {
+      "percentile": 1,
+      "grade": 9
+    },
+    "34": {
+      "percentile": 2,
+      "grade": 9
+    },
+    "35": {
+      "percentile": 3,
+      "grade": 9
+    },
+    "36": {
+      "percentile": 6,
+      "grade": 8
+    },
+    "37": {
+      "percentile": 10,
+      "grade": 8
+    },
+    "38": {
+      "percentile": 12,
+      "grade": 7
+    },
+    "39": {
+      "percentile": 17,
+      "grade": 7
+    },
+    "40": {
+      "percentile": 22,
+      "grade": 6
+    },
+    "41": {
+      "percentile": 25,
+      "grade": 6
+    },
+    "42": {
+      "percentile": 28,
+      "grade": 6
+    },
+    "43": {
+      "percentile": 33,
+      "grade": 6
+    },
+    "44": {
+      "percentile": 35,
+      "grade": 6
+    },
+    "45": {
+      "percentile": 39,
+      "grade": 5
+    },
+    "46": {
+      "percentile": 42,
+      "grade": 5
+    },
+    "47": {
+      "percentile": 44,
+      "grade": 5
+    },
+    "48": {
+      "percentile": 47,
+      "grade": 5
+    },
+    "49": {
+      "percentile": 50,
+      "grade": 5
+    },
+    "50": {
+      "percentile": 51,
+      "grade": 5
+    },
+    "51": {
+      "percentile": 54,
+      "grade": 5
+    },
+    "52": {
+      "percentile": 57,
+      "grade": 5
+    },
+    "53": {
+      "percentile": 59,
+      "grade": 5
+    },
+    "54": {
+      "percentile": 61,
+      "grade": 4
+    },
+    "55": {
+      "percentile": 64,
+      "grade": 4
+    },
+    "56": {
+      "percentile": 66,
+      "grade": 4
+    },
+    "57": {
+      "percentile": 69,
+      "grade": 4
+    },
+    "58": {
+      "percentile": 73,
+      "grade": 4
+    },
+    "59": {
+      "percentile": 76,
+      "grade": 4
+    },
+    "60": {
+      "percentile": 79,
+      "grade": 3
+    },
+    "61": {
+      "percentile": 82,
+      "grade": 3
+    },
+    "62": {
+      "percentile": 84,
+      "grade": 3
+    },
+    "63": {
+      "percentile": 88,
+      "grade": 2
+    },
+    "64": {
+      "percentile": 91,
+      "grade": 2
+    },
+    "65": {
+      "percentile": 93,
+      "grade": 2
+    },
+    "66": {
+      "percentile": 95,
+      "grade": 1
+    },
+    "68": {
+      "percentile": 99,
+      "grade": 1
+    }
+  },
+  "화학 Ⅱ": {
+    "31": {
+      "percentile": 0,
+      "grade": 9
+    },
+    "32": {
+      "percentile": 0,
+      "grade": 9
+    },
+    "33": {
+      "percentile": 1,
+      "grade": 9
+    },
+    "34": {
+      "percentile": 1,
+      "grade": 9
+    },
+    "35": {
+      "percentile": 3,
+      "grade": 9
+    },
+    "36": {
+      "percentile": 5,
+      "grade": 8
+    },
+    "37": {
+      "percentile": 7,
+      "grade": 8
+    },
+    "38": {
+      "percentile": 9,
+      "grade": 8
+    },
+    "39": {
+      "percentile": 15,
+      "grade": 7
+    },
+    "40": {
+      "percentile": 20,
+      "grade": 7
+    },
+    "41": {
+      "percentile": 24,
+      "grade": 6
+    },
+    "42": {
+      "percentile": 28,
+      "grade": 6
+    },
+    "43": {
+      "percentile": 32,
+      "grade": 6
+    },
+    "44": {
+      "percentile": 37,
+      "grade": 6
+    },
+    "45": {
+      "percentile": 40,
+      "grade": 5
+    },
+    "46": {
+      "percentile": 42,
+      "grade": 5
+    },
+    "47": {
+      "percentile": 45,
+      "grade": 5
+    },
+    "48": {
+      "percentile": 49,
+      "grade": 5
+    },
+    "49": {
+      "percentile": 51,
+      "grade": 5
+    },
+    "50": {
+      "percentile": 53,
+      "grade": 5
+    },
+    "51": {
+      "percentile": 56,
+      "grade": 5
+    },
+    "52": {
+      "percentile": 59,
+      "grade": 5
+    },
+    "53": {
+      "percentile": 61,
+      "grade": 4
+    },
+    "54": {
+      "percentile": 64,
+      "grade": 4
+    },
+    "55": {
+      "percentile": 67,
+      "grade": 4
+    },
+    "56": {
+      "percentile": 69,
+      "grade": 4
+    },
+    "57": {
+      "percentile": 71,
+      "grade": 4
+    },
+    "58": {
+      "percentile": 74,
+      "grade": 4
+    },
+    "59": {
+      "percentile": 77,
+      "grade": 3
+    },
+    "60": {
+      "percentile": 79,
+      "grade": 3
+    },
+    "61": {
+      "percentile": 81,
+      "grade": 3
+    },
+    "62": {
+      "percentile": 84,
+      "grade": 3
+    },
+    "63": {
+      "percentile": 87,
+      "grade": 3
+    },
+    "64": {
+      "percentile": 89,
+      "grade": 2
+    },
+    "65": {
+      "percentile": 91,
+      "grade": 2
+    },
+    "66": {
+      "percentile": 93,
+      "grade": 2
+    },
+    "67": {
+      "percentile": 95,
+      "grade": 2
+    },
+    "68": {
+      "percentile": 96,
+      "grade": 1
+    },
+    "69": {
+      "percentile": 98,
+      "grade": 1
+    },
+    "70": {
+      "percentile": 99,
+      "grade": 1
+    }
+  },
+  "생명과학 Ⅱ": {
+    "31": {
+      "percentile": 0,
+      "grade": 9
+    },
+    "32": {
+      "percentile": 0,
+      "grade": 9
+    },
+    "33": {
+      "percentile": 1,
+      "grade": 9
+    },
+    "34": {
+      "percentile": 2,
+      "grade": 9
+    },
+    "35": {
+      "percentile": 4,
+      "grade": 8
+    },
+    "36": {
+      "percentile": 6,
+      "grade": 8
+    },
+    "37": {
+      "percentile": 10,
+      "grade": 7
+    },
+    "38": {
+      "percentile": 14,
+      "grade": 7
+    },
+    "39": {
+      "percentile": 17,
+      "grade": 7
+    },
+    "40": {
+      "percentile": 20,
+      "grade": 7
+    },
+    "41": {
+      "percentile": 24,
+      "grade": 6
+    },
+    "42": {
+      "percentile": 29,
+      "grade": 6
+    },
+    "43": {
+      "percentile": 32,
+      "grade": 6
+    },
+    "44": {
+      "percentile": 36,
+      "grade": 6
+    },
+    "45": {
+      "percentile": 40,
+      "grade": 5
+    },
+    "46": {
+      "percentile": 42,
+      "grade": 5
+    },
+    "47": {
+      "percentile": 45,
+      "grade": 5
+    },
+    "48": {
+      "percentile": 48,
+      "grade": 5
+    },
+    "49": {
+      "percentile": 50,
+      "grade": 5
+    },
+    "50": {
+      "percentile": 52,
+      "grade": 5
+    },
+    "51": {
+      "percentile": 54,
+      "grade": 5
+    },
+    "52": {
+      "percentile": 56,
+      "grade": 5
+    },
+    "53": {
+      "percentile": 58,
+      "grade": 5
+    },
+    "54": {
+      "percentile": 60,
+      "grade": 4
+    },
+    "55": {
+      "percentile": 63,
+      "grade": 4
+    },
+    "56": {
+      "percentile": 65,
+      "grade": 4
+    },
+    "57": {
+      "percentile": 68,
+      "grade": 4
+    },
+    "58": {
+      "percentile": 71,
+      "grade": 4
+    },
+    "59": {
+      "percentile": 74,
+      "grade": 4
+    },
+    "60": {
+      "percentile": 76,
+      "grade": 3
+    },
+    "61": {
+      "percentile": 80,
+      "grade": 3
+    },
+    "62": {
+      "percentile": 85,
+      "grade": 3
+    },
+    "63": {
+      "percentile": 88,
+      "grade": 2
+    },
+    "64": {
+      "percentile": 92,
+      "grade": 2
+    },
+    "65": {
+      "percentile": 95,
+      "grade": 1
+    },
+    "66": {
+      "percentile": 96,
+      "grade": 1
+    },
+    "67": {
+      "percentile": 98,
+      "grade": 1
+    },
+    "69": {
+      "percentile": 99,
+      "grade": 1
+    }
+  },
+  "지구과학 Ⅱ": {
+    "33": {
+      "percentile": 0,
+      "grade": 9
+    },
+    "34": {
+      "percentile": 0,
+      "grade": 9
+    },
+    "35": {
+      "percentile": 1,
+      "grade": 9
+    },
+    "36": {
+      "percentile": 2,
+      "grade": 9
+    },
+    "37": {
+      "percentile": 3,
+      "grade": 9
+    },
+    "38": {
+      "percentile": 6,
+      "grade": 8
+    },
+    "39": {
+      "percentile": 10,
+      "grade": 7
+    },
+    "40": {
+      "percentile": 14,
+      "grade": 7
+    },
+    "41": {
+      "percentile": 20,
+      "grade": 6
+    },
+    "42": {
+      "percentile": 27,
+      "grade": 6
+    },
+    "43": {
+      "percentile": 33,
+      "grade": 6
+    },
+    "44": {
+      "percentile": 39,
+      "grade": 5
+    },
+    "45": {
+      "percentile": 42,
+      "grade": 5
+    },
+    "46": {
+      "percentile": 47,
+      "grade": 5
+    },
+    "47": {
+      "percentile": 51,
+      "grade": 5
+    },
+    "48": {
+      "percentile": 53,
+      "grade": 5
+    },
+    "49": {
+      "percentile": 56,
+      "grade": 5
+    },
+    "50": {
+      "percentile": 59,
+      "grade": 5
+    },
+    "51": {
+      "percentile": 61,
+      "grade": 4
+    },
+    "52": {
+      "percentile": 63,
+      "grade": 4
+    },
+    "53": {
+      "percentile": 65,
+      "grade": 4
+    },
+    "54": {
+      "percentile": 67,
+      "grade": 4
+    },
+    "55": {
+      "percentile": 68,
+      "grade": 4
+    },
+    "56": {
+      "percentile": 70,
+      "grade": 4
+    },
+    "57": {
+      "percentile": 72,
+      "grade": 4
+    },
+    "58": {
+      "percentile": 74,
+      "grade": 4
+    },
+    "59": {
+      "percentile": 75,
+      "grade": 4
+    },
+    "60": {
+      "percentile": 77,
+      "grade": 3
+    },
+    "61": {
+      "percentile": 79,
+      "grade": 3
+    },
+    "62": {
+      "percentile": 81,
+      "grade": 3
+    },
+    "63": {
+      "percentile": 83,
+      "grade": 3
+    },
+    "64": {
+      "percentile": 85,
+      "grade": 3
+    },
+    "65": {
+      "percentile": 88,
+      "grade": 2
+    },
+    "66": {
+      "percentile": 91,
+      "grade": 2
+    },
+    "67": {
+      "percentile": 93,
+      "grade": 2
+    },
+    "68": {
+      "percentile": 95,
+      "grade": 1
+    },
+    "69": {
+      "percentile": 98,
+      "grade": 1
+    }
+  },
+  "생활과 윤리": {
+    "25": {
+      "percentile": 0,
+      "grade": 9
+    },
+    "27": {
+      "percentile": 0,
+      "grade": 9
+    },
+    "28": {
+      "percentile": 0,
+      "grade": 9
+    },
+    "29": {
+      "percentile": 0,
+      "grade": 9
+    },
+    "30": {
+      "percentile": 1,
+      "grade": 9
+    },
+    "31": {
+      "percentile": 1,
+      "grade": 9
+    },
+    "32": {
+      "percentile": 1,
+      "grade": 9
+    },
+    "33": {
+      "percentile": 3,
+      "grade": 8
+    },
+    "34": {
+      "percentile": 5,
+      "grade": 8
+    },
+    "35": {
+      "percentile": 7,
+      "grade": 8
+    },
+    "36": {
+      "percentile": 9,
+      "grade": 7
+    },
+    "37": {
+      "percentile": 12,
+      "grade": 7
+    },
+    "38": {
+      "percentile": 14,
+      "grade": 7
+    },
+    "39": {
+      "percentile": 16,
+      "grade": 7
+    },
+    "40": {
+      "percentile": 18,
+      "grade": 7
+    },
+    "41": {
+      "percentile": 21,
+      "grade": 7
+    },
+    "42": {
+      "percentile": 23,
+      "grade": 6
+    },
+    "43": {
+      "percentile": 26,
+      "grade": 6
+    },
+    "44": {
+      "percentile": 31,
+      "grade": 6
+    },
+    "45": {
+      "percentile": 36,
+      "grade": 6
+    },
+    "46": {
+      "percentile": 39,
+      "grade": 5
+    },
+    "47": {
+      "percentile": 42,
+      "grade": 5
+    },
+    "48": {
+      "percentile": 45,
+      "grade": 5
+    },
+    "49": {
+      "percentile": 48,
+      "grade": 5
+    },
+    "50": {
+      "percentile": 51,
+      "grade": 5
+    },
+    "51": {
+      "percentile": 54,
+      "grade": 5
+    },
+    "52": {
+      "percentile": 57,
+      "grade": 5
+    },
+    "53": {
+      "percentile": 60,
+      "grade": 4
+    },
+    "54": {
+      "percentile": 62,
+      "grade": 4
+    },
+    "55": {
+      "percentile": 66,
+      "grade": 4
+    },
+    "56": {
+      "percentile": 70,
+      "grade": 4
+    },
+    "57": {
+      "percentile": 73,
+      "grade": 4
+    },
+    "58": {
+      "percentile": 75,
+      "grade": 4
+    },
+    "59": {
+      "percentile": 78,
+      "grade": 3
+    },
+    "60": {
+      "percentile": 80,
+      "grade": 3
+    },
+    "61": {
+      "percentile": 83,
+      "grade": 3
+    },
+    "62": {
+      "percentile": 86,
+      "grade": 3
+    },
+    "63": {
+      "percentile": 88,
+      "grade": 3
+    },
+    "64": {
+      "percentile": 90,
+      "grade": 2
+    },
+    "65": {
+      "percentile": 92,
+      "grade": 2
+    },
+    "66": {
+      "percentile": 95,
+      "grade": 1
+    },
+    "67": {
+      "percentile": 97,
+      "grade": 1
+    },
+    "68": {
+      "percentile": 98,
+      "grade": 1
+    },
+    "69": {
+      "percentile": 99,
+      "grade": 1
+    },
+    "71": {
+      "percentile": 100,
+      "grade": 1
+    }
+  },
+  "윤리와 사상": {
+    "28": {
+      "percentile": 0,
+      "grade": 9
+    },
+    "30": {
+      "percentile": 0,
+      "grade": 9
+    },
+    "31": {
+      "percentile": 0,
+      "grade": 9
+    },
+    "32": {
+      "percentile": 1,
+      "grade": 9
+    },
+    "33": {
+      "percentile": 2,
+      "grade": 9
+    },
+    "34": {
+      "percentile": 3,
+      "grade": 8
+    },
+    "35": {
+      "percentile": 5,
+      "grade": 8
+    },
+    "36": {
+      "percentile": 7,
+      "grade": 8
+    },
+    "37": {
+      "percentile": 8,
+      "grade": 8
+    },
+    "38": {
+      "percentile": 12,
+      "grade": 7
+    },
+    "39": {
+      "percentile": 15,
+      "grade": 7
+    },
+    "40": {
+      "percentile": 18,
+      "grade": 7
+    },
+    "41": {
+      "percentile": 22,
+      "grade": 6
+    },
+    "42": {
+      "percentile": 26,
+      "grade": 6
+    },
+    "43": {
+      "percentile": 32,
+      "grade": 6
+    },
+    "44": {
+      "percentile": 36,
+      "grade": 6
+    },
+    "45": {
+      "percentile": 39,
+      "grade": 5
+    },
+    "46": {
+      "percentile": 42,
+      "grade": 5
+    },
+    "47": {
+      "percentile": 44,
+      "grade": 5
+    },
+    "48": {
+      "percentile": 47,
+      "grade": 5
+    },
+    "49": {
+      "percentile": 50,
+      "grade": 5
+    },
+    "50": {
+      "percentile": 53,
+      "grade": 5
+    },
+    "51": {
+      "percentile": 55,
+      "grade": 5
+    },
+    "52": {
+      "percentile": 58,
+      "grade": 5
+    },
+    "53": {
+      "percentile": 60,
+      "grade": 4
+    },
+    "54": {
+      "percentile": 63,
+      "grade": 4
+    },
+    "55": {
+      "percentile": 66,
+      "grade": 4
+    },
+    "56": {
+      "percentile": 68,
+      "grade": 4
+    },
+    "57": {
+      "percentile": 70,
+      "grade": 4
+    },
+    "58": {
+      "percentile": 72,
+      "grade": 4
+    },
+    "59": {
+      "percentile": 76,
+      "grade": 3
+    },
+    "60": {
+      "percentile": 79,
+      "grade": 3
+    },
+    "61": {
+      "percentile": 81,
+      "grade": 3
+    },
+    "62": {
+      "percentile": 84,
+      "grade": 3
+    },
+    "63": {
+      "percentile": 86,
+      "grade": 3
+    },
+    "64": {
+      "percentile": 89,
+      "grade": 2
+    },
+    "65": {
+      "percentile": 93,
+      "grade": 2
+    },
+    "66": {
+      "percentile": 95,
+      "grade": 1
+    },
+    "67": {
+      "percentile": 96,
+      "grade": 1
+    },
+    "68": {
+      "percentile": 97,
+      "grade": 1
+    },
+    "69": {
+      "percentile": 99,
+      "grade": 1
+    },
+    "70": {
+      "percentile": 100,
+      "grade": 1
+    }
+  },
+  "한국지리": {
+    "31": {
+      "percentile": 0,
+      "grade": 9
+    },
+    "33": {
+      "percentile": 0,
+      "grade": 9
+    },
+    "34": {
+      "percentile": 1,
+      "grade": 9
+    },
+    "35": {
+      "percentile": 2,
+      "grade": 9
+    },
+    "36": {
+      "percentile": 4,
+      "grade": 8
+    },
+    "37": {
+      "percentile": 6,
+      "grade": 8
+    },
+    "38": {
+      "percentile": 8,
+      "grade": 8
+    },
+    "39": {
+      "percentile": 13,
+      "grade": 7
+    },
+    "40": {
+      "percentile": 19,
+      "grade": 7
+    },
+    "41": {
+      "percentile": 24,
+      "grade": 6
+    },
+    "42": {
+      "percentile": 27,
+      "grade": 6
+    },
+    "43": {
+      "percentile": 33,
+      "grade": 6
+    },
+    "44": {
+      "percentile": 37,
+      "grade": 6
+    },
+    "45": {
+      "percentile": 40,
+      "grade": 5
+    },
+    "46": {
+      "percentile": 43,
+      "grade": 5
+    },
+    "47": {
+      "percentile": 47,
+      "grade": 5
+    },
+    "48": {
+      "percentile": 50,
+      "grade": 5
+    },
+    "49": {
+      "percentile": 53,
+      "grade": 5
+    },
+    "50": {
+      "percentile": 55,
+      "grade": 5
+    },
+    "51": {
+      "percentile": 57,
+      "grade": 5
+    },
+    "52": {
+      "percentile": 59,
+      "grade": 4
+    },
+    "53": {
+      "percentile": 62,
+      "grade": 4
+    },
+    "54": {
+      "percentile": 64,
+      "grade": 4
+    },
+    "55": {
+      "percentile": 66,
+      "grade": 4
+    },
+    "56": {
+      "percentile": 69,
+      "grade": 4
+    },
+    "57": {
+      "percentile": 72,
+      "grade": 4
+    },
+    "58": {
+      "percentile": 74,
+      "grade": 4
+    },
+    "59": {
+      "percentile": 76,
+      "grade": 3
+    },
+    "60": {
+      "percentile": 79,
+      "grade": 3
+    },
+    "61": {
+      "percentile": 82,
+      "grade": 3
+    },
+    "62": {
+      "percentile": 84,
+      "grade": 3
+    },
+    "63": {
+      "percentile": 86,
+      "grade": 3
+    },
+    "64": {
+      "percentile": 88,
+      "grade": 3
+    },
+    "65": {
+      "percentile": 91,
+      "grade": 2
+    },
+    "66": {
+      "percentile": 93,
+      "grade": 2
+    },
+    "67": {
+      "percentile": 94,
+      "grade": 2
+    },
+    "68": {
+      "percentile": 96,
+      "grade": 1
+    },
+    "69": {
+      "percentile": 98,
+      "grade": 1
+    },
+    "70": {
+      "percentile": 99,
+      "grade": 1
+    },
+    "72": {
+      "percentile": 100,
+      "grade": 1
+    }
+  },
+  "세계지리": {
+    "30": {
+      "percentile": 0,
+      "grade": 9
+    },
+    "32": {
+      "percentile": 0,
+      "grade": 9
+    },
+    "33": {
+      "percentile": 1,
+      "grade": 9
+    },
+    "34": {
+      "percentile": 2,
+      "grade": 9
+    },
+    "35": {
+      "percentile": 3,
+      "grade": 8
+    },
+    "36": {
+      "percentile": 5,
+      "grade": 8
+    },
+    "37": {
+      "percentile": 7,
+      "grade": 8
+    },
+    "38": {
+      "percentile": 10,
+      "grade": 7
+    },
+    "39": {
+      "percentile": 15,
+      "grade": 7
+    },
+    "40": {
+      "percentile": 21,
+      "grade": 6
+    },
+    "41": {
+      "percentile": 25,
+      "grade": 6
+    },
+    "42": {
+      "percentile": 29,
+      "grade": 6
+    },
+    "43": {
+      "percentile": 32,
+      "grade": 6
+    },
+    "44": {
+      "percentile": 35,
+      "grade": 6
+    },
+    "45": {
+      "percentile": 39,
+      "grade": 5
+    },
+    "46": {
+      "percentile": 42,
+      "grade": 5
+    },
+    "47": {
+      "percentile": 45,
+      "grade": 5
+    },
+    "48": {
+      "percentile": 47,
+      "grade": 5
+    },
+    "49": {
+      "percentile": 49,
+      "grade": 5
+    },
+    "50": {
+      "percentile": 51,
+      "grade": 5
+    },
+    "51": {
+      "percentile": 55,
+      "grade": 5
+    },
+    "52": {
+      "percentile": 58,
+      "grade": 5
+    },
+    "53": {
+      "percentile": 60,
+      "grade": 4
+    },
+    "54": {
+      "percentile": 62,
+      "grade": 4
+    },
+    "55": {
+      "percentile": 64,
+      "grade": 4
+    },
+    "56": {
+      "percentile": 68,
+      "grade": 4
+    },
+    "57": {
+      "percentile": 72,
+      "grade": 4
+    },
+    "58": {
+      "percentile": 74,
+      "grade": 4
+    },
+    "59": {
+      "percentile": 77,
+      "grade": 3
+    },
+    "60": {
+      "percentile": 79,
+      "grade": 3
+    },
+    "61": {
+      "percentile": 82,
+      "grade": 3
+    },
+    "62": {
+      "percentile": 85,
+      "grade": 3
+    },
+    "63": {
+      "percentile": 88,
+      "grade": 2
+    },
+    "64": {
+      "percentile": 90,
+      "grade": 2
+    },
+    "65": {
+      "percentile": 92,
+      "grade": 2
+    },
+    "66": {
+      "percentile": 94,
+      "grade": 2
+    },
+    "67": {
+      "percentile": 95,
+      "grade": 2
+    },
+    "68": {
+      "percentile": 97,
+      "grade": 1
+    },
+    "69": {
+      "percentile": 98,
+      "grade": 1
+    },
+    "70": {
+      "percentile": 99,
+      "grade": 1
+    },
+    "71": {
+      "percentile": 100,
+      "grade": 1
+    },
+    "73": {
+      "percentile": 100,
+      "grade": 1
+    }
+  },
+  "동아시아사": {
+    "29": {
+      "percentile": 0,
+      "grade": 9
+    },
+    "31": {
+      "percentile": 0,
+      "grade": 9
+    },
+    "32": {
+      "percentile": 1,
+      "grade": 9
+    },
+    "33": {
+      "percentile": 2,
+      "grade": 9
+    },
+    "34": {
+      "percentile": 3,
+      "grade": 9
+    },
+    "35": {
+      "percentile": 5,
+      "grade": 8
+    },
+    "36": {
+      "percentile": 8,
+      "grade": 8
+    },
+    "37": {
+      "percentile": 12,
+      "grade": 7
+    },
+    "38": {
+      "percentile": 14,
+      "grade": 7
+    },
+    "39": {
+      "percentile": 18,
+      "grade": 7
+    },
+    "40": {
+      "percentile": 22,
+      "grade": 6
+    },
+    "41": {
+      "percentile": 25,
+      "grade": 6
+    },
+    "42": {
+      "percentile": 29,
+      "grade": 6
+    },
+    "43": {
+      "percentile": 33,
+      "grade": 6
+    },
+    "44": {
+      "percentile": 35,
+      "grade": 6
+    },
+    "45": {
+      "percentile": 38,
+      "grade": 6
+    },
+    "46": {
+      "percentile": 41,
+      "grade": 5
+    },
+    "47": {
+      "percentile": 43,
+      "grade": 5
+    },
+    "48": {
+      "percentile": 44,
+      "grade": 5
+    },
+    "49": {
+      "percentile": 47,
+      "grade": 5
+    },
+    "50": {
+      "percentile": 49,
+      "grade": 5
+    },
+    "51": {
+      "percentile": 51,
+      "grade": 5
+    },
+    "52": {
+      "percentile": 53,
+      "grade": 5
+    },
+    "53": {
+      "percentile": 56,
+      "grade": 5
+    },
+    "54": {
+      "percentile": 58,
+      "grade": 5
+    },
+    "55": {
+      "percentile": 61,
+      "grade": 4
+    },
+    "56": {
+      "percentile": 64,
+      "grade": 4
+    },
+    "57": {
+      "percentile": 66,
+      "grade": 4
+    },
+    "58": {
+      "percentile": 71,
+      "grade": 4
+    },
+    "59": {
+      "percentile": 76,
+      "grade": 3
+    },
+    "60": {
+      "percentile": 79,
+      "grade": 3
+    },
+    "61": {
+      "percentile": 84,
+      "grade": 3
+    },
+    "62": {
+      "percentile": 88,
+      "grade": 2
+    },
+    "63": {
+      "percentile": 90,
+      "grade": 2
+    },
+    "64": {
+      "percentile": 93,
+      "grade": 2
+    },
+    "65": {
+      "percentile": 96,
+      "grade": 1
+    },
+    "66": {
+      "percentile": 98,
+      "grade": 1
+    },
+    "68": {
+      "percentile": 99,
+      "grade": 1
+    }
+  },
+  "세계사": {
+    "30": {
+      "percentile": 0,
+      "grade": 9
+    },
+    "31": {
+      "percentile": 0,
+      "grade": 9
+    },
+    "32": {
+      "percentile": 1,
+      "grade": 9
+    },
+    "33": {
+      "percentile": 1,
+      "grade": 9
+    },
+    "34": {
+      "percentile": 1,
+      "grade": 9
+    },
+    "35": {
+      "percentile": 2,
+      "grade": 9
+    },
+    "36": {
+      "percentile": 5,
+      "grade": 8
+    },
+    "37": {
+      "percentile": 7,
+      "grade": 8
+    },
+    "38": {
+      "percentile": 11,
+      "grade": 7
+    },
+    "39": {
+      "percentile": 15,
+      "grade": 7
+    },
+    "40": {
+      "percentile": 18,
+      "grade": 7
+    },
+    "41": {
+      "percentile": 22,
+      "grade": 6
+    },
+    "42": {
+      "percentile": 27,
+      "grade": 6
+    },
+    "43": {
+      "percentile": 33,
+      "grade": 6
+    },
+    "44": {
+      "percentile": 36,
+      "grade": 6
+    },
+    "45": {
+      "percentile": 39,
+      "grade": 5
+    },
+    "46": {
+      "percentile": 42,
+      "grade": 5
+    },
+    "47": {
+      "percentile": 45,
+      "grade": 5
+    },
+    "48": {
+      "percentile": 49,
+      "grade": 5
+    },
+    "49": {
+      "percentile": 53,
+      "grade": 5
+    },
+    "50": {
+      "percentile": 55,
+      "grade": 5
+    },
+    "51": {
+      "percentile": 57,
+      "grade": 5
+    },
+    "52": {
+      "percentile": 59,
+      "grade": 4
+    },
+    "53": {
+      "percentile": 62,
+      "grade": 4
+    },
+    "54": {
+      "percentile": 65,
+      "grade": 4
+    },
+    "55": {
+      "percentile": 68,
+      "grade": 4
+    },
+    "56": {
+      "percentile": 70,
+      "grade": 4
+    },
+    "57": {
+      "percentile": 72,
+      "grade": 4
+    },
+    "58": {
+      "percentile": 74,
+      "grade": 4
+    },
+    "59": {
+      "percentile": 76,
+      "grade": 3
+    },
+    "60": {
+      "percentile": 80,
+      "grade": 3
+    },
+    "61": {
+      "percentile": 83,
+      "grade": 3
+    },
+    "62": {
+      "percentile": 85,
+      "grade": 3
+    },
+    "63": {
+      "percentile": 87,
+      "grade": 3
+    },
+    "64": {
+      "percentile": 88,
+      "grade": 2
+    },
+    "65": {
+      "percentile": 90,
+      "grade": 2
+    },
+    "66": {
+      "percentile": 93,
+      "grade": 2
+    },
+    "67": {
+      "percentile": 95,
+      "grade": 2
+    },
+    "68": {
+      "percentile": 96,
+      "grade": 1
+    },
+    "69": {
+      "percentile": 97,
+      "grade": 1
+    },
+    "70": {
+      "percentile": 98,
+      "grade": 1
+    },
+    "71": {
+      "percentile": 99,
+      "grade": 1
+    },
+    "72": {
+      "percentile": 100,
+      "grade": 1
+    }
+  },
+  "경제": {
+    "31": {
+      "percentile": 0,
+      "grade": 9
+    },
+    "33": {
+      "percentile": 1,
+      "grade": 9
+    },
+    "34": {
+      "percentile": 1,
+      "grade": 9
+    },
+    "35": {
+      "percentile": 2,
+      "grade": 9
+    },
+    "36": {
+      "percentile": 4,
+      "grade": 8
+    },
+    "37": {
+      "percentile": 6,
+      "grade": 8
+    },
+    "38": {
+      "percentile": 8,
+      "grade": 8
+    },
+    "39": {
+      "percentile": 11,
+      "grade": 7
+    },
+    "40": {
+      "percentile": 18,
+      "grade": 7
+    },
+    "41": {
+      "percentile": 24,
+      "grade": 6
+    },
+    "42": {
+      "percentile": 27,
+      "grade": 6
+    },
+    "43": {
+      "percentile": 31,
+      "grade": 6
+    },
+    "44": {
+      "percentile": 37,
+      "grade": 6
+    },
+    "45": {
+      "percentile": 41,
+      "grade": 5
+    },
+    "46": {
+      "percentile": 44,
+      "grade": 5
+    },
+    "47": {
+      "percentile": 48,
+      "grade": 5
+    },
+    "48": {
+      "percentile": 51,
+      "grade": 5
+    },
+    "49": {
+      "percentile": 54,
+      "grade": 5
+    },
+    "50": {
+      "percentile": 55,
+      "grade": 5
+    },
+    "51": {
+      "percentile": 58,
+      "grade": 5
+    },
+    "52": {
+      "percentile": 60,
+      "grade": 4
+    },
+    "53": {
+      "percentile": 62,
+      "grade": 4
+    },
+    "54": {
+      "percentile": 64,
+      "grade": 4
+    },
+    "55": {
+      "percentile": 67,
+      "grade": 4
+    },
+    "56": {
+      "percentile": 69,
+      "grade": 4
+    },
+    "57": {
+      "percentile": 71,
+      "grade": 4
+    },
+    "58": {
+      "percentile": 74,
+      "grade": 4
+    },
+    "59": {
+      "percentile": 76,
+      "grade": 3
+    },
+    "60": {
+      "percentile": 78,
+      "grade": 3
+    },
+    "61": {
+      "percentile": 81,
+      "grade": 3
+    },
+    "62": {
+      "percentile": 84,
+      "grade": 3
+    },
+    "63": {
+      "percentile": 86,
+      "grade": 3
+    },
+    "64": {
+      "percentile": 88,
+      "grade": 3
+    },
+    "65": {
+      "percentile": 90,
+      "grade": 2
+    },
+    "66": {
+      "percentile": 92,
+      "grade": 2
+    },
+    "67": {
+      "percentile": 94,
+      "grade": 2
+    },
+    "68": {
+      "percentile": 96,
+      "grade": 1
+    },
+    "69": {
+      "percentile": 97,
+      "grade": 1
+    },
+    "70": {
+      "percentile": 99,
+      "grade": 1
+    }
+  },
+  "정치와 법": {
+    "28": {
+      "percentile": 0,
+      "grade": 9
+    },
+    "30": {
+      "percentile": 0,
+      "grade": 9
+    },
+    "31": {
+      "percentile": 1,
+      "grade": 9
+    },
+    "32": {
+      "percentile": 1,
+      "grade": 9
+    },
+    "33": {
+      "percentile": 2,
+      "grade": 9
+    },
+    "34": {
+      "percentile": 3,
+      "grade": 8
+    },
+    "35": {
+      "percentile": 5,
+      "grade": 8
+    },
+    "36": {
+      "percentile": 9,
+      "grade": 8
+    },
+    "37": {
+      "percentile": 12,
+      "grade": 7
+    },
+    "38": {
+      "percentile": 16,
+      "grade": 7
+    },
+    "39": {
+      "percentile": 20,
+      "grade": 7
+    },
+    "40": {
+      "percentile": 23,
+      "grade": 6
+    },
+    "41": {
+      "percentile": 26,
+      "grade": 6
+    },
+    "42": {
+      "percentile": 30,
+      "grade": 6
+    },
+    "43": {
+      "percentile": 32,
+      "grade": 6
+    },
+    "44": {
+      "percentile": 35,
+      "grade": 6
+    },
+    "45": {
+      "percentile": 38,
+      "grade": 6
+    },
+    "46": {
+      "percentile": 39,
+      "grade": 5
+    },
+    "47": {
+      "percentile": 41,
+      "grade": 5
+    },
+    "48": {
+      "percentile": 43,
+      "grade": 5
+    },
+    "49": {
+      "percentile": 46,
+      "grade": 5
+    },
+    "50": {
+      "percentile": 47,
+      "grade": 5
+    },
+    "51": {
+      "percentile": 50,
+      "grade": 5
+    },
+    "52": {
+      "percentile": 52,
+      "grade": 5
+    },
+    "53": {
+      "percentile": 54,
+      "grade": 5
+    },
+    "54": {
+      "percentile": 56,
+      "grade": 5
+    },
+    "55": {
+      "percentile": 60,
+      "grade": 4
+    },
+    "56": {
+      "percentile": 64,
+      "grade": 4
+    },
+    "57": {
+      "percentile": 66,
+      "grade": 4
+    },
+    "58": {
+      "percentile": 71,
+      "grade": 4
+    },
+    "59": {
+      "percentile": 76,
+      "grade": 3
+    },
+    "60": {
+      "percentile": 80,
+      "grade": 3
+    },
+    "61": {
+      "percentile": 82,
+      "grade": 3
+    },
+    "62": {
+      "percentile": 87,
+      "grade": 2
+    },
+    "63": {
+      "percentile": 92,
+      "grade": 2
+    },
+    "64": {
+      "percentile": 94,
+      "grade": 2
+    },
+    "65": {
+      "percentile": 97,
+      "grade": 1
+    },
+    "67": {
+      "percentile": 99,
+      "grade": 1
+    }
+  },
+  "사회·문화": {
+    "26": {
+      "percentile": 0,
+      "grade": 9
+    },
+    "27": {
+      "percentile": 0,
+      "grade": 9
+    },
+    "28": {
+      "percentile": 0,
+      "grade": 9
+    },
+    "29": {
+      "percentile": 1,
+      "grade": 9
+    },
+    "30": {
+      "percentile": 1,
+      "grade": 9
+    },
+    "31": {
+      "percentile": 1,
+      "grade": 9
+    },
+    "32": {
+      "percentile": 3,
+      "grade": 9
+    },
+    "33": {
+      "percentile": 4,
+      "grade": 8
+    },
+    "34": {
+      "percentile": 6,
+      "grade": 8
+    },
+    "35": {
+      "percentile": 8,
+      "grade": 8
+    },
+    "36": {
+      "percentile": 11,
+      "grade": 7
+    },
+    "37": {
+      "percentile": 14,
+      "grade": 7
+    },
+    "38": {
+      "percentile": 16,
+      "grade": 7
+    },
+    "39": {
+      "percentile": 18,
+      "grade": 7
+    },
+    "40": {
+      "percentile": 20,
+      "grade": 7
+    },
+    "41": {
+      "percentile": 23,
+      "grade": 6
+    },
+    "42": {
+      "percentile": 25,
+      "grade": 6
+    },
+    "43": {
+      "percentile": 27,
+      "grade": 6
+    },
+    "44": {
+      "percentile": 31,
+      "grade": 6
+    },
+    "45": {
+      "percentile": 34,
+      "grade": 6
+    },
+    "46": {
+      "percentile": 37,
+      "grade": 6
+    },
+    "47": {
+      "percentile": 39,
+      "grade": 5
+    },
+    "48": {
+      "percentile": 42,
+      "grade": 5
+    },
+    "49": {
+      "percentile": 44,
+      "grade": 5
+    },
+    "50": {
+      "percentile": 47,
+      "grade": 5
+    },
+    "51": {
+      "percentile": 49,
+      "grade": 5
+    },
+    "52": {
+      "percentile": 52,
+      "grade": 5
+    },
+    "53": {
+      "percentile": 56,
+      "grade": 5
+    },
+    "54": {
+      "percentile": 61,
+      "grade": 4
+    },
+    "55": {
+      "percentile": 64,
+      "grade": 4
+    },
+    "56": {
+      "percentile": 67,
+      "grade": 4
+    },
+    "57": {
+      "percentile": 70,
+      "grade": 4
+    },
+    "58": {
+      "percentile": 74,
+      "grade": 4
+    },
+    "59": {
+      "percentile": 77,
+      "grade": 3
+    },
+    "60": {
+      "percentile": 80,
+      "grade": 3
+    },
+    "61": {
+      "percentile": 85,
+      "grade": 3
+    },
+    "62": {
+      "percentile": 89,
+      "grade": 2
+    },
+    "63": {
+      "percentile": 92,
+      "grade": 2
+    },
+    "64": {
+      "percentile": 94,
+      "grade": 2
+    },
+    "65": {
+      "percentile": 95,
+      "grade": 1
+    },
+    "66": {
+      "percentile": 97,
+      "grade": 1
+    },
+    "67": {
+      "percentile": 98,
+      "grade": 1
+    },
+    "68": {
+      "percentile": 99,
+      "grade": 1
+    },
+    "69": {
+      "percentile": 99,
+      "grade": 1
+    },
+    "70": {
+      "percentile": 100,
+      "grade": 1
+    }
+  },
+  "독일어 Ⅰ": {
+    "1": {
+      "percentile": 95,
+      "grade": 1
+    },
+    "2": {
+      "percentile": 87,
+      "grade": 2
+    },
+    "3": {
+      "percentile": 80,
+      "grade": 3
+    },
+    "4": {
+      "percentile": 74,
+      "grade": 4
+    },
+    "5": {
+      "percentile": 68,
+      "grade": 5
+    },
+    "6": {
+      "percentile": 60,
+      "grade": 6
+    },
+    "7": {
+      "percentile": 44,
+      "grade": 7
+    },
+    "8": {
+      "percentile": 22,
+      "grade": 8
+    },
+    "9": {
+      "percentile": 5,
+      "grade": 9
+    }
+  },
+  "프랑스어 Ⅰ": {
+    "1": {
+      "percentile": 96,
+      "grade": 1
+    },
+    "2": {
+      "percentile": 88,
+      "grade": 2
+    },
+    "3": {
+      "percentile": 80,
+      "grade": 3
+    },
+    "4": {
+      "percentile": 74,
+      "grade": 4
+    },
+    "5": {
+      "percentile": 68,
+      "grade": 5
+    },
+    "6": {
+      "percentile": 61,
+      "grade": 6
+    },
+    "7": {
+      "percentile": 46,
+      "grade": 7
+    },
+    "8": {
+      "percentile": 22,
+      "grade": 8
+    },
+    "9": {
+      "percentile": 5,
+      "grade": 9
+    }
+  },
+  "스페인어 Ⅰ": {
+    "1": {
+      "percentile": 97,
+      "grade": 1
+    },
+    "2": {
+      "percentile": 91,
+      "grade": 2
+    },
+    "3": {
+      "percentile": 86,
+      "grade": 3
+    },
+    "4": {
+      "percentile": 81,
+      "grade": 4
+    },
+    "5": {
+      "percentile": 74,
+      "grade": 5
+    },
+    "6": {
+      "percentile": 63,
+      "grade": 6
+    },
+    "7": {
+      "percentile": 46,
+      "grade": 7
+    },
+    "8": {
+      "percentile": 21,
+      "grade": 8
+    },
+    "9": {
+      "percentile": 4,
+      "grade": 9
+    }
+  },
+  "중국어 Ⅰ": {
+    "1": {
+      "percentile": 96,
+      "grade": 1
+    },
+    "2": {
+      "percentile": 82,
+      "grade": 2
+    },
+    "3": {
+      "percentile": 68,
+      "grade": 3
+    },
+    "4": {
+      "percentile": 58,
+      "grade": 4
+    },
+    "5": {
+      "percentile": 49,
+      "grade": 5
+    },
+    "6": {
+      "percentile": 37,
+      "grade": 6
+    },
+    "7": {
+      "percentile": 21,
+      "grade": 7
+    },
+    "8": {
+      "percentile": 8,
+      "grade": 8
+    },
+    "9": {
+      "percentile": 1,
+      "grade": 9
+    }
+  },
+  "일본어 Ⅰ": {
+    "1": {
+      "percentile": 97,
+      "grade": 1
+    },
+    "2": {
+      "percentile": 90,
+      "grade": 2
+    },
+    "3": {
+      "percentile": 83,
+      "grade": 3
+    },
+    "4": {
+      "percentile": 77,
+      "grade": 4
+    },
+    "5": {
+      "percentile": 71,
+      "grade": 5
+    },
+    "6": {
+      "percentile": 62,
+      "grade": 6
+    },
+    "7": {
+      "percentile": 48,
+      "grade": 7
+    },
+    "8": {
+      "percentile": 26,
+      "grade": 8
+    },
+    "9": {
+      "percentile": 7,
+      "grade": 9
+    }
+  },
+  "러시아어 Ⅰ": {
+    "1": {
+      "percentile": 97,
+      "grade": 1
+    },
+    "2": {
+      "percentile": 91,
+      "grade": 2
+    },
+    "3": {
+      "percentile": 85,
+      "grade": 3
+    },
+    "4": {
+      "percentile": 80,
+      "grade": 4
+    },
+    "5": {
+      "percentile": 76,
+      "grade": 5
+    },
+    "6": {
+      "percentile": 71,
+      "grade": 6
+    },
+    "7": {
+      "percentile": 62,
+      "grade": 7
+    },
+    "8": {
+      "percentile": 39,
+      "grade": 8
+    },
+    "9": {
+      "percentile": 11,
+      "grade": 9
+    }
+  },
+  "아랍어 Ⅰ": {
+    "1": {
+      "percentile": 99,
+      "grade": 1
+    },
+    "2": {
+      "percentile": 98,
+      "grade": 2
+    },
+    "3": {
+      "percentile": 97,
+      "grade": 3
+    },
+    "4": {
+      "percentile": 95,
+      "grade": 4
+    },
+    "5": {
+      "percentile": 88,
+      "grade": 5
+    },
+    "6": {
+      "percentile": 68,
+      "grade": 6
+    },
+    "7": {
+      "percentile": 42,
+      "grade": 7
+    },
+    "8": {
+      "percentile": 16,
+      "grade": 8
+    },
+    "9": {
+      "percentile": 2,
+      "grade": 9
+    }
+  },
+  "베트남어 Ⅰ": {
+    "1": {
+      "percentile": 95,
+      "grade": 1
+    },
+    "2": {
+      "percentile": 88,
+      "grade": 2
+    },
+    "3": {
+      "percentile": 85,
+      "grade": 3
+    },
+    "4": {
+      "percentile": 82,
+      "grade": 4
+    },
+    "5": {
+      "percentile": 79,
+      "grade": 5
+    },
+    "6": {
+      "percentile": 71,
+      "grade": 6
+    },
+    "7": {
+      "percentile": 56,
+      "grade": 7
+    },
+    "8": {
+      "percentile": 30,
+      "grade": 8
+    },
+    "9": {
+      "percentile": 7,
+      "grade": 9
+    }
+  },
+  "한문 Ⅰ": {
+    "1": {
+      "percentile": 98,
+      "grade": 1
+    },
+    "2": {
+      "percentile": 92,
+      "grade": 2
+    },
+    "3": {
+      "percentile": 80,
+      "grade": 3
+    },
+    "4": {
+      "percentile": 62,
+      "grade": 4
+    },
+    "5": {
+      "percentile": 42,
+      "grade": 5
+    },
+    "6": {
+      "percentile": 24,
+      "grade": 6
+    },
+    "7": {
+      "percentile": 11,
+      "grade": 7
+    },
+    "8": {
+      "percentile": 4,
+      "grade": 8
+    },
+    "9": {
+      "percentile": 1,
+      "grade": 9
+    }
+  },
+  "수학": {
+    "61": {
+      "percentile": 0,
+      "grade": 9
+    },
+    "62": {
+      "percentile": 0,
+      "grade": 9
+    },
+    "63": {
+      "percentile": 0,
+      "grade": 9
+    },
+    "64": {
+      "percentile": 0,
+      "grade": 9
+    },
+    "65": {
+      "percentile": 0,
+      "grade": 9
+    },
+    "66": {
+      "percentile": 1,
+      "grade": 9
+    },
+    "67": {
+      "percentile": 1,
+      "grade": 9
+    },
+    "68": {
+      "percentile": 2,
+      "grade": 9
+    },
+    "69": {
+      "percentile": 3,
+      "grade": 9
+    },
+    "70": {
+      "percentile": 3,
+      "grade": 9
+    },
+    "71": {
+      "percentile": 5,
+      "grade": 8
+    },
+    "72": {
+      "percentile": 7,
+      "grade": 8
+    },
+    "73": {
+      "percentile": 8,
+      "grade": 8
+    },
+    "74": {
+      "percentile": 12,
+      "grade": 7
+    },
+    "75": {
+      "percentile": 15,
+      "grade": 7
+    },
+    "76": {
+      "percentile": 17,
+      "grade": 7
+    },
+    "77": {
+      "percentile": 19,
+      "grade": 7
+    },
+    "78": {
+      "percentile": 22,
+      "grade": 7
+    },
+    "79": {
+      "percentile": 23,
+      "grade": 6
+    },
+    "80": {
+      "percentile": 25,
+      "grade": 6
+    },
+    "81": {
+      "percentile": 27,
+      "grade": 6
+    },
+    "82": {
+      "percentile": 28,
+      "grade": 6
+    },
+    "83": {
+      "percentile": 29,
+      "grade": 6
+    },
+    "84": {
+      "percentile": 31,
+      "grade": 6
+    },
+    "85": {
+      "percentile": 32,
+      "grade": 6
+    },
+    "86": {
+      "percentile": 33,
+      "grade": 6
+    },
+    "87": {
+      "percentile": 35,
+      "grade": 6
+    },
+    "88": {
+      "percentile": 36,
+      "grade": 6
+    },
+    "89": {
+      "percentile": 37,
+      "grade": 6
+    },
+    "90": {
+      "percentile": 38,
+      "grade": 6
+    },
+    "91": {
+      "percentile": 39,
+      "grade": 6
+    },
+    "92": {
+      "percentile": 40,
+      "grade": 5
+    },
+    "93": {
+      "percentile": 42,
+      "grade": 5
+    },
+    "94": {
+      "percentile": 42,
+      "grade": 5
+    },
+    "95": {
+      "percentile": 43,
+      "grade": 5
+    },
+    "96": {
+      "percentile": 44,
+      "grade": 5
+    },
+    "97": {
+      "percentile": 45,
+      "grade": 5
+    },
+    "98": {
+      "percentile": 46,
+      "grade": 5
+    },
+    "99": {
+      "percentile": 47,
+      "grade": 5
+    },
+    "100": {
+      "percentile": 48,
+      "grade": 5
+    },
+    "101": {
+      "percentile": 49,
+      "grade": 5
+    },
+    "102": {
+      "percentile": 50,
+      "grade": 5
+    },
+    "103": {
+      "percentile": 51,
+      "grade": 5
+    },
+    "104": {
+      "percentile": 52,
+      "grade": 5
+    },
+    "105": {
+      "percentile": 53,
+      "grade": 5
+    },
+    "106": {
+      "percentile": 54,
+      "grade": 5
+    },
+    "107": {
+      "percentile": 55,
+      "grade": 5
+    },
+    "108": {
+      "percentile": 56,
+      "grade": 5
+    },
+    "109": {
+      "percentile": 58,
+      "grade": 5
+    },
+    "110": {
+      "percentile": 59,
+      "grade": 5
+    },
+    "111": {
+      "percentile": 60,
+      "grade": 4
+    },
+    "112": {
+      "percentile": 62,
+      "grade": 4
+    },
+    "113": {
+      "percentile": 63,
+      "grade": 4
+    },
+    "114": {
+      "percentile": 65,
+      "grade": 4
+    },
+    "115": {
+      "percentile": 67,
+      "grade": 4
+    },
+    "116": {
+      "percentile": 69,
+      "grade": 4
+    },
+    "117": {
+      "percentile": 72,
+      "grade": 4
+    },
+    "118": {
+      "percentile": 74,
+      "grade": 4
+    },
+    "119": {
+      "percentile": 76,
+      "grade": 3
+    },
+    "120": {
+      "percentile": 79,
+      "grade": 3
+    },
+    "121": {
+      "percentile": 81,
+      "grade": 3
+    },
+    "122": {
+      "percentile": 84,
+      "grade": 3
+    },
+    "123": {
+      "percentile": 86,
+      "grade": 3
+    },
+    "124": {
+      "percentile": 88,
+      "grade": 2
+    },
+    "125": {
+      "percentile": 91,
+      "grade": 2
+    },
+    "126": {
+      "percentile": 92,
+      "grade": 2
+    },
+    "127": {
+      "percentile": 94,
+      "grade": 2
+    },
+    "128": {
+      "percentile": 96,
+      "grade": 1
+    },
+    "129": {
+      "percentile": 96,
+      "grade": 1
+    },
+    "130": {
+      "percentile": 97,
+      "grade": 1
+    },
+    "131": {
+      "percentile": 98,
+      "grade": 1
+    },
+    "132": {
+      "percentile": 98,
+      "grade": 1
+    },
+    "133": {
+      "percentile": 99,
+      "grade": 1
+    },
+    "134": {
+      "percentile": 99,
+      "grade": 1
+    },
+    "135": {
+      "percentile": 99,
+      "grade": 1
+    },
+    "136": {
+      "percentile": 100,
+      "grade": 1
+    },
+    "137": {
+      "percentile": 100,
+      "grade": 1
+    },
+    "138": {
+      "percentile": 100,
+      "grade": 1
+    },
+    "139": {
+      "percentile": 100,
+      "grade": 1
+    }
+  },
+  "미기": {
+    "61": {
+      "percentile": 0,
+      "grade": 9
+    },
+    "62": {
+      "percentile": 0,
+      "grade": 9
+    },
+    "63": {
+      "percentile": 0,
+      "grade": 9
+    },
+    "64": {
+      "percentile": 0,
+      "grade": 9
+    },
+    "65": {
+      "percentile": 0,
+      "grade": 9
+    },
+    "66": {
+      "percentile": 1,
+      "grade": 9
+    },
+    "67": {
+      "percentile": 1,
+      "grade": 9
+    },
+    "68": {
+      "percentile": 2,
+      "grade": 9
+    },
+    "69": {
+      "percentile": 3,
+      "grade": 9
+    },
+    "70": {
+      "percentile": 3,
+      "grade": 9
+    },
+    "71": {
+      "percentile": 5,
+      "grade": 8
+    },
+    "72": {
+      "percentile": 7,
+      "grade": 8
+    },
+    "73": {
+      "percentile": 8,
+      "grade": 8
+    },
+    "74": {
+      "percentile": 12,
+      "grade": 7
+    },
+    "75": {
+      "percentile": 15,
+      "grade": 7
+    },
+    "76": {
+      "percentile": 17,
+      "grade": 7
+    },
+    "77": {
+      "percentile": 19,
+      "grade": 7
+    },
+    "78": {
+      "percentile": 22,
+      "grade": 7
+    },
+    "79": {
+      "percentile": 23,
+      "grade": 6
+    },
+    "80": {
+      "percentile": 25,
+      "grade": 6
+    },
+    "81": {
+      "percentile": 27,
+      "grade": 6
+    },
+    "82": {
+      "percentile": 28,
+      "grade": 6
+    },
+    "83": {
+      "percentile": 29,
+      "grade": 6
+    },
+    "84": {
+      "percentile": 31,
+      "grade": 6
+    },
+    "85": {
+      "percentile": 32,
+      "grade": 6
+    },
+    "86": {
+      "percentile": 33,
+      "grade": 6
+    },
+    "87": {
+      "percentile": 35,
+      "grade": 6
+    },
+    "88": {
+      "percentile": 36,
+      "grade": 6
+    },
+    "89": {
+      "percentile": 37,
+      "grade": 6
+    },
+    "90": {
+      "percentile": 38,
+      "grade": 6
+    },
+    "91": {
+      "percentile": 39,
+      "grade": 6
+    },
+    "92": {
+      "percentile": 40,
+      "grade": 5
+    },
+    "93": {
+      "percentile": 42,
+      "grade": 5
+    },
+    "94": {
+      "percentile": 42,
+      "grade": 5
+    },
+    "95": {
+      "percentile": 43,
+      "grade": 5
+    },
+    "96": {
+      "percentile": 44,
+      "grade": 5
+    },
+    "97": {
+      "percentile": 45,
+      "grade": 5
+    },
+    "98": {
+      "percentile": 46,
+      "grade": 5
+    },
+    "99": {
+      "percentile": 47,
+      "grade": 5
+    },
+    "100": {
+      "percentile": 48,
+      "grade": 5
+    },
+    "101": {
+      "percentile": 49,
+      "grade": 5
+    },
+    "102": {
+      "percentile": 50,
+      "grade": 5
+    },
+    "103": {
+      "percentile": 51,
+      "grade": 5
+    },
+    "104": {
+      "percentile": 52,
+      "grade": 5
+    },
+    "105": {
+      "percentile": 53,
+      "grade": 5
+    },
+    "106": {
+      "percentile": 54,
+      "grade": 5
+    },
+    "107": {
+      "percentile": 55,
+      "grade": 5
+    },
+    "108": {
+      "percentile": 56,
+      "grade": 5
+    },
+    "109": {
+      "percentile": 58,
+      "grade": 5
+    },
+    "110": {
+      "percentile": 59,
+      "grade": 5
+    },
+    "111": {
+      "percentile": 60,
+      "grade": 4
+    },
+    "112": {
+      "percentile": 62,
+      "grade": 4
+    },
+    "113": {
+      "percentile": 63,
+      "grade": 4
+    },
+    "114": {
+      "percentile": 65,
+      "grade": 4
+    },
+    "115": {
+      "percentile": 67,
+      "grade": 4
+    },
+    "116": {
+      "percentile": 69,
+      "grade": 4
+    },
+    "117": {
+      "percentile": 72,
+      "grade": 4
+    },
+    "118": {
+      "percentile": 74,
+      "grade": 4
+    },
+    "119": {
+      "percentile": 76,
+      "grade": 3
+    },
+    "120": {
+      "percentile": 79,
+      "grade": 3
+    },
+    "121": {
+      "percentile": 81,
+      "grade": 3
+    },
+    "122": {
+      "percentile": 84,
+      "grade": 3
+    },
+    "123": {
+      "percentile": 86,
+      "grade": 3
+    },
+    "124": {
+      "percentile": 88,
+      "grade": 2
+    },
+    "125": {
+      "percentile": 91,
+      "grade": 2
+    },
+    "126": {
+      "percentile": 92,
+      "grade": 2
+    },
+    "127": {
+      "percentile": 94,
+      "grade": 2
+    },
+    "128": {
+      "percentile": 96,
+      "grade": 1
+    },
+    "129": {
+      "percentile": 96,
+      "grade": 1
+    },
+    "130": {
+      "percentile": 97,
+      "grade": 1
+    },
+    "131": {
+      "percentile": 98,
+      "grade": 1
+    },
+    "132": {
+      "percentile": 98,
+      "grade": 1
+    },
+    "133": {
+      "percentile": 99,
+      "grade": 1
+    },
+    "134": {
+      "percentile": 99,
+      "grade": 1
+    },
+    "135": {
+      "percentile": 99,
+      "grade": 1
+    },
+    "136": {
+      "percentile": 100,
+      "grade": 1
+    },
+    "137": {
+      "percentile": 100,
+      "grade": 1
+    },
+    "138": {
+      "percentile": 100,
+      "grade": 1
+    },
+    "139": {
+      "percentile": 100,
+      "grade": 1
+    }
+  },
+  "이과": {
+    "61": {
+      "percentile": 0,
+      "grade": 9
+    },
+    "62": {
+      "percentile": 0,
+      "grade": 9
+    },
+    "63": {
+      "percentile": 0,
+      "grade": 9
+    },
+    "64": {
+      "percentile": 0,
+      "grade": 9
+    },
+    "65": {
+      "percentile": 0,
+      "grade": 9
+    },
+    "66": {
+      "percentile": 1,
+      "grade": 9
+    },
+    "67": {
+      "percentile": 1,
+      "grade": 9
+    },
+    "68": {
+      "percentile": 2,
+      "grade": 9
+    },
+    "69": {
+      "percentile": 3,
+      "grade": 9
+    },
+    "70": {
+      "percentile": 3,
+      "grade": 9
+    },
+    "71": {
+      "percentile": 5,
+      "grade": 8
+    },
+    "72": {
+      "percentile": 7,
+      "grade": 8
+    },
+    "73": {
+      "percentile": 8,
+      "grade": 8
+    },
+    "74": {
+      "percentile": 12,
+      "grade": 7
+    },
+    "75": {
+      "percentile": 15,
+      "grade": 7
+    },
+    "76": {
+      "percentile": 17,
+      "grade": 7
+    },
+    "77": {
+      "percentile": 19,
+      "grade": 7
+    },
+    "78": {
+      "percentile": 22,
+      "grade": 7
+    },
+    "79": {
+      "percentile": 23,
+      "grade": 6
+    },
+    "80": {
+      "percentile": 25,
+      "grade": 6
+    },
+    "81": {
+      "percentile": 27,
+      "grade": 6
+    },
+    "82": {
+      "percentile": 28,
+      "grade": 6
+    },
+    "83": {
+      "percentile": 29,
+      "grade": 6
+    },
+    "84": {
+      "percentile": 31,
+      "grade": 6
+    },
+    "85": {
+      "percentile": 32,
+      "grade": 6
+    },
+    "86": {
+      "percentile": 33,
+      "grade": 6
+    },
+    "87": {
+      "percentile": 35,
+      "grade": 6
+    },
+    "88": {
+      "percentile": 36,
+      "grade": 6
+    },
+    "89": {
+      "percentile": 37,
+      "grade": 6
+    },
+    "90": {
+      "percentile": 38,
+      "grade": 6
+    },
+    "91": {
+      "percentile": 39,
+      "grade": 6
+    },
+    "92": {
+      "percentile": 40,
+      "grade": 5
+    },
+    "93": {
+      "percentile": 42,
+      "grade": 5
+    },
+    "94": {
+      "percentile": 42,
+      "grade": 5
+    },
+    "95": {
+      "percentile": 43,
+      "grade": 5
+    },
+    "96": {
+      "percentile": 44,
+      "grade": 5
+    },
+    "97": {
+      "percentile": 45,
+      "grade": 5
+    },
+    "98": {
+      "percentile": 46,
+      "grade": 5
+    },
+    "99": {
+      "percentile": 47,
+      "grade": 5
+    },
+    "100": {
+      "percentile": 48,
+      "grade": 5
+    },
+    "101": {
+      "percentile": 49,
+      "grade": 5
+    },
+    "102": {
+      "percentile": 50,
+      "grade": 5
+    },
+    "103": {
+      "percentile": 51,
+      "grade": 5
+    },
+    "104": {
+      "percentile": 52,
+      "grade": 5
+    },
+    "105": {
+      "percentile": 53,
+      "grade": 5
+    },
+    "106": {
+      "percentile": 54,
+      "grade": 5
+    },
+    "107": {
+      "percentile": 55,
+      "grade": 5
+    },
+    "108": {
+      "percentile": 56,
+      "grade": 5
+    },
+    "109": {
+      "percentile": 58,
+      "grade": 5
+    },
+    "110": {
+      "percentile": 59,
+      "grade": 5
+    },
+    "111": {
+      "percentile": 60,
+      "grade": 4
+    },
+    "112": {
+      "percentile": 62,
+      "grade": 4
+    },
+    "113": {
+      "percentile": 63,
+      "grade": 4
+    },
+    "114": {
+      "percentile": 65,
+      "grade": 4
+    },
+    "115": {
+      "percentile": 67,
+      "grade": 4
+    },
+    "116": {
+      "percentile": 69,
+      "grade": 4
+    },
+    "117": {
+      "percentile": 72,
+      "grade": 4
+    },
+    "118": {
+      "percentile": 74,
+      "grade": 4
+    },
+    "119": {
+      "percentile": 76,
+      "grade": 3
+    },
+    "120": {
+      "percentile": 79,
+      "grade": 3
+    },
+    "121": {
+      "percentile": 81,
+      "grade": 3
+    },
+    "122": {
+      "percentile": 84,
+      "grade": 3
+    },
+    "123": {
+      "percentile": 86,
+      "grade": 3
+    },
+    "124": {
+      "percentile": 88,
+      "grade": 2
+    },
+    "125": {
+      "percentile": 91,
+      "grade": 2
+    },
+    "126": {
+      "percentile": 92,
+      "grade": 2
+    },
+    "127": {
+      "percentile": 94,
+      "grade": 2
+    },
+    "128": {
+      "percentile": 96,
+      "grade": 1
+    },
+    "129": {
+      "percentile": 96,
+      "grade": 1
+    },
+    "130": {
+      "percentile": 97,
+      "grade": 1
+    },
+    "131": {
+      "percentile": 98,
+      "grade": 1
+    },
+    "132": {
+      "percentile": 98,
+      "grade": 1
+    },
+    "133": {
+      "percentile": 99,
+      "grade": 1
+    },
+    "134": {
+      "percentile": 99,
+      "grade": 1
+    },
+    "135": {
+      "percentile": 99,
+      "grade": 1
+    },
+    "136": {
+      "percentile": 100,
+      "grade": 1
+    },
+    "137": {
+      "percentile": 100,
+      "grade": 1
+    },
+    "138": {
+      "percentile": 100,
+      "grade": 1
+    },
+    "139": {
+      "percentile": 100,
+      "grade": 1
+    }
+  },
+  "문과": {
+    "61": {
+      "percentile": 0,
+      "grade": 9
+    },
+    "62": {
+      "percentile": 0,
+      "grade": 9
+    },
+    "63": {
+      "percentile": 0,
+      "grade": 9
+    },
+    "64": {
+      "percentile": 0,
+      "grade": 9
+    },
+    "65": {
+      "percentile": 0,
+      "grade": 9
+    },
+    "66": {
+      "percentile": 1,
+      "grade": 9
+    },
+    "67": {
+      "percentile": 1,
+      "grade": 9
+    },
+    "68": {
+      "percentile": 2,
+      "grade": 9
+    },
+    "69": {
+      "percentile": 3,
+      "grade": 9
+    },
+    "70": {
+      "percentile": 3,
+      "grade": 9
+    },
+    "71": {
+      "percentile": 5,
+      "grade": 8
+    },
+    "72": {
+      "percentile": 7,
+      "grade": 8
+    },
+    "73": {
+      "percentile": 8,
+      "grade": 8
+    },
+    "74": {
+      "percentile": 12,
+      "grade": 7
+    },
+    "75": {
+      "percentile": 15,
+      "grade": 7
+    },
+    "76": {
+      "percentile": 17,
+      "grade": 7
+    },
+    "77": {
+      "percentile": 19,
+      "grade": 7
+    },
+    "78": {
+      "percentile": 22,
+      "grade": 7
+    },
+    "79": {
+      "percentile": 23,
+      "grade": 6
+    },
+    "80": {
+      "percentile": 25,
+      "grade": 6
+    },
+    "81": {
+      "percentile": 27,
+      "grade": 6
+    },
+    "82": {
+      "percentile": 28,
+      "grade": 6
+    },
+    "83": {
+      "percentile": 29,
+      "grade": 6
+    },
+    "84": {
+      "percentile": 31,
+      "grade": 6
+    },
+    "85": {
+      "percentile": 32,
+      "grade": 6
+    },
+    "86": {
+      "percentile": 33,
+      "grade": 6
+    },
+    "87": {
+      "percentile": 35,
+      "grade": 6
+    },
+    "88": {
+      "percentile": 36,
+      "grade": 6
+    },
+    "89": {
+      "percentile": 37,
+      "grade": 6
+    },
+    "90": {
+      "percentile": 38,
+      "grade": 6
+    },
+    "91": {
+      "percentile": 39,
+      "grade": 6
+    },
+    "92": {
+      "percentile": 40,
+      "grade": 5
+    },
+    "93": {
+      "percentile": 42,
+      "grade": 5
+    },
+    "94": {
+      "percentile": 42,
+      "grade": 5
+    },
+    "95": {
+      "percentile": 43,
+      "grade": 5
+    },
+    "96": {
+      "percentile": 44,
+      "grade": 5
+    },
+    "97": {
+      "percentile": 45,
+      "grade": 5
+    },
+    "98": {
+      "percentile": 46,
+      "grade": 5
+    },
+    "99": {
+      "percentile": 47,
+      "grade": 5
+    },
+    "100": {
+      "percentile": 48,
+      "grade": 5
+    },
+    "101": {
+      "percentile": 49,
+      "grade": 5
+    },
+    "102": {
+      "percentile": 50,
+      "grade": 5
+    },
+    "103": {
+      "percentile": 51,
+      "grade": 5
+    },
+    "104": {
+      "percentile": 52,
+      "grade": 5
+    },
+    "105": {
+      "percentile": 53,
+      "grade": 5
+    },
+    "106": {
+      "percentile": 54,
+      "grade": 5
+    },
+    "107": {
+      "percentile": 55,
+      "grade": 5
+    },
+    "108": {
+      "percentile": 56,
+      "grade": 5
+    },
+    "109": {
+      "percentile": 58,
+      "grade": 5
+    },
+    "110": {
+      "percentile": 59,
+      "grade": 5
+    },
+    "111": {
+      "percentile": 60,
+      "grade": 4
+    },
+    "112": {
+      "percentile": 62,
+      "grade": 4
+    },
+    "113": {
+      "percentile": 63,
+      "grade": 4
+    },
+    "114": {
+      "percentile": 65,
+      "grade": 4
+    },
+    "115": {
+      "percentile": 67,
+      "grade": 4
+    },
+    "116": {
+      "percentile": 69,
+      "grade": 4
+    },
+    "117": {
+      "percentile": 72,
+      "grade": 4
+    },
+    "118": {
+      "percentile": 74,
+      "grade": 4
+    },
+    "119": {
+      "percentile": 76,
+      "grade": 3
+    },
+    "120": {
+      "percentile": 79,
+      "grade": 3
+    },
+    "121": {
+      "percentile": 81,
+      "grade": 3
+    },
+    "122": {
+      "percentile": 84,
+      "grade": 3
+    },
+    "123": {
+      "percentile": 86,
+      "grade": 3
+    },
+    "124": {
+      "percentile": 88,
+      "grade": 2
+    },
+    "125": {
+      "percentile": 91,
+      "grade": 2
+    },
+    "126": {
+      "percentile": 92,
+      "grade": 2
+    },
+    "127": {
+      "percentile": 94,
+      "grade": 2
+    },
+    "128": {
+      "percentile": 96,
+      "grade": 1
+    },
+    "129": {
+      "percentile": 96,
+      "grade": 1
+    },
+    "130": {
+      "percentile": 97,
+      "grade": 1
+    },
+    "131": {
+      "percentile": 98,
+      "grade": 1
+    },
+    "132": {
+      "percentile": 98,
+      "grade": 1
+    },
+    "133": {
+      "percentile": 99,
+      "grade": 1
+    },
+    "134": {
+      "percentile": 99,
+      "grade": 1
+    },
+    "135": {
+      "percentile": 99,
+      "grade": 1
+    },
+    "136": {
+      "percentile": 100,
+      "grade": 1
+    },
+    "137": {
+      "percentile": 100,
+      "grade": 1
+    },
+    "138": {
+      "percentile": 100,
+      "grade": 1
+    },
+    "139": {
+      "percentile": 100,
+      "grade": 1
+    }
+  }
+}
