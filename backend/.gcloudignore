@@ -1,0 +1,19 @@
+# Exclude everything first
+*
+
+# Include essential build files
+!src/
+!src/**
+!package.json
+!yarn.lock
+!tsconfig.json
+!tsconfig.build.json
+!nest-cli.json
+!instrumentation.ts
+!Dockerfile
+!.dockerignore
+!cloudbuild.yaml
+
+# Re-exclude test files
+src/**/*.spec.ts
+src/**/*.test.ts

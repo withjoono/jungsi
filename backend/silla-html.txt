@@ -1,0 +1,780 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head id="Head1"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><meta http-equiv="Expires" content="-1" /><meta http-equiv="Pragma" content="no-cache" /><meta http-equiv="Cache-Control" content="No-Cache" /><meta http-equiv="X-UA-Compatible" content="IE=edge" /><title>
+	신라대학교 경쟁률 서비스
+</title><link href="/RatioV1/Common/Css/template/ver1/20200831/jinhakratio_blue.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/RatioV1/Common/Script/jquery.js"></script>
+<script language="javascript" type="text/javascript">
+//IE forEach문 문제
+if (window.NodeList && !NodeList.prototype.forEach) { NodeList.prototype.forEach = Array.prototype.forEach;}
+
+if ( document.addEventListener && navigator.appName!="Microsoft Internet Explorer") {
+	window.captureEvents(Event.ONKEYDOWN); 
+	document.addEventListener("DOMContentLoaded", function(){
+		if(document.getElementById('Logo')){
+			document.getElementById('Logo').innerHTML = '<a href="http://apply.jinhak.com" target="_blank"><img src="/RatioV1/img/blank.gif" width="150" height="23" border="0"></a>';
+		}
+	}, false );
+//IE
+} else if ( document.attachEvent ) {
+	document.attachEvent("onreadystatechange", function(){
+		if ( document.readyState === "complete" ) {
+			if(document.getElementById('Logo')){
+				document.getElementById('Logo').innerHTML = '<a href="http://apply.jinhak.com" target="_blank"><img src="/RatioV1/img/blank.gif" width="150" height="23" border="0"></a>';
+			}
+		}
+	});
+}
+// 나를 호출한 넘이 있다면.. 
+if (document.referrer != "")
+{
+	// 해당 값이 특정한 곳이라면.. 
+	if (document.referrer.toLowerCase().indexOf("uway") != -1)
+	{
+		window.parent.href = 'http://apply.jinhak.com';
+
+	}
+}
+
+// chess :: Link 
+window.onload = function(){
+	if(document.getElementById('TopLink').children.length > 0){
+    	var isV8Link = new RegExp(/(www\.jinhakapply\.com\/frame)[\d]{6}\.(aspx)/);
+		document.querySelectorAll('#TopLink a').forEach(function(link){
+			if(!isV8Link.test(link)){ // V8 링크가 아닐 시 https로 자동 변환.
+			    link.href = link.href.replace('http://', 'https://');
+			}
+		});    	
+	}
+}
+
+</script>
+<script type="text/javascript">
+<!--
+    function selType_onChange(){
+        var selType = document.getElementById("selType");
+        var value = selType.options[selType.selectedIndex].value;
+        
+        //HIde Show 처리
+        if(value==0){
+	  	    //SelType_Change('block');
+          $('html, body').animate({
+              scrollTop: $("[name=lik_top]").offset().top
+          }, 500);
+        }
+        else{
+          $('html, body').animate({
+              scrollTop: $("#SelType"+value).offset().top
+          }, 500);
+        }
+    }
+
+    //$('html, body').animate({
+    //    scrollTop: $("#myDiv").offset().top
+    //}, 2000);
+    
+    
+    function SelType_Change(flag){
+        var arrDiv = document.getElementsByTagName("div");
+        for (var i=0;i<arrDiv.length;i++)
+		    {
+			    if(arrDiv[i].id.indexOf("SelType") != -1){
+				     document.getElementById(arrDiv[i].id).style.display = flag;
+			    }
+		    }
+    }
+	
+	$(document).ready(function()	{
+        /****************************************************************************************
+         엑셀버튼 추가  
+        ****************************************************************************************/
+        $('#btnExcel').click(ExportExcel);
+
+        // 이미지 있으면 보여주기
+        var img = new Image();
+        img.onload = function() {
+          $('#hongboImg').show();
+        }
+        img.onerror = function() {
+          $('#hongboImg').hide();
+        }
+
+        var imgSrc = $('#hongboImg').attr('src');
+        img.src = imgSrc;
+    }); 
+
+    /****************************************************************************************
+     엑셀버튼 추가  
+    ****************************************************************************************/
+    function ExportExcel()
+    {
+		// 마우스 오버 이벤트 삭제(IE에서 문제가 될 수 있음)
+		var divData = $('#Ratio1102057').html();
+		divData = divData.replace(/<tr onmouseover=\"this.className='over';\" onmouseout=\"this.className='';\">/gi, "<tr>");
+		
+        var PostHtml = "<form method='post' action='/RatioV1/Common/Etc/RatioExcel.aspx' style='top:-198501px;' id='tempForm'>";
+        PostHtml += "<input type='hidden' name='ServiceName' value='" + encodeURIComponent('신라대학교') + "' >";
+        PostHtml += "<input type='hidden' name='Data' value='" + encodeURIComponent($('#TopType').html()) + encodeURIComponent(divData) + "' >";
+        PostHtml += "</form>";
+        
+        $('#JHService').prepend(PostHtml);
+        $('#tempForm').submit();
+        $("tempForm").remove();       
+        
+        return false;   
+    }    	
+-->
+</script>
+</head>
+<body id="JHService">
+<form method="post" action="./Ratio11020571.aspx?Company=jinhak&amp;Name=Ratio&amp;idx=27559" id="form1">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKMjA3NjY3NzI1M2RkCmjFcc7LRLM1HTcH/ViRi5p1NRc=" />
+
+<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="F8B9D858" />
+<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEdAANu64CRv4CSUyUrlqj7ZqjWxGV0aKErUllaWtqgLmJ8ZZMx1cnh4dYAsn6Hs+Zhr5+QDmSN4wmotNBQnvn8yEDddIHnUg==" />
+<!-- bgcolor : #DF3151, #51B79F, #E29F30, #82BD3E, #318CC7 -->
+
+<table width="100%" height="100%" border="0" cellpadding="0" cellspacing="0" id="RoundT">
+<tr valign="top">
+	<td class="r1"></td>
+	<td class="rt">
+	<!-- Title //-->
+
+		<h1><img src="http://apply.jinhakapply.com/WebAppForms/Wonseo/LogImg/1102.gif" id="UnivLogo" /></h1>
+		<div class="competitiveR">
+            <span id="TextType">
+			    <p class="headline"><strong><span id="TitleYear">2026학년도</span>&nbsp;<span id="TitleService">정시모집</span></strong>&nbsp;<span id="TitleText">경쟁률</span></p>
+			</span>
+			
+		</div>
+
+	<!--// Title -->
+	</td>
+	<td class="r2"></td>
+</tr>
+<tr height="100%" valign="top">
+	<td class="rl"></td>
+	<td class="cont">
+	<!-- Content //-->
+
+		
+		<a href="#" target="_blank"><img id="hongboImg" src="/RatioV1/img/1102/susi_jungsi_banner1.jpg" alt="신라대학교" width="100%"/></a><!-- 신라대 이미지 -->
+		<div id="Top" class="notiBox">
+			<div class="notiBox_in">
+				<ul id="TopType" class="ul3">※ 최종 경쟁률입니다.<br>
+※ 최종 경쟁률은 위반자 현황 결과에 따라 추후 변동 될 수 있습니다.</ul>
+				<div id="TopLink" class="notnBtn"></div>
+				<div class="CL"><img src="/RatioV1/img/blank.gif" height="1" width="1000"></div>
+		<!-- 신라대 이미지  -->
+			</div>
+		</div>
+
+		<div id="RatioSort" class="RateState">
+			<p id="RatioTime" class="time">최종 마감 현황</p>
+			<!-- 경쟁률 현황 Select //-->
+			<div  class="RateState_in">
+                <select name="selType" id="selType" class="SltBox" onchange="return selType_onChange();">
+	<option value="0">전형 전체</option>
+	<option value="01">일반학생 (수능 100%, 수능 미응시자 지원가능)</option>
+
+</select>
+			</div>
+			<!--// 군별 경쟁률 현황 Select -->
+		</div>
+		<!--// 엑셀 저장범위 -->
+		<div id="Ratio1102057">
+		<!-- 컨텐츠 -->
+        
+        <!--// 컨텐츠 -->
+        
+        <!-- 컨텐츠 -->
+        <div>
+<a name='lik_top'></a>
+	<h2><strong>정원내</strong> 경쟁률 현황</h2>
+		<table width="100%" border="0" cellpadding="0" cellspacing="0" class="tableRatio2">
+		<colgroup>
+			<col width="20%" />
+			<col width="" />
+			<col width="13%" />
+			<col width="13%" />
+			<col width="13%" />
+		</colgroup>
+		<tr>
+			<th>구분</th>
+			<th colspan='2'>전형명</th>
+			<th>모집인원</th>
+			<th>지원인원</th>
+			<th>경쟁률</th>
+		</tr>
+		<tr onmouseover="this.className='over';" onmouseout="this.className='';">
+			<td class="unit" rowspan="3">정원내</td>
+			<td class="unit" rowspan="3">일반학생 : 전학과(수능 100%, 수능 미응시자 지원가능)</td>
+			<td onclick='document.getElementById("selType").value="01";selType_onChange();'><b>가군</b></td>
+			<td>12</td>
+			<td>109</td>
+			<td style="font-weight:bold;">9.08 : 1</td>
+		</tr>		<tr onmouseover="this.className='over';" onmouseout="this.className='';">
+			<td onclick='document.getElementById("selType").value="01";selType_onChange();'><b>나군</b></td>
+			<td>70</td>
+			<td>425</td>
+			<td style="font-weight:bold;">6.07 : 1</td>
+		</tr>		<tr onmouseover="this.className='over';" onmouseout="this.className='';">
+			<td onclick='document.getElementById("selType").value="01";selType_onChange();'><b>다군</b></td>
+			<td>60</td>
+			<td>454</td>
+			<td style="font-weight:bold;">7.57 : 1</td>
+		</tr>		<!-- 소계 //-->
+		<tr class="total">
+			<td colspan=3>정원내 소계</td>
+			<td>142</td>
+			<td>988</td>
+			<td>6.96 : 1</td>
+		</tr>
+		<!--// 소계 -->
+	</table>
+<div style='display:flex; flex-direction: column; align-items: flex-start;'><br/><div style='background-color:yellow; font-size:14px; margin-bottom:0.5rem;'><b>[학과별 국고지원사업 참여 현황]</b></div><div style='display:flex; align-items: center;'><img src="/RatioV1/img/nst1.gif" /><font color=red>&nbsp;교육부 대학혁신지원사업(2022~2025, 약 194억)</font></div><div style='display:flex; align-items: center;'><img src="/RatioV1/img/nst2.gif" /><font color=#ff9900>&nbsp;고용노동부 대학일자리플러스센터사업(2022~2026, 약 15억)</font></div><div style='display:flex; align-items: center;'><img src="/RatioV1/img/nst3.gif" /><font color=#1A5529>&nbsp;고용노동부 IPP형 일학습병행제사업(2024~2028, 약 20억)</font></div><div style='display:flex; align-items: center;'><img src="/RatioV1/img/nst4.gif" /><font color=#0000FF>&nbsp;교육부 교육양성대학 시민교육 역량강화 사업(2023~2027, 약 5억)</font></div><div style='display:flex; align-items: center;'><img src="/RatioV1/img/nst5.gif" /><font color=#996633>&nbsp;반려동물산업특화 I-URP사업(2022~2026, 약 40억)</font></div><div style='display:flex; align-items: center;'><img src="/RatioV1/img/nst6.gif" /><font color=#0D0D0D>&nbsp;지역혁신사업(2023-2027, RIS핵심 445억, RIS자율 약 50억)</font></div></div>	</div>
+
+        <!--// 컨텐츠 -->
+
+        <!-- 컨텐츠 -->
+        	<a name='lik_01'></a><div id="SelType01">
+	<table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><h2><strong>일반학생 (수능 100%, 수능 미응시자 지원가능)</strong> 경쟁률 현황 	<br/>	<td style='width:10%;text-align:right'><a href='#lik_top'><img src='http://image.jinhakapply.com/ApplyBank/new_2011/ratio/btn_view_category.gif' alt='전형별 경쟁률 현황 보기' border='0'></a></td></tr></table>
+	<table width="100%" border="0" cellpadding="0" cellspacing="0" class="tableRatio3">
+		<colgroup>
+			<col width="10%" />
+			<col width="" />
+			<col width="3%" />
+			<col width="7%"></col>
+			<col width="7%" />
+			<col width="7%" />
+			<col width="7%" />
+			<col width="7%" />
+			<col width="7%" />
+			<col width="7%" />
+		</colgroup>
+		<tr>
+			<th>대학</th>
+			<th>모집단위</th>
+			<th>모집군</th>
+			<th>국고지원사업<br>참여 현황</th>
+			<th>모집인원</th>
+			<th>지원인원</th>
+			<th>경쟁률</th>
+			<th>전공가이드북</th>
+			<th>취업성공로드맵</th>
+			<th>학과소개 영상</th>
+		</tr>
+		<!-- 반복 //-->
+		<tr onmouseover="this.className='over';" onmouseout="this.className='';">
+			<td class="unit" rowspan="3">항공대학</td>
+			<td class="unit"><b><span style='color:#333399;'>항공정비학과</span></b>&nbsp;<a href='https://aeromaint.silla.ac.kr/aeromaint/' target="_blank"><img src="/RatioV1/img/ico_home_1.png" border="0" alt="학과홈페이지"></a>
+</td>
+			<td>가군</td>
+<td><img src="/RatioV1/img/nst1.gif" /><img src="/RatioV1/img/nst2.gif" /></td>
+			<td rowspan="1" >2</td>
+			<td>21</td>
+			<td class="rate1" rowspan = '1'>10.50 : 1</td>
+			<td><a href='https://ipsi.silla.ac.kr/Share/ebook2026/index.html#p=8'>바로가기</a></td>
+			<td>&nbsp;<a href='https://aeromaint.silla.ac.kr/aeromaint/index.php?pCode=SUB4000001' target="_blank">바로가기</a>
+</td>
+			<td><a href='https://www.youtube.com/watch?v=_fhvZqp_PcA'>바로가기</a></td>
+		</tr>
+		<tr onmouseover="this.className='over';" onmouseout="this.className='';">
+			<td class="unit"><b><span style='color:#333399;'>항공서비스학과</span></b>&nbsp;<a href='https://airlineservice.silla.ac.kr/airlineservice/' target="_blank"><img src="/RatioV1/img/ico_home_1.png" border="0" alt="학과홈페이지"></a>
+</td>
+			<td>가군</td>
+<td><img src="/RatioV1/img/nst1.gif" /><img src="/RatioV1/img/nst2.gif" /><img src="/RatioV1/img/nst3.gif" /></td>
+			<td rowspan="1">4</td>
+			<td>38</td>
+			<td class="rate1" rowspan = '1'>9.50 : 1</td>
+			<td><a href='https://ipsi.silla.ac.kr/Share/ebook2026/index.html#p=10'>바로가기</a></td>
+			<td>&nbsp;<a href='https://airlineservice.silla.ac.kr/airlineservice/index.php?pCode=SUB4000001' target="_blank">바로가기</a>
+</td>
+			<td><a href='https://www.youtube.com/watch?v=_fhvZqp_PcA'>바로가기</a></td>
+		</tr>
+		<tr onmouseover="this.className='over';" onmouseout="this.className='';">
+			<td class="unit"><b><font style="color:#333399">항공교통물류학부(</font><span style='font-weight:normal;'>항공교통관리전공</span>&nbsp;<a href='https://silla.ac.kr/ko/index.php?pCode=uni0107' target="_blank"><img src="/RatioV1/img/ico_home_1.png" border="0" alt="학과홈페이지"></a>
+<span style='font-weight:normal;'> 항공물류전공</span>&nbsp;<a href='https://silla.ac.kr/ko/index.php?pCode=uni0107' target="_blank"><img src="/RatioV1/img/ico_home_1.png" border="0" alt="학과홈페이지"></a>
+<font style="color:#333399">)</font></b></td>
+			<td>가군</td>
+<td><img src="/RatioV1/img/nst1.gif" /><img src="/RatioV1/img/nst2.gif" /><img src="/RatioV1/img/nst6.gif" /></td>
+			<td rowspan="1">6</td>
+			<td>50</td>
+			<td class="rate1" rowspan = '1'>8.33 : 1</td>
+			<td><a href='https://ipsi.silla.ac.kr/Share/ebook2026/index.html#p=12'>바로가기</a></td>
+			<td>&nbsp;<a href='https://ipsi.silla.ac.kr/ipsi/index.php?pCode=fly1' target="_blank">바로가기</a>
+</td>
+			<td><a href='https://www.youtube.com/watch?v=_fhvZqp_PcA'>바로가기</a></td>
+		</tr>
+		<tr onmouseover="this.className='over';" onmouseout="this.className='';">
+			<td class="unit" rowspan="1">보건복지대학</td>
+			<td class="unit"><b><span style='color:#333399;'>응급구조학과</span></b>&nbsp;<a href='https://emt119.silla.ac.kr/emt119/' target="_blank"><img src="/RatioV1/img/ico_home_1.png" border="0" alt="학과홈페이지"></a>
+</td>
+			<td>나군</td>
+<td><img src="/RatioV1/img/nst1.gif" /><img src="/RatioV1/img/nst2.gif" /><img src="/RatioV1/img/nst6.gif" /></td>
+			<td rowspan="1">8</td>
+			<td>58</td>
+			<td class="rate1" rowspan = '1'>7.25 : 1</td>
+			<td><a href='https://ipsi.silla.ac.kr/Share/ebook2026/index.html#p=40'>바로가기</a></td>
+			<td>&nbsp;<a href='https://emt119.silla.ac.kr/emt119/index.php?pCode=SUB4000001' target="_blank">바로가기</a>
+</td>
+			<td><a href='https://www.youtube.com/watch?v=ldAcQcjMq2E'>바로가기</a></td>
+		</tr>
+		<tr onmouseover="this.className='over';" onmouseout="this.className='';">
+			<td class="unit" rowspan="3">생활과학대학</td>
+			<td class="unit"><b><font style="color:#333399">반려동물학부(</font><span style='font-weight:normal;'>동물보건전공<font color=red><b>[교직]</b></font></span>&nbsp;<a href='https://compani.silla.ac.kr/compani/' target="_blank"><img src="/RatioV1/img/ico_home_1.png" border="0" alt="학과홈페이지"></a>
+<span style='font-weight:normal;'> 동물행동·매개치료전공</span>&nbsp;<a href='https://compani.silla.ac.kr/compani/' target="_blank"><img src="/RatioV1/img/ico_home_1.png" border="0" alt="학과홈페이지"></a>
+<font style="color:#333399">)</font></b></td>
+			<td>나군</td>
+<td><img src="/RatioV1/img/nst1.gif" /><img src="/RatioV1/img/nst2.gif" /><img src="/RatioV1/img/nst5.gif" /></td>
+			<td rowspan="1">4</td>
+			<td>21</td>
+			<td class="rate1" rowspan = '1'>5.25 : 1</td>
+			<td><a href='https://ipsi.silla.ac.kr/Share/ebook2026/index.html#p=50'>바로가기</a></td>
+			<td>&nbsp;<a href='https://compani.silla.ac.kr/compani/index.php?pCode=SUB4000001' target="_blank">바로가기</a>
+</td>
+			<td><a href='https://www.youtube.com/watch?v=cBEhNLI6qkM'>바로가기</a></td>
+		</tr>
+		<tr onmouseover="this.className='over';" onmouseout="this.className='';">
+			<td class="unit"><b><font style="color:#333399">외식조리학부(</font><span style='font-weight:normal;'>외식조리전공<font color=red><b>[교직]</b></font></span>&nbsp;<a href='https://foodculinary.silla.ac.kr/foodculinary/' target="_blank"><img src="/RatioV1/img/ico_home_1.png" border="0" alt="학과홈페이지"></a>
+<span style='font-weight:normal;'> 베이커리전공</span>&nbsp;<a href='https://bakery.silla.ac.kr/bakery/' target="_blank"><img src="/RatioV1/img/ico_home_1.png" border="0" alt="학과홈페이지"></a>
+<span style='font-weight:normal;'> 식품영양전공<font color=red><b>[교직]</b></font></span>&nbsp;<a href='https://food.silla.ac.kr/food/' target="_blank"><img src="/RatioV1/img/ico_home_1.png" border="0" alt="학과홈페이지"></a>
+<font style="color:#333399">)</font></b></td>
+			<td>나군</td>
+<td><img src="/RatioV1/img/nst1.gif" /><img src="/RatioV1/img/nst2.gif" /></td>
+			<td rowspan="1">1</td>
+			<td>8</td>
+			<td class="rate1" rowspan = '1'>8.00 : 1</td>
+			<td><a href='https://ipsi.silla.ac.kr/Share/ebook2026/index.html#p=52'>바로가기</a></td>
+			<td>&nbsp;<a href='https://ipsi.silla.ac.kr/ipsi/index.php?pCode=1720400608' target="_blank">바로가기</a>
+</td>
+			<td><a href='https://www.youtube.com/watch?v=YxunmIbP3hU'>바로가기</a></td>
+		</tr>
+		<tr onmouseover="this.className='over';" onmouseout="this.className='';">
+			<td class="unit"><b><span style='color:#333399;'>소방안전학과</span></b>&nbsp;<a href='https://fire119.silla.ac.kr/fire119/' target="_blank"><img src="/RatioV1/img/ico_home_1.png" border="0" alt="학과홈페이지"></a>
+</td>
+			<td>나군</td>
+<td><img src="/RatioV1/img/nst1.gif" /><img src="/RatioV1/img/nst2.gif" /><img src="/RatioV1/img/nst6.gif" /></td>
+			<td rowspan="1">2</td>
+			<td>24</td>
+			<td class="rate1" rowspan = '1'>12.00 : 1</td>
+			<td><a href='https://ipsi.silla.ac.kr/Share/ebook2026/index.html#p=54'>바로가기</a></td>
+			<td>&nbsp;<a href='https://fire119.silla.ac.kr/fire119/index.php?pCode=SUB4000001' target="_blank">바로가기</a>
+</td>
+			<td><a href='https://www.youtube.com/watch?v=Iv08dtdgegc'>바로가기</a></td>
+		</tr>
+		<tr onmouseover="this.className='over';" onmouseout="this.className='';">
+			<td class="unit" rowspan="5">인문사회과학대학</td>
+			<td class="unit"><b><span style='color:#333399;'>미디어문예창작학과</span></b>&nbsp;<a href='https://korean.silla.ac.kr/korean' target="_blank"><img src="/RatioV1/img/ico_home_1.png" border="0" alt="학과홈페이지"></a>
+</td>
+			<td>나군</td>
+<td><img src="/RatioV1/img/nst1.gif" /><img src="/RatioV1/img/nst2.gif" /></td>
+			<td rowspan="1">5</td>
+			<td>28</td>
+			<td class="rate1" rowspan = '1'>5.60 : 1</td>
+			<td><a href='https://ipsi.silla.ac.kr/Share/ebook2026/index.html#p=60'>바로가기</a></td>
+			<td>&nbsp;<a href='https://korean.silla.ac.kr/korean/index.php?pCode=SUB4000001' target="_blank">바로가기</a>
+</td>
+			<td><a href='https://www.youtube.com/watch?v=dr4a5zgXmMI'>바로가기</a></td>
+		</tr>
+		<tr onmouseover="this.className='over';" onmouseout="this.className='';">
+			<td class="unit"><b><span style='color:#333399;'>문화콘텐츠학과</span></b>&nbsp;<a href='https://contents.silla.ac.kr/contents' target="_blank"><img src="/RatioV1/img/ico_home_1.png" border="0" alt="학과홈페이지"></a>
+</td>
+			<td>나군</td>
+<td><img src="/RatioV1/img/nst1.gif" /><img src="/RatioV1/img/nst2.gif" /></td>
+			<td rowspan="1">12</td>
+			<td>60</td>
+			<td class="rate2" rowspan = '1'>5.00 : 1</td>
+			<td><a href='https://ipsi.silla.ac.kr/Share/ebook2026/index.html#p=62'>바로가기</a></td>
+			<td>&nbsp;<a href='https://contents.silla.ac.kr/contents/index.php?pCode=SUB4000001' target="_blank">바로가기</a>
+</td>
+			<td><a href='https://www.youtube.com/watch?v=dr4a5zgXmMI'>바로가기</a></td>
+		</tr>
+		<tr onmouseover="this.className='over';" onmouseout="this.className='';">
+			<td class="unit"><b><span style='color:#333399;'>일본어일본학과</span></b>&nbsp;<a href='https://japan.silla.ac.kr/japan/' target="_blank"><img src="/RatioV1/img/ico_home_1.png" border="0" alt="학과홈페이지"></a>
+</td>
+			<td>나군</td>
+<td><img src="/RatioV1/img/nst1.gif" /><img src="/RatioV1/img/nst2.gif" /></td>
+			<td rowspan="1">1</td>
+			<td>5</td>
+			<td class="rate2" rowspan = '1'>5.00 : 1</td>
+			<td><a href='https://ipsi.silla.ac.kr/Share/ebook2026/index.html#p=68'>바로가기</a></td>
+			<td>&nbsp;<a href='https://japan.silla.ac.kr/japan/index.php?pCode=SUB4000001' target="_blank">바로가기</a>
+</td>
+			<td><a href='https://www.youtube.com/watch?v=dr4a5zgXmMI'>바로가기</a></td>
+		</tr>
+		<tr onmouseover="this.className='over';" onmouseout="this.className='';">
+			<td class="unit"><b><span style='color:#333399;'>경영학과</span></b>&nbsp;<a href='https://dba.silla.ac.kr/dba/' target="_blank"><img src="/RatioV1/img/ico_home_1.png" border="0" alt="학과홈페이지"></a>
+</td>
+			<td>나군</td>
+<td><img src="/RatioV1/img/nst1.gif" /><img src="/RatioV1/img/nst2.gif" /></td>
+			<td rowspan="1">7</td>
+			<td>49</td>
+			<td class="rate1" rowspan = '1'>7.00 : 1</td>
+			<td><a href='https://ipsi.silla.ac.kr/Share/ebook2026/index.html#p=70'>바로가기</a></td>
+			<td>&nbsp;<a href='https://dba.silla.ac.kr/dba/index.php?pCode=SUB4000001' target="_blank">바로가기</a>
+</td>
+			<td><a href='https://www.youtube.com/watch?v=dr4a5zgXmMI'>바로가기</a></td>
+		</tr>
+		<tr onmouseover="this.className='over';" onmouseout="this.className='';">
+			<td class="unit"><b><font style="color:#333399">호텔관광학부(</font><span style='font-weight:normal;'>호텔경영전공</span>&nbsp;<a href='https://tourism.silla.ac.kr/tourism' target="_blank"><img src="/RatioV1/img/ico_home_1.png" border="0" alt="학과홈페이지"></a>
+<span style='font-weight:normal;'> 관광경영전공</span>&nbsp;<a href='https://tourism.silla.ac.kr/tourism' target="_blank"><img src="/RatioV1/img/ico_home_1.png" border="0" alt="학과홈페이지"></a>
+<font style="color:#333399">)</font></b></td>
+			<td>나군</td>
+<td><img src="/RatioV1/img/nst1.gif" /><img src="/RatioV1/img/nst2.gif" /><img src="/RatioV1/img/nst3.gif" /></td>
+			<td rowspan="1">3</td>
+			<td>25</td>
+			<td class="rate1" rowspan = '1'>8.33 : 1</td>
+			<td><a href='https://ipsi.silla.ac.kr/Share/ebook2026/index.html#p=72'>바로가기</a></td>
+			<td>&nbsp;<a href='https://tourism.silla.ac.kr/tourism/index.php?pCode=SUB4000001' target="_blank">바로가기</a>
+</td>
+			<td><a href='https://www.youtube.com/watch?v=dr4a5zgXmMI'>바로가기</a></td>
+		</tr>
+		<tr onmouseover="this.className='over';" onmouseout="this.className='';">
+			<td class="unit" rowspan="5">디자인대학</td>
+			<td class="unit"><b><span style='color:#333399;'>게임콘텐츠디자인학과</span></b>&nbsp;<a href='https://game.silla.ac.kr/game' target="_blank"><img src="/RatioV1/img/ico_home_1.png" border="0" alt="학과홈페이지"></a>
+</td>
+			<td>나군</td>
+<td><img src="/RatioV1/img/nst1.gif" /><img src="/RatioV1/img/nst2.gif" /></td>
+			<td rowspan="1">3</td>
+			<td>18</td>
+			<td class="rate1" rowspan = '1'>6.00 : 1</td>
+			<td><a href='https://ipsi.silla.ac.kr/Share/ebook2026/index.html#p=78'>바로가기</a></td>
+			<td>&nbsp;<a href='https://game.silla.ac.kr/game/index.php?pCode=SUB4000001' target="_blank">바로가기</a>
+</td>
+			<td><a href='https://www.youtube.com/watch?v=z2wdxxpLjuQ'>바로가기</a></td>
+		</tr>
+		<tr onmouseover="this.className='over';" onmouseout="this.className='';">
+			<td class="unit"><b><span style='color:#333399;'>패션디자인학과</span></b>&nbsp;<a href='https://fashion.silla.ac.kr/fashion' target="_blank"><img src="/RatioV1/img/ico_home_1.png" border="0" alt="학과홈페이지"></a>
+</td>
+			<td>나군</td>
+<td><img src="/RatioV1/img/nst1.gif" /><img src="/RatioV1/img/nst2.gif" /><img src="/RatioV1/img/nst3.gif" /></td>
+			<td rowspan="1">3</td>
+			<td>24</td>
+			<td class="rate1" rowspan = '1'>8.00 : 1</td>
+			<td><a href='https://ipsi.silla.ac.kr/Share/ebook2026/index.html#p=82'>바로가기</a></td>
+			<td>&nbsp;<a href='https://fashion.silla.ac.kr/fashion/index.php?pCode=SUB4000001' target="_blank">바로가기</a>
+</td>
+			<td><a href='https://www.youtube.com/watch?v=QvwfeHeXGUU'>바로가기</a></td>
+		</tr>
+		<tr onmouseover="this.className='over';" onmouseout="this.className='';">
+			<td class="unit"><b><span style='color:#333399;'>뷰티케어학과</span></b>&nbsp;<a href='https://beautycare.silla.ac.kr/beautycare' target="_blank"><img src="/RatioV1/img/ico_home_1.png" border="0" alt="학과홈페이지"></a>
+</td>
+			<td>나군</td>
+<td><img src="/RatioV1/img/nst1.gif" /><img src="/RatioV1/img/nst2.gif" /></td>
+			<td rowspan="1">1</td>
+			<td>8</td>
+			<td class="rate1" rowspan = '1'>8.00 : 1</td>
+			<td><a href='https://ipsi.silla.ac.kr/Share/ebook2026/index.html#p=84'>바로가기</a></td>
+			<td>&nbsp;<a href='https://beautycare.silla.ac.kr/beautycare/index.php?pCode=SUB3000001' target="_blank">바로가기</a>
+</td>
+			<td><a href='https://www.youtube.com/watch?v=mErU413E20Y'>바로가기</a></td>
+		</tr>
+		<tr onmouseover="this.className='over';" onmouseout="this.className='';">
+			<td class="unit"><b><span style='color:#333399;'>실내건축디자인학과</span></b>&nbsp;<a href='https://interior.silla.ac.kr/interior' target="_blank"><img src="/RatioV1/img/ico_home_1.png" border="0" alt="학과홈페이지"></a>
+</td>
+			<td>나군</td>
+<td><img src="/RatioV1/img/nst1.gif" /><img src="/RatioV1/img/nst2.gif" /></td>
+			<td rowspan="1">1</td>
+			<td>8</td>
+			<td class="rate1" rowspan = '1'>8.00 : 1</td>
+			<td><a href='https://ipsi.silla.ac.kr/Share/ebook2026/index.html#p=86'>바로가기</a></td>
+			<td>&nbsp;<a href='https://interior.silla.ac.kr/interior/index.php?pCode=SUB4000001' target="_blank">바로가기</a>
+</td>
+			<td><a href='https://www.youtube.com/watch?v=QvwfeHeXGUU'>바로가기</a></td>
+		</tr>
+		<tr onmouseover="this.className='over';" onmouseout="this.className='';">
+			<td class="unit"><b><font style="color:#333399">건축학과(</font><span style='font-weight:normal;'>4년제</span>&nbsp;<a href='https://archi.silla.ac.kr/archi' target="_blank"><img src="/RatioV1/img/ico_home_1.png" border="0" alt="학과홈페이지"></a>
+<span style='font-weight:normal;'> 5년제</span>&nbsp;<a href='' target="_blank"><img src="/RatioV1/img/ico_home_1.png" border="0" alt="학과홈페이지"></a>
+<font style="color:#333399">)</font></b></td>
+			<td>나군</td>
+<td><img src="/RatioV1/img/nst1.gif" /><img src="/RatioV1/img/nst2.gif" /></td>
+			<td rowspan="1">8</td>
+			<td>51</td>
+			<td class="rate1" rowspan = '1'>6.38 : 1</td>
+			<td><a href='https://ipsi.silla.ac.kr/Share/ebook2026/index.html#p=88'>바로가기</a></td>
+			<td>&nbsp;<a href='https://archi.silla.ac.kr/archi/index.php?pCode=SUB4000001' target="_blank">바로가기</a>
+</td>
+			<td><a href='https://www.youtube.com/watch?v=QvwfeHeXGUU'>바로가기</a></td>
+		</tr>
+		<tr onmouseover="this.className='over';" onmouseout="this.className='';">
+			<td class="unit" rowspan="1">글로벌공과대학</td>
+			<td class="unit"><b><span style='color:#333399;'>융합기술공학과</span></b>&nbsp;<a href='https://cte.silla.ac.kr/cte' target="_blank"><img src="/RatioV1/img/ico_home_1.png" border="0" alt="학과홈페이지"></a>
+</td>
+			<td>나군</td>
+<td><img src="/RatioV1/img/nst1.gif" /><img src="/RatioV1/img/nst2.gif" /><img src="/RatioV1/img/nst6.gif" /></td>
+			<td rowspan="1">11</td>
+			<td>38</td>
+			<td class="rate2" rowspan = '1'>3.45 : 1</td>
+			<td><a href='https://ipsi.silla.ac.kr/Share/ebook2026/index.html#p=92'>바로가기</a></td>
+			<td>&nbsp;<a href='https://cte.silla.ac.kr/cte/' target="_blank">바로가기</a>
+</td>
+			<td><a href='https://www.youtube.com/watch?v=sHmntRMDXmQ'>바로가기</a></td>
+		</tr>
+		<tr onmouseover="this.className='over';" onmouseout="this.className='';">
+			<td class="unit" rowspan="1">항공대학</td>
+			<td class="unit"><b><span style='color:#333399;'>항공운항학과</span></b>&nbsp;<a href='https://flightoperation.silla.ac.kr/flightoperatio/' target="_blank"><img src="/RatioV1/img/ico_home_1.png" border="0" alt="학과홈페이지"></a>
+</td>
+			<td>다군</td>
+<td><img src="/RatioV1/img/nst1.gif" /><img src="/RatioV1/img/nst2.gif" /></td>
+			<td rowspan="1">3</td>
+			<td>23</td>
+			<td class="rate1" rowspan = '1'>7.67 : 1</td>
+			<td><a href='https://ipsi.silla.ac.kr/Share/ebook2026/index.html#p=6'>바로가기</a></td>
+			<td>&nbsp;<a href='https://flightoperation.silla.ac.kr/flightoperatio/index.php?pCode=SUB4000001' target="_blank">바로가기</a>
+</td>
+			<td><a href='https://www.youtube.com/watch?v=_fhvZqp_PcA'>바로가기</a></td>
+		</tr>
+		<tr onmouseover="this.className='over';" onmouseout="this.className='';">
+			<td class="unit" rowspan="8">사범대학</td>
+			<td class="unit"><b><span style='color:#333399;'>교육학과</span></b>&nbsp;<a href='https://educa.silla.ac.kr/educa/' target="_blank"><img src="/RatioV1/img/ico_home_1.png" border="0" alt="학과홈페이지"></a>
+</td>
+			<td>다군</td>
+<td><img src="/RatioV1/img/nst1.gif" /><img src="/RatioV1/img/nst2.gif" /><img src="/RatioV1/img/nst4.gif" /></td>
+			<td rowspan="1">1</td>
+			<td>11</td>
+			<td class="rate1" rowspan = '1'>11.00 : 1</td>
+			<td><a href='https://ipsi.silla.ac.kr/Share/ebook2026/index.html#p=18'>바로가기</a></td>
+			<td>&nbsp;<a href='https://educa.silla.ac.kr/educa/index.php?pCode=SUB4000001' target="_blank">바로가기</a>
+</td>
+			<td><a href='https://www.youtube.com/watch?v=I_6_9RUiP9I'>바로가기</a></td>
+		</tr>
+		<tr onmouseover="this.className='over';" onmouseout="this.className='';">
+			<td class="unit"><b><span style='color:#333399;'>유아교육과</span></b>&nbsp;<a href='https://child.silla.ac.kr/child/' target="_blank"><img src="/RatioV1/img/ico_home_1.png" border="0" alt="학과홈페이지"></a>
+</td>
+			<td>다군</td>
+<td><img src="/RatioV1/img/nst1.gif" /><img src="/RatioV1/img/nst2.gif" /><img src="/RatioV1/img/nst4.gif" /></td>
+			<td rowspan="1">1</td>
+			<td>7</td>
+			<td class="rate1" rowspan = '1'>7.00 : 1</td>
+			<td><a href='https://ipsi.silla.ac.kr/Share/ebook2026/index.html#p=20'>바로가기</a></td>
+			<td>&nbsp;<a href='https://child.silla.ac.kr/child/index.php?pCode=SUB4000001' target="_blank">바로가기</a>
+</td>
+			<td><a href='https://www.youtube.com/watch?v=I_6_9RUiP9I'>바로가기</a></td>
+		</tr>
+		<tr onmouseover="this.className='over';" onmouseout="this.className='';">
+			<td class="unit"><b><span style='color:#333399;'>국어교육과</span></b>&nbsp;<a href='https://koredu.silla.ac.kr/koredu/' target="_blank"><img src="/RatioV1/img/ico_home_1.png" border="0" alt="학과홈페이지"></a>
+</td>
+			<td>다군</td>
+<td><img src="/RatioV1/img/nst1.gif" /><img src="/RatioV1/img/nst2.gif" /><img src="/RatioV1/img/nst4.gif" /></td>
+			<td rowspan="1">1</td>
+			<td>12</td>
+			<td class="rate1" rowspan = '1'>12.00 : 1</td>
+			<td><a href='https://ipsi.silla.ac.kr/Share/ebook2026/index.html#p=22'>바로가기</a></td>
+			<td>&nbsp;<a href='https://koredu.silla.ac.kr/koredu/index.php?pCode=SUB4000001' target="_blank">바로가기</a>
+</td>
+			<td><a href='https://www.youtube.com/watch?v=I_6_9RUiP9I'>바로가기</a></td>
+		</tr>
+		<tr onmouseover="this.className='over';" onmouseout="this.className='';">
+			<td class="unit"><b><span style='color:#333399;'>일어교육과</span></b>&nbsp;<a href='https://japedu.silla.ac.kr/japedu/' target="_blank"><img src="/RatioV1/img/ico_home_1.png" border="0" alt="학과홈페이지"></a>
+</td>
+			<td>다군</td>
+<td><img src="/RatioV1/img/nst1.gif" /><img src="/RatioV1/img/nst2.gif" /><img src="/RatioV1/img/nst4.gif" /></td>
+			<td rowspan="1">1</td>
+			<td>11</td>
+			<td class="rate1" rowspan = '1'>11.00 : 1</td>
+			<td><a href='https://ipsi.silla.ac.kr/Share/ebook2026/index.html#p=24'>바로가기</a></td>
+			<td>&nbsp;<a href='https://japedu.silla.ac.kr/japedu/index.php?pCode=SUB4000001' target="_blank">바로가기</a>
+</td>
+			<td><a href='https://www.youtube.com/watch?v=I_6_9RUiP9I'>바로가기</a></td>
+		</tr>
+		<tr onmouseover="this.className='over';" onmouseout="this.className='';">
+			<td class="unit"><b><span style='color:#333399;'>영어교육과</span></b>&nbsp;<a href='https://engedu.silla.ac.kr/engedu/' target="_blank"><img src="/RatioV1/img/ico_home_1.png" border="0" alt="학과홈페이지"></a>
+</td>
+			<td>다군</td>
+<td><img src="/RatioV1/img/nst1.gif" /><img src="/RatioV1/img/nst2.gif" /><img src="/RatioV1/img/nst4.gif" /></td>
+			<td rowspan="1">1</td>
+			<td>13</td>
+			<td class="rate1" rowspan = '1'>13.00 : 1</td>
+			<td><a href='https://ipsi.silla.ac.kr/Share/ebook2026/index.html#p=26'>바로가기</a></td>
+			<td>&nbsp;<a href='https://engedu.silla.ac.kr/engedu/index.php?pCode=SUB4000001' target="_blank">바로가기</a>
+</td>
+			<td><a href='https://www.youtube.com/watch?v=I_6_9RUiP9I'>바로가기</a></td>
+		</tr>
+		<tr onmouseover="this.className='over';" onmouseout="this.className='';">
+			<td class="unit"><b><span style='color:#333399;'>역사교육과</span></b>&nbsp;<a href='https://hisedu.silla.ac.kr/hisedu/' target="_blank"><img src="/RatioV1/img/ico_home_1.png" border="0" alt="학과홈페이지"></a>
+</td>
+			<td>다군</td>
+<td><img src="/RatioV1/img/nst1.gif" /><img src="/RatioV1/img/nst2.gif" /><img src="/RatioV1/img/nst4.gif" /></td>
+			<td rowspan="1">1</td>
+			<td>10</td>
+			<td class="rate1" rowspan = '1'>10.00 : 1</td>
+			<td><a href='https://ipsi.silla.ac.kr/Share/ebook2026/index.html#p=28'>바로가기</a></td>
+			<td>&nbsp;<a href='https://hisedu.silla.ac.kr/hisedu/index.php?pCode=SUB5000004' target="_blank">바로가기</a>
+</td>
+			<td><a href='https://www.youtube.com/watch?v=I_6_9RUiP9I'>바로가기</a></td>
+		</tr>
+		<tr onmouseover="this.className='over';" onmouseout="this.className='';">
+			<td class="unit"><b><span style='color:#333399;'>수학교육과</span></b>&nbsp;<a href='https://mathedu1.silla.ac.kr/mathedu1/' target="_blank"><img src="/RatioV1/img/ico_home_1.png" border="0" alt="학과홈페이지"></a>
+</td>
+			<td>다군</td>
+<td><img src="/RatioV1/img/nst1.gif" /><img src="/RatioV1/img/nst2.gif" /><img src="/RatioV1/img/nst4.gif" /></td>
+			<td rowspan="1">1</td>
+			<td>11</td>
+			<td class="rate1" rowspan = '1'>11.00 : 1</td>
+			<td><a href='https://ipsi.silla.ac.kr/Share/ebook2026/index.html#p=30'>바로가기</a></td>
+			<td>&nbsp;<a href='https://mathedu1.silla.ac.kr/mathedu1/index.php?pCode=SUB4000001' target="_blank">바로가기</a>
+</td>
+			<td><a href='https://www.youtube.com/watch?v=I_6_9RUiP9I'>바로가기</a></td>
+		</tr>
+		<tr onmouseover="this.className='over';" onmouseout="this.className='';">
+			<td class="unit"><b><span style='color:#333399;'>컴퓨터교육과</span></b>&nbsp;<a href='https://comedu4.silla.ac.kr/comedu4/' target="_blank"><img src="/RatioV1/img/ico_home_1.png" border="0" alt="학과홈페이지"></a>
+</td>
+			<td>다군</td>
+<td><img src="/RatioV1/img/nst1.gif" /><img src="/RatioV1/img/nst2.gif" /><img src="/RatioV1/img/nst4.gif" /></td>
+			<td rowspan="1">1</td>
+			<td>9</td>
+			<td class="rate1" rowspan = '1'>9.00 : 1</td>
+			<td><a href='https://ipsi.silla.ac.kr/Share/ebook2026/index.html#p=32'>바로가기</a></td>
+			<td>&nbsp;<a href='https://comedu4.silla.ac.kr/comedu4/index.php?pCode=SUB5000003' target="_blank">바로가기</a>
+</td>
+			<td><a href='https://www.youtube.com/watch?v=I_6_9RUiP9I'>바로가기</a></td>
+		</tr>
+		<tr onmouseover="this.className='over';" onmouseout="this.className='';">
+			<td class="unit" rowspan="5">보건복지대학</td>
+			<td class="unit"><b><span style='color:#333399;'>사회복지학과</span></b>&nbsp;<a href='https://social.silla.ac.kr/social/' target="_blank"><img src="/RatioV1/img/ico_home_1.png" border="0" alt="학과홈페이지"></a>
+</td>
+			<td>다군</td>
+<td><img src="/RatioV1/img/nst1.gif" /><img src="/RatioV1/img/nst2.gif" /></td>
+			<td rowspan="1">1</td>
+			<td>14</td>
+			<td class="rate1" rowspan = '1'>14.00 : 1</td>
+			<td><a href='https://ipsi.silla.ac.kr/Share/ebook2026/index.html#p=36'>바로가기</a></td>
+			<td>&nbsp;<a href='https://social.silla.ac.kr/social/index.php?pCode=SUB4300001' target="_blank">바로가기</a>
+</td>
+			<td><a href='https://www.youtube.com/watch?v=GNvY0TjwMGI'>바로가기</a></td>
+		</tr>
+		<tr onmouseover="this.className='over';" onmouseout="this.className='';">
+			<td class="unit"><b><span style='color:#333399;'>상담치료복지학과</span></b>&nbsp;<a href='https://family.silla.ac.kr/family2016/' target="_blank"><img src="/RatioV1/img/ico_home_1.png" border="0" alt="학과홈페이지"></a>
+</td>
+			<td>다군</td>
+<td><img src="/RatioV1/img/nst1.gif" /><img src="/RatioV1/img/nst2.gif" /></td>
+			<td rowspan="1">3</td>
+			<td>15</td>
+			<td class="rate2" rowspan = '1'>5.00 : 1</td>
+			<td><a href='https://ipsi.silla.ac.kr/Share/ebook2026/index.html#p=38'>바로가기</a></td>
+			<td>&nbsp;<a href='https://family.silla.ac.kr/family2016/index.php?pCode=SUB4000001' target="_blank">바로가기</a>
+</td>
+			<td><a href='https://www.youtube.com/watch?v=XXNQE-pXs0I&list=PL5yPUP-x-y15vJOgIBcZRwpIxXT0fDk6b&index=3'>바로가기</a></td>
+		</tr>
+		<tr onmouseover="this.className='over';" onmouseout="this.className='';">
+			<td class="unit"><b><span style='color:#333399;'>간호학과<font color=blue>[간호교육인증]</font><font color=red>[교직]</font></span></b>&nbsp;<a href='https://nursing.silla.ac.kr/nursing/' target="_blank"><img src="/RatioV1/img/ico_home_1.png" border="0" alt="학과홈페이지"></a>
+</td>
+			<td>다군</td>
+<td><img src="/RatioV1/img/nst1.gif" /><img src="/RatioV1/img/nst2.gif" /></td>
+			<td rowspan="1">15</td>
+			<td>112</td>
+			<td class="rate1" rowspan = '1'>7.47 : 1</td>
+			<td><a href='https://ipsi.silla.ac.kr/Share/ebook2026/index.html#p=42'>바로가기</a></td>
+			<td>&nbsp;<a href='https://nursing.silla.ac.kr/nursing/index.php?pCode=SUB4000001' target="_blank">바로가기</a>
+</td>
+			<td><a href='https://www.youtube.com/watch?v=GNvY0TjwMGI'>바로가기</a></td>
+		</tr>
+		<tr onmouseover="this.className='over';" onmouseout="this.className='';">
+			<td class="unit"><b><span style='color:#333399;'>물리치료학과</span></b>&nbsp;<a href='https://physio.silla.ac.kr/physio/' target="_blank"><img src="/RatioV1/img/ico_home_1.png" border="0" alt="학과홈페이지"></a>
+</td>
+			<td>다군</td>
+<td><img src="/RatioV1/img/nst1.gif" /><img src="/RatioV1/img/nst2.gif" /></td>
+			<td rowspan="1">7</td>
+			<td>70</td>
+			<td class="rate1" rowspan = '1'>10.00 : 1</td>
+			<td><a href='https://ipsi.silla.ac.kr/Share/ebook2026/index.html#p=44'>바로가기</a></td>
+			<td>&nbsp;<a href='https://physio.silla.ac.kr/physio/index.php?pCode=SUB4000001' target="_blank">바로가기</a>
+</td>
+			<td><a href='https://www.youtube.com/watch?v=GNvY0TjwMGI'>바로가기</a></td>
+		</tr>
+		<tr onmouseover="this.className='over';" onmouseout="this.className='';">
+			<td class="unit"><b><span style='color:#333399;'>치위생학과</span></b>&nbsp;<a href='https://dentalhygiene.silla.ac.kr/dentalhygiene/' target="_blank"><img src="/RatioV1/img/ico_home_1.png" border="0" alt="학과홈페이지"></a>
+</td>
+			<td>다군</td>
+<td><img src="/RatioV1/img/nst1.gif" /><img src="/RatioV1/img/nst2.gif" /></td>
+			<td rowspan="1">3</td>
+			<td>18</td>
+			<td class="rate1" rowspan = '1'>6.00 : 1</td>
+			<td><a href='https://ipsi.silla.ac.kr/Share/ebook2026/index.html#p=46'>바로가기</a></td>
+			<td>&nbsp;<a href='https://dentalhygiene.silla.ac.kr/dentalhygiene/index.php?pCode=SUB4000001' target="_blank">바로가기</a>
+</td>
+			<td><a href='https://www.youtube.com/watch?v=GNvY0TjwMGI'>바로가기</a></td>
+		</tr>
+		<tr onmouseover="this.className='over';" onmouseout="this.className='';">
+			<td class="unit" rowspan="2">인문사회과학대학</td>
+			<td class="unit"><b><span style='color:#333399;'>문헌정보학과<font color=red>[교직]</font></span></b>&nbsp;<a href='https://lis.silla.ac.kr/lis/' target="_blank"><img src="/RatioV1/img/ico_home_1.png" border="0" alt="학과홈페이지"></a>
+</td>
+			<td>다군</td>
+<td><img src="/RatioV1/img/nst1.gif" /><img src="/RatioV1/img/nst2.gif" /></td>
+			<td rowspan="1">1</td>
+			<td>9</td>
+			<td class="rate1" rowspan = '1'>9.00 : 1</td>
+			<td><a href='https://ipsi.silla.ac.kr/Share/ebook2026/index.html#p=66'>바로가기</a></td>
+			<td>&nbsp;<a href='https://lis.silla.ac.kr/lis/index.php?pCode=SUB4000001' target="_blank">바로가기</a>
+</td>
+			<td><a href='https://www.youtube.com/watch?v=dr4a5zgXmMI'>바로가기</a></td>
+		</tr>
+		<tr onmouseover="this.className='over';" onmouseout="this.className='';">
+			<td class="unit"><b><font style="color:#333399">미디어커뮤니케이션학부(</font><span style='font-weight:normal;'>방송영상전공</span>&nbsp;<a href='https://eadpr.silla.ac.kr/eadpr/' target="_blank"><img src="/RatioV1/img/ico_home_1.png" border="0" alt="학과홈페이지"></a>
+<span style='font-weight:normal;'> 미디어커뮤니케이션전공</span>&nbsp;<a href='https://eadpr.silla.ac.kr/eadpr/' target="_blank"><img src="/RatioV1/img/ico_home_1.png" border="0" alt="학과홈페이지"></a>
+<span style='font-weight:normal;'> 광고홍보학전공</span>&nbsp;<a href='https://eadpr.silla.ac.kr/eadpr/' target="_blank"><img src="/RatioV1/img/ico_home_1.png" border="0" alt="학과홈페이지"></a>
+<font style="color:#333399">)</font></b></td>
+			<td>다군</td>
+<td><img src="/RatioV1/img/nst1.gif" /><img src="/RatioV1/img/nst2.gif" /><img src="/RatioV1/img/nst3.gif" /></td>
+			<td rowspan="1">13</td>
+			<td>84</td>
+			<td class="rate1" rowspan = '1'>6.46 : 1</td>
+			<td><a href='https://ipsi.silla.ac.kr/Share/ebook2026/index.html#p=74'>바로가기</a></td>
+			<td>&nbsp;<a href='https://eadpr.silla.ac.kr/eadpr/index.php?pCode=1648445655' target="_blank">바로가기</a>
+</td>
+			<td><a href='https://www.youtube.com/watch?v=dr4a5zgXmMI'>바로가기</a></td>
+		</tr>
+		<tr onmouseover="this.className='over';" onmouseout="this.className='';">
+			<td class="unit" rowspan="1">디자인대학</td>
+			<td class="unit"><b><span style='color:#333399;'>웹툰학과</span></b>&nbsp;<a href='https://webtoon.silla.ac.kr/webtoon' target="_blank"><img src="/RatioV1/img/ico_home_1.png" border="0" alt="학과홈페이지"></a>
+</td>
+			<td>다군</td>
+<td><img src="/RatioV1/img/nst1.gif" /><img src="/RatioV1/img/nst2.gif" /></td>
+			<td rowspan="1">6</td>
+			<td>25</td>
+			<td class="rate2" rowspan = '1'>4.17 : 1</td>
+			<td><a href='https://ipsi.silla.ac.kr/Share/ebook2026/index.html#p=80'>바로가기</a></td>
+			<td>&nbsp;<a href='https://webtoon.silla.ac.kr/webtoon/index.php?pCode=SUB4000001' target="_blank">바로가기</a>
+</td>
+			<td><a href='https://www.youtube.com/watch?v=QvwfeHeXGUU'>바로가기</a></td>
+		</tr>
+		<!-- 총계 //-->
+		<tr class="total">
+			<td colspan=4>총계</td>
+			<td>142</td>
+			<td>988</td>
+			<td class="rate1">6.96 : 1</td>
+			<td colspan=3></td>
+		</tr>
+		<!--// 총계 -->
+	</table>
+	</div>
+
+        <!--// 컨텐츠 -->
+        </div>
+		<div class="btnR">
+			<a href="javascript:print();" id="btnPrint"><img src="/RatioV1/img/btn_print.gif" width="86" height="21" border="0" alt="인쇄하기"></a>
+			
+		</div>
+
+		
+
+	<!--// Content -->
+	</td>
+	<td class="rr"></td>
+</tr>
+<tr>
+	<td class="r3"><img src="/RatioV1/img/blank.gif" width="11" height="1"></td>
+	<td class="rb"></td>
+	<td class="r4"><img src="/RatioV1/img/blank.gif" width="11" height="1"></td>
+</tr>
+<tr>
+	<td colspan="3"><div id="Logo"><a href="http://www.jinhakapply.com" target="_blank"><img src="/RatioV1/img/blank.gif" width="150" height="23" border="0"></a></div></td>
+</tr>
+</table>
+</form>
+</body>
+</html>

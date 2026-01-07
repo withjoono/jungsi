@@ -6,6 +6,18 @@ const xlsx = require('xlsx');
 const fs = require('fs');
 const path = require('path');
 
+// 2025년 정시 컷 데이터 로드 (작년 추합 데이터)
+let previousYearData = [];
+try {
+  const prevDataPath = path.join(__dirname, 'uploads', '2025-jungsi-cut-converted.json');
+  if (fs.existsSync(prevDataPath)) {
+    previousYearData = JSON.parse(fs.readFileSync(prevDataPath, 'utf8'));
+    console.log(`2025년 정시 컷 데이터 로드: ${previousYearData.length}개 항목`);
+  }
+} catch (error) {
+  console.warn('작년 데이터 로드 실패:', error.message);
+}
+
 // 대학별 지역 매핑
 const universityRegions = {
   // 서울
@@ -137,6 +149,51 @@ function parseNumber(value) {
   return isNaN(num) ? 0 : num;
 }
 
+// 작년 추합 데이터 찾기 (2025년 정시 컷 데이터에서)
+function findPreviousYearChuhap(대학명, 모집단위, 군) {
+  if (!previousYearData || previousYearData.length === 0) return 0;
+
+  // 1순위: 대학명 + 모집단위 + 군 정확히 일치
+  let match = previousYearData.find(item =>
+    item.university === 대학명 &&
+    item.recruitment_name === 모집단위 &&
+    item.admission_type === 군
+  );
+
+  if (match && match.competition_ratio) {
+    return parseNumber(match.competition_ratio);
+  }
+
+  // 2순위: 대학명 + 모집단위만 일치
+  match = previousYearData.find(item =>
+    item.university === 대학명 &&
+    item.recruitment_name === 모집단위
+  );
+
+  if (match && match.competition_ratio) {
+    return parseNumber(match.competition_ratio);
+  }
+
+  // 3순위: 대학명만 일치하는 평균값
+  const univMatches = previousYearData.filter(item =>
+    item.university === 대학명 && item.competition_ratio
+  );
+
+  if (univMatches.length > 0) {
+    const total = univMatches.reduce((sum, item) => sum + parseNumber(item.competition_ratio), 0);
+    return total / univMatches.length;
+  }
+
+  return 0;
+}
+
+// 예상실질경쟁률 계산
+function calcRealCompetitionRate(정원, 예상최종경쟁값, 작년추합) {
+  const 분모 = 정원 + 작년추합;
+  if (분모 <= 0) return 0;
+  return (정원 * 예상최종경쟁값) / 분모;
+}
+
 async function convertExcelToJson() {
   const excelPath = path.join(__dirname, 'uploads', '최종경쟁률_v13_20260106_1518.xlsx');
 
@@ -178,24 +235,40 @@ async function convertExcelToJson() {
       const group = extractGroup(row['군'] || row['전형명'] || row['모집군'] || sheetName);
       const { 전형유형, 특별전형카테고리 } = classifyAdmissionType(row['전형명']);
 
+      const 대학명 = String(row['대학명'] || '');
+      const 모집단위 = String(row['모집단위'] || '');
+      const 정원 = parseNumber(row['정원'] || row['모집인원']);
+      const 경쟁률_숫자 = parseNumber(row['경쟁률']);
+      const 경쟁률_문자열 = String(row['경쟁률_문자열'] || row['경쟁률'] || '0:1');
+
+      // 작년 추합 데이터 찾기
+      const 작년추합 = findPreviousYearChuhap(대학명, 모집단위, group);
+
+      // 예상최종경쟁값 = 현재 경쟁률 (최종경쟁률과 동일)
+      const 예상최종경쟁값 = 경쟁률_숫자;
+
+      // 예상실질경쟁률 계산
+      const 예상실질경쟁값 = calcRealCompetitionRate(정원, 예상최종경쟁값, 작년추합);
+
       const entry = {
-        대학명: String(row['대학명'] || ''),
+        대학명,
         캠퍼스: String(row['캠퍼스'] || ''),
         전형명: String(row['전형명'] || '일반전형'),
-        모집단위: String(row['모집단위'] || ''),
+        모집단위,
         모집인원: parseNumber(row['모집인원'] || row['정원']),
         지원인원: parseNumber(row['지원인원']),
-        경쟁률: String(row['경쟁률'] || row['현재경쟁률'] || '0:1'),
-        지역: universityRegions[row['대학명']] || '기타',
+        경쟁률: 경쟁률_문자열,
+        지역: universityRegions[대학명] || '기타',
         전형유형,
         특별전형카테고리,
         // 추합 관련 필드
-        정원: parseNumber(row['정원']),
-        현재경쟁률: String(row['현재경쟁률'] || ''),
-        작년추합: parseNumber(row['작년추합']),
-        예상최종경쟁: String(row['예상최종경쟁'] || ''),
-        예상실질경쟁: String(row['예상실질경쟁'] || ''),
-        예상실질경쟁값: parseNumber(row['예상실질경쟁값'] || row['예상실질경쟁']),
+        정원,
+        최종경쟁률: 경쟁률_문자열,  // 현재경쟁률 → 최종경쟁률로 명칭 변경
+        작년추합: Math.round(작년추합 * 100) / 100,  // 소수점 2자리
+        예상최종경쟁: 경쟁률_문자열,  // 최종경쟁률과 동일
+        예상최종경쟁값,
+        예상실질경쟁: `${예상실질경쟁값.toFixed(2)}:1`,
+        예상실질경쟁값: Math.round(예상실질경쟁값 * 100) / 100,
       };
 
       if (group) {

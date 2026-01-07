@@ -1,0 +1,311 @@
+{
+  "$schema": "./feature-map.schema.json",
+  "version": "1.0.0",
+  "lastUpdated": "2025-12-17",
+  "description": "기능별 파일 매핑. 코드 수정 시 영향 범위 파악용",
+
+  "features": {
+    "jungsi": {
+      "name": "정시",
+      "description": "정시 환산점수, 입결분석, 지원시뮬레이션",
+      "status": "active",
+      "modules": [
+        "src/modules/jungsi/**/*"
+      ],
+      "entities": [
+        "src/database/entities/core/regular-admission.entity.ts",
+        "src/database/entities/core/regular-admission-previous-result.entity.ts",
+        "src/database/entities/member/member-calculated-score.entity.ts",
+        "src/database/entities/member/member-regular-interests.entity.ts"
+      ],
+      "controllers": [
+        "src/modules/jungsi/calculation/jungsi-calculation.controller.ts"
+      ],
+      "dependencies": ["mock-exam", "members", "pay"],
+      "sharedDependencies": ["university", "member", "jwt", "interceptors"]
+    },
+
+    "susi": {
+      "name": "수시",
+      "description": "수시 교과, 학종 분석",
+      "status": "active",
+      "modules": [
+        "src/modules/susi/**/*"
+      ],
+      "entities": [
+        "src/database/entities/susi/**/*"
+      ],
+      "controllers": [
+        "src/modules/susi/controllers/**/*"
+      ],
+      "dependencies": ["schoolrecord", "members"],
+      "sharedDependencies": ["admission", "recruitment-unit", "member"]
+    },
+
+    "essay": {
+      "name": "논술",
+      "description": "논술 전형 분석",
+      "status": "active",
+      "modules": [
+        "src/modules/essay/**/*"
+      ],
+      "entities": [
+        "src/database/entities/essay/**/*"
+      ],
+      "dependencies": [],
+      "sharedDependencies": ["university", "recruitment-unit"]
+    },
+
+    "schoolrecord": {
+      "name": "학생부",
+      "description": "학생부 기록 관리 (성적, 출결, 봉사)",
+      "status": "active",
+      "modules": [
+        "src/modules/schoolrecord/**/*"
+      ],
+      "entities": [
+        "src/database/entities/schoolrecord/**/*"
+      ],
+      "dependencies": ["members"],
+      "sharedDependencies": ["member"]
+    },
+
+    "mock-exam": {
+      "name": "모의고사",
+      "description": "모의고사 점수 입력/관리, 표준점수 변환",
+      "status": "active",
+      "modules": [
+        "src/modules/mock-exam/**/*"
+      ],
+      "entities": [
+        "src/database/entities/mock-exam/**/*"
+      ],
+      "dependencies": ["members"],
+      "sharedDependencies": ["member"],
+      "dependedBy": ["jungsi", "susi"]
+    },
+
+    "pay": {
+      "name": "결제",
+      "description": "결제, 쿠폰, 계약 관리",
+      "status": "active",
+      "modules": [
+        "src/modules/pay/**/*"
+      ],
+      "entities": [
+        "src/database/entities/pay/**/*"
+      ],
+      "dependencies": ["members"],
+      "sharedDependencies": ["member"],
+      "dependedBy": ["jungsi", "susi", "essay", "planner"]
+    },
+
+    "planner": {
+      "name": "플래너",
+      "description": "학습 플래너",
+      "status": "development",
+      "modules": [
+        "src/modules/planner/**/*"
+      ],
+      "entities": [
+        "src/database/entities/planner/**/*"
+      ],
+      "dependencies": ["members", "pay"],
+      "sharedDependencies": ["member"]
+    },
+
+    "members": {
+      "name": "회원",
+      "description": "회원 정보, 인증, 프로필",
+      "status": "active",
+      "modules": [
+        "src/modules/members/**/*"
+      ],
+      "entities": [
+        "src/database/entities/member/member.entity.ts",
+        "src/database/entities/member/member-interests.entity.ts",
+        "src/database/entities/member/member-recruitment-unit-combination.entity.ts"
+      ],
+      "dependencies": [],
+      "sharedDependencies": ["jwt", "bcrypt"],
+      "dependedBy": ["*"]
+    },
+
+    "board": {
+      "name": "게시판",
+      "description": "커뮤니티, Q&A, 공지사항",
+      "status": "active",
+      "modules": [
+        "src/modules/board/**/*"
+      ],
+      "entities": [
+        "src/database/entities/boards/**/*"
+      ],
+      "dependencies": ["members"],
+      "sharedDependencies": ["member"]
+    },
+
+    "mentoring": {
+      "name": "멘토링",
+      "description": "멘토링 서비스",
+      "status": "active",
+      "modules": [
+        "src/modules/mentoring/**/*"
+      ],
+      "entities": [
+        "src/database/entities/mentoring/**/*"
+      ],
+      "dependencies": ["members", "pay"],
+      "sharedDependencies": ["member"]
+    },
+
+    "officer": {
+      "name": "입학사정관",
+      "description": "입학사정관 평가 시스템",
+      "status": "active",
+      "modules": [
+        "src/modules/officer/**/*"
+      ],
+      "entities": [
+        "src/database/entities/officer-evaluation/**/*"
+      ],
+      "dependencies": ["members", "schoolrecord"],
+      "sharedDependencies": ["member"]
+    },
+
+    "exploration": {
+      "name": "탐색",
+      "description": "대학/학과 탐색",
+      "status": "active",
+      "modules": [
+        "src/modules/exploration/**/*"
+      ],
+      "entities": [],
+      "dependencies": [],
+      "sharedDependencies": ["university", "admission", "recruitment-unit"]
+    },
+
+    "myclass": {
+      "name": "마이클래스",
+      "description": "내 학습 현황",
+      "status": "active",
+      "modules": [
+        "src/modules/myclass/**/*"
+      ],
+      "entities": [
+        "src/database/entities/myclass/**/*"
+      ],
+      "dependencies": ["members"],
+      "sharedDependencies": ["member"]
+    },
+
+    "store": {
+      "name": "스토어",
+      "description": "상품 관리",
+      "status": "active",
+      "modules": [
+        "src/modules/store/**/*"
+      ],
+      "entities": [],
+      "dependencies": ["pay"],
+      "sharedDependencies": []
+    }
+  },
+
+  "shared": {
+    "core": {
+      "name": "코어 (입시 공용)",
+      "description": "수시/정시/논술 공용 엔티티",
+      "warning": "수정 시 입시 관련 모든 기능에 영향",
+      "files": [
+        "src/database/entities/core/university.entity.ts",
+        "src/database/entities/core/admission.entity.ts",
+        "src/database/entities/core/admission-method.entity.ts",
+        "src/database/entities/core/recruitment-unit.entity.ts",
+        "src/database/entities/core/major-field.entity.ts",
+        "src/database/entities/core/general-field.entity.ts",
+        "src/database/entities/core/mid-field.entity.ts",
+        "src/database/entities/core/minor-field.entity.ts"
+      ],
+      "affectedFeatures": ["jungsi", "susi", "essay", "exploration"]
+    },
+
+    "member": {
+      "name": "회원 (최상위 공용)",
+      "description": "회원 엔티티 - 거의 모든 기능에 영향",
+      "warning": "수정 시 모든 기능에 영향",
+      "files": [
+        "src/database/entities/member/member.entity.ts"
+      ],
+      "affectedFeatures": ["*"]
+    },
+
+    "common": {
+      "name": "공용 유틸리티",
+      "description": "인증, 암호화, 인터셉터, 필터",
+      "warning": "수정 시 모든 API에 영향",
+      "files": [
+        "src/common/jwt/**/*",
+        "src/common/bcrypt/**/*",
+        "src/common/interceptors/**/*",
+        "src/common/filters/**/*",
+        "src/common/utils/**/*"
+      ],
+      "affectedFeatures": ["*"]
+    },
+
+    "static-data": {
+      "name": "정적 데이터",
+      "description": "공용 코드, 기준 데이터",
+      "files": [
+        "src/modules/static-data/**/*",
+        "src/modules/common-code/**/*"
+      ],
+      "affectedFeatures": ["*"]
+    },
+
+    "admin": {
+      "name": "관리자",
+      "description": "관리자 기능, 데이터 import/export",
+      "files": [
+        "src/admin/**/*"
+      ],
+      "affectedFeatures": []
+    }
+  },
+
+  "apiVersioning": {
+    "current": "v1",
+    "deprecated": [],
+    "endpoints": {
+      "jungsi": {
+        "base": "/jungsi",
+        "version": "v1",
+        "lastModified": "2025-12-17",
+        "breaking_changes": [
+          {
+            "date": "2025-12-17",
+            "description": "scoreCalculationCode 필드 추가",
+            "migration": "scoreCalculation 필드는 유지, scoreCalculationCode 추가"
+          }
+        ]
+      }
+    }
+  },
+
+  "changeLog": [
+    {
+      "date": "2025-12-17",
+      "feature": "jungsi",
+      "type": "enhancement",
+      "description": "환산점수 코드화 (scoreCalculationCode 추가)",
+      "files": [
+        "src/modules/jungsi/calculation/jungsi-calculation.controller.ts",
+        "src/modules/jungsi/calculation/dto/calculate-scores.dto.ts",
+        "src/database/entities/core/regular-admission.entity.ts",
+        "src/database/entities/member/member-calculated-score.entity.ts"
+      ],
+      "migration": "migration-score-codes.sql"
+    }
+  ]
+}

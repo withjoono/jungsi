@@ -1,0 +1,14 @@
+{
+  "hosting": {
+    "source": ".",
+    "rewrites": [
+      {
+        "source": "**",
+        "run": {
+          "serviceId": "geobukschool-backend-service",
+          "region": "asia-northeast3"
+        }
+      }
+    ]
+  }
+}

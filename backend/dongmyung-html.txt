@@ -1,0 +1,1377 @@
+
+<!DOCTYPE html
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head id="Head1">
+	<!--<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />-->
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><meta http-equiv="Expires" content="-1" /><meta http-equiv="Pragma" content="no-cache" /><meta http-equiv="Cache-Control" content="No-Cache" /><title>
+	동명대학교 경쟁률 서비스
+</title><link href="/RatioV1/Common/Css/template/ver1/20200831/jinhakratio_green.css" rel="stylesheet" type="text/css" />
+	<!-- <script type="text/javascript" src="/ApplyV8/scripts/jquery.js"></script> -->
+	<script type="text/javascript" src="/RatioV1/Common/Script/jquery.js"></script>
+	<script language="javascript" type="text/javascript">
+//IE forEach문 문제
+if (window.NodeList && !NodeList.prototype.forEach) { NodeList.prototype.forEach = Array.prototype.forEach;}
+
+if ( document.addEventListener && navigator.appName!="Microsoft Internet Explorer") {
+	window.captureEvents(Event.ONKEYDOWN); 
+	document.addEventListener("DOMContentLoaded", function(){
+		if(document.getElementById('Logo')){
+			document.getElementById('Logo').innerHTML = '<a href="http://apply.jinhak.com" target="_blank"><img src="/RatioV1/img/blank.gif" width="150" height="23" border="0"></a>';
+		}
+	}, false );
+//IE
+} else if ( document.attachEvent ) {
+	document.attachEvent("onreadystatechange", function(){
+		if ( document.readyState === "complete" ) {
+			if(document.getElementById('Logo')){
+				document.getElementById('Logo').innerHTML = '<a href="http://apply.jinhak.com" target="_blank"><img src="/RatioV1/img/blank.gif" width="150" height="23" border="0"></a>';
+			}
+		}
+	});
+}
+// 나를 호출한 넘이 있다면.. 
+if (document.referrer != "")
+{
+	// 해당 값이 특정한 곳이라면.. 
+	if (document.referrer.toLowerCase().indexOf("uway") != -1)
+	{
+		window.parent.href = 'http://apply.jinhak.com';
+
+	}
+}
+
+// chess :: Link 
+window.onload = function(){
+	if(document.getElementById('TopLink').children.length > 0){
+    	var isV8Link = new RegExp(/(www\.jinhakapply\.com\/frame)[\d]{6}\.(aspx)/);
+		document.querySelectorAll('#TopLink a').forEach(function(link){
+			if(!isV8Link.test(link)){ // V8 링크가 아닐 시 https로 자동 변환.
+			    link.href = link.href.replace('http://', 'https://');
+			}
+		});    	
+	}
+}
+
+</script>
+	<script type="text/javascript">
+<!--
+			function selType_onChange() {
+				var selType = document.getElementById("selType");
+				var value = selType.options[selType.selectedIndex].value;
+				var strSelectRatio = '2';
+
+				if (strSelectRatio == '2' || strSelectRatio == '3') {
+					// 전체일 경우 전부 보임
+					if(value == 0){
+						$('div[id^=SelType]').show()
+					}
+					else{
+						$('div[id^=SelType]').hide()
+						$('#SelType' + value).show();
+						document.getElementById("SelType" + value).scrollIntoView();
+					}
+					
+					return;
+				}
+				else {
+					//HIde Show 처리
+					if (value == 0) {
+						SelType_Change('block');
+					}
+					else {
+						SelType_Change('none');
+						document.getElementById("SelType" + value).style.display = 'block';
+						document.getElementById("SelType" + value).scrollIntoView();
+					}
+				}
+			}
+
+		function SelType_Change(flag) {
+			var arrDiv = document.getElementsByTagName("div");
+			for (var i = 0; i < arrDiv.length; i++) {
+				if (arrDiv[i].id.indexOf("SelType") != -1) {
+					document.getElementById(arrDiv[i].id).style.display = flag;
+				}
+			}
+		}
+
+		//=============================================================
+		// 반응형 경쟁률 스크롤 이벤트 추가
+		//=============================================================
+		// window.addEventListener('scroll', function(){
+		// 	var height = window.innerHeight;
+		// 	var scrollPosition = document.documentElement.scrollTop;
+
+		// 	if(scrollPosition > height){
+		// 		$('.quick_menu').show("slow");
+		// 	} else{
+		// 		$('.quick_menu').hide("slow");
+		// 	}
+		// });
+
+		function MoveTop(){
+			$('html, body').animate({
+				scrollTop : 0
+			}, 300)
+
+		}
+		//=============================================================
+
+		$(document).ready(function () {
+			/****************************************************************************************
+			 엑셀버튼 추가  
+			****************************************************************************************/
+			$('#btnExcel').click(ExportExcel);
+		});
+
+    /****************************************************************************************
+     엑셀버튼 추가  
+    ****************************************************************************************/
+		function ExportExcel() {
+			// 마우스 오버 이벤트 삭제(IE에서 문제가 될 수 있음)
+			var divData = $('#Ratio3005061').html();
+			divData = divData.replace(/<tr onmouseover=\"this.className='over';\" onmouseout=\"this.className='';\">/gi, "<tr>");
+			divData = divData.replace(/'/g, '"');
+
+			var PostHtml = "<form method='post' action='/RatioV1/Common/Etc/RatioExcel.aspx' style='top:-198501px;' id='tempForm'>";
+			PostHtml += "<input type='hidden' name='ServiceName' value='" + encodeURIComponent('동명대학교') + "' >";
+			PostHtml += "<input type='hidden' name='Data' value='" + encodeURIComponent($('#TopType').html()) + encodeURIComponent(divData) + "' >";
+			PostHtml += "</form>";
+
+			$('#JHService').prepend(PostHtml);
+			$('#tempForm').submit();
+			$("tempForm").remove();
+
+			return false;
+		}
+		-->
+	</script>
+</head>
+
+<body id="JHService">
+	<form method="post" action="./Ratio30050611.aspx?Company=jinhak&amp;Name=Ratio&amp;idx=27398" id="form1">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUJODE1ODcwMTUwZGSxqZs18Kyq2zuBixSmeSrKJgC1dw==" />
+
+<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="0863A0C5" />
+<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEdAA9aTGJKO9GxB5Lckwimbbg/xGV0aKErUllaWtqgLmJ8ZW8tCzqzlcPoFf6nifd8+t4WKJ6NUMg0m1v9lc6TwdsN2kLESKK77wqRvn+MFPtE4ZZFa+8h4OkI/52wviZ7/ZMkIEiO/Bk1sHvZbuq26sy0DUC7MRH9UkFxs0iez7xEToGtBWOuXUoby8SQMCM2Kca5R4aJqteYte/szoEL0kliV0cVNlci8Ccj3Kh6Zu4Nih0ZUIPmnkrub0XgSlXTtcilBk2tC6tjBDvBbsus51YB3pwcUV+uPwDFviiC7WFTV2IO3YHJ+Tazra1pJpO4gzlf0LWpj48V4NmdyPUKvDI8iofEOA==" />
+		<!-- bgcolor : #DF3151, #51B79F, #E29F30, #82BD3E, #318CC7 -->
+
+		<table width="100%" height="100%" border="0" cellpadding="0" cellspacing="0" id="RoundT">
+			<tbody>
+				<tr valign="top">
+					<td class="r1"></td>
+					<td class="rt">
+						<h1><img src="http://apply.jinhakapply.com/WebAppForms/Wonseo/LogImg/3005.gif" id="UnivLogo" /></h1>
+						<div class="competitiveR">
+							<span id="TextType">
+									<p class="headline"><strong><span id="TitleYear">2026학년도</span>&nbsp;<span id="TitleService">동명대학교 정시모집</span></strong>&nbsp;<span id="TitleText">경쟁률</span></p>
+							</span>
+							
+						</div>
+					</td>
+				</tr>
+				<tr height="100%" valign="top">
+					<td class="rl"></td>
+					<td class="cont">
+						
+						<div id="Top" class="notiBox">
+							<div class="notiBox_in">
+								<!-- 이미지 영역 -->
+								
+								<!-- //이미지 영역 -->
+								<ul id="TopType" class="ul3"><table width="100%">
+	<tbody>
+		<tr align="left">
+			<td>
+				※ 최종 경쟁률 현황입니다. <br>
+				※ 최종 경쟁률은 위반자 처리 등 결과에 따라 변경될 수 있습니다.
+			</td>
+			<td>
+				<div id="TopLink" class="notnBtn">
+					<a class="st1" href="https://apply.jinhakapply.com/Notice/3005061/A" target="_blank">원서접수 바로가기</a>
+					<a class="st1" href="https://consult.mncapro.co.kr/solution/tu/" target="_blank">합격예측(상담)</a>
+				</div>
+			</td>
+		</tr>
+	</tbody>
+</table>
+<div align="center">
+<img src="//imgorg.jinhakapply.com/ApplyBank/Report/img3005061.png" id="ImgPromotion" width="100%">
+</div></ul>
+								<div id="TopLink" class="notnBtn"></div>
+							</div>
+						</div>
+
+						<div id="RatioSort" class="RateState">
+							<p id="RatioTime" class="time">최종 마감 현황</p>
+							<!-- 경쟁률 현황 Select //-->
+							<div class="RateState_in">
+								<select name="selType" id="selType" class="SltBox" onchange="return selType_onChange();">
+	<option value="0">전형 전체</option>
+	<option value="115">가군 실기전형</option>
+	<option value="101">가군 일반전형</option>
+	<option value="104">가군 특성화고동일계</option>
+	<option value="202">나군 일반전형</option>
+	<option value="205">나군 특성화고동일계</option>
+	<option value="208">나군 농어촌학생</option>
+	<option value="212">나군 기회균형</option>
+	<option value="303">다군 일반전형</option>
+	<option value="313">다군 평생학습자전형</option>
+	<option value="320">다군 특성화고동일계</option>
+	<option value="321">다군 농어촌학생</option>
+	<option value="322">다군 기회균형</option>
+	<option value="310">다군 만학도</option>
+
+</select>
+							</div>
+							<!--// 군별 경쟁률 현황 Select -->
+						</div>
+
+						<!--// 엑셀 저장범위 -->
+						<div id="Ratio3005061">
+							<!-- 컨텐츠 -->
+							
+							<!--// 컨텐츠 -->
+
+							<!-- 컨텐츠 -->
+							<div>
+<a name='lik_top'></a>
+	<h2><strong>전형별</strong> 경쟁률 현황</h2>
+		<table width="100%" border="0" cellpadding="0" cellspacing="0" class="tableRatio2">
+		<colgroup>
+			<col width="15%" />
+			<col width="20%" />
+			<col width="20%" />
+			<col width="15%" />
+			<col width="15%" />
+			<col width="15%" />
+		</colgroup>
+		<tr>
+			<th>구분</th>
+			<th>전형유형</th>
+			<th>전형명</th>
+			<th>모집인원</th>
+			<th>지원인원</th>
+			<th>경쟁률</th>
+		</tr>
+		<tr style="text-align:center;">
+			<td class="unit" rowspan="5" style="text-align:center !important; padding-left: 0px;">정원 내<br /> <span style='color: red'> [수능 미응시자도 지원가능] </span></td>
+			<td class="unit" rowspan="1" style="text-align:center !important; padding-left: 0px;">실기위주</td>
+			<td style="text-align:left !important; padding-left: 8px;"><span style="font-weight: bold">가군 실기전형</span> [실기 100%]</td>
+			<td>17</td>
+			<td>26</td>
+			<td class="rate4">1.53 : 1</td>
+		</tr>			<td class="unit" rowspan="3" style="text-align:center !important; padding-left: 0px;">수능위주</td>
+			<td style="text-align:left !important; padding-left: 8px;"><span style="font-weight: bold">가군 일반전형</span> [수능 100%]</td>
+			<td>11</td>
+			<td>54</td>
+			<td class="rate2">4.91 : 1</td>
+		</tr>			<td style="text-align:left !important; padding-left: 8px;"><span style="font-weight: bold">나군 일반전형</span> [수능 100%]</td>
+			<td>25</td>
+			<td>120</td>
+			<td class="rate2">4.80 : 1</td>
+		</tr>			<td style="text-align:left !important; padding-left: 8px;"><span style="font-weight: bold">다군 일반전형</span> [수능 100%]</td>
+			<td>142</td>
+			<td>513</td>
+			<td class="rate2">3.61 : 1</td>
+		</tr>			<td class="unit" rowspan="1" style="text-align:center !important; padding-left: 0px;">학생부교과</td>
+			<td style="text-align:left !important; padding-left: 8px;"><span style="font-weight: bold">다군 평생학습자전형</span> [교과 100%]</td>
+			<td>48</td>
+			<td>53</td>
+			<td class="rate4">1.10 : 1</td>
+		</tr>		<tr class="total">
+			<td class="unit" colspan="3" style="text-align:center !important; padding-left: 0px;">정원 내 소계</td>
+			<td>243</td>
+			<td>766</td>
+			<td class="rate2">3.15 : 1</td>
+		</tr>		<tr style="text-align:center;">
+			<td class="unit" rowspan="8" style="text-align:center !important; padding-left: 0px;">정원 외<br /> <span style='color: red'> [수능 미응시자도 지원가능] </span></td>
+			<td class="unit" rowspan="8" style="text-align:center !important; padding-left: 0px;">학생부교과</td>
+			<td style="text-align:left !important; padding-left: 8px;"><span style="font-weight: bold">가군 특성화고동일계</span> [교과 100%]</td>
+			<td>1</td>
+			<td>0</td>
+			<td class="rate4">0.00 : 1</td>
+		</tr>			<td style="text-align:left !important; padding-left: 8px;"><span style="font-weight: bold">나군 특성화고동일계</span> [교과 100%]</td>
+			<td>1</td>
+			<td>0</td>
+			<td class="rate4">0.00 : 1</td>
+		</tr>			<td style="text-align:left !important; padding-left: 8px;"><span style="font-weight: bold">다군 특성화고동일계</span> [교과 100%]</td>
+			<td>7</td>
+			<td>7</td>
+			<td class="rate4">1.00 : 1</td>
+		</tr>			<td style="text-align:left !important; padding-left: 8px;"><span style="font-weight: bold">나군 농어촌학생</span> [교과 100%]</td>
+			<td>4</td>
+			<td>4</td>
+			<td class="rate4">1.00 : 1</td>
+		</tr>			<td style="text-align:left !important; padding-left: 8px;"><span style="font-weight: bold">다군 농어촌학생</span> [교과 100%]</td>
+			<td>14</td>
+			<td>17</td>
+			<td class="rate4">1.21 : 1</td>
+		</tr>			<td style="text-align:left !important; padding-left: 8px;"><span style="font-weight: bold">나군 기회균형</span> [교과 100%]</td>
+			<td>1</td>
+			<td>2</td>
+			<td class="rate4">2.00 : 1</td>
+		</tr>			<td style="text-align:left !important; padding-left: 8px;"><span style="font-weight: bold">다군 기회균형</span> [교과 100%]</td>
+			<td>6</td>
+			<td>13</td>
+			<td class="rate4">2.17 : 1</td>
+		</tr>			<td style="text-align:left !important; padding-left: 8px;"><span style="font-weight: bold">다군 만학도</span> [교과 100%]</td>
+			<td>32</td>
+			<td>15</td>
+			<td class="rate4">0.47 : 1</td>
+		</tr>	</table>
+	</div>
+
+							<!--// 컨텐츠 -->
+
+							<!-- 컨텐츠 -->
+								<div id="SelType115">
+	<h2><strong>가군 실기전형</strong> 경쟁률 현황</h2>
+	<table width="100%" border="0" cellpadding="0" cellspacing="0" class="tableRatio2">
+		<colgroup>
+			<col width="10%" />
+			<col width="10%" />
+			<col width="30%" />
+			<col width="6%" />
+			<col width="6%" />
+			<col width="6%" />
+			<col width="6%" />
+		</colgroup>
+		<tr>
+			<th>대학</th>
+			<th>모집단위(전공명)</th>
+			<th>슬로건(특별장학)</th>
+			<th>모집인원</th>
+			<th>지원인원</th>
+			<th>경쟁률</th>
+			<th>학과<br />홈페이지</th>
+		</tr>
+		<!-- 반복 //-->
+		<tr onmouseover="this.className='over';" onmouseout="this.className='';">
+			<td class="unit" rowspan="1">건축·디자인대학</td>
+			<td class="unit"><font color=black><b>시각디자인학과</b></font></td>
+			<td class="unit" rowspan="1">AI 시대의 비주얼 커뮤니케이션 디자인 리더, 창의적인 아트디렉터 양성<br/><span style="color:blue">&bull; TU인재육성특별장학 [최초 합격자 전원 100만원]</span></td>
+			<td rowspan="1" >12</td>
+			<td rowspan="1" >9</td>
+			<td class="rate4" rowspan = '1'>0.75 : 1</td>
+			<td><a href='https://vd.tu.ac.kr' target='_blank'>홈페이지</a></td>
+		</tr>
+		<tr onmouseover="this.className='over';" onmouseout="this.className='';">
+			<td class="unit" rowspan="1">미디어대학</td>
+			<td class="unit"><font color=black><b>웹툰애니메이션학부 </b></font></td>
+			<td class="unit" rowspan="1">K-웹툰과 K-애니 산업을 선도하고 글로벌 아티스트의 꿈을 이루는 학과! 웹툰 작가, 애니메이션 감독, 기업 실무자 교수진의 실무형 인재 양성 교육. 국내 최대 규모의 산학 협력 웹툰&애니메이션 교육 스튜디오 구축	<br/><span style="color:blue">&bull; TU인재육성특별장학 [최초 합격자 전원 100만원]</span></td>
+			<td rowspan="1">5</td>
+			<td rowspan="1">17</td>
+			<td class="rate2" rowspan = '1'>3.40 : 1</td>
+			<td><a href='https://toonani.tu.ac.kr' target='_blank'>홈페이지</a></td>
+		</tr>
+		<!-- 총계 //-->
+		<tr class="total">
+			<td colspan=3>총계</td>
+			<td>17</td>
+			<td>26</td>
+			<td class="rate4">1.53 : 1</td>
+			<td>&nbsp;</td>
+		</tr>
+		<!--// 총계 -->
+	</table>
+	</div>
+	<div id="SelType101">
+	<h2><strong>가군 일반전형</strong> 경쟁률 현황</h2>
+	<table width="100%" border="0" cellpadding="0" cellspacing="0" class="tableRatio2">
+		<colgroup>
+			<col width="10%" />
+			<col width="10%" />
+			<col width="30%" />
+			<col width="6%" />
+			<col width="6%" />
+			<col width="6%" />
+			<col width="6%" />
+		</colgroup>
+		<tr>
+			<th>대학</th>
+			<th>모집단위(전공명)</th>
+			<th>슬로건(특별장학)</th>
+			<th>모집인원</th>
+			<th>지원인원</th>
+			<th>경쟁률</th>
+			<th>학과<br />홈페이지</th>
+		</tr>
+		<!-- 반복 //-->
+		<tr onmouseover="this.className='over';" onmouseout="this.className='';">
+			<td class="unit" rowspan="1">건축·디자인대학</td>
+			<td class="unit"><font color=black><b>건축학과(4년,5년)</b></font>&nbsp; <font color=#FFFFFF><SPAN STYLE="background-color:#00B0F0;padding :1px 1px 1px 1px;">건축학인증</SPAN></font></td>
+			<td class="unit" rowspan="1">BIM특성화+해외건축대학 협력=글로벌 건축가의 양성<br/><span style="color:blue">&bull; TU인재육성특별장학 [최초 합격자 전원 100만원]</span></td>
+			<td rowspan="1" >6</td>
+			<td rowspan="1" >35</td>
+			<td class="rate1" rowspan = '1'>5.83 : 1</td>
+			<td><a href='https://archi.tu.ac.kr' target='_blank'>홈페이지</a></td>
+		</tr>
+		<tr onmouseover="this.className='over';" onmouseout="this.className='';">
+			<td class="unit" rowspan="2">창의인재대학</td>
+			<td class="unit"><font color=black><b>엔터테인먼트예술학과</b></font>&nbsp;</td>
+			<td class="unit" rowspan="1">첨단 엔터테인먼트와 예술 창작이 결합된 국내 유일, 최초, 최고의 학과!<br>K-Pop 뮤직 프로덕션(음악), 유튜브 크리에이터(영상) 디지털공연예술(공연), 방송 연예/ AI(방송) 전공으로 전세계가 주목하는 첨단 K-Culture 프로듀서가 되어보세요<br/><span style="color:blue">&bull; TU인재육성특별장학 [최초 합격자 전원 100만원]</span></td>
+			<td rowspan="1">2</td>
+			<td rowspan="1">9</td>
+			<td class="rate2" rowspan = '1'>4.50 : 1</td>
+			<td><a href='https://codi.tu.ac.kr' target='_blank'>홈페이지</a></td>
+		</tr>
+		<tr onmouseover="this.className='over';" onmouseout="this.className='';">
+			<td class="unit"><font color=black><b>축구·스포츠산업학과</b></font>&nbsp;</td>
+			<td class="unit" rowspan="1">축구와 스포츠산업의 미래를 이끌어갈 창의적이고 열정적인 인재를 양성하는 학과!<br>축구선수 및 지도자, 스포츠에이전트, 스포츠마케터, 스포츠과학 전문가 등 전략적 사고와 글로벌 시각으로 스포츠 산업의 변화를 선도할 기회를 제공합니다.<br/><span style="color:blue">&bull; TU인재육성특별장학 [최초 합격자 전원 100만원]</span></td>
+			<td rowspan="1">3</td>
+			<td rowspan="1">10</td>
+			<td class="rate2" rowspan = '1'>3.33 : 1</td>
+			<td><a href='https://soccer.tu.ac.kr' target='_blank'>홈페이지</a></td>
+		</tr>
+		<!-- 총계 //-->
+		<tr class="total">
+			<td colspan=3>총계</td>
+			<td>11</td>
+			<td>54</td>
+			<td class="rate2">4.91 : 1</td>
+			<td>&nbsp;</td>
+		</tr>
+		<!--// 총계 -->
+	</table>
+	</div>
+	<div id="SelType202">
+	<h2><strong>나군 일반전형</strong> 경쟁률 현황</h2>
+	<table width="100%" border="0" cellpadding="0" cellspacing="0" class="tableRatio2">
+		<colgroup>
+			<col width="10%" />
+			<col width="10%" />
+			<col width="30%" />
+			<col width="6%" />
+			<col width="6%" />
+			<col width="6%" />
+			<col width="6%" />
+		</colgroup>
+		<tr>
+			<th>대학</th>
+			<th>모집단위(전공명)</th>
+			<th>슬로건(특별장학)</th>
+			<th>모집인원</th>
+			<th>지원인원</th>
+			<th>경쟁률</th>
+			<th>학과<br />홈페이지</th>
+		</tr>
+		<!-- 반복 //-->
+		<tr onmouseover="this.className='over';" onmouseout="this.className='';">
+			<td class="unit" rowspan="2">보건복지교육대학</td>
+			<td class="unit"><font color=black><b>언어치료청각재활학과</b></font>&nbsp;</td>
+			<td class="unit" rowspan="1">AI가 대체할 수 없는 직업!<br>언어재활사 국가자격증과 청능사 자격 동시 취득!<br>임상커리어가 탁월한 전임교수 6인의 밀착지도로 국시 100% 합격!<br/><span style="color:blue">&bull; TU인재육성특별장학 [최초 합격자 전원 100만원]</span></td>
+			<td rowspan="1" >3</td>
+			<td rowspan="1" >13</td>
+			<td class="rate2" rowspan = '1'>4.33 : 1</td>
+			<td><a href='https://speech.tu.ac.kr' target='_blank'>홈페이지</a></td>
+		</tr>
+		<tr onmouseover="this.className='over';" onmouseout="this.className='';">
+			<td class="unit"><font color=black><b>유아교육과</b></font>&nbsp; <font color=#FFFFFF><SPAN STYLE="background-color:#008000;padding :1px 1px 1px 1px;">사범</SPAN></font></td>
+			<td class="unit" rowspan="1">부산지역 4년제 유아교육과 취업률 1위, 창의 인성을 갖춘 유아교사 양성<br/><span style="color:blue">&bull; TU인재육성특별장학 [최초 합격자 전원 100만원]</span></td>
+			<td rowspan="1">1</td>
+			<td rowspan="1">5</td>
+			<td class="rate2" rowspan = '1'>5.00 : 1</td>
+			<td><a href='https://kids.tu.ac.kr' target='_blank'>홈페이지</a></td>
+		</tr>
+		<tr onmouseover="this.className='over';" onmouseout="this.className='';">
+			<td class="unit" rowspan="1">뷰티예술대학</td>
+			<td class="unit"><font color=black><b>패션디자인학과</b></font>&nbsp;</td>
+			<td class="unit" rowspan="1">패션으로 만드는 나의 스타일! 나의 꿈! 개성을 디자인하고 새로운 트렌드를 창조하는 패션디자인학과<br/><span style="color:blue">&bull; TU인재육성특별장학 [최초 합격자 전원 100만원]</span></td>
+			<td rowspan="1">4</td>
+			<td rowspan="1">20</td>
+			<td class="rate2" rowspan = '1'>5.00 : 1</td>
+			<td><a href='https://fad.tu.ac.kr' target='_blank'>홈페이지</a></td>
+		</tr>
+		<tr onmouseover="this.className='over';" onmouseout="this.className='';">
+			<td class="unit" rowspan="3">미디어대학</td>
+			<td class="unit"><font color=black><b>미디어커뮤니케이션학과</b></font>&nbsp;</td>
+			<td class="unit" rowspan="1">창의성과 실무능력을 겸비한 영상콘텐츠(방송, 스마트 미디어, 1인 미디어 등) 기획 및 제작 전문가 양성	<br/><span style="color:blue">&bull; TU인재육성특별장학 [최초 합격자 전원 100만원]</span></td>
+			<td rowspan="1">1</td>
+			<td rowspan="1">13</td>
+			<td class="rate1" rowspan = '1'>13.00 : 1</td>
+			<td><a href='https://masscom.tu.ac.kr' target='_blank'>홈페이지</a></td>
+		</tr>
+		<tr onmouseover="this.className='over';" onmouseout="this.className='';">
+			<td class="unit"><font color=black><b>광고홍보학과</b></font>&nbsp;</td>
+			<td class="unit" rowspan="1">한국과 세계를 무대로 활약하는 광고PR 전문가, 유튜브 크리에이터, 빅데이터와 AI 광고 전문가, 하이테크 광고 제작자, SNS 크리에이터가 되세요!<br/><span style="color:blue">&bull; TU인재육성특별장학 [최초 합격자 전원 100만원]</span></td>
+			<td rowspan="1">6</td>
+			<td rowspan="1">27</td>
+			<td class="rate2" rowspan = '1'>4.50 : 1</td>
+			<td><a href='https://adpr.tu.ac.kr' target='_blank'>홈페이지</a></td>
+		</tr>
+		<tr onmouseover="this.className='over';" onmouseout="this.className='';">
+			<td class="unit"><font color=black><b>글로벌문화콘텐츠학과</b></font>&nbsp;</td>
+			<td class="unit" rowspan="1">디지털 네이티브 시대, 융복합 스토리텔링으로 문화콘텐츠 산업의 리더가 되다! 영상, 방송, 공연, 예술 관련 산업에서 창의적 서사를 창출하는 영상 기획, 제작 프로듀서를 양성한다.<br/><span style="color:blue">&bull; TU인재육성특별장학 [최초 합격자 전원 100만원]</span></td>
+			<td rowspan="1">10</td>
+			<td rowspan="1">42</td>
+			<td class="rate2" rowspan = '1'>4.20 : 1</td>
+			<td><a href='https://gcc.tu.ac.kr' target='_blank'>홈페이지</a></td>
+		</tr>
+		<!-- 총계 //-->
+		<tr class="total">
+			<td colspan=3>총계</td>
+			<td>25</td>
+			<td>120</td>
+			<td class="rate2">4.80 : 1</td>
+			<td>&nbsp;</td>
+		</tr>
+		<!--// 총계 -->
+	</table>
+	</div>
+	<div id="SelType303">
+	<h2><strong>다군 일반전형</strong> 경쟁률 현황</h2>
+	<table width="100%" border="0" cellpadding="0" cellspacing="0" class="tableRatio2">
+		<colgroup>
+			<col width="10%" />
+			<col width="10%" />
+			<col width="30%" />
+			<col width="6%" />
+			<col width="6%" />
+			<col width="6%" />
+			<col width="6%" />
+		</colgroup>
+		<tr>
+			<th>대학</th>
+			<th>모집단위(전공명)</th>
+			<th>슬로건(특별장학)</th>
+			<th>모집인원</th>
+			<th>지원인원</th>
+			<th>경쟁률</th>
+			<th>학과<br />홈페이지</th>
+		</tr>
+		<!-- 반복 //-->
+		<tr onmouseover="this.className='over';" onmouseout="this.className='';">
+			<td class="unit" rowspan="6">보건복지교육대학</td>
+			<td class="unit"><font color=black><b>간호학과</b></font>&nbsp; <font color=#FFFFFF><SPAN STYLE="background-color:#9D5CBB;padding :1px 1px 1px 1px;">간호교육인증</SPAN></font></td>
+			<td class="unit" rowspan="1">well Life 기반 미래 간호 인재 양성 - 수요자 중심의 임상실무능력을 갖춘 우수 인재 양성! 국내 유수 병원 취업!<br/><span style="color:blue">&bull; TU인재육성특별장학 [최초 합격자 전원 100만원]</span></td>
+			<td rowspan="1" >4</td>
+			<td rowspan="1" >37</td>
+			<td class="rate1" rowspan = '1'>9.25 : 1</td>
+			<td><a href='https://nursing.tu.ac.kr' target='_blank'>홈페이지</a></td>
+		</tr>
+		<tr onmouseover="this.className='over';" onmouseout="this.className='';">
+			<td class="unit"><font color=black><b>작업치료학과</b></font>&nbsp;</td>
+			<td class="unit" rowspan="1">전국 최정상 작업치료 리딩 교육! 보건의료분야 재활의 핵심!<br>Well-Life를 선도하는 전문 작업치료사 양성<br/><span style="color:blue">&bull; TU인재육성특별장학 [최초 합격자 전원 100만원]</span></td>
+			<td rowspan="1">5</td>
+			<td rowspan="1">19</td>
+			<td class="rate2" rowspan = '1'>3.80 : 1</td>
+			<td><a href='https://ot.tu.ac.kr' target='_blank'>홈페이지</a></td>
+		</tr>
+		<tr onmouseover="this.className='over';" onmouseout="this.className='';">
+			<td class="unit"><font color=black><b>응급구조학과</b></font>&nbsp;</td>
+			<td class="unit" rowspan="1">신속한 구조와 정확한 응급처치는 우리가 한다. 임상과 실무 중심의 1급 응급구조사 양성<br/><span style="color:blue">&bull; TU인재육성특별장학 [최초 합격자 전원 100만원]</span></td>
+			<td rowspan="1">2</td>
+			<td rowspan="1">13</td>
+			<td class="rate1" rowspan = '1'>6.50 : 1</td>
+			<td><a href='https://emergency.tu.ac.kr' target='_blank'>홈페이지</a></td>
+		</tr>
+		<tr onmouseover="this.className='over';" onmouseout="this.className='';">
+			<td class="unit"><font color=black><b>스포츠재활학과</b></font></td>
+			<td class="unit" rowspan="1">&bull; 선수 재활 전문가로 도약 - 경기 복귀의 숨은 조력자가 되십시오.<br>&bull; 건강운동관리사·생활스포츠지도사·노인운동사 - 영역별 새로운 표준을 제시하는 전문가로<br/><span style="color:blue">&bull; TU인재육성특별장학 [최초 합격자 전원 100만원]</span></td>
+			<td rowspan="1">3</td>
+			<td rowspan="1">19</td>
+			<td class="rate1" rowspan = '1'>6.33 : 1</td>
+			<td><a href='https://sm.tu.ac.kr' target='_blank'>홈페이지</a></td>
+		</tr>
+		<tr onmouseover="this.className='over';" onmouseout="this.className='';">
+			<td class="unit"><font color=black><b>상담·임상심리학과</b></font>&nbsp;</td>
+			<td class="unit" rowspan="1">국내 최초 상담심리와 임상심리를 함께 배우는 곳, 학·석사연계 과정을 통해 한발 빠른 전문가 획득<br/><span style="color:blue">&bull; TU인재육성특별장학 [최초 합격자 전원 100만원]</span></td>
+			<td rowspan="1">3</td>
+			<td rowspan="1">14</td>
+			<td class="rate2" rowspan = '1'>4.67 : 1</td>
+			<td><a href='https://cp.tu.ac.kr' target='_blank'>홈페이지</a></td>
+		</tr>
+		<tr onmouseover="this.className='over';" onmouseout="this.className='';">
+			<td class="unit"><font color=black><b>사회복지학과</b></font>&nbsp;</td>
+			<td class="unit" rowspan="1">사회복지사와 청소년지도사 자격증을 한번에 취득. 복지국가 시대를 선도하는 창의적 실용복지 인재 양성<br/><span style="color:blue">&bull; TU인재육성특별장학 [최초 합격자 전원 100만원]</span></td>
+			<td rowspan="1">2</td>
+			<td rowspan="1">27</td>
+			<td class="rate1" rowspan = '1'>13.50 : 1</td>
+			<td><a href='https://sw.tu.ac.kr' target='_blank'>홈페이지</a></td>
+		</tr>
+		<tr onmouseover="this.className='over';" onmouseout="this.className='';">
+			<td class="unit" rowspan="3">반려동물대학</td>
+			<td class="unit"><font color=black><b>반려동물보건학과</b></font>&nbsp;</td>
+			<td class="unit" rowspan="1">경상국립대학교 수의과대학 동물병원과 함께하는 최고의 교육환경과 교수진으로 동물보건사, 동물병원 코디네이터, 동물보건재활 전문가 및 실험동물연구원 등 반려동물 특성화 전문인재 양성 학과<br/><span style="color:blue">&bull; TU인재육성특별장학 [최초 합격자 전원 100만원]</span></td>
+			<td rowspan="1">2</td>
+			<td rowspan="1">11</td>
+			<td class="rate1" rowspan = '1'>5.50 : 1</td>
+			<td><a href='https://animal-health.tu.ac.kr' target='_blank'>홈페이지</a></td>
+		</tr>
+		<tr onmouseover="this.className='over';" onmouseout="this.className='';">
+			<td class="unit"><font color=black><b>애견미용·행동교정학과</b></font>&nbsp;</td>
+			<td class="unit" rowspan="1">선진국의 긍정강화교육을 기반으로한 반려동물미용, 행동교육, 훈련, 반려동물산업 전문가 양성학과<br/><span style="color:blue">&bull; TU인재육성특별장학 [최초 합격자 전원 100만원]</span></td>
+			<td rowspan="1">1</td>
+			<td rowspan="1">6</td>
+			<td class="rate1" rowspan = '1'>6.00 : 1</td>
+			<td><a href='https://petbeauty.tu.ac.kr' target='_blank'>홈페이지</a></td>
+		</tr>
+		<tr onmouseover="this.className='over';" onmouseout="this.className='';">
+			<td class="unit"><font color=black><b>반려동물산업학부 </b></font>&nbsp;</td>
+			<td class="unit" rowspan="1">- 펫푸드전공: "건강하고 행복한 반려동물 삶을 설계하는 펫푸드 전문가 양성"<br>- 반려동물산업디자인 전공:  반려동물산업 최초·최고! 전문디자인 전문가, 창업·취업까지 완벽<br/><span style="color:blue">&bull; TU인재육성특별장학 [최초 합격자 전원 100만원]</span></td>
+			<td rowspan="1">3</td>
+			<td rowspan="1">8</td>
+			<td class="rate4" rowspan = '1'>2.67 : 1</td>
+			<td><a href='https://pet-indu.tu.ac.kr' target='_blank'>홈페이지</a></td>
+		</tr>
+		<tr onmouseover="this.className='over';" onmouseout="this.className='';">
+			<td class="unit" rowspan="3">뷰티예술대학</td>
+			<td class="unit"><font color=black><b>뷰티케어학과</b></font>&nbsp; <font color=#FFFFFF><SPAN STYLE="background-color:#800080;padding :1px 1px 1px 1px;">교직</SPAN></font></td>
+			<td class="unit" rowspan="1">뷰티 최고의 산학실용 명문학과로 학문적 이론과 창의적 실무능력을 겸비한 교육전문가, 실무전문가, 글로벌 리더 인재양성, 미용교직이수학과<br/><span style="color:blue">&bull; TU인재육성특별장학 [최초 합격자 전원 100만원]</span></td>
+			<td rowspan="3">1</td>
+			<td rowspan="3">4</td>
+			<td class="rate2" rowspan = '3'>4.00 : 1</td>
+			<td><a href='https://bd.tu.ac.kr' target='_blank'>홈페이지</a></td>
+		</tr>
+		<tr onmouseover="this.className='over';" onmouseout="this.className='';">
+			<td class="unit"><font color=black><b>헤어디자인학과</b></font>&nbsp;</td>
+			<td class="unit" rowspan="1">4년제 최초 런던 사순아카데미 스쿨쉽 체결<br>졸업이 곧 취업인 헤어, 두피 전문가 양성 및 미용인을 가르치는 미용교육 전문가 양성학과<br/><span style="color:blue">&bull; TU인재육성특별장학 [최초 합격자 전원 100만원]</span></td>
+			<td><a href='https://hairdesign.tu.ac.kr' target='_blank'>홈페이지</a></td>
+		</tr>
+		<tr onmouseover="this.className='over';" onmouseout="this.className='';">
+			<td class="unit"><font color=black><b>메이크업디자인학과</b></font>&nbsp;</td>
+			<td class="unit" rowspan="1">사람을 아름답게, 세상을 아름답게.<br>학문적 지식 및 현장실무 경영 능력을 갖춘 뷰티실무 전문가, 미용교육 전문가<br/><span style="color:blue">&bull; TU인재육성특별장학 [최초 합격자 전원 100만원]</span></td>
+			<td><a href='https://makeup.tu.ac.kr' target='_blank'>홈페이지</a></td>
+		</tr>
+		<tr onmouseover="this.className='over';" onmouseout="this.className='';">
+			<td class="unit" rowspan="8">ICT융합대학</td>
+			<td class="unit"><font color=black><b>게임공학과</b></font>&nbsp;</td>
+			<td class="unit" rowspan="1">놀이의 미래를 만든다 - Crafting the Future of Play<br/><span style="color:blue">&bull; TU인재육성특별장학 [최초 합격자 전원 100만원]</span></td>
+			<td rowspan="8">69</td>
+			<td rowspan="8">190</td>
+			<td class="rate4" rowspan = '8'>2.75 : 1</td>
+			<td><a href='http://game.tu.ac.kr' target='_blank'>홈페이지</a></td>
+		</tr>
+		<tr onmouseover="this.className='over';" onmouseout="this.className='';">
+			<td class="unit"><font color=black><b>게임그래픽학과</b></font>&nbsp;</td>
+			<td class="unit" rowspan="1">상상을 넘어 꿈의 세계를 디자인하는 게임그래픽학과<br/><span style="color:blue">&bull; TU인재육성특별장학 [최초 합격자 전원 100만원]</span></td>
+			<td><a href='https://gart.tu.ac.kr' target='_blank'>홈페이지</a></td>
+		</tr>
+		<tr onmouseover="this.className='over';" onmouseout="this.className='';">
+			<td class="unit"><font color=black><b>컴퓨터공학과</b></font>&nbsp;</td>
+			<td class="unit" rowspan="1">미래를 설계하는 힘 당신의 잠재력을 현실로! "컴퓨터공학과에서 미래를 코딩하세요!"<br/><span style="color:blue">&bull; TU인재육성특별장학 [최초 합격자 전원 100만원]</span></td>
+			<td><a href='https://ce.tu.ac.kr' target='_blank'>홈페이지</a></td>
+		</tr>
+		<tr onmouseover="this.className='over';" onmouseout="this.className='';">
+			<td class="unit"><font color=black><b>인공지능응용학과</b></font>&nbsp;</td>
+			<td class="unit" rowspan="1">4차산업혁명과 인공지능 시대를 선도하는 실무형 인공지능응용 전문가양성<br/><span style="color:blue">&bull; TU인재육성특별장학 [최초 합격자 전원 100만원]</span></td>
+			<td><a href='https://ai.tu.ac.kr' target='_blank'>홈페이지</a></td>
+		</tr>
+		<tr onmouseover="this.className='over';" onmouseout="this.className='';">
+			<td class="unit"><font color=black><b>냉동공조공학과</b></font>&nbsp;</td>
+			<td class="unit" rowspan="1">인간의 쾌적한 삶(생활가전 및 건축물 냉난방), 첨단산업환경(AI데이터센터냉각, 2차전지, 반도체 클린룸 및 공정냉각, 에너지저장장치 냉각 등), 식품/물류저온유통/수송, 지속 가능한 에너지 환경관리분야 전문가 양성<br>냉동공조공학과 취업연계 별도 장학금 선발 지급(매년 약간명, 최대 4,000만원)<br/><span style="color:blue">&bull; TU인재육성특별장학 [최초 합격자 전원 100만원]</span></td>
+			<td><a href='https://et.tu.ac.kr' target='_blank'>홈페이지</a></td>
+		</tr>
+		<tr onmouseover="this.className='over';" onmouseout="this.className='';">
+			<td class="unit"><font color=black><b>미래자동차학과</b></font>&nbsp;</td>
+			<td class="unit" rowspan="1">'탈 것' 그 이상의 가치,  20년간의 교육 노하우로 친환경자동차 전문기술인 양성<br>공공기관(한국교통안전공단, 군무원, 산업인력관리공단 등) 취업 명문학과에서 미래를 설계하세요.<br/><span style="color:blue">&bull; TU인재육성특별장학 [최초 합격자 전원 100만원]</span></td>
+			<td><a href='https://automobile.tu.ac.kr' target='_blank'>홈페이지</a></td>
+		</tr>
+		<tr onmouseover="this.className='over';" onmouseout="this.className='';">
+			<td class="unit"><font color=black><b>전기제어학부 </b></font>&nbsp;</td>
+			<td class="unit" rowspan="1">'전'진하는 미래!<br>'기'회를 잡아라<br>'제'대로 배우면<br>'어'디서든 빛나는 동명대 전기제어인!<br/><span style="color:blue">&bull; TU인재육성특별장학 [최초 합격자 전원 100만원]</span></td>
+			<td><a href='https://elecon.tu.ac.kr' target='_blank'>홈페이지</a></td>
+		</tr>
+		<tr onmouseover="this.className='over';" onmouseout="this.className='';">
+			<td class="unit"><font color=black><b>항만물류시스템학과</b></font>&nbsp;</td>
+			<td class="unit" rowspan="1">해양수산부, 6개 산하기관 부산 이전 확정<br>취업에 강한 전국 최초, 최고의 항만물류전문가 양성<br/><span style="color:blue">&bull; TU인재육성특별장학 [최초 합격자 전원 100만원]</span></td>
+			<td><a href='https://pl.tu.ac.kr' target='_blank'>홈페이지</a></td>
+		</tr>
+		<tr onmouseover="this.className='over';" onmouseout="this.className='';">
+			<td class="unit" rowspan="2">건축·디자인대학</td>
+			<td class="unit"><font color=black><b>건축공학과</b></font>&nbsp;</td>
+			<td class="unit" rowspan="1">건축전문지식과 IT활용능력을 갖춘 미래 건축전문가 양성<br/><span style="color:blue">&bull; TU인재육성특별장학 [최초 합격자 전원 100만원]</span></td>
+			<td rowspan="1">13</td>
+			<td rowspan="1">34</td>
+			<td class="rate4" rowspan = '1'>2.62 : 1</td>
+			<td><a href='https://earchi.tu.ac.kr' target='_blank'>홈페이지</a></td>
+		</tr>
+		<tr onmouseover="this.className='over';" onmouseout="this.className='';">
+			<td class="unit"><font color=black><b>실내건축학과</b></font>&nbsp;</td>
+			<td class="unit" rowspan="1">취업률, 자격증, 공모전, 장학금 부문에서 최고 수준의 공간디자인 분야 실용 실무 중심 학과!<br>실내건축학과에서 여러분들의 꿈을 펼칠 수 있도록 늘 함께 하겠습니다!<br/><span style="color:blue">&bull; TU인재육성특별장학 [최초 합격자 전원 100만원]</span></td>
+			<td rowspan="1">1</td>
+			<td rowspan="1">6</td>
+			<td class="rate1" rowspan = '1'>6.00 : 1</td>
+			<td><a href='https://interior.tu.ac.kr' target='_blank'>홈페이지</a></td>
+		</tr>
+		<tr onmouseover="this.className='over';" onmouseout="this.className='';">
+			<td class="unit" rowspan="4">경영대학</td>
+			<td class="unit"><font color=black><b>경영학과</b></font>&nbsp;</td>
+			<td class="unit" rowspan="1">Biz Dreamer을 양성하는 tu-경영학과에서 여러분 삶의 나침반을 찾으십시오(Business Literacy Program, Global Business Tour Program 지원)	<br/><span style="color:blue">&bull; TU인재육성특별장학 [최초 합격자 전원 100만원]</span></td>
+			<td rowspan="4">33</td>
+			<td rowspan="4">125</td>
+			<td class="rate2" rowspan = '4'>3.79 : 1</td>
+			<td><a href='https://biz.tu.ac.kr' target='_blank'>홈페이지</a></td>
+		</tr>
+		<tr onmouseover="this.className='over';" onmouseout="this.className='';">
+			<td class="unit"><font color=black><b>국제통상물류학과</b></font>&nbsp;</td>
+			<td class="unit" rowspan="1">무역, 물류, 금융 융합지식을 갖춘 글로벌 인재를 양성하는 지역혁신 RIS 학과<br>(부산공유대학 프로그램 이수 시 최대 1200만원 장학금 지급)<br/><span style="color:blue">&bull; TU인재육성특별장학 [최초 합격자 전원 100만원]</span></td>
+			<td><a href='https://gb.tu.ac.kr' target='_blank'>홈페이지</a></td>
+		</tr>
+		<tr onmouseover="this.className='over';" onmouseout="this.className='';">
+			<td class="unit"><font color=black><b>호텔조리베이커리학과</b></font>&nbsp;</td>
+			<td class="unit" rowspan="1">K-푸드시대! 글로벌한 전문요리사와 실무형 호텔리어가 되고 싶은 사람들을 양성하는 학과<br>(K푸드와 호텔리어 및 베이커 체험답사 및 해외전공체험 프로그램 지원)<br/><span style="color:blue">&bull; TU인재육성특별장학 [최초 합격자 전원 100만원]</span></td>
+			<td><a href='https://ht.tu.ac.kr' target='_blank'>홈페이지</a></td>
+		</tr>
+		<tr onmouseover="this.className='over';" onmouseout="this.className='';">
+			<td class="unit"><font color=black><b>글로벌관광학과</b></font>&nbsp;</td>
+			<td class="unit" rowspan="1">관광산업의 미래를 이끌어 갈 호텔리어, 카지노, 승무원, 관광개발 등 호텔·관광전문인력 양성학과!<br/><span style="color:blue">&bull; TU인재육성특별장학 [최초 합격자 전원 100만원]</span></td>
+			<td><a href='https://g-tourism.tu.ac.kr' target='_blank'>홈페이지</a></td>
+		</tr>
+		<!-- 총계 //-->
+		<tr class="total">
+			<td colspan=3>총계</td>
+			<td>142</td>
+			<td>513</td>
+			<td class="rate2">3.61 : 1</td>
+			<td>&nbsp;</td>
+		</tr>
+		<!--// 총계 -->
+	</table>
+	</div>
+	<div id="SelType313">
+	<h2><strong>다군 평생학습자전형</strong> 경쟁률 현황</h2>
+	<table width="100%" border="0" cellpadding="0" cellspacing="0" class="tableRatio2">
+		<colgroup>
+			<col width="10%" />
+			<col width="10%" />
+			<col width="30%" />
+			<col width="6%" />
+			<col width="6%" />
+			<col width="6%" />
+			<col width="6%" />
+		</colgroup>
+		<tr>
+			<th>대학</th>
+			<th>모집단위(전공명)</th>
+			<th>슬로건(특별장학)</th>
+			<th>모집인원</th>
+			<th>지원인원</th>
+			<th>경쟁률</th>
+			<th>학과<br />홈페이지</th>
+		</tr>
+		<!-- 반복 //-->
+		<tr onmouseover="this.className='over';" onmouseout="this.className='';">
+			<td class="unit" rowspan="5">미래융합대학</td>
+			<td class="unit"><font color=black><b>복지경영학과</b></font>&nbsp;</td>
+			<td class="unit" rowspan="1">성인학습의 메카! 성공으로 가는 인생 이모작!!! 지역사회 생애복지실현과 우수한 경영능력을 갖춘 복지창업경영 전문가 및 복지경영 인재 양성의 요람	<br/><span style="color:blue">&bull; 평생학습자장학 [4년간 매학기 9학점 면제]</span></td>
+			<td rowspan="1" >3</td>
+			<td rowspan="1" >4</td>
+			<td class="rate4" rowspan = '1'>1.33 : 1</td>
+			<td><a href='https://tw-m.tu.ac.kr' target='_blank'>홈페이지</a></td>
+		</tr>
+		<tr onmouseover="this.className='over';" onmouseout="this.className='';">
+			<td class="unit"><font color=black><b>선명상치유학과</b></font>&nbsp;</td>
+			<td class="unit" rowspan="1">심신의 고통을 유발하는 문제점을 파악하고 치유하여, 건강한 전체성의 삶으로 나아가는 교육을 진행. 동양의 선(禪)명상을 기초로 현대의 각종 명상과 치유 기법을 겸비한 심신치유전문가 양성	<br/><span style="color:blue">&bull; 평생학습자장학 [4년간 매학기 9학점 면제]</span></td>
+			<td rowspan="1">19</td>
+			<td rowspan="1">17</td>
+			<td class="rate4" rowspan = '1'>0.89 : 1</td>
+			<td><a href='https://healing.tu.ac.kr' target='_blank'>홈페이지</a></td>
+		</tr>
+		<tr onmouseover="this.className='over';" onmouseout="this.className='';">
+			<td class="unit"><font color=black><b>동양문화학과</b></font>&nbsp;</td>
+			<td class="unit" rowspan="1">풍수와 명리, 동양사상 등 동양문화와 관련된 제반 전문지식, 인성 태도, 기술을 개발하고 응용할 수 있는 동양문화 전문가 양성	<br/><span style="color:blue">&bull; 평생학습자장학 [4년간 매학기 9학점 면제]</span></td>
+			<td rowspan="1">12</td>
+			<td rowspan="1">12</td>
+			<td class="rate4" rowspan = '1'>1.00 : 1</td>
+			<td><a href='https://or-c.tu.ac.kr' target='_blank'>홈페이지</a></td>
+		</tr>
+		<tr onmouseover="this.className='over';" onmouseout="this.className='';">
+			<td class="unit"><font color=black><b>뷰티산업학과</b></font>&nbsp;</td>
+			<td class="unit" rowspan="1">뷰티산업을 주도할 전문적인 지식을 바탕으로 창의적인 시각과 미적 감각을 갖춘 미래융합형<br>뷰티화장품 전문 인재 육성<br/><span style="color:blue">&bull; 평생학습자장학 [4년간 매학기 9학점 면제]</span></td>
+			<td rowspan="1">5</td>
+			<td rowspan="1">10</td>
+			<td class="rate4" rowspan = '1'>2.00 : 1</td>
+			<td><a href='https://beautyin.tu.ac.kr' target='_blank'>홈페이지</a></td>
+		</tr>
+		<tr onmouseover="this.className='over';" onmouseout="this.className='';">
+			<td class="unit"><font color=black><b>한국어교육다문화학과</b></font>&nbsp;</td>
+			<td class="unit" rowspan="1">미래 사회를 이끌어 갈 글로컬 융·복합 전문가(한국어교원, 청소년지도사, 다문화사회전문가) 양성	<br/><span style="color:blue">&bull; 평생학습자장학 [4년간 매학기 9학점 면제]</span></td>
+			<td rowspan="1">9</td>
+			<td rowspan="1">10</td>
+			<td class="rate4" rowspan = '1'>1.11 : 1</td>
+			<td><a href='https://cyc.tu.ac.kr' target='_blank'>홈페이지</a></td>
+		</tr>
+		<!-- 총계 //-->
+		<tr class="total">
+			<td colspan=3>총계</td>
+			<td>48</td>
+			<td>53</td>
+			<td class="rate4">1.10 : 1</td>
+			<td>&nbsp;</td>
+		</tr>
+		<!--// 총계 -->
+	</table>
+	</div>
+	<div id="SelType104">
+	<h2><strong>가군 특성화고동일계</strong> 경쟁률 현황</h2>
+	<table width="100%" border="0" cellpadding="0" cellspacing="0" class="tableRatio2">
+		<colgroup>
+			<col width="10%" />
+			<col width="10%" />
+			<col width="30%" />
+			<col width="6%" />
+			<col width="6%" />
+			<col width="6%" />
+			<col width="6%" />
+		</colgroup>
+		<tr>
+			<th>대학</th>
+			<th>모집단위(전공명)</th>
+			<th>슬로건(특별장학)</th>
+			<th>모집인원</th>
+			<th>지원인원</th>
+			<th>경쟁률</th>
+			<th>학과<br />홈페이지</th>
+		</tr>
+		<!-- 반복 //-->
+		<tr onmouseover="this.className='over';" onmouseout="this.className='';">
+			<td class="unit" rowspan="1">건축·디자인대학</td>
+			<td class="unit"><font color=black><b>건축학과(4년,5년)</b></font>&nbsp; <font color=#FFFFFF><SPAN STYLE="background-color:#00B0F0;padding :1px 1px 1px 1px;">건축학인증</SPAN></font></td>
+			<td class="unit" rowspan="1">BIM특성화+해외건축대학 협력=글로벌 건축가의 양성<br/><span style="color:blue">&bull; 특성화고동일계전형장학 [당해학기 수업료 100%]</span></td>
+			<td rowspan="1" >1</td>
+			<td rowspan="1" >0</td>
+			<td class="rate4" rowspan = '1'>0.00 : 1</td>
+			<td><a href='https://archi.tu.ac.kr' target='_blank'>홈페이지</a></td>
+		</tr>
+		<!-- 총계 //-->
+		<tr class="total">
+			<td colspan=3>총계</td>
+			<td>1</td>
+			<td>0</td>
+			<td class="rate4">0.00 : 1</td>
+			<td>&nbsp;</td>
+		</tr>
+		<!--// 총계 -->
+	</table>
+	</div>
+	<div id="SelType205">
+	<h2><strong>나군 특성화고동일계</strong> 경쟁률 현황</h2>
+	<table width="100%" border="0" cellpadding="0" cellspacing="0" class="tableRatio2">
+		<colgroup>
+			<col width="10%" />
+			<col width="10%" />
+			<col width="30%" />
+			<col width="6%" />
+			<col width="6%" />
+			<col width="6%" />
+			<col width="6%" />
+		</colgroup>
+		<tr>
+			<th>대학</th>
+			<th>모집단위(전공명)</th>
+			<th>슬로건(특별장학)</th>
+			<th>모집인원</th>
+			<th>지원인원</th>
+			<th>경쟁률</th>
+			<th>학과<br />홈페이지</th>
+		</tr>
+		<!-- 반복 //-->
+		<tr onmouseover="this.className='over';" onmouseout="this.className='';">
+			<td class="unit" rowspan="1">보건복지교육대학</td>
+			<td class="unit"><font color=black><b>언어치료청각재활학과</b></font>&nbsp;</td>
+			<td class="unit" rowspan="1">AI가 대체할 수 없는 직업!<br>언어재활사 국가자격증과 청능사 자격 동시 취득!<br>임상커리어가 탁월한 전임교수 6인의 밀착지도로 국시 100% 합격!<br/><span style="color:blue">&bull; 특성화고동일계전형장학 [당해학기 수업료 100%]</span></td>
+			<td rowspan="1" >1</td>
+			<td rowspan="1" >0</td>
+			<td class="rate4" rowspan = '1'>0.00 : 1</td>
+			<td><a href='https://speech.tu.ac.kr' target='_blank'>홈페이지</a></td>
+		</tr>
+		<!-- 총계 //-->
+		<tr class="total">
+			<td colspan=3>총계</td>
+			<td>1</td>
+			<td>0</td>
+			<td class="rate4">0.00 : 1</td>
+			<td>&nbsp;</td>
+		</tr>
+		<!--// 총계 -->
+	</table>
+	</div>
+	<div id="SelType320">
+	<h2><strong>다군 특성화고동일계</strong> 경쟁률 현황</h2>
+	<table width="100%" border="0" cellpadding="0" cellspacing="0" class="tableRatio2">
+		<colgroup>
+			<col width="10%" />
+			<col width="10%" />
+			<col width="30%" />
+			<col width="6%" />
+			<col width="6%" />
+			<col width="6%" />
+			<col width="6%" />
+		</colgroup>
+		<tr>
+			<th>대학</th>
+			<th>모집단위(전공명)</th>
+			<th>슬로건(특별장학)</th>
+			<th>모집인원</th>
+			<th>지원인원</th>
+			<th>경쟁률</th>
+			<th>학과<br />홈페이지</th>
+		</tr>
+		<!-- 반복 //-->
+		<tr onmouseover="this.className='over';" onmouseout="this.className='';">
+			<td class="unit" rowspan="2">보건복지교육대학</td>
+			<td class="unit"><font color=black><b>간호학과</b></font>&nbsp; <font color=#FFFFFF><SPAN STYLE="background-color:#9D5CBB;padding :1px 1px 1px 1px;">간호교육인증</SPAN></font></td>
+			<td class="unit" rowspan="1">well Life 기반 미래 간호 인재 양성 - 수요자 중심의 임상실무능력을 갖춘 우수 인재 양성! 국내 유수 병원 취업!<br/><span style="color:blue">&bull; 특성화고동일계전형장학 [당해학기 수업료 100%]</span></td>
+			<td rowspan="1" >1</td>
+			<td rowspan="1" >1</td>
+			<td class="rate4" rowspan = '1'>1.00 : 1</td>
+			<td><a href='https://nursing.tu.ac.kr' target='_blank'>홈페이지</a></td>
+		</tr>
+		<tr onmouseover="this.className='over';" onmouseout="this.className='';">
+			<td class="unit"><font color=black><b>상담·임상심리학과</b></font>&nbsp;</td>
+			<td class="unit" rowspan="1">국내 최초 상담심리와 임상심리를 함께 배우는 곳, 학·석사연계 과정을 통해 한발 빠른 전문가 획득<br/><span style="color:blue">&bull; 특성화고동일계전형장학 [당해학기 수업료 100%]</span></td>
+			<td rowspan="1">1</td>
+			<td rowspan="1">1</td>
+			<td class="rate4" rowspan = '1'>1.00 : 1</td>
+			<td><a href='https://cp.tu.ac.kr' target='_blank'>홈페이지</a></td>
+		</tr>
+		<tr onmouseover="this.className='over';" onmouseout="this.className='';">
+			<td class="unit" rowspan="1">반려동물대학</td>
+			<td class="unit"><font color=black><b>반려동물산업학부 </b></font>&nbsp;</td>
+			<td class="unit" rowspan="1">- 펫푸드전공: "건강하고 행복한 반려동물 삶을 설계하는 펫푸드 전문가 양성"<br>- 반려동물산업디자인 전공:  반려동물산업 최초·최고! 전문디자인 전문가, 창업·취업까지 완벽<br/><span style="color:blue">&bull; 특성화고동일계전형장학 [당해학기 수업료 100%]</span></td>
+			<td rowspan="1">1</td>
+			<td rowspan="1">1</td>
+			<td class="rate4" rowspan = '1'>1.00 : 1</td>
+			<td><a href='https://pet-indu.tu.ac.kr' target='_blank'>홈페이지</a></td>
+		</tr>
+		<tr onmouseover="this.className='over';" onmouseout="this.className='';">
+			<td class="unit" rowspan="1">건축·디자인대학</td>
+			<td class="unit"><font color=black><b>건축공학과</b></font>&nbsp;</td>
+			<td class="unit" rowspan="1">건축전문지식과 IT활용능력을 갖춘 미래 건축전문가 양성<br/><span style="color:blue">&bull; 특성화고동일계전형장학 [당해학기 수업료 100%]</span></td>
+			<td rowspan="1">1</td>
+			<td rowspan="1">0</td>
+			<td class="rate4" rowspan = '1'>0.00 : 1</td>
+			<td><a href='https://earchi.tu.ac.kr' target='_blank'>홈페이지</a></td>
+		</tr>
+		<tr onmouseover="this.className='over';" onmouseout="this.className='';">
+			<td class="unit" rowspan="3">경영대학</td>
+			<td class="unit"><font color=black><b>경영학과</b></font>&nbsp;</td>
+			<td class="unit" rowspan="1">Biz Dreamer을 양성하는 tu-경영학과에서 여러분 삶의 나침반을 찾으십시오(Business Literacy Program, Global Business Tour Program 지원)	<br/><span style="color:blue">&bull; 특성화고동일계전형장학 [당해학기 수업료 100%]</span></td>
+			<td rowspan="3">3</td>
+			<td rowspan="3">4</td>
+			<td class="rate4" rowspan = '3'>1.33 : 1</td>
+			<td><a href='https://biz.tu.ac.kr' target='_blank'>홈페이지</a></td>
+		</tr>
+		<tr onmouseover="this.className='over';" onmouseout="this.className='';">
+			<td class="unit"><font color=black><b>국제통상물류학과</b></font>&nbsp;</td>
+			<td class="unit" rowspan="1">무역, 물류, 금융 융합지식을 갖춘 글로벌 인재를 양성하는 지역혁신 RIS 학과<br>(부산공유대학 프로그램 이수 시 최대 1200만원 장학금 지급)<br/><span style="color:blue">&bull; 특성화고동일계전형장학 [당해학기 수업료 100%]</span></td>
+			<td><a href='https://gb.tu.ac.kr' target='_blank'>홈페이지</a></td>
+		</tr>
+		<tr onmouseover="this.className='over';" onmouseout="this.className='';">
+			<td class="unit"><font color=black><b>호텔조리베이커리학과</b></font>&nbsp;</td>
+			<td class="unit" rowspan="1">K-푸드시대! 글로벌한 전문요리사와 실무형 호텔리어가 되고 싶은 사람들을 양성하는 학과<br>(K푸드와 호텔리어 및 베이커 체험답사 및 해외전공체험 프로그램 지원)<br/><span style="color:blue">&bull; 특성화고동일계전형장학 [당해학기 수업료 100%]</span></td>
+			<td><a href='https://ht.tu.ac.kr' target='_blank'>홈페이지</a></td>
+		</tr>
+		<!-- 총계 //-->
+		<tr class="total">
+			<td colspan=3>총계</td>
+			<td>7</td>
+			<td>7</td>
+			<td class="rate4">1.00 : 1</td>
+			<td>&nbsp;</td>
+		</tr>
+		<!--// 총계 -->
+	</table>
+	</div>
+	<div id="SelType208">
+	<h2><strong>나군 농어촌학생</strong> 경쟁률 현황</h2>
+	<table width="100%" border="0" cellpadding="0" cellspacing="0" class="tableRatio2">
+		<colgroup>
+			<col width="10%" />
+			<col width="10%" />
+			<col width="30%" />
+			<col width="6%" />
+			<col width="6%" />
+			<col width="6%" />
+			<col width="6%" />
+		</colgroup>
+		<tr>
+			<th>대학</th>
+			<th>모집단위(전공명)</th>
+			<th>슬로건(특별장학)</th>
+			<th>모집인원</th>
+			<th>지원인원</th>
+			<th>경쟁률</th>
+			<th>학과<br />홈페이지</th>
+		</tr>
+		<!-- 반복 //-->
+		<tr onmouseover="this.className='over';" onmouseout="this.className='';">
+			<td class="unit" rowspan="2">보건복지교육대학</td>
+			<td class="unit"><font color=black><b>언어치료청각재활학과</b></font>&nbsp;</td>
+			<td class="unit" rowspan="1">AI가 대체할 수 없는 직업!<br>언어재활사 국가자격증과 청능사 자격 동시 취득!<br>임상커리어가 탁월한 전임교수 6인의 밀착지도로 국시 100% 합격!<br/><span style="color:blue">&bull; 농어촌학생전형장학 [당해학기 수업료 100%]</span></td>
+			<td rowspan="1" >1</td>
+			<td rowspan="1" >1</td>
+			<td class="rate4" rowspan = '1'>1.00 : 1</td>
+			<td><a href='https://speech.tu.ac.kr' target='_blank'>홈페이지</a></td>
+		</tr>
+		<tr onmouseover="this.className='over';" onmouseout="this.className='';">
+			<td class="unit"><font color=black><b>유아교육과</b></font>&nbsp; <font color=#FFFFFF><SPAN STYLE="background-color:#008000;padding :1px 1px 1px 1px;">사범</SPAN></font></td>
+			<td class="unit" rowspan="1">부산지역 4년제 유아교육과 취업률 1위, 창의 인성을 갖춘 유아교사 양성<br/><span style="color:blue">&bull; 농어촌학생전형장학 [당해학기 수업료 100%]</span></td>
+			<td rowspan="1">1</td>
+			<td rowspan="1">1</td>
+			<td class="rate4" rowspan = '1'>1.00 : 1</td>
+			<td><a href='https://kids.tu.ac.kr' target='_blank'>홈페이지</a></td>
+		</tr>
+		<tr onmouseover="this.className='over';" onmouseout="this.className='';">
+			<td class="unit" rowspan="2">미디어대학</td>
+			<td class="unit"><font color=black><b>미디어커뮤니케이션학과</b></font>&nbsp;</td>
+			<td class="unit" rowspan="1">창의성과 실무능력을 겸비한 영상콘텐츠(방송, 스마트 미디어, 1인 미디어 등) 기획 및 제작 전문가 양성	<br/><span style="color:blue">&bull; 농어촌학생전형장학 [당해학기 수업료 100%]</span></td>
+			<td rowspan="1">1</td>
+			<td rowspan="1">1</td>
+			<td class="rate4" rowspan = '1'>1.00 : 1</td>
+			<td><a href='https://masscom.tu.ac.kr' target='_blank'>홈페이지</a></td>
+		</tr>
+		<tr onmouseover="this.className='over';" onmouseout="this.className='';">
+			<td class="unit"><font color=black><b>광고홍보학과</b></font>&nbsp;</td>
+			<td class="unit" rowspan="1">한국과 세계를 무대로 활약하는 광고PR 전문가, 유튜브 크리에이터, 빅데이터와 AI 광고 전문가, 하이테크 광고 제작자, SNS 크리에이터가 되세요!<br/><span style="color:blue">&bull; 농어촌학생전형장학 [당해학기 수업료 100%]</span></td>
+			<td rowspan="1">1</td>
+			<td rowspan="1">1</td>
+			<td class="rate4" rowspan = '1'>1.00 : 1</td>
+			<td><a href='https://adpr.tu.ac.kr' target='_blank'>홈페이지</a></td>
+		</tr>
+		<!-- 총계 //-->
+		<tr class="total">
+			<td colspan=3>총계</td>
+			<td>4</td>
+			<td>4</td>
+			<td class="rate4">1.00 : 1</td>
+			<td>&nbsp;</td>
+		</tr>
+		<!--// 총계 -->
+	</table>
+	</div>
+	<div id="SelType321">
+	<h2><strong>다군 농어촌학생</strong> 경쟁률 현황</h2>
+	<table width="100%" border="0" cellpadding="0" cellspacing="0" class="tableRatio2">
+		<colgroup>
+			<col width="10%" />
+			<col width="10%" />
+			<col width="30%" />
+			<col width="6%" />
+			<col width="6%" />
+			<col width="6%" />
+			<col width="6%" />
+		</colgroup>
+		<tr>
+			<th>대학</th>
+			<th>모집단위(전공명)</th>
+			<th>슬로건(특별장학)</th>
+			<th>모집인원</th>
+			<th>지원인원</th>
+			<th>경쟁률</th>
+			<th>학과<br />홈페이지</th>
+		</tr>
+		<!-- 반복 //-->
+		<tr onmouseover="this.className='over';" onmouseout="this.className='';">
+			<td class="unit" rowspan="3">보건복지교육대학</td>
+			<td class="unit"><font color=black><b>작업치료학과</b></font>&nbsp;</td>
+			<td class="unit" rowspan="1">전국 최정상 작업치료 리딩 교육! 보건의료분야 재활의 핵심!<br>Well-Life를 선도하는 전문 작업치료사 양성<br/><span style="color:blue">&bull; 농어촌학생전형장학 [당해학기 수업료 100%]</span></td>
+			<td rowspan="1" >2</td>
+			<td rowspan="1" >3</td>
+			<td class="rate4" rowspan = '1'>1.50 : 1</td>
+			<td><a href='https://ot.tu.ac.kr' target='_blank'>홈페이지</a></td>
+		</tr>
+		<tr onmouseover="this.className='over';" onmouseout="this.className='';">
+			<td class="unit"><font color=black><b>상담·임상심리학과</b></font>&nbsp;</td>
+			<td class="unit" rowspan="1">국내 최초 상담심리와 임상심리를 함께 배우는 곳, 학·석사연계 과정을 통해 한발 빠른 전문가 획득<br/><span style="color:blue">&bull; 농어촌학생전형장학 [당해학기 수업료 100%]</span></td>
+			<td rowspan="1">2</td>
+			<td rowspan="1">2</td>
+			<td class="rate4" rowspan = '1'>1.00 : 1</td>
+			<td><a href='https://cp.tu.ac.kr' target='_blank'>홈페이지</a></td>
+		</tr>
+		<tr onmouseover="this.className='over';" onmouseout="this.className='';">
+			<td class="unit"><font color=black><b>사회복지학과</b></font>&nbsp;</td>
+			<td class="unit" rowspan="1">사회복지사와 청소년지도사 자격증을 한번에 취득. 복지국가 시대를 선도하는 창의적 실용복지 인재 양성<br/><span style="color:blue">&bull; 농어촌학생전형장학 [당해학기 수업료 100%]</span></td>
+			<td rowspan="1">2</td>
+			<td rowspan="1">2</td>
+			<td class="rate4" rowspan = '1'>1.00 : 1</td>
+			<td><a href='https://sw.tu.ac.kr' target='_blank'>홈페이지</a></td>
+		</tr>
+		<tr onmouseover="this.className='over';" onmouseout="this.className='';">
+			<td class="unit" rowspan="6">ICT융합대학</td>
+			<td class="unit"><font color=black><b>컴퓨터공학과</b></font>&nbsp;</td>
+			<td class="unit" rowspan="1">미래를 설계하는 힘 당신의 잠재력을 현실로! "컴퓨터공학과에서 미래를 코딩하세요!"<br/><span style="color:blue">&bull; 농어촌학생전형장학 [당해학기 수업료 100%]</span></td>
+			<td rowspan="6">5</td>
+			<td rowspan="6">5</td>
+			<td class="rate4" rowspan = '6'>1.00 : 1</td>
+			<td><a href='https://ce.tu.ac.kr' target='_blank'>홈페이지</a></td>
+		</tr>
+		<tr onmouseover="this.className='over';" onmouseout="this.className='';">
+			<td class="unit"><font color=black><b>인공지능응용학과</b></font>&nbsp;</td>
+			<td class="unit" rowspan="1">4차산업혁명과 인공지능 시대를 선도하는 실무형 인공지능응용 전문가양성<br/><span style="color:blue">&bull; 농어촌학생전형장학 [당해학기 수업료 100%]</span></td>
+			<td><a href='https://ai.tu.ac.kr' target='_blank'>홈페이지</a></td>
+		</tr>
+		<tr onmouseover="this.className='over';" onmouseout="this.className='';">
+			<td class="unit"><font color=black><b>냉동공조공학과</b></font>&nbsp;</td>
+			<td class="unit" rowspan="1">인간의 쾌적한 삶(생활가전 및 건축물 냉난방), 첨단산업환경(AI데이터센터냉각, 2차전지, 반도체 클린룸 및 공정냉각, 에너지저장장치 냉각 등), 식품/물류저온유통/수송, 지속 가능한 에너지 환경관리분야 전문가 양성<br>냉동공조공학과 취업연계 별도 장학금 선발 지급(매년 약간명, 최대 4,000만원)<br/><span style="color:blue">&bull; 농어촌학생전형장학 [당해학기 수업료 100%]</span></td>
+			<td><a href='https://et.tu.ac.kr' target='_blank'>홈페이지</a></td>
+		</tr>
+		<tr onmouseover="this.className='over';" onmouseout="this.className='';">
+			<td class="unit"><font color=black><b>미래자동차학과</b></font>&nbsp;</td>
+			<td class="unit" rowspan="1">'탈 것' 그 이상의 가치,  20년간의 교육 노하우로 친환경자동차 전문기술인 양성<br>공공기관(한국교통안전공단, 군무원, 산업인력관리공단 등) 취업 명문학과에서 미래를 설계하세요.<br/><span style="color:blue">&bull; 농어촌학생전형장학 [당해학기 수업료 100%]</span></td>
+			<td><a href='https://automobile.tu.ac.kr' target='_blank'>홈페이지</a></td>
+		</tr>
+		<tr onmouseover="this.className='over';" onmouseout="this.className='';">
+			<td class="unit"><font color=black><b>전기제어학부 </b></font>&nbsp;</td>
+			<td class="unit" rowspan="1">'전'진하는 미래!<br>'기'회를 잡아라<br>'제'대로 배우면<br>'어'디서든 빛나는 동명대 전기제어인!<br/><span style="color:blue">&bull; 농어촌학생전형장학 [당해학기 수업료 100%]</span></td>
+			<td><a href='https://elecon.tu.ac.kr' target='_blank'>홈페이지</a></td>
+		</tr>
+		<tr onmouseover="this.className='over';" onmouseout="this.className='';">
+			<td class="unit"><font color=black><b>항만물류시스템학과</b></font>&nbsp;</td>
+			<td class="unit" rowspan="1">해양수산부, 6개 산하기관 부산 이전 확정<br>취업에 강한 전국 최초, 최고의 항만물류전문가 양성<br/><span style="color:blue">&bull; 농어촌학생전형장학 [당해학기 수업료 100%]</span></td>
+			<td><a href='https://pl.tu.ac.kr' target='_blank'>홈페이지</a></td>
+		</tr>
+		<tr onmouseover="this.className='over';" onmouseout="this.className='';">
+			<td class="unit" rowspan="3">경영대학</td>
+			<td class="unit"><font color=black><b>경영학과</b></font>&nbsp;</td>
+			<td class="unit" rowspan="1">Biz Dreamer을 양성하는 tu-경영학과에서 여러분 삶의 나침반을 찾으십시오(Business Literacy Program, Global Business Tour Program 지원)	<br/><span style="color:blue">&bull; 농어촌학생전형장학 [당해학기 수업료 100%]</span></td>
+			<td rowspan="3">3</td>
+			<td rowspan="3">5</td>
+			<td class="rate4" rowspan = '3'>1.67 : 1</td>
+			<td><a href='https://biz.tu.ac.kr' target='_blank'>홈페이지</a></td>
+		</tr>
+		<tr onmouseover="this.className='over';" onmouseout="this.className='';">
+			<td class="unit"><font color=black><b>국제통상물류학과</b></font>&nbsp;</td>
+			<td class="unit" rowspan="1">무역, 물류, 금융 융합지식을 갖춘 글로벌 인재를 양성하는 지역혁신 RIS 학과<br>(부산공유대학 프로그램 이수 시 최대 1200만원 장학금 지급)<br/><span style="color:blue">&bull; 농어촌학생전형장학 [당해학기 수업료 100%]</span></td>
+			<td><a href='https://gb.tu.ac.kr' target='_blank'>홈페이지</a></td>
+		</tr>
+		<tr onmouseover="this.className='over';" onmouseout="this.className='';">
+			<td class="unit"><font color=black><b>글로벌관광학과</b></font>&nbsp;</td>
+			<td class="unit" rowspan="1">관광산업의 미래를 이끌어 갈 호텔리어, 카지노, 승무원, 관광개발 등 호텔·관광전문인력 양성학과!<br/><span style="color:blue">&bull; 농어촌학생전형장학 [당해학기 수업료 100%]</span></td>
+			<td><a href='https://g-tourism.tu.ac.kr' target='_blank'>홈페이지</a></td>
+		</tr>
+		<!-- 총계 //-->
+		<tr class="total">
+			<td colspan=3>총계</td>
+			<td>14</td>
+			<td>17</td>
+			<td class="rate4">1.21 : 1</td>
+			<td>&nbsp;</td>
+		</tr>
+		<!--// 총계 -->
+	</table>
+	</div>
+	<div id="SelType212">
+	<h2><strong>나군 기회균형</strong> 경쟁률 현황</h2>
+	<table width="100%" border="0" cellpadding="0" cellspacing="0" class="tableRatio2">
+		<colgroup>
+			<col width="10%" />
+			<col width="10%" />
+			<col width="30%" />
+			<col width="6%" />
+			<col width="6%" />
+			<col width="6%" />
+			<col width="6%" />
+		</colgroup>
+		<tr>
+			<th>대학</th>
+			<th>모집단위(전공명)</th>
+			<th>슬로건(특별장학)</th>
+			<th>모집인원</th>
+			<th>지원인원</th>
+			<th>경쟁률</th>
+			<th>학과<br />홈페이지</th>
+		</tr>
+		<!-- 반복 //-->
+		<tr onmouseover="this.className='over';" onmouseout="this.className='';">
+			<td class="unit" rowspan="1">보건복지교육대학</td>
+			<td class="unit"><font color=black><b>언어치료청각재활학과</b></font>&nbsp;</td>
+			<td class="unit" rowspan="1">AI가 대체할 수 없는 직업!<br>언어재활사 국가자격증과 청능사 자격 동시 취득!<br>임상커리어가 탁월한 전임교수 6인의 밀착지도로 국시 100% 합격!<br/><span style="color:blue"></span></td>
+			<td rowspan="1" >1</td>
+			<td rowspan="1" >2</td>
+			<td class="rate4" rowspan = '1'>2.00 : 1</td>
+			<td><a href='https://speech.tu.ac.kr' target='_blank'>홈페이지</a></td>
+		</tr>
+		<!-- 총계 //-->
+		<tr class="total">
+			<td colspan=3>총계</td>
+			<td>1</td>
+			<td>2</td>
+			<td class="rate4">2.00 : 1</td>
+			<td>&nbsp;</td>
+		</tr>
+		<!--// 총계 -->
+	</table>
+	</div>
+	<div id="SelType322">
+	<h2><strong>다군 기회균형</strong> 경쟁률 현황</h2>
+	<table width="100%" border="0" cellpadding="0" cellspacing="0" class="tableRatio2">
+		<colgroup>
+			<col width="10%" />
+			<col width="10%" />
+			<col width="30%" />
+			<col width="6%" />
+			<col width="6%" />
+			<col width="6%" />
+			<col width="6%" />
+		</colgroup>
+		<tr>
+			<th>대학</th>
+			<th>모집단위(전공명)</th>
+			<th>슬로건(특별장학)</th>
+			<th>모집인원</th>
+			<th>지원인원</th>
+			<th>경쟁률</th>
+			<th>학과<br />홈페이지</th>
+		</tr>
+		<!-- 반복 //-->
+		<tr onmouseover="this.className='over';" onmouseout="this.className='';">
+			<td class="unit" rowspan="1">보건복지교육대학</td>
+			<td class="unit"><font color=black><b>간호학과</b></font>&nbsp; <font color=#FFFFFF><SPAN STYLE="background-color:#9D5CBB;padding :1px 1px 1px 1px;">간호교육인증</SPAN></font></td>
+			<td class="unit" rowspan="1">well Life 기반 미래 간호 인재 양성 - 수요자 중심의 임상실무능력을 갖춘 우수 인재 양성! 국내 유수 병원 취업!<br/><span style="color:blue"></span></td>
+			<td rowspan="1" >1</td>
+			<td rowspan="1" >1</td>
+			<td class="rate4" rowspan = '1'>1.00 : 1</td>
+			<td><a href='https://nursing.tu.ac.kr' target='_blank'>홈페이지</a></td>
+		</tr>
+		<tr onmouseover="this.className='over';" onmouseout="this.className='';">
+			<td class="unit" rowspan="3">ICT융합대학</td>
+			<td class="unit"><font color=black><b>컴퓨터공학과</b></font>&nbsp;</td>
+			<td class="unit" rowspan="1">미래를 설계하는 힘 당신의 잠재력을 현실로! "컴퓨터공학과에서 미래를 코딩하세요!"<br/><span style="color:blue"></span></td>
+			<td rowspan="3">3</td>
+			<td rowspan="3">7</td>
+			<td class="rate4" rowspan = '3'>2.33 : 1</td>
+			<td><a href='https://ce.tu.ac.kr' target='_blank'>홈페이지</a></td>
+		</tr>
+		<tr onmouseover="this.className='over';" onmouseout="this.className='';">
+			<td class="unit"><font color=black><b>인공지능응용학과</b></font>&nbsp;</td>
+			<td class="unit" rowspan="1">4차산업혁명과 인공지능 시대를 선도하는 실무형 인공지능응용 전문가양성<br/><span style="color:blue"></span></td>
+			<td><a href='https://ai.tu.ac.kr' target='_blank'>홈페이지</a></td>
+		</tr>
+		<tr onmouseover="this.className='over';" onmouseout="this.className='';">
+			<td class="unit"><font color=black><b>전기제어학부 </b></font>&nbsp;</td>
+			<td class="unit" rowspan="1">'전'진하는 미래!<br>'기'회를 잡아라<br>'제'대로 배우면<br>'어'디서든 빛나는 동명대 전기제어인!<br/><span style="color:blue"></span></td>
+			<td><a href='https://elecon.tu.ac.kr' target='_blank'>홈페이지</a></td>
+		</tr>
+		<tr onmouseover="this.className='over';" onmouseout="this.className='';">
+			<td class="unit" rowspan="1">건축·디자인대학</td>
+			<td class="unit"><font color=black><b>건축공학과</b></font>&nbsp;</td>
+			<td class="unit" rowspan="1">건축전문지식과 IT활용능력을 갖춘 미래 건축전문가 양성<br/><span style="color:blue"></span></td>
+			<td rowspan="1">1</td>
+			<td rowspan="1">2</td>
+			<td class="rate4" rowspan = '1'>2.00 : 1</td>
+			<td><a href='https://earchi.tu.ac.kr' target='_blank'>홈페이지</a></td>
+		</tr>
+		<tr onmouseover="this.className='over';" onmouseout="this.className='';">
+			<td class="unit" rowspan="1">경영대학</td>
+			<td class="unit"><font color=black><b>국제통상물류학과</b></font>&nbsp;</td>
+			<td class="unit" rowspan="1">무역, 물류, 금융 융합지식을 갖춘 글로벌 인재를 양성하는 지역혁신 RIS 학과<br>(부산공유대학 프로그램 이수 시 최대 1200만원 장학금 지급)<br/><span style="color:blue"></span></td>
+			<td rowspan="1">1</td>
+			<td rowspan="1">3</td>
+			<td class="rate4" rowspan = '1'>3.00 : 1</td>
+			<td><a href='https://gb.tu.ac.kr' target='_blank'>홈페이지</a></td>
+		</tr>
+		<!-- 총계 //-->
+		<tr class="total">
+			<td colspan=3>총계</td>
+			<td>6</td>
+			<td>13</td>
+			<td class="rate4">2.17 : 1</td>
+			<td>&nbsp;</td>
+		</tr>
+		<!--// 총계 -->
+	</table>
+	</div>
+	<div id="SelType310">
+	<h2><strong>다군 만학도</strong> 경쟁률 현황</h2>
+	<table width="100%" border="0" cellpadding="0" cellspacing="0" class="tableRatio2">
+		<colgroup>
+			<col width="10%" />
+			<col width="10%" />
+			<col width="30%" />
+			<col width="6%" />
+			<col width="6%" />
+			<col width="6%" />
+			<col width="6%" />
+		</colgroup>
+		<tr>
+			<th>대학</th>
+			<th>모집단위(전공명)</th>
+			<th>슬로건(특별장학)</th>
+			<th>모집인원</th>
+			<th>지원인원</th>
+			<th>경쟁률</th>
+			<th>학과<br />홈페이지</th>
+		</tr>
+		<!-- 반복 //-->
+		<tr onmouseover="this.className='over';" onmouseout="this.className='';">
+			<td class="unit" rowspan="5">미래융합대학</td>
+			<td class="unit"><font color=black><b>복지경영학과</b></font>&nbsp;</td>
+			<td class="unit" rowspan="1">성인학습의 메카! 성공으로 가는 인생 이모작!!! 지역사회 생애복지실현과 우수한 경영능력을 갖춘 복지창업경영 전문가 및 복지경영 인재 양성의 요람	<br/><span style="color:blue">&bull; 평생학습자장학 [4년간 매학기 9학점 면제]</span></td>
+			<td rowspan="1" >5</td>
+			<td rowspan="1" >6</td>
+			<td class="rate4" rowspan = '1'>1.20 : 1</td>
+			<td><a href='https://tw-m.tu.ac.kr' target='_blank'>홈페이지</a></td>
+		</tr>
+		<tr onmouseover="this.className='over';" onmouseout="this.className='';">
+			<td class="unit"><font color=black><b>선명상치유학과</b></font>&nbsp;</td>
+			<td class="unit" rowspan="1">심신의 고통을 유발하는 문제점을 파악하고 치유하여, 건강한 전체성의 삶으로 나아가는 교육을 진행. 동양의 선(禪)명상을 기초로 현대의 각종 명상과 치유 기법을 겸비한 심신치유전문가 양성	<br/><span style="color:blue">&bull; 평생학습자장학 [4년간 매학기 9학점 면제]</span></td>
+			<td rowspan="1">8</td>
+			<td rowspan="1">0</td>
+			<td class="rate4" rowspan = '1'>0.00 : 1</td>
+			<td><a href='https://healing.tu.ac.kr' target='_blank'>홈페이지</a></td>
+		</tr>
+		<tr onmouseover="this.className='over';" onmouseout="this.className='';">
+			<td class="unit"><font color=black><b>동양문화학과</b></font>&nbsp;</td>
+			<td class="unit" rowspan="1">풍수와 명리, 동양사상 등 동양문화와 관련된 제반 전문지식, 인성 태도, 기술을 개발하고 응용할 수 있는 동양문화 전문가 양성	<br/><span style="color:blue">&bull; 평생학습자장학 [4년간 매학기 9학점 면제]</span></td>
+			<td rowspan="1">7</td>
+			<td rowspan="1">0</td>
+			<td class="rate4" rowspan = '1'>0.00 : 1</td>
+			<td><a href='https://or-c.tu.ac.kr' target='_blank'>홈페이지</a></td>
+		</tr>
+		<tr onmouseover="this.className='over';" onmouseout="this.className='';">
+			<td class="unit"><font color=black><b>뷰티산업학과</b></font>&nbsp;</td>
+			<td class="unit" rowspan="1">뷰티산업을 주도할 전문적인 지식을 바탕으로 창의적인 시각과 미적 감각을 갖춘 미래융합형<br>뷰티화장품 전문 인재 육성<br/><span style="color:blue">&bull; 평생학습자장학 [4년간 매학기 9학점 면제]</span></td>
+			<td rowspan="1">5</td>
+			<td rowspan="1">5</td>
+			<td class="rate4" rowspan = '1'>1.00 : 1</td>
+			<td><a href='https://beautyin.tu.ac.kr' target='_blank'>홈페이지</a></td>
+		</tr>
+		<tr onmouseover="this.className='over';" onmouseout="this.className='';">
+			<td class="unit"><font color=black><b>한국어교육다문화학과</b></font>&nbsp;</td>
+			<td class="unit" rowspan="1">미래 사회를 이끌어 갈 글로컬 융·복합 전문가(한국어교원, 청소년지도사, 다문화사회전문가) 양성	<br/><span style="color:blue">&bull; 평생학습자장학 [4년간 매학기 9학점 면제]</span></td>
+			<td rowspan="1">7</td>
+			<td rowspan="1">4</td>
+			<td class="rate4" rowspan = '1'>0.57 : 1</td>
+			<td><a href='https://cyc.tu.ac.kr' target='_blank'>홈페이지</a></td>
+		</tr>
+		<!-- 총계 //-->
+		<tr class="total">
+			<td colspan=3>총계</td>
+			<td>32</td>
+			<td>15</td>
+			<td class="rate4">0.47 : 1</td>
+			<td>&nbsp;</td>
+		</tr>
+		<!--// 총계 -->
+	</table>
+	</div>
+
+							<!--// 컨텐츠 -->
+						</div>
+
+						<div class="btnR">
+							
+							
+						</div>
+					</td> <!-- cont end -->
+				</tr>
+				<tr>
+					
+				</tr>
+					<div class="quick_menu" style="display:none;">
+						<a class="btn_top" href="javascript:void(0);MoveTop()">상단으로 이동</a> 
+					</div>
+				</tr>	
+			
+			</tbody>
+		</table>
+	</form>
+</body>
+
+</html>

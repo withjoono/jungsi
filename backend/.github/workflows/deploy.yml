@@ -1,0 +1,125 @@
+name: CI/CD
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 리포지토리를 체크아웃
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      # Node.js 설정
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '18'
+
+      # 종속성 설치
+      - name: Install dependencies
+        run: yarn install
+
+      # 프로젝트 빌드
+      - name: Build project
+        run: yarn build
+
+      # 빌드 디렉토리 준비
+      - name: Prepare build directory
+        run: mkdir build
+
+      # 빌드된 파일을 빌드 디렉토리로 복사
+      - name: Copy files to build directory
+        run: rsync -av --progress ./ ./build --exclude node_modules --exclude .git
+
+      # 빌드 디렉토리를 압축
+      - name: Archive production artifacts
+        run: tar -czf app.tar.gz -C build .
+
+        # AWS CLI 설치
+      - name: Install AWS CLI
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y awscli
+
+      # 현재 IP 주소 가져오기
+      - name: Get current IP
+        id: get_ip
+        run: echo "current_ip=$(curl -s http://checkip.amazonaws.com)" >> $GITHUB_ENV
+
+      # 보안 그룹에 IP 주소 추가
+      - name: Add IP to security group
+        run: |
+          aws ec2 authorize-security-group-ingress \
+            --region ${{ secrets.AWS_REGION }} \
+            --group-id ${{ secrets.SECURITY_GROUP_ID }} \
+            --protocol tcp \
+            --port 22 \
+            --cidr ${{ env.current_ip }}/32
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
+      # SCP를 사용하여 파일 전송
+      - name: Copy files via SCP
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USERNAME }}
+          key: ${{ secrets.SERVER_SSH_KEY }}
+          source: 'app.tar.gz'
+          target: '~/'
+
+      # 서버에 배포
+      - name: Deploy to server
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USERNAME }}
+          key: ${{ secrets.SERVER_SSH_KEY }}
+          script: |
+            cd ~
+            # 기존 app 디렉토리가 있다면 백업
+            if [ -d "app" ]; then
+              mv app app_old
+            fi
+            # 새 배포 디렉토리 생성
+            mkdir app
+            # 압축 파일 이동
+            mv ./app.tar.gz ./app/ || exit 1
+            # 배포 디렉토리로 이동
+            cd app || exit 1
+            # 압축 파일 해제
+            tar -xzf app.tar.gz || exit 1
+            # 로그 디렉토리 복사 (있는 경우)
+            if [ -d "../app_old/logs" ]; then
+              cp -R ../app_old/logs ./
+            fi
+            # 기존 Docker 컨테이너 중지
+            docker compose down || exit 1
+            # Docker 이미지 빌드
+            docker compose build || exit 1
+            # Docker 컨테이너를 백그라운드에서 실행
+            docker compose up -d || exit 1
+            # 사용하지 않는 Docker 이미지 정리
+            docker image prune -f || exit 1
+            # 오래된 app 디렉토리 삭제
+            rm -rf ../app_old
+
+      # 보안 그룹에서 IP 주소 제거
+      - name: Remove IP from security group
+        if: always() # 항상 실행되도록 설정
+        run: |
+          aws ec2 revoke-security-group-ingress \
+            --region ${{ secrets.AWS_REGION }} \
+            --group-id ${{ secrets.SECURITY_GROUP_ID }} \
+            --protocol tcp \
+            --port 22 \
+            --cidr ${{ env.current_ip }}/32
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
