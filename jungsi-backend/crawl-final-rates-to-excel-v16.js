@@ -1,21 +1,19 @@
 /**
- * 모든 대학 최종 경쟁률 엑셀 크롤링 스크립트 v13
+ * 모든 대학 최종 경쟁률 엑셀 크롤링 스크립트 v16
  *
- * v13 개선사항:
- * 1. 강화된 스킵 패턴 (정원내/정원외 소계, 요약 행 제외)
- * 2. 군 정보 추출 범위 확장 (페이지 전체, URL 패턴)
- * 3. 중앙화된 스킵 함수로 일관성 향상
+ * v16 개선사항 (모집인원 0명 오류 102건 해결):
+ * 1. ⭐⭐⭐ 모집인원 검증 로직 추가 - 경쟁률로 역산하여 검증 및 보정
+ * 2. ⭐⭐ rowspan 추적 강화 - 모집인원 셀 병합 처리 개선
+ * 3. ⭐⭐ 컬럼 인덱스 자동 감지 개선 - 더 robust한 헤더 매칭
+ * 4. ⭐ 디버그 로그 개선 - 모집인원 추출 과정 상세 로깅
  *
- * v12 개선사항:
- * 1. "구분" 컬럼 인식 추가 (경인교육대, 한동대 등)
- * 2. 유연 정원 파싱 ("1이내", "약간명" 등)
- * 3. 향상된 rowspan 처리 (가상 행 구성)
- * 4. 교육대학교 전용 파서 추가
- * 5. 이미지 기반 대학 수동 데이터 처리 (상명대)
- * 6. 군 정보 추출 개선
- * 7. 모집인원 상속 로직 추가 (부모 행에서 자식 행으로)
+ * v15 개선사항:
+ * 1. ⭐ 중복 제거 - 같은 대학/군/모집단위는 하나만 유지 (지원인원 합산)
+ * 2. ⭐ 스마트 rowspan 추적 - 실제 셀의 rowspan 속성을 정확히 추적
+ * 3. 개선된 모집인원 상속 - 빈 셀일 때만 이전 값 상속
+ * 4. 컬럼 인덱스 검증 - 모집인원 컬럼을 찾지 못하면 대체 전략 사용
  *
- * 사용법: node crawl-final-rates-to-excel-v13.js
+ * 사용법: node crawl-final-rates-to-excel-v16.js
  */
 
 const axios = require('axios');
@@ -35,6 +33,8 @@ const CONFIG = {
   ENCODINGS: ['utf-8', 'euc-kr', 'cp949', 'iso-8859-1'],
   VERBOSE_LOGGING: false,
   LOG_ERRORS_TO_FILE: true,
+  DEBUG_ZERO_RECRUITMENT: true, // v16: 모집인원 0인 경우 디버그 로그 출력 (기본 활성화)
+  VALIDATE_WITH_COMPETITION_RATE: true, // v16: 경쟁률로 모집인원 검증
 };
 
 // 특수 대학 목록 (전용 파서 사용)
@@ -400,9 +400,20 @@ function extractAdmissionType(text) {
 
 function parseNumber(text) {
   if (!text) return 0;
-  const cleaned = text.toString().trim().replace(/[\s,]/g, '').replace(/[^\d.-]/g, '');
+  const trimmed = text.toString().trim();
+
+  // "-" 단독 문자는 데이터 없음을 의미 (음수 아님)
+  if (trimmed === '-' || trimmed === '−' || trimmed === '—') return 0;
+
+  const cleaned = trimmed.replace(/[\s,]/g, '').replace(/[^\d.-]/g, '');
+
+  // 숫자가 없으면 0 반환
+  if (!cleaned || cleaned === '-') return 0;
+
   const num = parseInt(cleaned, 10);
-  return isNaN(num) ? 0 : num;
+
+  // 음수는 0으로 처리 (모집인원은 음수가 될 수 없음)
+  return isNaN(num) || num < 0 ? 0 : num;
 }
 
 // v12 신규: 유연 정원 파싱 ("1이내", "약간명" 등)
@@ -544,11 +555,19 @@ function findColumnsByHeaderText(headerTexts) {
     )) {
       result.department = idx;
     }
-    // v12: "총모집인원" 포함
-    if (result.recruitment === -1 && (text.includes('모집인원') || text.includes('총모집인원'))) {
+    // v14: 모집인원 패턴 확장 - "인원", "정원" 단독도 인식
+    if (result.recruitment === -1 && (
+      text.includes('모집인원') || text.includes('총모집인원') ||
+      text.includes('모집정원') || text === '인원' || text === '정원'
+    )) {
       result.recruitment = idx;
     }
-    if (result.application === -1 && text.includes('지원인원')) result.application = idx;
+    // v14: 지원인원 패턴 확장
+    if (result.application === -1 && (
+      text.includes('지원인원') || text.includes('지원자')
+    )) {
+      result.application = idx;
+    }
     if (result.rate === -1 && text.includes('경쟁률')) result.rate = idx;
     if (result.group === -1 && (text === '군' || text === '모집군')) result.group = idx;
     if (result.college === -1 && (text === '대학' || text === '단과대학' || text === '캠퍼스')) result.college = idx;
@@ -556,7 +575,7 @@ function findColumnsByHeaderText(headerTexts) {
   return result;
 }
 
-// ==================== 기본 파서 (v12 개선) ====================
+// ==================== 기본 파서 (v14: 완전한 rowspan 처리) ====================
 
 function parseTableStandard($, table, universityName, defaultGroup, defaultAdmissionType) {
   const results = [];
@@ -582,15 +601,49 @@ function parseTableStandard($, table, universityName, defaultGroup, defaultAdmis
     };
   }
 
-  // v12: 모집인원 상속을 위한 변수
+  // v14: rowspan 추적을 위한 가상 행 시스템
+  const maxCols = Math.max(10, headerTexts.length);
+  const activeRowspans = {}; // {컬럼인덱스: {value, remainingRows}}
+
+  // v14: 모집인원 상속을 위한 변수
   let lastValidRecruitment = 0;
 
   $(table).find('tr').each((rowIdx, row) => {
     const cells = $(row).find('td');
-    if (cells.length < 3) return;
+    if (cells.length < 2) return;
 
+    // v14: 가상 행 구성 (rowspan 값 포함)
+    const virtualRow = [];
+    let cellIdx = 0;
+
+    for (let col = 0; col < maxCols; col++) {
+      // 활성 rowspan이 있으면 그 값 사용
+      if (activeRowspans[col] && activeRowspans[col].remainingRows > 0) {
+        virtualRow[col] = activeRowspans[col].value;
+        activeRowspans[col].remainingRows--;
+      }
+      // 새로운 셀 읽기
+      else if (cellIdx < cells.length) {
+        const cell = $(cells[cellIdx]);
+        const rowspan = parseInt(cell.attr('rowspan')) || 1;
+        const value = cell.text().trim();
+
+        virtualRow[col] = value;
+
+        // rowspan > 1이면 추적 시작
+        if (rowspan > 1) {
+          activeRowspans[col] = {
+            value: value,
+            remainingRows: rowspan - 1
+          };
+        }
+        cellIdx++;
+      }
+    }
+
+    // 컬럼 오프셋 계산
     const expectedCols = Math.max(columns.department, columns.recruitment, columns.application, columns.rate) + 1;
-    const actualCols = cells.length;
+    const actualCols = virtualRow.filter(v => v !== undefined).length;
     const cellOffset = Math.max(0, Math.min(3, expectedCols - actualCols));
 
     const adjustedIdx = {
@@ -601,33 +654,65 @@ function parseTableStandard($, table, universityName, defaultGroup, defaultAdmis
       group: columns.group !== -1 ? Math.max(0, columns.group - cellOffset) : -1,
     };
 
-    const departmentName = $(cells[adjustedIdx.department])?.text().trim();
+    const departmentName = virtualRow[adjustedIdx.department] || '';
+
     // v13: 중앙화된 스킵 함수 사용
     if (shouldSkipRow(departmentName)) return;
 
     let rowGroup = defaultGroup;
-    if (adjustedIdx.group !== -1 && cells.length > adjustedIdx.group) {
-      const groupText = $(cells[adjustedIdx.group]).text().trim();
-      const parsed = extractGroupFromText(groupText);
+    if (adjustedIdx.group !== -1 && virtualRow[adjustedIdx.group]) {
+      const parsed = extractGroupFromText(virtualRow[adjustedIdx.group]);
       if (parsed) rowGroup = parsed;
     }
-    if (rowGroup === '-') {
-      const firstCellText = $(cells[0]).text().trim();
-      const parsed = extractGroupFromText(firstCellText);
+    if (rowGroup === '-' && virtualRow[0]) {
+      const parsed = extractGroupFromText(virtualRow[0]);
       if (parsed) rowGroup = parsed;
     }
 
-    // v12: 유연 정원 파싱 사용
-    const { value: recruitmentCount, isFlexible } = parseFlexibleNumber($(cells[adjustedIdx.recruitment])?.text());
-    const applicationCount = parseNumber($(cells[adjustedIdx.application])?.text());
-    const competitionRate = parseRate($(cells[adjustedIdx.rate])?.text());
+    // v14: 유연 정원 파싱 with rowspan support
+    const { value: recruitmentCount, isFlexible } = parseFlexibleNumber(virtualRow[adjustedIdx.recruitment] || '');
+    const applicationCount = parseNumber(virtualRow[adjustedIdx.application] || '');
+    const competitionRate = parseRate(virtualRow[adjustedIdx.rate] || '');
 
-    // v12: 모집인원 상속 로직
+    // v16: 개선된 모집인원 검증 로직
     let effectiveRecruitment = recruitmentCount;
-    if (recruitmentCount === 0 && applicationCount > 0 && lastValidRecruitment > 0) {
-      effectiveRecruitment = lastValidRecruitment;
+    let validationMethod = '원본';
+
+    if (recruitmentCount === 0 && applicationCount > 0) {
+      // v16: 1순위 - 경쟁률로 역산 (최소 1명)
+      if (CONFIG.VALIDATE_WITH_COMPETITION_RATE && competitionRate > 0) {
+        effectiveRecruitment = Math.max(1, Math.round(applicationCount / competitionRate));
+        validationMethod = '경쟁률역산';
+        if (CONFIG.DEBUG_ZERO_RECRUITMENT) {
+          console.log(`    [경쟁률역산] ${universityName} - ${departmentName}: ${effectiveRecruitment}명 (지원: ${applicationCount}, 경쟁률: ${competitionRate}:1)`);
+        }
+      }
+      // v16: 2순위 - rowspan 상속
+      else if (lastValidRecruitment > 0) {
+        effectiveRecruitment = lastValidRecruitment;
+        validationMethod = 'rowspan상속';
+        if (CONFIG.DEBUG_ZERO_RECRUITMENT) {
+          console.log(`    [rowspan상속] ${universityName} - ${departmentName}: ${lastValidRecruitment}명 (지원: ${applicationCount})`);
+        }
+      }
+      // v16: 3순위 - 여전히 0인 경우 경고
+      else if (CONFIG.DEBUG_ZERO_RECRUITMENT) {
+        console.log(`    [⚠️실패] ${universityName} - ${departmentName}: 모집인원=0, 지원인원=${applicationCount}, 경쟁률=${competitionRate}`);
+        console.log(`           virtualRow: [${virtualRow.slice(0, 6).join(' | ')}]`);
+      }
     } else if (recruitmentCount > 0) {
       lastValidRecruitment = recruitmentCount;
+
+      // v16: 모집인원이 있어도 경쟁률로 검증
+      if (CONFIG.VALIDATE_WITH_COMPETITION_RATE && competitionRate > 0 && applicationCount > 0) {
+        const calculatedRecruitment = Math.round(applicationCount / competitionRate);
+        const diff = Math.abs(calculatedRecruitment - recruitmentCount);
+
+        // 차이가 30% 이상이면 경고 (단, 1-2명 차이는 반올림 오차로 허용)
+        if (diff > 2 && diff / recruitmentCount > 0.3) {
+          console.log(`    [⚠️검증실패] ${universityName} - ${departmentName}: 모집${recruitmentCount}명 vs 역산${calculatedRecruitment}명 (차이: ${diff})`);
+        }
+      }
     }
 
     if (effectiveRecruitment === 0 && applicationCount === 0) return;
@@ -674,23 +759,16 @@ function parseYonseiTable($, table, universityName, defaultGroup, defaultAdmissi
       const applicationCount = parseNumber($(cells[3])?.text());
       const competitionRate = parseRate($(cells[4])?.text());
 
-      // v13: 중앙화된 스킵 함수 사용
-      if (!shouldSkipRow(departmentName)) {
-        results.push({
-          대학명: cleanUniversityName(universityName),
-          군: defaultGroup,
-          전형명: defaultAdmissionType,
-          모집단위: departmentName,
-          모집인원: currentRecruitment,
-          지원인원: applicationCount,
-          경쟁률: competitionRate || (currentRecruitment > 0 && applicationCount > 0 ? parseFloat((applicationCount / currentRecruitment).toFixed(2)) : 0),
-          경쟁률_문자열: competitionRate > 0 ? `${competitionRate.toFixed(2)}:1` : '-',
-        });
+      // v16: 모집인원 검증 로직
+      let effectiveRecruitment = currentRecruitment;
+      if (currentRecruitment === 0 && applicationCount > 0 && CONFIG.VALIDATE_WITH_COMPETITION_RATE && competitionRate > 0) {
+        effectiveRecruitment = Math.max(1, Math.round(applicationCount / competitionRate));
+        if (CONFIG.DEBUG_ZERO_RECRUITMENT) {
+          console.log(`    [경쟁률역산-연세대] ${universityName} - ${departmentName}: ${effectiveRecruitment}명 (지원: ${applicationCount}, 경쟁률: ${competitionRate}:1)`);
+        }
+      } else if (currentRecruitment === 0 && applicationCount > 0 && CONFIG.DEBUG_ZERO_RECRUITMENT) {
+        console.log(`    [⚠️실패-연세대] ${universityName} - ${departmentName}: 모집인원=0, 지원인원=${applicationCount}, 경쟁률=${competitionRate}`);
       }
-    } else if (actualCols >= 3 && rowsUntilNewRecruitment > 0) {
-      const departmentName = $(cells[0])?.text().trim();
-      const applicationCount = parseNumber($(cells[1])?.text());
-      const competitionRate = parseRate($(cells[2])?.text());
 
       // v13: 중앙화된 스킵 함수 사용
       if (!shouldSkipRow(departmentName)) {
@@ -699,9 +777,38 @@ function parseYonseiTable($, table, universityName, defaultGroup, defaultAdmissi
           군: defaultGroup,
           전형명: defaultAdmissionType,
           모집단위: departmentName,
-          모집인원: currentRecruitment,
+          모집인원: effectiveRecruitment,
           지원인원: applicationCount,
-          경쟁률: competitionRate || (currentRecruitment > 0 && applicationCount > 0 ? parseFloat((applicationCount / currentRecruitment).toFixed(2)) : 0),
+          경쟁률: competitionRate || (effectiveRecruitment > 0 && applicationCount > 0 ? parseFloat((applicationCount / effectiveRecruitment).toFixed(2)) : 0),
+          경쟁률_문자열: competitionRate > 0 ? `${competitionRate.toFixed(2)}:1` : '-',
+        });
+      }
+    } else if (actualCols >= 3 && rowsUntilNewRecruitment > 0) {
+      const departmentName = $(cells[0])?.text().trim();
+      const applicationCount = parseNumber($(cells[1])?.text());
+      const competitionRate = parseRate($(cells[2])?.text());
+
+      // v16: 모집인원 검증 로직 (rowspan 상속 케이스)
+      let effectiveRecruitment = currentRecruitment;
+      if (currentRecruitment === 0 && applicationCount > 0 && CONFIG.VALIDATE_WITH_COMPETITION_RATE && competitionRate > 0) {
+        effectiveRecruitment = Math.max(1, Math.round(applicationCount / competitionRate));
+        if (CONFIG.DEBUG_ZERO_RECRUITMENT) {
+          console.log(`    [경쟁률역산-연세대] ${universityName} - ${departmentName}: ${effectiveRecruitment}명 (지원: ${applicationCount}, 경쟁률: ${competitionRate}:1)`);
+        }
+      } else if (currentRecruitment === 0 && applicationCount > 0 && CONFIG.DEBUG_ZERO_RECRUITMENT) {
+        console.log(`    [⚠️실패-연세대] ${universityName} - ${departmentName}: 모집인원=0, 지원인원=${applicationCount}, 경쟁률=${competitionRate}`);
+      }
+
+      // v13: 중앙화된 스킵 함수 사용
+      if (!shouldSkipRow(departmentName)) {
+        results.push({
+          대학명: cleanUniversityName(universityName),
+          군: defaultGroup,
+          전형명: defaultAdmissionType,
+          모집단위: departmentName,
+          모집인원: effectiveRecruitment,
+          지원인원: applicationCount,
+          경쟁률: competitionRate || (effectiveRecruitment > 0 && applicationCount > 0 ? parseFloat((applicationCount / effectiveRecruitment).toFixed(2)) : 0),
           경쟁률_문자열: competitionRate > 0 ? `${competitionRate.toFixed(2)}:1` : '-',
         });
       }
@@ -749,15 +856,26 @@ function parseDaeguTable($, table, universityName, defaultAdmissionType) {
       const applicationCount = parseNumber($(cells[baseIdx + 1])?.text());
       const competitionRate = parseRate($(cells[baseIdx + 2])?.text());
 
-      if (recruitmentCount > 0 || applicationCount > 0) {
+      // v16: 모집인원 검증 로직
+      let effectiveRecruitment = recruitmentCount;
+      if (recruitmentCount === 0 && applicationCount > 0 && CONFIG.VALIDATE_WITH_COMPETITION_RATE && competitionRate > 0) {
+        effectiveRecruitment = Math.max(1, Math.round(applicationCount / competitionRate));
+        if (CONFIG.DEBUG_ZERO_RECRUITMENT) {
+          console.log(`    [경쟁률역산-대구대] ${universityName} - ${departmentName} (${group}): ${effectiveRecruitment}명 (지원: ${applicationCount}, 경쟁률: ${competitionRate}:1)`);
+        }
+      } else if (recruitmentCount === 0 && applicationCount > 0 && CONFIG.DEBUG_ZERO_RECRUITMENT) {
+        console.log(`    [⚠️실패-대구대] ${universityName} - ${departmentName} (${group}): 모집인원=0, 지원인원=${applicationCount}, 경쟁률=${competitionRate}`);
+      }
+
+      if (effectiveRecruitment > 0 || applicationCount > 0) {
         results.push({
           대학명: cleanUniversityName(universityName),
           군: group,
           전형명: defaultAdmissionType,
           모집단위: departmentName,
-          모집인원: recruitmentCount,
+          모집인원: effectiveRecruitment,
           지원인원: applicationCount,
-          경쟁률: competitionRate || (recruitmentCount > 0 ? parseFloat((applicationCount / recruitmentCount).toFixed(2)) : 0),
+          경쟁률: competitionRate || (effectiveRecruitment > 0 ? parseFloat((applicationCount / effectiveRecruitment).toFixed(2)) : 0),
           경쟁률_문자열: competitionRate > 0 ? `${competitionRate.toFixed(2)}:1` : '-',
         });
       }
@@ -827,10 +945,23 @@ function parseEnhancedRowspanTable($, table, universityName, defaultGroup, defau
     const applicationCount = parseNumber(virtualRow[columns.application]);
     const competitionRate = parseRate(virtualRow[columns.rate]);
 
-    // 모집인원 상속
+    // v16: 개선된 모집인원 검증 로직
     let effectiveRecruitment = recruitmentCount;
-    if (recruitmentCount === 0 && applicationCount > 0 && lastValidRecruitment > 0) {
-      effectiveRecruitment = lastValidRecruitment;
+    if (recruitmentCount === 0 && applicationCount > 0) {
+      // 1순위: 경쟁률 역산
+      if (CONFIG.VALIDATE_WITH_COMPETITION_RATE && competitionRate > 0) {
+        effectiveRecruitment = Math.max(1, Math.round(applicationCount / competitionRate));
+        if (CONFIG.DEBUG_ZERO_RECRUITMENT) {
+          console.log(`    [경쟁률역산-향상] ${universityName} - ${departmentName}: ${effectiveRecruitment}명 (지원: ${applicationCount}, 경쟁률: ${competitionRate}:1)`);
+        }
+      }
+      // 2순위: rowspan 상속
+      else if (lastValidRecruitment > 0) {
+        effectiveRecruitment = lastValidRecruitment;
+        if (CONFIG.DEBUG_ZERO_RECRUITMENT) {
+          console.log(`    [rowspan상속-향상] ${universityName} - ${departmentName}: ${lastValidRecruitment}명 (지원: ${applicationCount})`);
+        }
+      }
     } else if (recruitmentCount > 0) {
       lastValidRecruitment = recruitmentCount;
     }
@@ -890,16 +1021,25 @@ function parseDongmyungTable($, table, universityName, defaultGroup, defaultAdmi
     const applicationCount = parseNumber($(cells[COL.application])?.text());
     const competitionRate = parseRate($(cells[COL.rate])?.text());
 
-    if (recruitmentCount === 0 && applicationCount === 0) return;
+    // v16: 모집인원 검증 로직
+    let effectiveRecruitment = recruitmentCount;
+    if (recruitmentCount === 0 && applicationCount > 0 && CONFIG.VALIDATE_WITH_COMPETITION_RATE && competitionRate > 0) {
+      effectiveRecruitment = Math.max(1, Math.round(applicationCount / competitionRate));
+      if (CONFIG.DEBUG_ZERO_RECRUITMENT) {
+        console.log(`    [경쟁률역산-동명대] ${universityName} - ${departmentName}: ${effectiveRecruitment}명 (지원: ${applicationCount}, 경쟁률: ${competitionRate}:1)`);
+      }
+    }
+
+    if (effectiveRecruitment === 0 && applicationCount === 0) return;
 
     results.push({
       대학명: cleanUniversityName(universityName),
       군: defaultGroup,
       전형명: defaultAdmissionType,
       모집단위: departmentName,
-      모집인원: recruitmentCount,
+      모집인원: effectiveRecruitment,
       지원인원: applicationCount,
-      경쟁률: competitionRate || (recruitmentCount > 0 ? parseFloat((applicationCount / recruitmentCount).toFixed(2)) : 0),
+      경쟁률: competitionRate || (effectiveRecruitment > 0 ? parseFloat((applicationCount / effectiveRecruitment).toFixed(2)) : 0),
       경쟁률_문자열: competitionRate > 0 ? `${competitionRate.toFixed(2)}:1` : '-',
     });
   });
@@ -914,10 +1054,12 @@ function parseSillaTable($, table, universityName, defaultGroup, defaultAdmissio
   const headerCells = $(table).find('th');
   const headerTexts = headerCells.map((_, th) => $(th).text().trim()).get();
 
-  if (headerTexts.length > 0 && headerTexts[0] === '구분') {
+  // 요약 테이블 스킵 (구분/전형명으로 시작하고 5개 컬럼)
+  if (headerTexts.length === 5 && headerTexts[0] === '구분' && headerTexts[1] === '전형명') {
     return { results: [], errors: [] };
   }
 
+  // 상세 테이블만 처리 (헤더: 대학, 모집단위, 모집군, ...)
   if (headerTexts.length === 0 || headerTexts[0] !== '대학') {
     return { results: [], errors: [] };
   }
@@ -932,33 +1074,140 @@ function parseSillaTable($, table, universityName, defaultGroup, defaultAdmissio
     rate: 6,
   };
 
+  // rowspan 처리를 위한 가상 행 구조
+  const activeRowspans = {};
+
   $(table).find('tr').each((rowIdx, row) => {
     const cells = $(row).find('td');
-    if (cells.length < 7) return;
+    if (cells.length === 0) return; // 헤더 행 스킵
 
-    const departmentName = $(cells[COL.department])?.text().trim();
+    // 가상 행 생성 (rowspan 고려)
+    const virtualRow = [];
+    let cellIdx = 0;
+
+    for (let col = 0; col <= COL.rate; col++) {
+      if (activeRowspans[col] && activeRowspans[col].remainingRows > 0) {
+        virtualRow[col] = activeRowspans[col].value;
+        activeRowspans[col].remainingRows--;
+      } else if (cellIdx < cells.length) {
+        const cell = $(cells[cellIdx]);
+        const rowspan = parseInt(cell.attr('rowspan')) || 1;
+        const value = cell.text().trim();
+
+        virtualRow[col] = value;
+
+        if (rowspan > 1) {
+          activeRowspans[col] = { value, remainingRows: rowspan - 1 };
+        }
+        cellIdx++;
+      }
+    }
+
+    const departmentName = virtualRow[COL.department];
     // v13: 중앙화된 스킵 함수 사용
     if (shouldSkipRow(departmentName)) return;
 
     let rowGroup = defaultGroup;
-    const groupText = $(cells[COL.group])?.text().trim();
+    const groupText = virtualRow[COL.group];
     const parsed = extractGroupFromText(groupText);
     if (parsed) rowGroup = parsed;
 
-    const recruitmentCount = parseNumber($(cells[COL.recruitment])?.text());
-    const applicationCount = parseNumber($(cells[COL.application])?.text());
-    const competitionRate = parseRate($(cells[COL.rate])?.text());
+    const recruitmentCount = parseNumber(virtualRow[COL.recruitment]);
+    const applicationCount = parseNumber(virtualRow[COL.application]);
+    const competitionRate = parseRate(virtualRow[COL.rate]);
 
-    if (recruitmentCount === 0 && applicationCount === 0) return;
+    // v16: 모집인원 검증 로직
+    let effectiveRecruitment = recruitmentCount;
+    if (recruitmentCount === 0 && applicationCount > 0 && CONFIG.VALIDATE_WITH_COMPETITION_RATE && competitionRate > 0) {
+      effectiveRecruitment = Math.max(1, Math.round(applicationCount / competitionRate));
+      if (CONFIG.DEBUG_ZERO_RECRUITMENT) {
+        console.log(`    [경쟁률역산-신라대] ${universityName} - ${departmentName}: ${effectiveRecruitment}명 (지원: ${applicationCount}, 경쟁률: ${competitionRate}:1)`);
+      }
+    }
+
+    if (effectiveRecruitment === 0 && applicationCount === 0) return;
 
     results.push({
       대학명: cleanUniversityName(universityName),
       군: rowGroup,
       전형명: defaultAdmissionType,
       모집단위: departmentName,
-      모집인원: recruitmentCount,
+      모집인원: effectiveRecruitment,
       지원인원: applicationCount,
-      경쟁률: competitionRate || (recruitmentCount > 0 ? parseFloat((applicationCount / recruitmentCount).toFixed(2)) : 0),
+      경쟁률: competitionRate || (effectiveRecruitment > 0 ? parseFloat((applicationCount / effectiveRecruitment).toFixed(2)) : 0),
+      경쟁률_문자열: competitionRate > 0 ? `${competitionRate.toFixed(2)}:1` : '-',
+    });
+  });
+
+  return { results, errors: [] };
+}
+
+// ==================== 동의대학교 전용 파서 (v14 신규) ====================
+
+function parseDoguiTable($, table, universityName, defaultGroup, defaultAdmissionType) {
+  const results = [];
+  const headerCells = $(table).find('th');
+  const headerTexts = headerCells.map((_, th) => $(th).text().trim()).get();
+
+  // 헤더: [대학, 모집단위, 학과소개(홈페이지), 학과소개(동영상), 모집인원, 지원인원, 경쟁률]
+  // 상세 테이블만 처리
+  if (headerTexts.length === 0 || headerTexts[0] !== '대학') {
+    return { results: [], errors: [] };
+  }
+
+  let currentCollege = '';
+
+  $(table).find('tr').each((rowIdx, row) => {
+    const cells = $(row).find('td');
+    if (cells.length === 0) return; // 헤더 행 스킵
+
+    let departmentName, recruitmentCount, applicationCount, competitionRate;
+
+    if (cells.length === 7) {
+      // 새로운 대학 블록 시작 (7셀: 대학명 포함)
+      currentCollege = $(cells[0]).text().trim();
+      departmentName = $(cells[1]).text().trim();
+      recruitmentCount = parseNumber($(cells[4]).text());
+      applicationCount = parseNumber($(cells[5]).text());
+      competitionRate = parseRate($(cells[6]).text());
+    } else if (cells.length === 6) {
+      // 같은 대학 내 학과 (6셀: 대학명 rowspan으로 숨겨짐)
+      departmentName = $(cells[0]).text().trim();
+      recruitmentCount = parseNumber($(cells[3]).text());
+      applicationCount = parseNumber($(cells[4]).text());
+      competitionRate = parseRate($(cells[5]).text());
+    } else {
+      return; // 예상치 못한 셀 개수
+    }
+
+    // 학과명 정리 (홈페이지/동영상 링크 텍스트 제거)
+    if (departmentName.includes('[교직]')) {
+      departmentName = departmentName.replace(/\[교직\]/g, '').trim();
+    }
+
+    // v13: 중앙화된 스킵 함수 사용
+    if (shouldSkipRow(departmentName)) return;
+
+    // v16: 모집인원 검증 로직
+    let effectiveRecruitment = recruitmentCount;
+    if (recruitmentCount === 0 && applicationCount > 0 && CONFIG.VALIDATE_WITH_COMPETITION_RATE && competitionRate > 0) {
+      effectiveRecruitment = Math.max(1, Math.round(applicationCount / competitionRate));
+      if (CONFIG.DEBUG_ZERO_RECRUITMENT) {
+        console.log(`    [경쟁률역산-동의대] ${universityName} - ${departmentName}: ${effectiveRecruitment}명 (지원: ${applicationCount}, 경쟁률: ${competitionRate}:1)`);
+      }
+    }
+
+    // 빈 모집인원/지원인원 필터링
+    if (effectiveRecruitment === 0 && applicationCount === 0) return;
+
+    results.push({
+      대학명: cleanUniversityName(universityName),
+      군: defaultGroup,
+      전형명: defaultAdmissionType,
+      모집단위: departmentName,
+      모집인원: effectiveRecruitment,
+      지원인원: applicationCount,
+      경쟁률: competitionRate || (effectiveRecruitment > 0 ? parseFloat((applicationCount / effectiveRecruitment).toFixed(2)) : 0),
       경쟁률_문자열: competitionRate > 0 ? `${competitionRate.toFixed(2)}:1` : '-',
     });
   });
@@ -999,16 +1248,25 @@ function parseEducationUnivTable($, table, universityName, defaultGroup, default
     const applicationCount = parseNumber($(cells[applicationIdx])?.text());
     const competitionRate = parseRate($(cells[rateIdx])?.text());
 
-    if (recruitmentCount === 0 && applicationCount === 0) return;
+    // v16: 모집인원 검증 로직
+    let effectiveRecruitment = recruitmentCount;
+    if (recruitmentCount === 0 && applicationCount > 0 && CONFIG.VALIDATE_WITH_COMPETITION_RATE && competitionRate > 0) {
+      effectiveRecruitment = Math.max(1, Math.round(applicationCount / competitionRate));
+      if (CONFIG.DEBUG_ZERO_RECRUITMENT) {
+        console.log(`    [경쟁률역산-교육대] ${universityName} - ${classification}: ${effectiveRecruitment}명 (지원: ${applicationCount}, 경쟁률: ${competitionRate}:1)`);
+      }
+    }
+
+    if (effectiveRecruitment === 0 && applicationCount === 0) return;
 
     results.push({
       대학명: cleanUniversityName(universityName),
       군: defaultGroup,
       전형명: classification || defaultAdmissionType,
       모집단위: classification,  // 교육대학교는 전형명이 모집단위 역할
-      모집인원: recruitmentCount,
+      모집인원: effectiveRecruitment,
       지원인원: applicationCount,
-      경쟁률: competitionRate || (recruitmentCount > 0 ? parseFloat((applicationCount / recruitmentCount).toFixed(2)) : 0),
+      경쟁률: competitionRate || (effectiveRecruitment > 0 ? parseFloat((applicationCount / effectiveRecruitment).toFixed(2)) : 0),
       경쟁률_문자열: competitionRate > 0 ? `${competitionRate.toFixed(2)}:1` : '-',
     });
   });
@@ -1110,12 +1368,14 @@ async function crawlUniversity(univ, retryCount = 0) {
         parseResult = parseYonseiTable($, table, universityName, group, admissionType);
       } else if (universityName === '대구대학교') {
         parseResult = parseDaeguTable($, table, universityName, admissionType);
+      } else if (universityName === '동의대학교') {
+        parseResult = parseDoguiTable($, table, universityName, group, admissionType);
       } else if (universityName === '동명대학교') {
         parseResult = parseDongmyungTable($, table, universityName, group, admissionType);
       } else if (universityName === '신라대학교') {
         parseResult = parseSillaTable($, table, universityName, group, admissionType);
       } else if (['숭실대학교', '경성대학교', '한국체육대학교', '서원대학교', '우송대학교', '동서대학교'].includes(universityName)) {
-        // v12: 향상된 rowspan 파서 사용 (대구가톨릭대, 동의대는 표준 파서가 더 나음)
+        // v12: 향상된 rowspan 파서 사용 (대구가톨릭대는 표준 파서가 더 나음)
         parseResult = parseEnhancedRowspanTable($, table, universityName, group, admissionType);
       } else {
         parseResult = parseTableStandard($, table, universityName, group, admissionType);
@@ -1166,7 +1426,7 @@ async function main() {
   const timeStr = `${String(startTime.getHours()).padStart(2, '0')}${String(startTime.getMinutes()).padStart(2, '0')}`;
 
   console.log('╔══════════════════════════════════════════════════════════════╗');
-  console.log('║   정시 경쟁률 크롤러 v12 - 향상된 파서 및 예외 처리          ║');
+  console.log('║   정시 경쟁률 크롤러 v15 - 중복 제거 & 정확도 개선          ║');
   console.log('╠══════════════════════════════════════════════════════════════╣');
   console.log(`║ 시작: ${startTime.toLocaleString('ko-KR').padEnd(52)}║`);
   console.log(`║ 대상: ${universities.length}개 대학 (병렬 ${CONFIG.CONCURRENCY}개)`.padEnd(63) + '║');
@@ -1174,7 +1434,7 @@ async function main() {
   console.log(`║ 수동 데이터: 서울대, 상명대`.padEnd(63) + '║');
   console.log('╚══════════════════════════════════════════════════════════════╝\n');
 
-  const allData = [];
+  let allData = [];
   const allErrors = [];
   let successCount = 0, failCount = 0, skipCount = 0;
 
@@ -1241,6 +1501,33 @@ async function main() {
   console.log('\n군별 데이터:');
   Object.entries(groupStats).sort().forEach(([g, c]) => console.log(`  ${g}: ${c}건`));
 
+  // v15: 중복 제거 - 같은 대학/군/모집단위는 하나만 유지
+  console.log(`\n📊 중복 제거 전: ${allData.length}건`);
+
+  const deduped = {};
+  allData.forEach(d => {
+    const key = `${d.대학명}|${d.군}|${d.모집단위}`;
+    if (!deduped[key]) {
+      deduped[key] = { ...d };
+    } else {
+      // 중복이면 지원인원 합산 (모집인원은 같아야 함)
+      deduped[key].지원인원 += d.지원인원;
+      if (d.모집인원 > 0 && deduped[key].모집인원 === 0) {
+        deduped[key].모집인원 = d.모집인원;
+      }
+      // 경쟁률 재계산
+      deduped[key].경쟁률 = deduped[key].모집인원 > 0
+        ? parseFloat((deduped[key].지원인원 / deduped[key].모집인원).toFixed(2))
+        : 0;
+      deduped[key].경쟁률_문자열 = deduped[key].경쟁률 > 0
+        ? `${deduped[key].경쟁률.toFixed(2)}:1`
+        : '-';
+    }
+  });
+
+  allData = Object.values(deduped);
+  console.log(`📊 중복 제거 후: ${allData.length}건`);
+
   const zeroRecruitment = allData.filter(d => d.모집인원 === 0);
   if (zeroRecruitment.length > 0) {
     console.log(`\n⚠️ 모집인원 0인 데이터: ${zeroRecruitment.length}건`);
@@ -1253,7 +1540,7 @@ async function main() {
   const outputDir = path.join(__dirname, 'uploads');
   if (!fs.existsSync(outputDir)) fs.mkdirSync(outputDir, { recursive: true });
 
-  saveToExcel(allData, path.join(outputDir, `최종경쟁률_v13_${dateStr}_${timeStr}.xlsx`));
+  saveToExcel(allData, path.join(outputDir, `최종경쟁률_v15_${dateStr}_${timeStr}.xlsx`));
 
   const summaryData = [];
   const univGroups = {};
@@ -1266,10 +1553,10 @@ async function main() {
   Object.entries(univGroups).forEach(([name, s]) => {
     summaryData.push({ 대학명: name, 가군: s.가군, 나군: s.나군, 다군: s.다군, 미확인: s.미확인, 전체학과: s.전체, 총모집인원: s.총모집, 총지원인원: s.총지원, 평균경쟁률: s.총모집 > 0 ? (s.총지원 / s.총모집).toFixed(2) : '-' });
   });
-  saveToExcel(summaryData, path.join(outputDir, `최종경쟁률_요약_v12_${dateStr}_${timeStr}.xlsx`), '대학별요약');
+  saveToExcel(summaryData, path.join(outputDir, `최종경쟁률_요약_v15_${dateStr}_${timeStr}.xlsx`), '대학별요약');
 
   if (CONFIG.LOG_ERRORS_TO_FILE && allErrors.length > 0) {
-    saveErrorLog(allErrors, path.join(outputDir, `크롤링에러_v12_${dateStr}_${timeStr}.xlsx`));
+    saveErrorLog(allErrors, path.join(outputDir, `크롤링에러_v15_${dateStr}_${timeStr}.xlsx`));
   }
 
   console.log(`\n종료: ${endTime.toLocaleString('ko-KR')}`);

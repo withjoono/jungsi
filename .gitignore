@@ -54,8 +54,8 @@ firebase-service-account-key.json
 *.db
 
 # Uploads
-backend/uploads/*.xlsx
-backend/uploads/*.xls
+jungsi-backend/uploads/*.xlsx
+jungsi-backend/uploads/*.xls
 
 # Temporary files
 *.tmp
@@ -63,19 +63,19 @@ backend/uploads/*.xls
 nul
 
 # Test and analysis scripts
-backend/test-*.js
-backend/test-*.ts
-backend/check-*.js
-backend/check-*.ts
-backend/analyze-*.js
-backend/analyze-*.ts
-backend/fix-*.js
-backend/verify-*.js
-backend/debug-*.js
-backend/trace-*.js
+jungsi-backend/test-*.js
+jungsi-backend/test-*.ts
+jungsi-backend/check-*.js
+jungsi-backend/check-*.ts
+jungsi-backend/analyze-*.js
+jungsi-backend/analyze-*.ts
+jungsi-backend/fix-*.js
+jungsi-backend/verify-*.js
+jungsi-backend/debug-*.js
+jungsi-backend/trace-*.js
 
 # Excel output files
-backend/*.xlsx
+jungsi-backend/*.xlsx
 
 # Playwright
 .playwright-mcp/

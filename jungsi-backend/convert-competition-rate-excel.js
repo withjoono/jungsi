@@ -289,7 +289,7 @@ async function convertExcelToJson() {
   console.log(`가군: ${data.가군.length}개, 나군: ${data.나군.length}개, 다군: ${data.다군.length}개`);
 
   // JSON 파일 저장
-  const outputPath = path.join(__dirname, '../frontend/public/data/competition-rate.json');
+  const outputPath = path.join(__dirname, '../jungsi-frontend/public/data/competition-rate.json');
 
   // 디렉토리 생성
   const dir = path.dirname(outputPath);
