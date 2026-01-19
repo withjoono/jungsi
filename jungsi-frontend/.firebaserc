@@ -1,0 +1,18 @@
+{
+  "projects": {
+    "default": "ts-front-479305"
+  },
+  "targets": {
+    "ts-front-479305": {
+      "hosting": {
+        "production": [
+          "ts-front-479305"
+        ],
+        "staging": [
+          "ts-front-479305-staging"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}

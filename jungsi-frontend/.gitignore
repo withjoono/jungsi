@@ -1,0 +1,50 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+firebase-debug.log*
+firebase-debug.*.log
+
+node_modules
+dist
+dist-ssr
+
+# Firebase
+.firebase/
+.firebase
+
+# Reference/Legacy code
+_reference/
+
+# Environment variables (security)
+.env
+.env.local
+.env*.local
+*.env
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Temporary files
+.tanstack/
+nul
+.mcp.json
+.playwright-mcp/
+Uploads/
+fe-shared-packages/
+mentoring/
+planner/
+docs/
+*.png
