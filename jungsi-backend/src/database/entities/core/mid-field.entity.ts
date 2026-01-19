@@ -10,7 +10,7 @@ import {
 import { MajorFieldEntity } from './major-field.entity';
 import { MinorFieldEntity } from './minor-field.entity';
 
-@Entity('ts_mid_fields', {
+@Entity('ss_mid_field', {
   comment: '대학 중계열(예: 경영·경제, 건축) 정보를 저장하는 테이블',
 })
 @Unique('uk_ts_mid_fields_name_major_field', ['name', 'major_field'])

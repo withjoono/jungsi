@@ -14,7 +14,7 @@ import { MemberEntity } from '../member/member.entity';
  * 플래너 일정 아이템 엔티티
  * 캘린더에 표시되는 개별 일정(학습/수업)을 관리합니다.
  */
-@Entity('planner_item_tb')
+@Entity('pl_item')
 @Index(['member_id'])
 @Index(['start_date'])
 @Index(['primary_type'])

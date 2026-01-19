@@ -1,7 +1,7 @@
 import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
 
 // 쿠폰
-@Entity('pay_coupon_tb')
+@Entity('payment_coupon')
 export class PayCouponEntity {
   @PrimaryGeneratedColumn({ type: 'bigint' })
   id: number;

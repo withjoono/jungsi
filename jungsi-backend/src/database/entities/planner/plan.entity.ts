@@ -14,7 +14,7 @@ import { MemberEntity } from '../member/member.entity';
  * 장기 학습계획 엔티티
  * 과목별 장기 학습 목표 및 진행률을 관리합니다.
  */
-@Entity('planner_plan_tb')
+@Entity('pl_plan')
 @Index(['member_id'])
 @Index(['subject'])
 export class PlanEntity {

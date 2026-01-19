@@ -9,7 +9,7 @@ import {
 } from 'typeorm';
 import { MemberEntity } from '../member/member.entity';
 
-@Entity('planner_notice_tb')
+@Entity('pl_notice')
 export class PlannerNoticeEntity {
   @PrimaryGeneratedColumn('increment', { type: 'bigint' })
   id: number;

@@ -2,7 +2,7 @@ import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, OneToMany, JoinColum
 import { UniversityEntity } from './university.entity';
 import { RegularAdmissionPreviousResultEntity } from './regular-admission-previous-result.entity';
 
-@Entity('ts_regular_admissions', { comment: '정시 입학 정보 테이블' })
+@Entity('js_admission', { comment: '정시 입학 정보 테이블' })
 export class RegularAdmissionEntity {
   @PrimaryGeneratedColumn({ comment: '정시 입학 정보 고유 ID' })
   id: number;

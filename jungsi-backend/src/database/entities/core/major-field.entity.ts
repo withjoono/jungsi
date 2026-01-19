@@ -1,7 +1,7 @@
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
 import { MidFieldEntity } from './mid-field.entity';
 
-@Entity('ts_major_fields', {
+@Entity('ss_major_field', {
   comment: '대학 대계열(예: 인문계열, 자연계열) 정보를 저장하는 테이블',
 })
 export class MajorFieldEntity {

@@ -1,6 +1,6 @@
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 
-@Entity('mockexam_raw_to_standard_tb')
+@Entity('js_raw_to_standard')
 export class MockexamRawToStandardEntity {
   @PrimaryGeneratedColumn()
   id: number;

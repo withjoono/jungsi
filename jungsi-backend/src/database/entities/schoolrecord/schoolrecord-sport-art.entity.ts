@@ -3,7 +3,7 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn } from 'typeorm';
 import { MemberEntity } from '../member/member.entity';
 
-@Entity('schoolrecord_subject_sports_art_tb')
+@Entity('sgb_sport_art')
 export class SchoolrecordSportsArtEntity {
   @PrimaryGeneratedColumn({ type: 'bigint', name: 'id', comment: '아이디' })
   id: number;

@@ -14,7 +14,7 @@ export enum ConsultationType {
   PARENT = 'parent',
 }
 
-@Entity('myclass_consultation_tb')
+@Entity('mc_consultation')
 export class ConsultationEntity {
   @PrimaryGeneratedColumn('increment', { type: 'bigint' })
   id: number;

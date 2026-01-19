@@ -5,7 +5,7 @@ import { MemberEntity } from '../member/member.entity';
  * 멘토링 관리자 클래스 엔티티
  * 멘토-멘티 관계를 양방향으로 저장합니다.
  */
-@Entity('mentoring_admin_class_tb')
+@Entity('tr_admin_class')
 @Index(['member_id'])
 @Index(['target_member_id'])
 export class AdminClassEntity {

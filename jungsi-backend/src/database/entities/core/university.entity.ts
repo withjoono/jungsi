@@ -2,7 +2,7 @@ import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
 import { AdmissionEntity } from './admission.entity';
 import { RegularAdmissionEntity } from './regular-admission.entity';
 
-@Entity('ts_universities', { comment: '대학 정보 테이블' })
+@Entity('ss_university', { comment: '대학 정보 테이블' })
 export class UniversityEntity {
   @PrimaryGeneratedColumn({ comment: '대학 고유 ID' })
   id: number;

@@ -15,7 +15,7 @@ export enum MoodType {
   BAD = 'bad',
 }
 
-@Entity('myclass_health_record_tb')
+@Entity('mc_health_record')
 export class HealthRecordEntity {
   @PrimaryGeneratedColumn('increment', { type: 'bigint' })
   id: number;

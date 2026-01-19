@@ -1,6 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
 
-@Entity('pay_cancel_log_tb')
+@Entity('payment_cancel_log')
 export class PayCancelLogEntity {
   @PrimaryGeneratedColumn({ type: 'bigint' })
   id: number;

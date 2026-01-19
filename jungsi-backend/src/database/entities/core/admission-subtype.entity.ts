@@ -1,7 +1,7 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToMany } from 'typeorm';
 import { AdmissionEntity } from './admission.entity';
 
-@Entity('ts_admission_subtypes', { comment: '전형 세부유형 정보 테이블' })
+@Entity('ss_admission_subtype', { comment: '전형 세부유형 정보 테이블' })
 export class AdmissionSubtypeEntity {
   @PrimaryGeneratedColumn({ comment: '전형 세부유형 고유 ID' })
   id: number;

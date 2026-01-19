@@ -1,7 +1,7 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn } from 'typeorm';
 import { MemberEntity } from '../member/member.entity';
 
-@Entity('schoolrecord_subject_learning_tb')
+@Entity('sgb_subject_learning')
 export class SchoolRecordSubjectLearningEntity {
   @PrimaryGeneratedColumn('increment')
   id: number;

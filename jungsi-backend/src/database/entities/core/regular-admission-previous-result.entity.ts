@@ -1,7 +1,7 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn } from 'typeorm';
 import { RegularAdmissionEntity } from './regular-admission.entity';
 
-@Entity('ts_regular_admission_previous_results', {
+@Entity('js_admission_previous_result', {
   comment: '과거 정시 입학 결과 테이블',
 })
 export class RegularAdmissionPreviousResultEntity {

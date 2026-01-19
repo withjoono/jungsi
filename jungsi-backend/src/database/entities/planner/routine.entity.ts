@@ -14,7 +14,7 @@ import { MemberEntity } from '../member/member.entity';
  * 루틴(일과) 엔티티
  * 매일 반복되는 일과를 관리합니다.
  */
-@Entity('planner_routine_tb')
+@Entity('pl_routine')
 @Index(['member_id'])
 export class RoutineEntity {
   @PrimaryGeneratedColumn({ type: 'bigint' })

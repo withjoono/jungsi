@@ -16,7 +16,7 @@ import { AdmissionMethodEntity } from './admission-method.entity';
 import { RecruitmentUnitEntity } from './recruitment-unit.entity';
 import { UniversityEntity } from './university.entity';
 
-@Entity('ts_admissions', { comment: '대학 입학전형 정보 테이블' })
+@Entity('ss_admission', { comment: '대학 입학전형 정보 테이블' })
 @Unique('uk_ts_admissions_name_year_university_category', [
   'name',
   'year',
@@ -63,7 +63,7 @@ export class AdmissionEntity {
 
   @ManyToMany(() => AdmissionSubtypeEntity, (subtype) => subtype.admissions)
   @JoinTable({
-    name: 'ts_admission_subtype_relations',
+    name: 'ss_admission_subtype_relations',
     joinColumn: { name: 'admission_id', referencedColumnName: 'id' },
     inverseJoinColumn: { name: 'subtype_id', referencedColumnName: 'id' },
   })

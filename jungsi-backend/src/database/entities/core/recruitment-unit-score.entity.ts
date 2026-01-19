@@ -1,7 +1,7 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn } from 'typeorm';
 import { RecruitmentUnitEntity } from './recruitment-unit.entity';
 
-@Entity('ts_recruitment_unit_scores', {
+@Entity('ss_recruitment_unit_score', {
   comment: '모집단위별 성적 정보 테이블',
 })
 export class RecruitmentUnitScoreEntity {

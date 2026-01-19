@@ -5,7 +5,7 @@ import { MemberEntity } from '../member/member.entity';
  * 플래너 클래스 엔티티
  * 플래너(멘토)가 운영하는 클래스 정보를 관리합니다.
  */
-@Entity('planner_class_tb')
+@Entity('pl_class')
 @Index(['planner_id'])
 @Index(['class_code'])
 @Index(['use_yn'])

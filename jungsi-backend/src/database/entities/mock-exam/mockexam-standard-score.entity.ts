@@ -3,7 +3,7 @@ import { MemberEntity } from '../member/member.entity';
 import { MockexamScheduleEntity } from './mockexam-schedule.entity';
 
 // 모의고사 원점수
-@Entity('mockexam_standard_score_tb')
+@Entity('js_sunung_standard_score')
 @Unique('unique_mock_standard_score', ['subject_code', 'member', 'schedule'])
 export class MockexamStandardScoreEntity {
   @PrimaryGeneratedColumn()

@@ -1,7 +1,7 @@
 import { Entity, PrimaryGeneratedColumn, Column, OneToOne, JoinColumn } from 'typeorm';
 import { RecruitmentUnitEntity } from './recruitment-unit.entity';
 
-@Entity('ts_recruitment_unit_interviews', {
+@Entity('ss_recruitment_unit_interview', {
   comment: '모집단위별 면접 정보 테이블',
 })
 export class RecruitmentUnitInterviewEntity {

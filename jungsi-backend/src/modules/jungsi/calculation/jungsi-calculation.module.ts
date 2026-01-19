@@ -8,6 +8,7 @@ import { RegularAdmissionEntity } from '../../../database/entities/core/regular-
 import { MemberCalculatedScoreEntity } from '../../../database/entities/member/member-calculated-score.entity';
 import { MemberJungsiInputScoreEntity } from '../../../database/entities/member/member-jungsi-input-score.entity';
 import { MemberJungsiRecruitmentScoreEntity } from '../../../database/entities/member/member-jungsi-recruitment-score.entity';
+import { MemberJungsiFactorScoreEntity } from '../../../database/entities/member/member-jungsi-factor-score.entity';
 import { RegularAdmissionPreviousResultEntity } from '../../../database/entities/core/regular-admission-previous-result.entity';
 import { MockexamStandardScoreEntity } from '../../../database/entities/mock-exam/mockexam-standard-score.entity';
 import { CommonModule } from '../../../common/common.module';
@@ -20,6 +21,7 @@ import { CommonModule } from '../../../common/common.module';
       MemberCalculatedScoreEntity,
       MemberJungsiInputScoreEntity,
       MemberJungsiRecruitmentScoreEntity,
+      MemberJungsiFactorScoreEntity,
       RegularAdmissionPreviousResultEntity,
       MockexamStandardScoreEntity,
     ]),

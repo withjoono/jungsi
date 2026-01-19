@@ -60,6 +60,7 @@ import { MockexamStandardScoreEntity } from './entities/mock-exam/mockexam-stand
 import { MemberCalculatedScoreEntity } from './entities/member/member-calculated-score.entity';
 import { MemberJungsiInputScoreEntity } from './entities/member/member-jungsi-input-score.entity';
 import { MemberJungsiRecruitmentScoreEntity } from './entities/member/member-jungsi-recruitment-score.entity';
+import { MemberJungsiFactorScoreEntity } from './entities/member/member-jungsi-factor-score.entity';
 import { TempCodeEntity, AccountLinkEntity, AdminClassEntity } from './entities/mentoring';
 import {
   PlanEntity,
@@ -192,6 +193,7 @@ export class TypeOrmConfigService implements TypeOrmOptionsFactory {
         MemberCalculatedScoreEntity, // 정시 환산인자별 환산점수
         MemberJungsiInputScoreEntity, // 정시 입력 성적 (사용자 수능 점수)
         MemberJungsiRecruitmentScoreEntity, // 정시 모집단위별 환산점수 + 유불리
+        MemberJungsiFactorScoreEntity, // 정시 환산인자별 환산점수 (최적화)
 
         // 멘토링 관련
         TempCodeEntity, // 임시 연계 코드

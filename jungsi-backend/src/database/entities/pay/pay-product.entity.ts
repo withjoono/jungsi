@@ -1,7 +1,7 @@
 import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
 
 // 상품 (상품 코드 관리)
-@Entity('pay_product_tb')
+@Entity('payment_product')
 export class PayProductEntity {
   @PrimaryGeneratedColumn({ type: 'bigint' })
   id: number;

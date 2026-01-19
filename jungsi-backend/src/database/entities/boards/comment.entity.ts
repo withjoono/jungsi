@@ -9,7 +9,7 @@ import {
 import { MemberEntity } from '../member/member.entity';
 import { PostEntity } from './post.entity';
 
-@Entity('comment_tb')
+@Entity('board_comment')
 export class CommentEntity {
   @PrimaryGeneratedColumn('increment', { type: 'bigint' })
   id: number;

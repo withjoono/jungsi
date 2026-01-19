@@ -11,7 +11,7 @@ import {
 import { MemberEntity } from './member.entity';
 import { RegularAdmissionEntity } from '../core/regular-admission.entity';
 
-@Entity('ts_member_regular_combinations')
+@Entity('js_user_application_combination')
 export class MemberRegularCombinationEntity {
   @PrimaryGeneratedColumn()
   id: number;
@@ -25,7 +25,7 @@ export class MemberRegularCombinationEntity {
 
   @ManyToMany(() => RegularAdmissionEntity, { cascade: true })
   @JoinTable({
-    name: 'ts_member_regular_combination_items',
+    name: 'js_user_application_combination_items',
     joinColumn: {
       name: 'combination_id',
       referencedColumnName: 'id',

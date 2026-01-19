@@ -17,7 +17,7 @@ import { RecruitmentUnitInterviewEntity } from './recruitment-unit-interview.ent
 import { RecruitmentUnitPreviousResultEntity } from './recruitment-unit-previous-result.entity';
 import { RecruitmentUnitPassFailRecordsEntity } from './recruitment-unit-pass-fail-record.entity';
 
-@Entity('ts_recruitment_units', {
+@Entity('ss_recruitment_unit', {
   comment: '대학 입학전형의 모집단위 정보 테이블',
 })
 @Unique('uk_recruitment_admission_name', ['admission', 'name'])

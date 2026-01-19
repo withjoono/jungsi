@@ -11,7 +11,7 @@ import {
 import { MemberEntity } from './member.entity';
 import { RecruitmentUnitEntity } from '../core/recruitment-unit.entity';
 
-@Entity('ts_member_recruitment_unit_combinations')
+@Entity('ss_user_application_combination')
 export class MemberRecruitmentUnitCombinationEntity {
   @PrimaryGeneratedColumn()
   id: number;
@@ -25,7 +25,7 @@ export class MemberRecruitmentUnitCombinationEntity {
 
   @ManyToMany(() => RecruitmentUnitEntity)
   @JoinTable({
-    name: 'ts_member_recruitment_unit_combination_items',
+    name: 'ss_user_recruitment_unit_combination_items',
     joinColumn: {
       name: 'combination_id',
       referencedColumnName: 'id',

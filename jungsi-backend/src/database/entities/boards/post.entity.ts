@@ -11,7 +11,7 @@ import { BoardEntity } from './board.entity';
 import { CommentEntity } from './comment.entity';
 import { MemberEntity } from '../member/member.entity';
 
-@Entity('post_tb')
+@Entity('board_post')
 export class PostEntity {
   @PrimaryGeneratedColumn('increment', { type: 'bigint' })
   id: number;

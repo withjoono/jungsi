@@ -16,7 +16,7 @@ import { UniversityEntity } from '../core/university.entity';
  * - 정시 환산점수를 미리 계산하여 저장
  * - 사용자가 모의고사 점수를 변경하면 재계산 필요
  */
-@Entity('ts_member_jungsi_calculated_scores', { comment: '정시 환산인자별 사용자 환산점수' })
+@Entity('js_user_calculated_scores', { comment: '정시 환산인자별 사용자 환산점수' })
 @Index(['member_id', 'university_id', 'score_calculation_code'], { unique: true })
 @Index(['member_id'])
 export class MemberCalculatedScoreEntity {

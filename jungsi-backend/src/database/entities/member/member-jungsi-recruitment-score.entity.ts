@@ -17,7 +17,7 @@ import { RegularAdmissionEntity } from '../core/regular-admission.entity';
  * - 각 모집단위(recruitment_unit)별로 환산점수, 유불리 점수 저장
  * - 사용자가 수능점수를 입력하고 트리거하면 모든 모집단위에 대해 계산 후 저장
  */
-@Entity('ts_member_jungsi_recruitment_scores', { comment: '정시 모집단위별 사용자 환산점수' })
+@Entity('js_user_recruitment_scores', { comment: '정시 모집단위별 사용자 환산점수' })
 @Index(['member_id', 'regular_admission_id'], { unique: true })
 @Index(['member_id'])
 @Index(['member_id', 'university_id'])

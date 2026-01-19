@@ -1,7 +1,7 @@
 import { Entity, PrimaryGeneratedColumn, Column, JoinColumn, ManyToOne } from 'typeorm';
 import { RecruitmentUnitEntity } from './recruitment-unit.entity';
 
-@Entity('ts_recruitment_unit_pass_fail_records', {
+@Entity('ss_recruitment_unit_pass_fail_record', {
   comment: '모집단위 합불 데이터 테이블',
 })
 export class RecruitmentUnitPassFailRecordsEntity {

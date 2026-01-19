@@ -16,7 +16,7 @@ import { MemberEntity } from './member.entity';
  * - 계열 및 선택과목 정보
  * - 이 데이터를 기반으로 대학별 환산점수 계산
  */
-@Entity('ts_member_jungsi_input_scores', { comment: '정시 입력 성적' })
+@Entity('js_user_input_scores', { comment: '정시 입력 성적' })
 @Index(['member_id'], { unique: true })
 export class MemberJungsiInputScoreEntity {
   @PrimaryGeneratedColumn({ comment: '입력 성적 고유 ID' })

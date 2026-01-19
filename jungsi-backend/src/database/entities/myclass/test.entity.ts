@@ -15,7 +15,7 @@ export enum TestStatus {
   MISSED = 'missed',
 }
 
-@Entity('myclass_test_tb')
+@Entity('mc_test')
 export class TestEntity {
   @PrimaryGeneratedColumn('increment', { type: 'bigint' })
   id: number;

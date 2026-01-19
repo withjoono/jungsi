@@ -2,7 +2,7 @@ import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn, Unique }
 import { PayServiceEntity } from './pay-service.entity';
 import { MemberEntity } from '../member/member.entity';
 
-@Entity('pay_order_tb')
+@Entity('payment_order')
 @Unique('UK_gnwosnxtfwcpt1acvc9c1t1vf', ['imp_uid'])
 @Unique('UK_4c9pqmv7an15g602u8wa6dje', ['merchant_uid'])
 export class PayOrderEntity {

@@ -1,7 +1,7 @@
 import { Entity, PrimaryGeneratedColumn, Column, OneToOne, JoinColumn } from 'typeorm';
 import { RecruitmentUnitEntity } from './recruitment-unit.entity';
 
-@Entity('ts_recruitment_unit_minimum_grades', {
+@Entity('ss_recruitment_unit_minimum_grade', {
   comment: '모집단위별 최저등급 정보 테이블',
 })
 export class RecruitmentUnitMinimumGradeEntity {

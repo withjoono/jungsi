@@ -11,7 +11,7 @@ import { MemberEntity } from '../member/member.entity';
 import { MockexamScheduleEntity } from './mockexam-schedule.entity';
 
 // 모의고사 원점수
-@Entity('mockexam_raw_score_tb')
+@Entity('js_sunung_raw_score')
 @Unique('unique_mock_raw_score', ['subject_code', 'member', 'schedule'])
 @Index('FKrnh66ujfb1ufu3cns2fsgllje', ['member'])
 @Index('FK7u12dq9x1x8ln2t2559lcnphu', ['schedule'])

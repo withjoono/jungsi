@@ -1,7 +1,7 @@
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
 import { RecruitmentUnitEntity } from './recruitment-unit.entity';
 
-@Entity('ts_general_fields', {
+@Entity('ss_general_field', {
   comment: '대학 입학전형의 일반 계열 정보 테이블',
 })
 export class GeneralFieldEntity {

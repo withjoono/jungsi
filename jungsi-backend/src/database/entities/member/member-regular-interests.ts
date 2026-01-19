@@ -8,7 +8,7 @@ import {
 } from 'typeorm';
 import { MemberEntity } from './member.entity';
 
-@Entity('ts_member_regular_interests')
+@Entity('js_user_university_interest')
 export class MemberRegularInterestsEntity {
   @PrimaryGeneratedColumn()
   id: number;

@@ -14,7 +14,7 @@ import { MemberEntity } from '../member/member.entity';
  * 멘토가 생성한 6자리 연계 코드를 저장합니다.
  * 코드는 5분간 유효합니다.
  */
-@Entity('mentoring_temp_code_tb')
+@Entity('tr_temp_code')
 export class TempCodeEntity {
   @PrimaryColumn({ type: 'bigint' })
   member_id: number;

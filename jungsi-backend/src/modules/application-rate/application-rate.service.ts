@@ -43,9 +43,10 @@ export class ApplicationRateService {
   ) {}
 
   /**
-   * 5분마다 크롤링 실행
+   * 5분마다 크롤링 실행 (현재 비활성화됨)
+   * 크롤링을 재개하려면 @Cron 데코레이터 주석을 해제하세요
    */
-  @Cron(CronExpression.EVERY_5_MINUTES)
+  // @Cron(CronExpression.EVERY_5_MINUTES)
   async scheduledCrawl(): Promise<void> {
     this.logger.log('Starting scheduled crawl for application rates...');
 

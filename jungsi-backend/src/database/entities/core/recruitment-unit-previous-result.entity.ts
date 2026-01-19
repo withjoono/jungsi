@@ -1,7 +1,7 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn } from 'typeorm';
 import { RecruitmentUnitEntity } from './recruitment-unit.entity';
 
-@Entity('ts_recruitment_unit_previous_results', {
+@Entity('ss_recruitment_unit_previous_result', {
   comment: '모집단위별 이전 연도 입결 정보 테이블',
 })
 export class RecruitmentUnitPreviousResultEntity {

@@ -5,7 +5,7 @@ import { MemberEntity } from '../member/member.entity';
  * 플래너 멤버십 엔티티
  * 학생이 어떤 플래너 클래스에 소속되어 있는지 관리합니다.
  */
-@Entity('planner_management_tb')
+@Entity('pl_management')
 @Index(['planner_id'])
 @Index(['class_code'])
 @Index(['use_yn'])

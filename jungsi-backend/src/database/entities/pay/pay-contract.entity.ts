@@ -1,7 +1,7 @@
 import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
 
 // 상품 계약 정보
-@Entity('pay_contract_tb')
+@Entity('payment_contract')
 export class PayContractEntity {
   @PrimaryGeneratedColumn({ type: 'bigint' })
   id: number;

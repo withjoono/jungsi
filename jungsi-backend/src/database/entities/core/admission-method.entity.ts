@@ -1,7 +1,7 @@
 import { Entity, PrimaryGeneratedColumn, Column, OneToOne, JoinColumn } from 'typeorm';
 import { AdmissionEntity } from './admission.entity';
 
-@Entity('ts_admission_methods', { comment: '대학 입학전형 방법 정보 테이블' })
+@Entity('ss_admission_method', { comment: '대학 입학전형 방법 정보 테이블' })
 export class AdmissionMethodEntity {
   @PrimaryGeneratedColumn({ comment: '전형 방법 고유 ID' })
   id: number;

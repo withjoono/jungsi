@@ -4,7 +4,7 @@ import { MockexamRawScoreEntity } from './mockexam-raw-score.entity';
 import { MockexamStandardScoreEntity } from './mockexam-standard-score.entity';
 
 // 모의고사 일정
-@Entity('mockexam_schedule_tb')
+@Entity('js_pyunggawon_month')
 @Unique('unique_mock_schedule', ['mockexam_month', 'mockexam_year'])
 export class MockexamScheduleEntity {
   @PrimaryGeneratedColumn()

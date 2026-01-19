@@ -1,7 +1,7 @@
 import { Entity, PrimaryGeneratedColumn, Column, Unique } from 'typeorm';
 
 // 판매 상품
-@Entity('pay_service_tb')
+@Entity('payment_service')
 @Unique('UK_pk3sdbagrh1cdo8jk2oog4g0v', ['product_nm'])
 export class PayServiceEntity {
   @PrimaryGeneratedColumn({ type: 'bigint' })

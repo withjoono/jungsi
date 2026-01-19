@@ -16,7 +16,7 @@ export enum AttendanceStatus {
   EXCUSED = 'excused',
 }
 
-@Entity('myclass_attendance_tb')
+@Entity('mc_attendance')
 export class AttendanceEntity {
   @PrimaryGeneratedColumn('increment', { type: 'bigint' })
   id: number;
