@@ -1,5 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { StudentDetail } from '@/components/services/mentoring'
+import { StudentDetail } from '@/components/services/mentoring/index'
 
 interface SearchParams {
   name?: string

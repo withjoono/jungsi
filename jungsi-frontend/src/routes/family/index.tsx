@@ -1,5 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { Management } from '@/components/services/mentoring'
+import { Management } from '@/components/services/mentoring/index'
 import {
   useGetLinkedChildren,
 } from '@/stores/server/features/mentoring/queries'
