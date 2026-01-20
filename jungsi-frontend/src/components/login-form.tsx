@@ -51,13 +51,15 @@ export function LoginForm({ className }: Props) {
       // 사용자 정보를 가져와서 memberType에 따라 리다이렉트
       try {
         const user = await USER_API.fetchCurrentUserAPI();
-        if (user?.memberType === 'teacher') {
-          navigate({ to: "/mentoring/admin" });
-        } else if (user?.memberType === 'parent') {
-          navigate({ to: "/mentoring/parent" });
-        } else {
-          navigate({ to: "/" });
-        }
+        // TODO: mentoring 기능은 별도 앱으로 분리 예정
+        // if (user?.memberType === 'teacher') {
+        //   navigate({ to: "/mentoring/admin" });
+        // } else if (user?.memberType === 'parent') {
+        //   navigate({ to: "/mentoring/parent" });
+        // } else {
+        //   navigate({ to: "/" });
+        // }
+        navigate({ to: "/" });
       } catch {
         navigate({ to: "/" });
       }
