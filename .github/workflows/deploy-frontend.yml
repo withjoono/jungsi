@@ -1,0 +1,52 @@
+name: Deploy Frontend to Firebase
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'jungsi-frontend/**'
+      - '.github/workflows/deploy-frontend.yml'
+  workflow_dispatch:  # 수동 실행 가능
+
+jobs:
+  deploy:
+    name: Deploy to Firebase
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: ./jungsi-frontend
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+          cache-dependency-path: jungsi-frontend/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build application
+        run: npm run build
+        env:
+          VITE_API_URL_NEST: https://ts-back-nest-479305.du.r.appspot.com
+          VITE_API_URL_SPRING: https://ts-back-nest-479305.du.r.appspot.com
+
+      - name: Deploy to Firebase
+        uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: ${{ secrets.GITHUB_TOKEN }}
+          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+          channelId: live
+          projectId: ts-back-nest-479305
+          entryPoint: ./jungsi-frontend
+
+      - name: Notify deployment success
+        if: success()
+        run: echo "✅ Frontend deployment successful!"
