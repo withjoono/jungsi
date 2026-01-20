@@ -1,4 +1,4 @@
-name: Deploy to Firebase Hosting
+name: Deploy Jungsi to Firebase Hosting
 
 on:
   push:
@@ -14,24 +14,24 @@ env:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODE_VERSION }}
           cache: 'npm'
-      
+
       - name: Install dependencies
         run: npm ci
-      
+
       - name: Run linter
         run: npm run lint
         continue-on-error: true
-      
+
       - name: Build application
         run: npm run build
         env:
@@ -44,9 +44,9 @@ jobs:
           VITE_FIREBASE_MESSAGING_SENDER_ID: ${{ secrets.VITE_FIREBASE_MESSAGING_SENDER_ID }}
           VITE_FIREBASE_APP_ID: ${{ secrets.VITE_FIREBASE_APP_ID }}
           VITE_FIREBASE_MEASUREMENT_ID: ${{ secrets.VITE_FIREBASE_MEASUREMENT_ID }}
-          VITE_API_URL_SPRING: ${{ secrets.VITE_API_URL_SPRING }}
+          VITE_API_URL_HUB: ${{ secrets.VITE_API_URL_HUB }}
           VITE_API_URL_NEST: ${{ secrets.VITE_API_URL_NEST }}
-      
+
       - name: Deploy to Firebase Hosting (Preview)
         if: github.event_name == 'pull_request'
         uses: FirebaseExtended/action-hosting-deploy@v0
@@ -54,6 +54,7 @@ jobs:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
           projectId: ts-front-479305
+          target: jungsi
           channelId: preview-${{ github.event.pull_request.number }}
         env:
           FIREBASE_CLI_EXPERIMENTS: webframeworks
@@ -65,6 +66,7 @@ jobs:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
           projectId: ts-front-479305
+          target: jungsi
           channelId: live
         env:
           FIREBASE_CLI_EXPERIMENTS: webframeworks

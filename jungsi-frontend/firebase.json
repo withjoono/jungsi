@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "site": "ts-front-479305",
+    "target": "jungsi",
     "public": "dist",
     "ignore": [
       "firebase.json",
