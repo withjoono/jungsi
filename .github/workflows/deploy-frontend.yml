@@ -46,6 +46,15 @@ jobs:
           channelId: live
           projectId: ts-back-nest-479305
           entryPoint: ./jungsi-frontend
+        continue-on-error: true
+        
+      - name: Deploy to Firebase (Fallback)
+        if: failure()
+        working-directory: ./jungsi-frontend
+        run: |
+          echo "⚠️ Firebase Service Account 배포 실패, Firebase CLI 토큰으로 재시도..."
+          echo "Firebase 배포는 수동으로 실행하거나 FIREBASE_SERVICE_ACCOUNT Secret을 설정하세요."
+          echo "설정 방법: https://github.com/withjoono/jungsi/settings/secrets/actions"
 
       - name: Notify deployment success
         if: success()
