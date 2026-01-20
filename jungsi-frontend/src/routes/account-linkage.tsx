@@ -1,5 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { LinkagePage } from '@/components/services/mentoring/index'
+import { LinkagePage } from '@/components/services/mentoring'
 
 // 학년 코드 맵
 const GRADE_CODE_MAP: Record<string, string> = {
