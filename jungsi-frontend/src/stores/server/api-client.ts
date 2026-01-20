@@ -46,10 +46,30 @@ const addRefreshSubscriber = (callback: (token: string) => void) => {
 
 // NestJS 백엔드용 인터셉터
 const createNestApiInterceptors = (apiClientInstance) => {
-  // 요청 인터셉터: NestJS 백엔드는 camelCase를 사용하므로 변환하지 않음
+  // 요청 인터셉터: Authorization 헤더 추가
   apiClientInstance.interceptors.request.use(
     (config) => {
-      // NestJS 백엔드는 camelCase를 사용하므로 데이터 변환하지 않음
+      // 1. 먼저 직접 저장된 토큰 확인 (SSO 및 token-manager에서 사용)
+      let accessToken = localStorage.getItem('accessToken');
+
+      // 2. 없으면 Zustand persist storage에서 확인 (fallback)
+      if (!accessToken) {
+        const authStorage = localStorage.getItem('auth-storage');
+        if (authStorage) {
+          try {
+            const parsed = JSON.parse(authStorage);
+            accessToken = parsed?.state?.accessToken;
+          } catch (e) {
+            console.error('Failed to parse auth-storage:', e);
+          }
+        }
+      }
+
+      // 토큰이 있으면 Authorization 헤더 추가
+      if (accessToken) {
+        config.headers.Authorization = `Bearer ${accessToken}`;
+      }
+
       return config;
     },
     (error) => Promise.reject(error),
@@ -91,22 +111,49 @@ const createNestApiInterceptors = (apiClientInstance) => {
         originalRequest._retry = true;
         isRefreshing = true;
 
-        const refreshToken = localStorage.getItem('refreshToken');
+        // 1. 먼저 직접 저장된 토큰 확인 (SSO 및 token-manager에서 사용)
+        let refreshToken = localStorage.getItem('refreshToken');
+
+        // 2. 없으면 Zustand persist storage에서 확인 (fallback)
+        if (!refreshToken) {
+          const authStorage = localStorage.getItem('auth-storage');
+          if (authStorage) {
+            try {
+              const parsed = JSON.parse(authStorage);
+              refreshToken = parsed?.state?.refreshToken;
+            } catch (e) {
+              console.error('Failed to parse auth-storage:', e);
+            }
+          }
+        }
 
         if (refreshToken) {
           try {
             // 토큰 갱신 시도 (환경에 따른 URL 사용)
-            const response = await axios.post(getBaseUrl('nest') + '/auth/refresh', {
-              refreshToken
+            const response = await axios.get(getBaseUrl('nest') + '/auth/refresh', {
+              headers: {
+                refreshToken: `Bearer ${refreshToken}`
+              }
             });
 
             const { accessToken, refreshToken: newRefreshToken } = response.data.data;
 
-            // 새 토큰 저장
+            // 1. 직접 저장 (SSO 및 token-manager에서 사용)
             localStorage.setItem('accessToken', accessToken);
-            if (newRefreshToken) {
-              localStorage.setItem('refreshToken', newRefreshToken);
-            }
+            localStorage.setItem('refreshToken', newRefreshToken || refreshToken);
+
+            // 2. auth-storage에도 저장 (fallback 호환성)
+            const currentStorage = JSON.parse(localStorage.getItem('auth-storage') || '{}');
+            const updatedStorage = {
+              ...currentStorage,
+              state: {
+                ...currentStorage.state,
+                accessToken,
+                refreshToken: newRefreshToken || refreshToken,
+                tokenExpiry: Math.floor(Date.now() / 1000) + 7200, // 2시간
+              }
+            };
+            localStorage.setItem('auth-storage', JSON.stringify(updatedStorage));
 
             // 대기 중인 요청들에 새 토큰 전달
             onRefreshed(accessToken);
