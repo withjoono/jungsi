@@ -46,7 +46,6 @@ const PUBLIC_ENDPOINTS = [
   '/auth/password-reset/verify',
   '/auth/password-reset/confirm',
   '/auth/refresh',
-  '/auth/me',
   '/sms/auth/send',
   '/sms/auth/verify',
   '/store/available',

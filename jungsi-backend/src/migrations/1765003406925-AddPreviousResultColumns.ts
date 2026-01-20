@@ -4,26 +4,48 @@ export class AddPreviousResultColumns1765003406925 implements MigrationInterface
   name = 'AddPreviousResultColumns1765003406925';
 
   public async up(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.query(`DROP INDEX "public"."IDX_planner_routine_member_id"`);
-    await queryRunner.query(`DROP INDEX "public"."IDX_planner_management_planner_id"`);
-    await queryRunner.query(`DROP INDEX "public"."IDX_planner_management_class_code"`);
-    await queryRunner.query(`DROP INDEX "public"."IDX_planner_management_use_yn"`);
-    await queryRunner.query(`DROP INDEX "public"."IDX_planner_item_member_id"`);
-    await queryRunner.query(`DROP INDEX "public"."IDX_planner_item_start_date"`);
-    await queryRunner.query(`DROP INDEX "public"."IDX_planner_item_primary_type"`);
-    await queryRunner.query(`DROP INDEX "public"."IDX_planner_item_subject"`);
-    await queryRunner.query(`DROP INDEX "public"."IDX_planner_plan_member_id"`);
-    await queryRunner.query(`DROP INDEX "public"."IDX_planner_plan_subject"`);
-    await queryRunner.query(`DROP INDEX "public"."IDX_planner_class_planner_id"`);
-    await queryRunner.query(`DROP INDEX "public"."IDX_planner_class_class_code"`);
-    await queryRunner.query(`DROP INDEX "public"."IDX_planner_class_use_yn"`);
-    await queryRunner.query(`DROP INDEX "public"."IDX_mentoring_temp_code_code"`);
-    await queryRunner.query(`DROP INDEX "public"."IDX_mentoring_temp_code_expire_at"`);
-    await queryRunner.query(`DROP INDEX "public"."IDX_mentoring_admin_class_member_id"`);
-    await queryRunner.query(`DROP INDEX "public"."IDX_mentoring_admin_class_target_member_id"`);
-    await queryRunner.query(`DROP INDEX "public"."IDX_mentoring_account_link_member_id"`);
-    await queryRunner.query(`DROP INDEX "public"."IDX_mentoring_account_link_linked_member_id"`);
-    await queryRunner.query(`DROP INDEX "public"."IDX_member_calculated_scores_member_univ_calc"`);
+    // 안전하게 인덱스 삭제 (존재하지 않으면 무시)
+    const dropIndexSafely = async (indexName: string) => {
+      try {
+        await queryRunner.query(`DROP INDEX IF EXISTS "public"."${indexName}"`);
+      } catch (error) {
+        console.log(`⚠️  인덱스 ${indexName} 삭제 건너뜀`);
+      }
+    };
+
+    // 테이블 존재 여부 확인
+    const checkTable = async (tableName: string): Promise<boolean> => {
+      const result = await queryRunner.query(`
+        SELECT EXISTS (
+          SELECT 1
+          FROM information_schema.tables
+          WHERE table_name = '${tableName}'
+        ) as exists
+      `);
+      return result[0].exists;
+    };
+
+    await dropIndexSafely('IDX_planner_routine_member_id');
+    await dropIndexSafely('IDX_planner_management_planner_id');
+    await dropIndexSafely('IDX_planner_management_class_code');
+    await dropIndexSafely('IDX_planner_management_use_yn');
+    await dropIndexSafely('IDX_planner_item_member_id');
+    await dropIndexSafely('IDX_planner_item_start_date');
+    await dropIndexSafely('IDX_planner_item_primary_type');
+    await dropIndexSafely('IDX_planner_item_subject');
+    await dropIndexSafely('IDX_planner_plan_member_id');
+    await dropIndexSafely('IDX_planner_plan_subject');
+    await dropIndexSafely('IDX_planner_class_planner_id');
+    await dropIndexSafely('IDX_planner_class_class_code');
+    await dropIndexSafely('IDX_planner_class_use_yn');
+    await dropIndexSafely('IDX_mentoring_temp_code_code');
+    await dropIndexSafely('IDX_mentoring_temp_code_expire_at');
+    await dropIndexSafely('IDX_mentoring_admin_class_member_id');
+    await dropIndexSafely('IDX_mentoring_admin_class_target_member_id');
+    await dropIndexSafely('IDX_mentoring_account_link_member_id');
+    await dropIndexSafely('IDX_mentoring_account_link_linked_member_id');
+    await dropIndexSafely('IDX_member_calculated_scores_member_univ_calc');
+    
     await queryRunner.query(
       `CREATE TABLE "planner_notice_tb" ("id" BIGSERIAL NOT NULL, "planner_id" bigint NOT NULL, "class_code" character varying(10), "title" character varying(200) NOT NULL, "content" text, "date" date NOT NULL, "is_important" boolean NOT NULL DEFAULT false, "use_yn" character varying(1) NOT NULL DEFAULT 'Y', "created_at" TIMESTAMP NOT NULL DEFAULT now(), "updated_at" TIMESTAMP NOT NULL DEFAULT now(), CONSTRAINT "PK_72771ddf27bbb6060f292b11b15" PRIMARY KEY ("id"))`,
     );
@@ -39,27 +61,59 @@ export class AddPreviousResultColumns1765003406925 implements MigrationInterface
     await queryRunner.query(
       `CREATE TABLE "myclass_attendance_tb" ("id" BIGSERIAL NOT NULL, "member_id" bigint NOT NULL, "date" date NOT NULL, "check_in" TIME, "check_out" TIME, "status" character varying(20) NOT NULL DEFAULT 'present', "note" text, "created_at" TIMESTAMP NOT NULL DEFAULT now(), "updated_at" TIMESTAMP NOT NULL DEFAULT now(), CONSTRAINT "PK_ab647cab6815585e4103bc1bd21" PRIMARY KEY ("id"))`,
     );
-    await queryRunner.query(
-      `ALTER TABLE "ts_regular_admission_previous_results" ADD "additional_pass_rank" integer`,
-    );
+    // 컬럼 존재 여부 확인 후 추가
+    const checkColumn = async (columnName: string): Promise<boolean> => {
+      const result = await queryRunner.query(`
+        SELECT EXISTS (
+          SELECT 1
+          FROM information_schema.columns
+          WHERE table_name = 'ts_regular_admission_previous_results'
+          AND column_name = '${columnName}'
+        ) as exists
+      `);
+      return result[0].exists;
+    };
+
+    // additional_pass_rank 컬럼 추가
+    const hasAdditionalPassRank = await checkColumn('additional_pass_rank');
+    if (!hasAdditionalPassRank) {
+      await queryRunner.query(
+        `ALTER TABLE "ts_regular_admission_previous_results" ADD "additional_pass_rank" integer`,
+      );
+    }
     await queryRunner.query(
       `COMMENT ON COLUMN "ts_regular_admission_previous_results"."additional_pass_rank" IS '충원합격순위'`,
     );
-    await queryRunner.query(
-      `ALTER TABLE "ts_regular_admission_previous_results" ADD "converted_score_total" numeric(10,5)`,
-    );
+
+    // converted_score_total 컬럼 추가
+    const hasConvertedScoreTotal = await checkColumn('converted_score_total');
+    if (!hasConvertedScoreTotal) {
+      await queryRunner.query(
+        `ALTER TABLE "ts_regular_admission_previous_results" ADD "converted_score_total" numeric(10,5)`,
+      );
+    }
     await queryRunner.query(
       `COMMENT ON COLUMN "ts_regular_admission_previous_results"."converted_score_total" IS '환산점수총점'`,
     );
-    await queryRunner.query(
-      `ALTER TABLE "ts_regular_admission_previous_results" ADD "percentile_50" numeric(10,5)`,
-    );
+
+    // percentile_50 컬럼 추가
+    const hasPercentile50 = await checkColumn('percentile_50');
+    if (!hasPercentile50) {
+      await queryRunner.query(
+        `ALTER TABLE "ts_regular_admission_previous_results" ADD "percentile_50" numeric(10,5)`,
+      );
+    }
     await queryRunner.query(
       `COMMENT ON COLUMN "ts_regular_admission_previous_results"."percentile_50" IS '백분위 50%컷'`,
     );
-    await queryRunner.query(
-      `ALTER TABLE "ts_regular_admission_previous_results" ADD "percentile_70" numeric(10,5)`,
-    );
+
+    // percentile_70 컬럼 추가
+    const hasPercentile70 = await checkColumn('percentile_70');
+    if (!hasPercentile70) {
+      await queryRunner.query(
+        `ALTER TABLE "ts_regular_admission_previous_results" ADD "percentile_70" numeric(10,5)`,
+      );
+    }
     await queryRunner.query(
       `COMMENT ON COLUMN "ts_regular_admission_previous_results"."percentile_70" IS '백분위 70%컷'`,
     );
@@ -286,9 +340,17 @@ export class AddPreviousResultColumns1765003406925 implements MigrationInterface
     await queryRunner.query(
       `CREATE INDEX "IDX_ccb23a36423ce085f87e8c0af8" ON "mentoring_account_link_tb" ("member_id") `,
     );
-    await queryRunner.query(
-      `CREATE UNIQUE INDEX "IDX_4beaa840b8efded4bb94bbfd54" ON "ts_member_calculated_scores" ("member_id", "university_id", "score_calculation") `,
-    );
+
+    // ts_member_calculated_scores 테이블이 존재하는 경우에만 인덱스 생성
+    const hasCalculatedScoresTable = await checkTable('ts_member_calculated_scores');
+    if (hasCalculatedScoresTable) {
+      await queryRunner.query(
+        `CREATE UNIQUE INDEX "IDX_4beaa840b8efded4bb94bbfd54" ON "ts_member_calculated_scores" ("member_id", "university_id", "score_calculation") `,
+      );
+      console.log('✅ ts_member_calculated_scores 테이블 인덱스 생성됨');
+    } else {
+      console.log('ℹ️  ts_member_calculated_scores 테이블이 존재하지 않아 인덱스 생성 건너뜀');
+    }
     await queryRunner.query(
       `ALTER TABLE "planner_routine_tb" ADD CONSTRAINT "FK_21a86f60a9a1f12d2e3e3aae75b" FOREIGN KEY ("member_id") REFERENCES "member_tb"("id") ON DELETE CASCADE ON UPDATE NO ACTION`,
     );

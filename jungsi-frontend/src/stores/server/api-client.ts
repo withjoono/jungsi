@@ -27,7 +27,6 @@ const PUBLIC_ENDPOINTS = [
   '/auth/login',
   '/auth/register',
   '/auth/refresh',
-  '/auth/me',
   '/store/available',
 ];
 

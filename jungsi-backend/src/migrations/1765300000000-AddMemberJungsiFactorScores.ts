@@ -115,13 +115,13 @@ export class AddMemberJungsiFactorScores1765300000000 implements MigrationInterf
       }),
     );
 
-    // 5. 외래키: member_id → auth_member
+    // 5. 외래키: member_id → member_tb
     await queryRunner.createForeignKey(
       'js_user_hwansan_score',
       new TableForeignKey({
         name: 'FK_factor_scores_member',
         columnNames: ['member_id'],
-        referencedTableName: 'auth_member',
+        referencedTableName: 'member_tb',
         referencedColumnNames: ['id'],
         onDelete: 'CASCADE',
       }),

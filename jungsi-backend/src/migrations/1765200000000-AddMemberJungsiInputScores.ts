@@ -6,7 +6,7 @@ export class AddMemberJungsiInputScores1765200000000 implements MigrationInterfa
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
-        name: 'ts_member_jungsi_input_scores',
+        name: 'js_user_input_scores',
         columns: [
           {
             name: 'id',
@@ -208,7 +208,7 @@ export class AddMemberJungsiInputScores1765200000000 implements MigrationInterfa
 
     // 인덱스 생성: member_id (유니크)
     await queryRunner.createIndex(
-      'ts_member_jungsi_input_scores',
+      'js_user_input_scores',
       new TableIndex({
         name: 'IDX_member_jungsi_input_scores_member_id',
         columnNames: ['member_id'],
@@ -218,6 +218,6 @@ export class AddMemberJungsiInputScores1765200000000 implements MigrationInterfa
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropTable('ts_member_jungsi_input_scores');
+    await queryRunner.dropTable('js_user_input_scores');
   }
 }
