@@ -35,8 +35,8 @@ jobs:
       - name: Build application
         run: npm run build
         env:
-          VITE_API_URL_NEST: https://ts-back-nest-479305.du.r.appspot.com
-          VITE_API_URL_SPRING: https://ts-back-nest-479305.du.r.appspot.com
+          VITE_API_URL_NEST: ${{ secrets.VITE_API_URL_NEST }}
+          VITE_API_URL_SPRING: ${{ secrets.VITE_API_URL_SPRING }}
 
       - name: Deploy to Firebase
         uses: FirebaseExtended/action-hosting-deploy@v0

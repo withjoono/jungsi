@@ -2276,7 +2276,13 @@ export class JungsiCalculationService {
     const recruitmentScores = this.matchRecruitmentScores(admissions, factorScores);
     this.logger.log(`모집단위별 매칭 완료: ${recruitmentScores.length}개`);
 
-    // Step 6: 트랜잭션 저장 (UPSERT)
+    // Step 6: 표점합과 누적백분위 계산 및 저장
+    const 표점합 = this.calc표점합(scores);
+    const myCumulativePercentile = await this.dataService.get누적백분위(표점합);
+    await this.saveUserCumulativePercentile(memberId, 표점합, myCumulativePercentile);
+    this.logger.log(`사용자 누백 저장 완료: 표점합=${표점합}, 누백=${myCumulativePercentile}%`);
+
+    // Step 7: 트랜잭션 저장 (UPSERT)
     await this.saveScoresTransactional(memberId, factorScores, recruitmentScores);
 
     const elapsed = Date.now() - startTime;
@@ -2641,6 +2647,36 @@ export class JungsiCalculationService {
       throw error;
     } finally {
       await queryRunner.release();
+    }
+  }
+
+  /**
+   * 사용자의 표점합과 누적백분위를 input_scores 테이블에 저장
+   *
+   * 목적:
+   * - 사용자의 기본 누백을 캐싱하여 step1 차트에서 빠르게 조회
+   * - 매번 계산하지 않고 저장된 값 사용
+   *
+   * @param memberId 회원 ID
+   * @param standardScoreSum 표준점수 합계 (국어+수학+탐구2)
+   * @param cumulativePercentile 나의 누적백분위 (상위 %)
+   */
+  private async saveUserCumulativePercentile(
+    memberId: number,
+    standardScoreSum: number,
+    cumulativePercentile: number,
+  ): Promise<void> {
+    try {
+      await this.inputScoreRepository.update(
+        { member_id: memberId },
+        {
+          standard_score_sum: standardScoreSum,
+          cumulative_percentile: cumulativePercentile,
+        },
+      );
+    } catch (error) {
+      this.logger.error(`사용자 누백 저장 실패 - memberId: ${memberId}`, error);
+      // 저장 실패해도 전체 계산 프로세스는 계속 진행
     }
   }
 }

@@ -1,7 +1,7 @@
 import { Injectable, Logger, OnModuleInit } from '@nestjs/common';
 import * as path from 'path';
 import * as fs from 'fs';
-import { 점수표Type, 학교조건Type, 유불리Type, 누백대입표Type } from '../calculations/types';
+import { 점수표Type, 학교조건Type, 유불리Type, 누백대입표Type, 환산인자누백Type } from '../calculations/types';
 
 /**
  * 정시 환산점수 계산에 필요한 JSON 데이터를 로드하고 캐싱하는 서비스
@@ -15,6 +15,7 @@ export class JungsiDataService implements OnModuleInit {
   private 학교조건Data: 학교조건Type | null = null;
   private 유불리Data: 유불리Type | null = null;
   private 누백대입표Data: 누백대입표Type | null = null;
+  private 환산인자누백Data: 환산인자누백Type | null = null;
 
   private dataLoaded = false;
   private loadingPromise: Promise<void> | null = null;
@@ -78,23 +79,26 @@ export class JungsiDataService implements OnModuleInit {
       const dataDir = this.getDataDir();
 
       // 병렬로 모든 JSON 파일 로드
-      const [점수표, 학교조건, 유불리, 누백대입표] = await Promise.all([
+      const [점수표, 학교조건, 유불리, 누백대입표, 환산인자누백] = await Promise.all([
         this.loadJsonFile<점수표Type>(path.join(dataDir, 'score-table-26-jungsi.json')),
         this.loadJsonFile<학교조건Type>(path.join(dataDir, '2509-condition.json')),
         this.loadJsonFile<유불리Type>(path.join(dataDir, '2026-jungsi-advantage.json')),
         this.loadJsonFile<누백대입표Type>(path.join(dataDir, '2026-cumulative-percentile.json')),
+        this.loadJsonFile<환산인자누백Type>(path.join(dataDir, '2026-factor-percentile.json')),
       ]);
 
       this.점수표Data = 점수표;
       this.학교조건Data = 학교조건;
       this.유불리Data = 유불리;
       this.누백대입표Data = 누백대입표;
+      this.환산인자누백Data = 환산인자누백;
       this.dataLoaded = true;
 
       this.logger.log(`점수표 로드: ${Object.keys(this.점수표Data).length}개 과목`);
       this.logger.log(`학교조건 로드: ${Object.keys(this.학교조건Data).length}개 학교`);
       this.logger.log(`유불리 로드: ${Object.keys(this.유불리Data).length}개 시트`);
       this.logger.log(`누백대입표 로드: ${Object.keys(this.누백대입표Data).length}개 항목`);
+      this.logger.log(`환산인자누백 로드: ${this.환산인자누백Data.factors.length}개 환산인자`);
     } catch (error) {
       this.logger.error('데이터 로드 실패:', error);
       throw error;
@@ -213,6 +217,100 @@ export class JungsiDataService implements OnModuleInit {
   }
 
   /**
+   * 환산인자누백 데이터 반환
+   */
+  async get환산인자누백(): Promise<환산인자누백Type> {
+    await this.ensureDataLoaded();
+    if (!this.환산인자누백Data) {
+      throw new Error('환산인자누백 데이터가 로드되지 않았습니다');
+    }
+    return this.환산인자누백Data;
+  }
+
+  /**
+   * 표점합으로 환산인자별 누적백분위 조회
+   * @param 표점합 국어+수학+탐구상위2개 표준점수 합
+   * @param 환산인자 환산인자명 (예: "가천의학")
+   * @returns 해당 환산인자의 누적백분위, null이면 조회 실패
+   */
+  async get환산인자별누백(표점합: number, 환산인자: string): Promise<number | null> {
+    const 환산인자누백 = await this.get환산인자누백();
+
+    // 표점합을 소수점 둘째 자리까지 반올림
+    const roundedScore = Math.round(표점합 * 100) / 100;
+
+    // 데이터의 키를 숫자로 변환하여 내림차순으로 정렬
+    const sortedScores = Object.keys(환산인자누백.data)
+      .map((score) => parseFloat(score))
+      .sort((a, b) => b - a);
+
+    // 사용자의 표점합보다 작거나 같은 첫 번째 점수를 찾음
+    const matchingScore = sortedScores.find((score) => roundedScore >= score);
+
+    if (matchingScore === undefined) {
+      return null; // 표점합이 범위 밖
+    }
+
+    const scoreKey = matchingScore.toFixed(2);
+    const factorData = 환산인자누백.data[scoreKey];
+
+    if (!factorData) {
+      return null;
+    }
+
+    // 환산인자명에서 공백 제거하여 매칭
+    const cleanFactor = 환산인자.replace(/\s+/g, '');
+    const factorValue = factorData[환산인자] ?? factorData[cleanFactor];
+
+    if (factorValue === undefined) {
+      return null;
+    }
+
+    return typeof factorValue === 'number' ? factorValue : null;
+  }
+
+  /**
+   * 표점합으로 모든 환산인자의 누적백분위 조회
+   * @param 표점합 국어+수학+탐구상위2개 표준점수 합
+   * @returns { 환산인자명: 누백값 } 맵
+   */
+  async get모든환산인자누백(표점합: number): Promise<Record<string, number>> {
+    const 환산인자누백 = await this.get환산인자누백();
+
+    // 표점합을 소수점 둘째 자리까지 반올림
+    const roundedScore = Math.round(표점합 * 100) / 100;
+
+    // 데이터의 키를 숫자로 변환하여 내림차순으로 정렬
+    const sortedScores = Object.keys(환산인자누백.data)
+      .map((score) => parseFloat(score))
+      .sort((a, b) => b - a);
+
+    // 사용자의 표점합보다 작거나 같은 첫 번째 점수를 찾음
+    const matchingScore = sortedScores.find((score) => roundedScore >= score);
+
+    if (matchingScore === undefined) {
+      return {}; // 표점합이 범위 밖
+    }
+
+    const scoreKey = matchingScore.toFixed(2);
+    const factorData = 환산인자누백.data[scoreKey];
+
+    if (!factorData) {
+      return {};
+    }
+
+    // 환산인자별 누백 맵 생성 (누백 키 제외)
+    const result: Record<string, number> = {};
+    for (const [key, value] of Object.entries(factorData)) {
+      if (key !== '누백' && typeof value === 'number') {
+        result[key] = value;
+      }
+    }
+
+    return result;
+  }
+
+  /**
    * 데이터 리로드 (관리자용)
    */
   async reloadData(): Promise<void> {
@@ -221,6 +319,7 @@ export class JungsiDataService implements OnModuleInit {
     this.학교조건Data = null;
     this.유불리Data = null;
     this.누백대입표Data = null;
+    this.환산인자누백Data = null;
     await this.ensureDataLoaded();
     this.logger.log('데이터 리로드 완료');
   }

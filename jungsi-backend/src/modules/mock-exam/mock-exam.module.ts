@@ -8,6 +8,7 @@ import { MockExamService } from './mock-exam.service';
 import { MockexamController } from './mock-exam.controller';
 import { MockexamRawToStandardEntity } from 'src/database/entities/mock-exam/mockexam-raw-to-standard.entity';
 import { MockexamStandardScoreEntity } from 'src/database/entities/mock-exam/mockexam-standard-score.entity';
+import { MemberJungsiInputScoreEntity } from 'src/database/entities/member/member-jungsi-input-score.entity';
 import { JungsiCalculationModule } from '../jungsi/calculation/jungsi-calculation.module';
 
 @Module({
@@ -18,6 +19,7 @@ import { JungsiCalculationModule } from '../jungsi/calculation/jungsi-calculatio
       MockexamScoreEntity,
       MockexamRawToStandardEntity,
       MockexamStandardScoreEntity,
+      MemberJungsiInputScoreEntity,
     ]),
     MembersModule,
     JungsiCalculationModule,

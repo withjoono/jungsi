@@ -13,13 +13,22 @@
 import { DataSource } from 'typeorm';
 import { config } from 'dotenv';
 import { join } from 'path';
+import { existsSync } from 'fs';
 
 // 환경에 따라 다른 .env 파일 로드
 const envFile = process.env.NODE_ENV === 'production'
   ? '.env.production'
   : '.env.development';
 
-config({ path: join(__dirname, envFile) });
+const envPath = join(__dirname, envFile);
+
+// .env 파일이 존재하면 로드, 없으면 환경 변수만 사용
+if (existsSync(envPath)) {
+  console.log(`📂 Loading environment from ${envFile}`);
+  config({ path: envPath });
+} else {
+  console.log(`⚠️  ${envFile} not found, using system environment variables`);
+}
 
 // 환경 변수 검증
 const requiredEnvVars = ['DB_HOST', 'DB_PORT', 'DB_USER', 'DB_PASSWORD', 'DB_NAME'];
@@ -32,6 +41,13 @@ if (missingEnvVars.length > 0) {
     `Run: node scripts/validate-env.js`
   );
 }
+
+// 연결 정보 출력 (비밀번호 제외)
+console.log(`🔌 Database Connection:`);
+console.log(`   Host: ${process.env.DB_HOST}:${process.env.DB_PORT}`);
+console.log(`   Database: ${process.env.DB_NAME}`);
+console.log(`   User: ${process.env.DB_USER}`);
+console.log(`   Environment: ${process.env.NODE_ENV || 'development'}`);
 
 export default new DataSource({
   type: 'postgres',

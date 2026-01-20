@@ -75,10 +75,25 @@ export interface SubjectRiskData {
 }
 
 /**
- * 누백대입표 타입
+ * 누백대입표 타입 (사용자 누백 조회용)
+ * 표점합 → 누적백분위 매핑
  */
 export interface 누백대입표Type {
   [score: string]: string;
+}
+
+/**
+ * 환산인자별 누백 데이터 타입
+ * 표점합 기준으로 각 대학 환산인자의 누적백분위 저장
+ */
+export interface 환산인자누백Type {
+  factors: string[]; // 환산인자명 목록 (557개)
+  data: {
+    [표점합: string]: {
+      누백: number; // 사용자 기본 누백
+      [환산인자: string]: number; // 환산인자별 누백
+    };
+  };
 }
 
 export interface 점수표Type {

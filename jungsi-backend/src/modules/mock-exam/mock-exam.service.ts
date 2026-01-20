@@ -1,8 +1,9 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Logger } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { MockexamRawScoreEntity } from 'src/database/entities/mock-exam/mockexam-raw-score.entity';
 import { MockexamScheduleEntity } from 'src/database/entities/mock-exam/mockexam-schedule.entity';
 import { MockexamScoreEntity } from 'src/database/entities/mock-exam/mockexam-score.entity';
+import { MemberJungsiInputScoreEntity } from 'src/database/entities/member/member-jungsi-input-score.entity';
 import { Repository } from 'typeorm';
 import {
   CreateMockExamRawScoreDto,
@@ -32,6 +33,8 @@ const SUBJECT_CATEGORY_MAP: Record<string, string> = {
 
 @Injectable()
 export class MockExamService {
+  private readonly logger = new Logger(MockExamService.name);
+
   constructor(
     @InjectRepository(MockexamRawScoreEntity)
     private mockexamRawScoreRepository: Repository<MockexamRawScoreEntity>,
@@ -44,6 +47,8 @@ export class MockExamService {
     private mockexamRawToStandardRepository: Repository<MockexamRawToStandardEntity>,
     @InjectRepository(MockexamStandardScoreEntity)
     private mockexamStandardRepository: Repository<MockexamStandardScoreEntity>,
+    @InjectRepository(MemberJungsiInputScoreEntity)
+    private inputScoreRepository: Repository<MemberJungsiInputScoreEntity>,
 
     private readonly jungsiDataService: JungsiDataService,
   ) {}
@@ -130,12 +135,24 @@ export class MockExamService {
     const standardScoreSum = this.calculateStandardScoreSum(scores);
 
     // 디버깅 로그
-    console.log(`[MockExam] memberId=${memberId}, scoresCount=${scores.length}, standardScoreSum=${standardScoreSum}`);
-    console.log(`[MockExam] scores:`, JSON.stringify(scores.map(s => ({ code: s.code, std: s.standard_score }))));
+    this.logger.debug(`memberId=${memberId}, scoresCount=${scores.length}, standardScoreSum=${standardScoreSum}`);
 
-    // 나의 누적백분위 조회 (항상 조회 - get누적백분위에서 외삽 처리)
-    const myCumulativePercentile = await this.jungsiDataService.get누적백분위(standardScoreSum);
-    console.log(`[MockExam] myCumulativePercentile=${myCumulativePercentile}`);
+    // 캐시된 누백 조회 시도 (js_user_input_scores 테이블)
+    let myCumulativePercentile: number;
+    const cachedInputScore = await this.inputScoreRepository.findOne({
+      where: { member_id: memberId },
+      select: ['cumulative_percentile', 'standard_score_sum'],
+    });
+
+    if (cachedInputScore?.cumulative_percentile != null) {
+      // 캐시된 누백 사용
+      myCumulativePercentile = Number(cachedInputScore.cumulative_percentile);
+      this.logger.debug(`캐시된 누백 사용: ${myCumulativePercentile}% (표점합: ${cachedInputScore.standard_score_sum})`);
+    } else {
+      // 캐시가 없으면 계산 (fallback)
+      myCumulativePercentile = await this.jungsiDataService.get누적백분위(standardScoreSum);
+      this.logger.debug(`계산된 누백 사용: ${myCumulativePercentile}% (캐시 없음)`);
+    }
 
     return {
       data: scores,

@@ -157,6 +157,23 @@ export class MemberJungsiInputScoreEntity {
   })
   second_foreign_percentile: number;
 
+  // ========== 계산된 요약 정보 ==========
+  @Column({
+    type: 'int',
+    comment: '표준점수 합계 (국어+수학+탐구2)',
+    nullable: true,
+  })
+  standard_score_sum: number;
+
+  @Column({
+    type: 'decimal',
+    precision: 10,
+    scale: 6,
+    comment: '나의 누적백분위 (상위 %)',
+    nullable: true,
+  })
+  cumulative_percentile: number;
+
   // ========== 메타 정보 ==========
   @Column({ type: 'int', comment: '적용 년도', default: 2026 })
   year: number;
