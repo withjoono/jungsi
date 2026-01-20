@@ -47,4 +47,7 @@ fe-shared-packages/
 mentoring/
 planner/
 docs/
+
+# Ignore PNG files except in assets
 *.png
+!src/assets/**/*.png
