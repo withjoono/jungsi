@@ -93,6 +93,21 @@ jobs:
           
           echo "✅ Migration step completed"
 
+      - name: Delete existing Cloud Run service (if exists)
+        run: |
+          echo "🗑️ Checking for existing Cloud Run service..."
+
+          if gcloud run services describe ${{ env.SERVICE_NAME }} --region ${{ env.REGION }} --quiet 2>/dev/null; then
+            echo "Found existing service. Deleting to ensure clean deployment..."
+            gcloud run services delete ${{ env.SERVICE_NAME }} \
+              --region ${{ env.REGION }} \
+              --quiet || echo "⚠️ Failed to delete, but continuing..."
+            sleep 10
+            echo "✅ Service deleted"
+          else
+            echo "ℹ️ No existing service found. Proceeding with fresh deployment."
+          fi
+
       - name: Deploy to Cloud Run
         run: |
           gcloud run deploy ${{ env.SERVICE_NAME }} \
@@ -106,8 +121,6 @@ jobs:
             --max-instances 10 \
             --port 8080 \
             --add-cloudsql-instances ${{ env.PROJECT_ID }}:${{ env.REGION }}:${{ env.CLOUD_SQL_INSTANCE }} \
-            --clear-env-vars \
-            --clear-secrets \
             --set-env-vars NODE_ENV=production,DB_HOST=/cloudsql/${{ env.PROJECT_ID }}:${{ env.REGION }}:${{ env.CLOUD_SQL_INSTANCE }},DB_PASSWORD=${{ secrets.DB_PASSWORD }},DB_NAME=${{ secrets.DB_NAME }},DB_USER=${{ secrets.DB_USER }},JWT_SECRET=${{ secrets.JWT_SECRET }},DB_PORT=5432,DB_TYPE=postgres \
             --quiet
 
