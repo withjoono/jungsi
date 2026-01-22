@@ -98,6 +98,26 @@ jobs:
           
           echo "✅ Migration step completed"
 
+      - name: Grant Secret Manager Access to Service Account
+        run: |
+          echo "🔐 Granting Secret Manager access to Cloud Run service account..."
+
+          # Get project number
+          PROJECT_NUMBER=$(gcloud projects describe ${{ env.PROJECT_ID }} --format="value(projectNumber)")
+          SERVICE_ACCOUNT="${PROJECT_NUMBER}-compute@developer.gserviceaccount.com"
+
+          echo "Project Number: $PROJECT_NUMBER"
+          echo "Service Account: $SERVICE_ACCOUNT"
+
+          # Grant Secret Manager Secret Accessor role to the service account
+          gcloud projects add-iam-policy-binding ${{ env.PROJECT_ID }} \
+            --member="serviceAccount:${SERVICE_ACCOUNT}" \
+            --role="roles/secretmanager.secretAccessor" \
+            --condition=None \
+            --quiet || echo "⚠️ Role may already be granted"
+
+          echo "✅ Secret Manager access configured"
+
       - name: Deploy to Cloud Run
         run: |
           gcloud run deploy ${{ env.SERVICE_NAME }} \
