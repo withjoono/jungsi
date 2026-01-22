@@ -106,14 +106,9 @@ jobs:
             --max-instances 10 \
             --port 8080 \
             --add-cloudsql-instances ${{ env.PROJECT_ID }}:${{ env.REGION }}:${{ env.CLOUD_SQL_INSTANCE }} \
-            --set-env-vars NODE_ENV=production \
-            --set-env-vars DB_HOST=/cloudsql/${{ env.PROJECT_ID }}:${{ env.REGION }}:${{ env.CLOUD_SQL_INSTANCE }} \
-            --set-env-vars DB_PASSWORD=${{ secrets.DB_PASSWORD }} \
-            --set-env-vars DB_NAME=${{ secrets.DB_NAME }} \
-            --set-env-vars DB_USER=${{ secrets.DB_USER }} \
-            --set-env-vars JWT_SECRET=${{ secrets.JWT_SECRET }} \
-            --set-env-vars DB_PORT=5432 \
-            --set-env-vars DB_TYPE=postgres \
+            --clear-env-vars \
+            --clear-secrets \
+            --set-env-vars NODE_ENV=production,DB_HOST=/cloudsql/${{ env.PROJECT_ID }}:${{ env.REGION }}:${{ env.CLOUD_SQL_INSTANCE }},DB_PASSWORD=${{ secrets.DB_PASSWORD }},DB_NAME=${{ secrets.DB_NAME }},DB_USER=${{ secrets.DB_USER }},JWT_SECRET=${{ secrets.JWT_SECRET }},DB_PORT=5432,DB_TYPE=postgres \
             --quiet
 
       - name: Get Cloud Run URL
