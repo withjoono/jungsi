@@ -10,6 +10,8 @@ import {
   PredictionHealthResponseDto,
 } from './dto/prediction.dto';
 import { JwtAuthGuard } from '../../../auth/guards/jwt-auth.guard';
+import { HubPermissionGuard } from '../../../auth/guards/hub-permission.guard';
+import { RequireFeature } from '../../../auth/decorators/require-feature.decorator';
 import { SnakeToCamelInterceptor } from '../../../common/interceptors/snake-to-camel.interceptor';
 import { Public } from '../../../auth/decorators/public.decorator';
 
@@ -24,15 +26,20 @@ export class JungsiPredictionController {
   /**
    * AI 합격 예측
    * POST /jungsi/prediction/predict
+   * 
+   * ⚠️ 'prediction' 기능 권한 필요 (Premium 플랜)
    */
   @Post('predict')
+  @UseGuards(HubPermissionGuard)
+  @RequireFeature('prediction')
   @ApiOperation({
     summary: 'AI 합격 예측',
     description:
       '모의고사 점수와 지원 대학/모집단위 정보를 기반으로 AI가 합격 확률을 예측합니다.\n\n' +
       '**ML 모델**: XGBoost + LightGBM + CatBoost 앙상블\n' +
       '**입력 데이터**: 표준점수, 등급, 경쟁률, 과거 입결 데이터\n' +
-      '**출력**: 합격 확률, 위험도, 예상 커트라인',
+      '**출력**: 합격 확률, 위험도, 예상 커트라인\n\n' +
+      '**⚠️ 권한 필요**: `prediction` 기능 (Premium 플랜)',
   })
   @ApiResponse({
     status: 200,
@@ -40,6 +47,7 @@ export class JungsiPredictionController {
     type: PredictResponseDto,
   })
   @ApiResponse({ status: 401, description: '인증 실패' })
+  @ApiResponse({ status: 403, description: 'prediction 기능 권한 없음 (Premium 플랜 필요)' })
   @ApiResponse({ status: 503, description: '예측 서비스 이용 불가' })
   async predict(@Body() dto: PredictRequestDto): Promise<PredictResponseDto> {
     return this.predictionService.predict(dto);
@@ -48,14 +56,19 @@ export class JungsiPredictionController {
   /**
    * RAG 기반 입시 질의응답
    * POST /jungsi/prediction/rag
+   * 
+   * ⚠️ 'analysis' 기능 권한 필요 (Premium 플랜)
    */
   @Post('rag')
+  @UseGuards(HubPermissionGuard)
+  @RequireFeature('analysis')
   @ApiOperation({
     summary: 'RAG 기반 입시 질의응답',
     description:
       '입시 관련 질문에 대해 RAG(Retrieval-Augmented Generation) 기반으로 답변합니다.\n\n' +
       '**데이터 소스**: 대학별 입학전형 안내, 모집요강, 입결 분석 자료\n' +
-      '**기술**: Google Cloud RAG + Vector Store + LLM',
+      '**기술**: Google Cloud RAG + Vector Store + LLM\n\n' +
+      '**⚠️ 권한 필요**: `analysis` 기능 (Premium 플랜)',
   })
   @ApiResponse({
     status: 200,
@@ -63,6 +76,7 @@ export class JungsiPredictionController {
     type: RagQueryResponseDto,
   })
   @ApiResponse({ status: 401, description: '인증 실패' })
+  @ApiResponse({ status: 403, description: 'analysis 기능 권한 없음 (Premium 플랜 필요)' })
   @ApiResponse({ status: 503, description: 'RAG 서비스 이용 불가' })
   async ragQuery(@Body() dto: RagQueryRequestDto): Promise<RagQueryResponseDto> {
     return this.predictionService.ragQuery(dto);

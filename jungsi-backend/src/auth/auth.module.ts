@@ -11,6 +11,7 @@ import { SmsModule } from 'src/modules/sms/sms.module';
 import { MentoringModule } from 'src/modules/mentoring/mentoring.module';
 import { LoginAttemptService } from './services/login-attempt.service';
 import { CookieService } from './services/cookie.service';
+import { HubPermissionGuard } from './guards/hub-permission.guard';
 
 @Module({
   imports: [
@@ -22,8 +23,8 @@ import { CookieService } from './services/cookie.service';
     SmsModule,
     MentoringModule,
   ],
-  providers: [AuthService, JwtStrategy, LoginAttemptService, CookieService],
+  providers: [AuthService, JwtStrategy, LoginAttemptService, CookieService, HubPermissionGuard],
   controllers: [AuthController],
-  exports: [LoginAttemptService, CookieService],
+  exports: [LoginAttemptService, CookieService, HubPermissionGuard],
 })
 export class AuthModule {}

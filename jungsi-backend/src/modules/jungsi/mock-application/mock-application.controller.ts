@@ -74,13 +74,13 @@ export class MockApplicationController {
   @ApiQuery({ name: 'page', required: false, description: '페이지 번호', example: 1 })
   @ApiQuery({ name: 'limit', required: false, description: '페이지 크기', example: 50 })
   @ApiResponse({ status: 200, description: '모집단위 목록', type: PaginatedAdmissionsResponseDto })
-  getAdmissions(
+  async getAdmissions(
     @Query('universityName') universityName?: string,
     @Query('group') group?: string,
     @Query('page', new DefaultValuePipe(1), ParseIntPipe) page?: number,
     @Query('limit', new DefaultValuePipe(50), ParseIntPipe) limit?: number,
-  ): PaginatedAdmissionsResponseDto {
-    return this.mockApplicationService.getAdmissions({
+  ): Promise<PaginatedAdmissionsResponseDto> {
+    return await this.mockApplicationService.getAdmissions({
       universityName,
       group,
       page,
@@ -139,10 +139,10 @@ export class MockApplicationController {
     type: FrequencyDistributionResponseDto,
   })
   @ApiResponse({ status: 404, description: '모집단위를 찾을 수 없음' })
-  getFrequencyDistribution(
+  async getFrequencyDistribution(
     @Param('rowId', ParseIntPipe) rowId: number,
-  ): FrequencyDistributionResponseDto {
-    return this.mockApplicationService.getFrequencyDistribution(rowId);
+  ): Promise<FrequencyDistributionResponseDto> {
+    return await this.mockApplicationService.getFrequencyDistribution(rowId);
   }
 
   @Public()
@@ -151,8 +151,8 @@ export class MockApplicationController {
   @ApiParam({ name: 'rowId', description: '모집단위 행 ID' })
   @ApiResponse({ status: 200, description: '지원자 목록', type: ApplicantListResponseDto })
   @ApiResponse({ status: 404, description: '모집단위를 찾을 수 없음' })
-  getApplicantList(@Param('rowId', ParseIntPipe) rowId: number): ApplicantListResponseDto {
-    return this.mockApplicationService.getApplicantList(rowId);
+  async getApplicantList(@Param('rowId', ParseIntPipe) rowId: number): Promise<ApplicantListResponseDto> {
+    return await this.mockApplicationService.getApplicantList(rowId);
   }
 
   @Public()
@@ -171,11 +171,11 @@ export class MockApplicationController {
     type: FrequencyDistributionResponseDto,
   })
   @ApiResponse({ status: 404, description: '모집단위를 찾을 수 없음' })
-  getApplicantListAsFrequency(
+  async getApplicantListAsFrequency(
     @Param('rowId', ParseIntPipe) rowId: number,
     @Query('interval', new DefaultValuePipe(1), ParseIntPipe) interval?: number,
-  ): FrequencyDistributionResponseDto {
-    return this.mockApplicationService.getApplicantListAsFrequency(rowId, interval);
+  ): Promise<FrequencyDistributionResponseDto> {
+    return await this.mockApplicationService.getApplicantListAsFrequency(rowId, interval);
   }
 
   @Public()
@@ -184,7 +184,7 @@ export class MockApplicationController {
   @ApiParam({ name: 'rowId', description: '모집단위 행 ID' })
   @ApiResponse({ status: 200, description: '모집단위 기본정보', type: AdmissionInfoDto })
   @ApiResponse({ status: 404, description: '모집단위를 찾을 수 없음' })
-  getAdmissionInfo(@Param('rowId', ParseIntPipe) rowId: number): AdmissionInfoDto {
-    return this.mockApplicationService.getAdmissionInfo(rowId);
+  async getAdmissionInfo(@Param('rowId', ParseIntPipe) rowId: number): Promise<AdmissionInfoDto> {
+    return await this.mockApplicationService.getAdmissionInfo(rowId);
   }
 }

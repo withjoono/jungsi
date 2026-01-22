@@ -63,13 +63,31 @@ export class MockApplicationService implements OnModuleInit {
   private isLoaded = false;
 
   async onModuleInit() {
-    await this.loadExcelData();
+    // PRELOAD_DATA 환경 변수가 true일 때만 시작 시 데이터 로드
+    if (process.env.PRELOAD_DATA === 'true') {
+      await this.loadExcelData();
+    } else {
+      this.logger.log('데이터 사전 로드 비활성화됨 (PRELOAD_DATA=false). 첫 요청 시 로드됩니다.');
+    }
+  }
+
+  /**
+   * 데이터가 로드되지 않았으면 로드 (lazy loading)
+   */
+  private async ensureDataLoaded(): Promise<void> {
+    if (!this.isLoaded) {
+      await this.loadExcelData();
+    }
   }
 
   /**
    * 엑셀 데이터 로드 및 캐싱
    */
   private async loadExcelData(): Promise<void> {
+    if (this.isLoaded) {
+      return; // 이미 로드됨
+    }
+
     const filePath = path.join(process.cwd(), 'uploads', '모의지원현황_전체.xlsx');
 
     if (!fs.existsSync(filePath)) {
@@ -149,7 +167,8 @@ export class MockApplicationService implements OnModuleInit {
   /**
    * 모집단위 목록 조회 (페이지네이션)
    */
-  getAdmissions(query: GetAdmissionsQueryDto): PaginatedAdmissionsResponseDto {
+  async getAdmissions(query: GetAdmissionsQueryDto): Promise<PaginatedAdmissionsResponseDto> {
+    await this.ensureDataLoaded();
     let admissions = Array.from(this.admissionInfoMap.values());
 
     // 필터링
@@ -191,7 +210,8 @@ export class MockApplicationService implements OnModuleInit {
   /**
    * 특정 모집단위의 기본정보 조회
    */
-  getAdmissionInfo(rowId: number): AdmissionInfoDto {
+  async getAdmissionInfo(rowId: number): Promise<AdmissionInfoDto> {
+    await this.ensureDataLoaded();
     const info = this.admissionInfoMap.get(rowId);
     if (!info) {
       throw new NotFoundException(`모집단위를 찾을 수 없습니다. (rowId: ${rowId})`);
@@ -202,8 +222,8 @@ export class MockApplicationService implements OnModuleInit {
   /**
    * 특정 모집단위의 도수분포 조회
    */
-  getFrequencyDistribution(rowId: number): FrequencyDistributionResponseDto {
-    const admissionInfo = this.getAdmissionInfo(rowId);
+  async getFrequencyDistribution(rowId: number): Promise<FrequencyDistributionResponseDto> {
+    const admissionInfo = await this.getAdmissionInfo(rowId);
     const frequencyDistribution = this.frequencyDistributionMap.get(rowId) || [];
 
     // 점수 내림차순 정렬
@@ -220,8 +240,8 @@ export class MockApplicationService implements OnModuleInit {
   /**
    * 특정 모집단위의 지원자목록 조회
    */
-  getApplicantList(rowId: number): ApplicantListResponseDto {
-    const admissionInfo = this.getAdmissionInfo(rowId);
+  async getApplicantList(rowId: number): Promise<ApplicantListResponseDto> {
+    const admissionInfo = await this.getAdmissionInfo(rowId);
     const applicants = this.applicantListMap.get(rowId) || [];
 
     // 순위순 정렬
@@ -243,11 +263,11 @@ export class MockApplicationService implements OnModuleInit {
    * 지원자목록을 도수분포 형태로 변환
    * - 점수 구간별로 그룹핑하여 반환
    */
-  getApplicantListAsFrequency(
+  async getApplicantListAsFrequency(
     rowId: number,
     interval: number = 1,
-  ): FrequencyDistributionResponseDto {
-    const admissionInfo = this.getAdmissionInfo(rowId);
+  ): Promise<FrequencyDistributionResponseDto> {
+    const admissionInfo = await this.getAdmissionInfo(rowId);
     const applicants = this.applicantListMap.get(rowId) || [];
 
     if (applicants.length === 0) {

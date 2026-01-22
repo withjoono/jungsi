@@ -15,6 +15,7 @@
       "src/*": ["src/*"]
     },
     "incremental": true,
+    "tsBuildInfoFile": "./tsconfig.tsbuildinfo",
     "skipLibCheck": true,
     "strict": false,
     "strictNullChecks": false,

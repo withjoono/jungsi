@@ -16,7 +16,6 @@ import { Route as H4RouteImport } from './routes/h4'
 import { Route as H3RouteImport } from './routes/h3'
 import { Route as H2RouteImport } from './routes/h2'
 import { Route as H1RouteImport } from './routes/h1'
-import { Route as AccountLinkageRouteImport } from './routes/account-linkage'
 import { Route as TryRouteRouteImport } from './routes/try/route'
 import { Route as SusiRouteRouteImport } from './routes/susi/route'
 import { Route as ScoreAnalysisRouteRouteImport } from './routes/score-analysis/route'
@@ -28,7 +27,6 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as ProductsIndexRouteImport } from './routes/products/index'
 import { Route as PlannerIndexRouteImport } from './routes/planner/index'
 import { Route as MentorIndexRouteImport } from './routes/mentor/index'
-import { Route as FamilyIndexRouteImport } from './routes/family/index'
 import { Route as UsersLayoutRouteImport } from './routes/users/_layout'
 import { Route as TestLoginDebugRouteImport } from './routes/test/login-debug'
 import { Route as TestAuthMeRouteImport } from './routes/test/auth-me'
@@ -36,10 +34,8 @@ import { Route as SusiLayoutRouteImport } from './routes/susi/_layout'
 import { Route as OrderProductIdRouteImport } from './routes/order/$productId'
 import { Route as OfficerLayoutRouteImport } from './routes/officer/_layout'
 import { Route as MockAnalysisLayoutRouteImport } from './routes/mock-analysis/_layout'
-import { Route as MentorIdRouteImport } from './routes/mentor/$id'
 import { Route as JungsiLayoutRouteImport } from './routes/jungsi/_layout'
 import { Route as GradeAnalysisLayoutRouteImport } from './routes/grade-analysis/_layout'
-import { Route as FamilyIdRouteImport } from './routes/family/$id'
 import { Route as ExploreUniversityRouteImport } from './routes/explore/university'
 import { Route as ExploreRecruitmentUnitRouteImport } from './routes/explore/recruitment-unit'
 import { Route as ExploreAdmissionRouteImport } from './routes/explore/admission'
@@ -295,11 +291,6 @@ const H1Route = H1RouteImport.update({
   path: '/h1',
   getParentRoute: () => rootRouteImport,
 } as any)
-const AccountLinkageRoute = AccountLinkageRouteImport.update({
-  id: '/account-linkage',
-  path: '/account-linkage',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const TryRouteRoute = TryRouteRouteImport.update({
   id: '/try',
   path: '/try',
@@ -403,11 +394,6 @@ const PlannerIndexRoute = PlannerIndexRouteImport.update({
 const MentorIndexRoute = MentorIndexRouteImport.update({
   id: '/mentor/',
   path: '/mentor/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const FamilyIndexRoute = FamilyIndexRouteImport.update({
-  id: '/family/',
-  path: '/family/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const TryJungsiPredictionLazyRoute = TryJungsiPredictionLazyRouteImport.update({
@@ -638,11 +624,6 @@ const MockAnalysisLayoutRoute = MockAnalysisLayoutRouteImport.update({
   id: '/_layout',
   getParentRoute: () => MockAnalysisRouteRoute,
 } as any)
-const MentorIdRoute = MentorIdRouteImport.update({
-  id: '/mentor/$id',
-  path: '/mentor/$id',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const JungsiLayoutRoute = JungsiLayoutRouteImport.update({
   id: '/_layout',
   getParentRoute: () => JungsiRouteRoute,
@@ -650,11 +631,6 @@ const JungsiLayoutRoute = JungsiLayoutRouteImport.update({
 const GradeAnalysisLayoutRoute = GradeAnalysisLayoutRouteImport.update({
   id: '/_layout',
   getParentRoute: () => GradeAnalysisRouteRoute,
-} as any)
-const FamilyIdRoute = FamilyIdRouteImport.update({
-  id: '/family/$id',
-  path: '/family/$id',
-  getParentRoute: () => rootRouteImport,
 } as any)
 const ExploreUniversityRoute = ExploreUniversityRouteImport.update({
   id: '/explore/university',
@@ -1126,7 +1102,6 @@ export interface FileRoutesByFullPath {
   '/score-analysis': typeof ScoreAnalysisRouteRouteWithChildren
   '/susi': typeof SusiLayoutRouteWithChildren
   '/try': typeof TryRouteRouteWithChildren
-  '/account-linkage': typeof AccountLinkageRoute
   '/h1': typeof H1Route
   '/h2': typeof H2Route
   '/h3': typeof H3Route
@@ -1140,8 +1115,6 @@ export interface FileRoutesByFullPath {
   '/explore/admission': typeof ExploreAdmissionRoute
   '/explore/recruitment-unit': typeof ExploreRecruitmentUnitRoute
   '/explore/university': typeof ExploreUniversityRoute
-  '/family/$id': typeof FamilyIdRoute
-  '/mentor/$id': typeof MentorIdRoute
   '/officer': typeof OfficerLayoutRouteWithChildren
   '/order/$productId': typeof OrderProductIdRoute
   '/test/auth-me': typeof TestAuthMeRoute
@@ -1178,7 +1151,6 @@ export interface FileRoutesByFullPath {
   '/planner/routine': typeof PlannerRoutineLazyRoute
   '/planner/today': typeof PlannerTodayLazyRoute
   '/try/jungsi-prediction': typeof TryJungsiPredictionLazyRoute
-  '/family': typeof FamilyIndexRoute
   '/mentor': typeof MentorIndexRoute
   '/planner': typeof PlannerIndexRoute
   '/products': typeof ProductsIndexRoute
@@ -1245,7 +1217,6 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/mock-analysis': typeof MockAnalysisLayoutRouteWithChildren
-  '/account-linkage': typeof AccountLinkageRoute
   '/h1': typeof H1Route
   '/h2': typeof H2Route
   '/h3': typeof H3Route
@@ -1259,10 +1230,8 @@ export interface FileRoutesByTo {
   '/explore/admission': typeof ExploreAdmissionRoute
   '/explore/recruitment-unit': typeof ExploreRecruitmentUnitRoute
   '/explore/university': typeof ExploreUniversityRoute
-  '/family/$id': typeof FamilyIdRoute
   '/grade-analysis': typeof GradeAnalysisIndexLazyRoute
   '/jungsi': typeof JungsiIndexLazyRoute
-  '/mentor/$id': typeof MentorIdRoute
   '/officer': typeof OfficerLayoutRouteWithChildren
   '/order/$productId': typeof OrderProductIdRoute
   '/susi': typeof SusiIndexLazyRoute
@@ -1300,7 +1269,6 @@ export interface FileRoutesByTo {
   '/planner/routine': typeof PlannerRoutineLazyRoute
   '/planner/today': typeof PlannerTodayLazyRoute
   '/try/jungsi-prediction': typeof TryJungsiPredictionLazyRoute
-  '/family': typeof FamilyIndexRoute
   '/mentor': typeof MentorIndexRoute
   '/planner': typeof PlannerIndexRoute
   '/products': typeof ProductsIndexRoute
@@ -1369,7 +1337,6 @@ export interface FileRoutesById {
   '/score-analysis': typeof ScoreAnalysisRouteRouteWithChildren
   '/susi': typeof SusiRouteRouteWithChildren
   '/try': typeof TryRouteRouteWithChildren
-  '/account-linkage': typeof AccountLinkageRoute
   '/h1': typeof H1Route
   '/h2': typeof H2Route
   '/h3': typeof H3Route
@@ -1384,10 +1351,8 @@ export interface FileRoutesById {
   '/explore/admission': typeof ExploreAdmissionRoute
   '/explore/recruitment-unit': typeof ExploreRecruitmentUnitRoute
   '/explore/university': typeof ExploreUniversityRoute
-  '/family/$id': typeof FamilyIdRoute
   '/grade-analysis/_layout': typeof GradeAnalysisLayoutRouteWithChildren
   '/jungsi/_layout': typeof JungsiLayoutRouteWithChildren
-  '/mentor/$id': typeof MentorIdRoute
   '/mock-analysis/_layout': typeof MockAnalysisLayoutRouteWithChildren
   '/officer': typeof OfficerRouteWithChildren
   '/officer/_layout': typeof OfficerLayoutRouteWithChildren
@@ -1428,7 +1393,6 @@ export interface FileRoutesById {
   '/planner/routine': typeof PlannerRoutineLazyRoute
   '/planner/today': typeof PlannerTodayLazyRoute
   '/try/jungsi-prediction': typeof TryJungsiPredictionLazyRoute
-  '/family/': typeof FamilyIndexRoute
   '/mentor/': typeof MentorIndexRoute
   '/planner/': typeof PlannerIndexRoute
   '/products/': typeof ProductsIndexRoute
@@ -1504,7 +1468,6 @@ export interface FileRouteTypes {
     | '/score-analysis'
     | '/susi'
     | '/try'
-    | '/account-linkage'
     | '/h1'
     | '/h2'
     | '/h3'
@@ -1518,8 +1481,6 @@ export interface FileRouteTypes {
     | '/explore/admission'
     | '/explore/recruitment-unit'
     | '/explore/university'
-    | '/family/$id'
-    | '/mentor/$id'
     | '/officer'
     | '/order/$productId'
     | '/test/auth-me'
@@ -1556,7 +1517,6 @@ export interface FileRouteTypes {
     | '/planner/routine'
     | '/planner/today'
     | '/try/jungsi-prediction'
-    | '/family'
     | '/mentor'
     | '/planner'
     | '/products'
@@ -1623,7 +1583,6 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/mock-analysis'
-    | '/account-linkage'
     | '/h1'
     | '/h2'
     | '/h3'
@@ -1637,10 +1596,8 @@ export interface FileRouteTypes {
     | '/explore/admission'
     | '/explore/recruitment-unit'
     | '/explore/university'
-    | '/family/$id'
     | '/grade-analysis'
     | '/jungsi'
-    | '/mentor/$id'
     | '/officer'
     | '/order/$productId'
     | '/susi'
@@ -1678,7 +1635,6 @@ export interface FileRouteTypes {
     | '/planner/routine'
     | '/planner/today'
     | '/try/jungsi-prediction'
-    | '/family'
     | '/mentor'
     | '/planner'
     | '/products'
@@ -1746,7 +1702,6 @@ export interface FileRouteTypes {
     | '/score-analysis'
     | '/susi'
     | '/try'
-    | '/account-linkage'
     | '/h1'
     | '/h2'
     | '/h3'
@@ -1761,10 +1716,8 @@ export interface FileRouteTypes {
     | '/explore/admission'
     | '/explore/recruitment-unit'
     | '/explore/university'
-    | '/family/$id'
     | '/grade-analysis/_layout'
     | '/jungsi/_layout'
-    | '/mentor/$id'
     | '/mock-analysis/_layout'
     | '/officer'
     | '/officer/_layout'
@@ -1805,7 +1758,6 @@ export interface FileRouteTypes {
     | '/planner/routine'
     | '/planner/today'
     | '/try/jungsi-prediction'
-    | '/family/'
     | '/mentor/'
     | '/planner/'
     | '/products/'
@@ -1880,7 +1832,6 @@ export interface RootRouteChildren {
   ScoreAnalysisRouteRoute: typeof ScoreAnalysisRouteRouteWithChildren
   SusiRouteRoute: typeof SusiRouteRouteWithChildren
   TryRouteRoute: typeof TryRouteRouteWithChildren
-  AccountLinkageRoute: typeof AccountLinkageRoute
   H1Route: typeof H1Route
   H2Route: typeof H2Route
   H3Route: typeof H3Route
@@ -1894,8 +1845,6 @@ export interface RootRouteChildren {
   ExploreAdmissionRoute: typeof ExploreAdmissionRoute
   ExploreRecruitmentUnitRoute: typeof ExploreRecruitmentUnitRoute
   ExploreUniversityRoute: typeof ExploreUniversityRoute
-  FamilyIdRoute: typeof FamilyIdRoute
-  MentorIdRoute: typeof MentorIdRoute
   OfficerRoute: typeof OfficerRouteWithChildren
   OrderProductIdRoute: typeof OrderProductIdRoute
   TestAuthMeRoute: typeof TestAuthMeRoute
@@ -1917,7 +1866,6 @@ export interface RootRouteChildren {
   PlannerPlansLazyRoute: typeof PlannerPlansLazyRoute
   PlannerRoutineLazyRoute: typeof PlannerRoutineLazyRoute
   PlannerTodayLazyRoute: typeof PlannerTodayLazyRoute
-  FamilyIndexRoute: typeof FamilyIndexRoute
   MentorIndexRoute: typeof MentorIndexRoute
   PlannerIndexRoute: typeof PlannerIndexRoute
   ProductsIndexRoute: typeof ProductsIndexRoute
@@ -1984,13 +1932,6 @@ declare module '@tanstack/react-router' {
       path: '/h1'
       fullPath: '/h1'
       preLoaderRoute: typeof H1RouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/account-linkage': {
-      id: '/account-linkage'
-      path: '/account-linkage'
-      fullPath: '/account-linkage'
-      preLoaderRoute: typeof AccountLinkageRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/try': {
@@ -2124,13 +2065,6 @@ declare module '@tanstack/react-router' {
       path: '/mentor'
       fullPath: '/mentor'
       preLoaderRoute: typeof MentorIndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/family/': {
-      id: '/family/'
-      path: '/family'
-      fullPath: '/family'
-      preLoaderRoute: typeof FamilyIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/try/jungsi-prediction': {
@@ -2399,13 +2333,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MockAnalysisLayoutRouteImport
       parentRoute: typeof MockAnalysisRouteRoute
     }
-    '/mentor/$id': {
-      id: '/mentor/$id'
-      path: '/mentor/$id'
-      fullPath: '/mentor/$id'
-      preLoaderRoute: typeof MentorIdRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/jungsi/_layout': {
       id: '/jungsi/_layout'
       path: ''
@@ -2419,13 +2346,6 @@ declare module '@tanstack/react-router' {
       fullPath: '/grade-analysis'
       preLoaderRoute: typeof GradeAnalysisLayoutRouteImport
       parentRoute: typeof GradeAnalysisRouteRoute
-    }
-    '/family/$id': {
-      id: '/family/$id'
-      path: '/family/$id'
-      fullPath: '/family/$id'
-      preLoaderRoute: typeof FamilyIdRouteImport
-      parentRoute: typeof rootRouteImport
     }
     '/explore/university': {
       id: '/explore/university'
@@ -3200,7 +3120,6 @@ const rootRouteChildren: RootRouteChildren = {
   ScoreAnalysisRouteRoute: ScoreAnalysisRouteRouteWithChildren,
   SusiRouteRoute: SusiRouteRouteWithChildren,
   TryRouteRoute: TryRouteRouteWithChildren,
-  AccountLinkageRoute: AccountLinkageRoute,
   H1Route: H1Route,
   H2Route: H2Route,
   H3Route: H3Route,
@@ -3214,8 +3133,6 @@ const rootRouteChildren: RootRouteChildren = {
   ExploreAdmissionRoute: ExploreAdmissionRoute,
   ExploreRecruitmentUnitRoute: ExploreRecruitmentUnitRoute,
   ExploreUniversityRoute: ExploreUniversityRoute,
-  FamilyIdRoute: FamilyIdRoute,
-  MentorIdRoute: MentorIdRoute,
   OfficerRoute: OfficerRouteWithChildren,
   OrderProductIdRoute: OrderProductIdRoute,
   TestAuthMeRoute: TestAuthMeRoute,
@@ -3237,7 +3154,6 @@ const rootRouteChildren: RootRouteChildren = {
   PlannerPlansLazyRoute: PlannerPlansLazyRoute,
   PlannerRoutineLazyRoute: PlannerRoutineLazyRoute,
   PlannerTodayLazyRoute: PlannerTodayLazyRoute,
-  FamilyIndexRoute: FamilyIndexRoute,
   MentorIndexRoute: MentorIndexRoute,
   PlannerIndexRoute: PlannerIndexRoute,
   ProductsIndexRoute: ProductsIndexRoute,

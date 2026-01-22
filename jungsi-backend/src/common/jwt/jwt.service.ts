@@ -80,4 +80,35 @@ export class JwtService {
       algorithms: [this.HASH_ALGORITHM],
     }) as jwt.JwtPayload;
   }
+
+  /**
+   * JWT 토큰에서 앱별 권한 정보 추출 (Hub JWT용)
+   * @param token JWT 토큰
+   * @param secret 시크릿 키
+   * @param appId 앱 ID (예: 'jungsi', 'susi', 'examhub')
+   * @returns 앱 권한 정보 또는 undefined
+   */
+  getAppPermission(token: string, secret: string, appId: string): any {
+    try {
+      const claims = this.extractAllClaims(token, secret);
+      return claims.permissions?.[appId];
+    } catch {
+      return undefined;
+    }
+  }
+
+  /**
+   * Hub JWT 토큰에서 모든 권한 정보 추출
+   * @param token JWT 토큰
+   * @param secret 시크릿 키
+   * @returns 전체 권한 정보 또는 undefined
+   */
+  getAllPermissions(token: string, secret: string): Record<string, any> | undefined {
+    try {
+      const claims = this.extractAllClaims(token, secret);
+      return claims.permissions;
+    } catch {
+      return undefined;
+    }
+  }
 }

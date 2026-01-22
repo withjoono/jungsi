@@ -108,13 +108,51 @@ function Products() {
                       <h3 className="text-xl font-bold text-gray-900">
                         {product.productNm}
                       </h3>
-                      <h3 className="mt-2 text-3xl font-bold text-blue-600">
-                        {formatPrice(product.productPrice)} 원
-                      </h3>
+                      <div className="mt-2">
+                        {product.productCateCode === "J" && (
+                          <>
+                            <div className="flex items-center gap-2">
+                              <span className="text-lg text-gray-400 line-through">
+                                118,000원
+                              </span>
+                              <Badge
+                                variant="destructive"
+                                className="text-sm"
+                              >
+                                50% 할인
+                              </Badge>
+                            </div>
+                            <p className="text-xs text-orange-600 mt-1">
+                              2월말까지 특가!
+                            </p>
+                          </>
+                        )}
+                        <h3 className="text-3xl font-bold text-blue-600">
+                          {formatPrice(product.productPrice)} 원
+                        </h3>
+                      </div>
                       {product.explainComment && (
                         <p className="mt-3 text-sm text-gray-600">
                           {product.explainComment}
                         </p>
+                      )}
+                      {product.productCateCode === "J" && (
+                        <div className="mt-3 space-y-2">
+                          <p className="text-sm text-gray-600 font-semibold">
+                            포함 서비스:
+                          </p>
+                          <ul className="text-xs text-gray-600 space-y-1 list-disc list-inside">
+                            <li>1년간 모의고사 예측 서비스(교육청, 평가원)</li>
+                            <li>6,9월 평가원 모의 정시 예측 시뮬레이션</li>
+                            <li>
+                              모의지원 상황과 지원율 변동에 따른 동적 예측
+                              시스템
+                            </li>
+                            <li>
+                              원서 접수 기간 실시간 경쟁률 분석 서비스
+                            </li>
+                          </ul>
+                        </div>
                       )}
                     </div>
                     <div className="space-y-3">
