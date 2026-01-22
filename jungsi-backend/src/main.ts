@@ -35,7 +35,7 @@ async function bootstrap() {
   // Cookie Parser - HttpOnly 쿠키 파싱 (JWT 토큰 보안 저장)
   app.use(cookieParser());
 
-  // Initialize Firebase Admin SDK
+  // Initialize Firebase Admin SDK (Optional)
   try {
     let serviceAccount;
 
@@ -57,19 +57,35 @@ async function bootstrap() {
         auth_provider_x509_cert_url: 'https://www.googleapis.com/oauth2/v1/certs',
         client_x509_cert_url: `https://www.googleapis.com/robot/v1/metadata/x509/${encodeURIComponent(process.env.FIREBASE_CLIENT_EMAIL)}`,
       };
-      console.log('Firebase Admin SDK initialized from environment variables');
-    } else {
-      // 환경 변수가 없으면 파일에서 로드 (fallback)
-      // eslint-disable-next-line @typescript-eslint/no-var-requires
-      serviceAccount = require('../firebase-service-account-key.json');
-      console.log('Firebase Admin SDK initialized from file');
-    }
 
-    admin.initializeApp({
-      credential: admin.credential.cert(serviceAccount),
-    });
+      admin.initializeApp({
+        credential: admin.credential.cert(serviceAccount),
+      });
+      console.log('✅ Firebase Admin SDK initialized from environment variables');
+    } else {
+      // 환경 변수가 없으면 파일에서 로드 시도 (fallback)
+      try {
+        const fs = require('fs');
+        const path = require('path');
+        const keyPath = path.join(__dirname, '..', 'firebase-service-account-key.json');
+
+        if (fs.existsSync(keyPath)) {
+          // eslint-disable-next-line @typescript-eslint/no-var-requires
+          serviceAccount = require('../firebase-service-account-key.json');
+
+          admin.initializeApp({
+            credential: admin.credential.cert(serviceAccount),
+          });
+          console.log('✅ Firebase Admin SDK initialized from file');
+        } else {
+          console.warn('⚠️  Firebase service account file not found. Firebase features will be disabled.');
+        }
+      } catch (fileError) {
+        console.warn('⚠️  Failed to load Firebase from file. Firebase features will be disabled.');
+      }
+    }
   } catch (error) {
-    console.warn('Firebase service account key not found. Firebase features will be disabled.');
+    console.warn('⚠️  Firebase initialization failed. Firebase features will be disabled.', error.message);
   }
 
   const configService = app.get(ConfigService<AllConfigType>);
