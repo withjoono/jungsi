@@ -44,8 +44,9 @@ jobs:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
           channelId: live
-          projectId: ts-back-nest-479305
+          projectId: ts-front-479305
           entryPoint: ./jungsi-frontend
+          target: jungsi
         continue-on-error: true
         
       - name: Deploy to Firebase (Fallback)
